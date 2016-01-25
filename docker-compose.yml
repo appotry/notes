@@ -1,0 +1,7 @@
+notes:
+  image: 'nginx:latest'
+  restart: always
+  ports:
+    - 50517:80
+  volumes:
+    - ./:/usr/share/nginx/html
