@@ -1,0 +1,18 @@
+language: "node_js"
+node_js:
+  - "node"
+install:
+  - "npm install -g gitbook"
+  - "npm install -g gitbook-cli"
+branches:
+  only:
+    - master
+env:
+  global:
+    - GH_REF: github.com/yangjinjie/notes.git
+    - secure: "0W9fdVXqM57SbmzpXSLg5ZXhmwu7oIjJc+28gQ388Lcq0JyhM27ipKT4nsPb18mBXiWiINGM5tnv7fqDuxM3E/GM/PsLBaUf37jXbbKcdUXVY+I/T8fqgN73W2K+rBeDoBVAUKd2wupaRj6LqXF8oKRq6s+AphEe/BHJoJInHE/jZ52xLoBpDEg7igLTRnWvTYBJQiU7DrXv0s8iuyev3/K368OatJs0p9E8uu+b5NhiMCoSFM2ydJ2rTTad4RvxFxd6rHMfAy34SJdU7+wt4KWxxopv6LBtVcTMkM/HLR/a8dKfuio7eaTkYjrf2+gdTjPiGKgvMMqyWWpoyRGa0Xa6Ce0sBraCglt+3Yz/JsaOPF16EM0KaZFRwdb7AakYct6HurKJOzHdvuxjTfxY0WXpAvvEe471XwVtAqiYQP6jMCQUGrAGGFNrINbYkuw5zb4C10vUWmO1ikQLNhPy7FbtoWC+b+eP/61vqAUA74CDjckF7zgoFI/wduCIrW/DaeYCxLfGfeIItIfmk1Fb36I4P/+kyeGPMclaLmjYrF/Et7HB3M1xohI+xIaYf+mDO0Edn0KRIKCHmYzsg2d5IetdefbxHNpi434GlLxaNE+cp6URR9Ryxb31j/AW2BUnMK3M9F/hAV5DNnu4hN41vyP6428OmHShCgMhQKpLovU="
+#sudo: false
+script:
+  - bash deploy.sh "gitbook"
+  - travis_wait 100 bash deploy.sh "java" "python"
+  - travis_wait 100 bash deploy.sh "notes"
