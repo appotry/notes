@@ -1,0 +1,53 @@
+{
+    "author": "Yang",
+    "description": "Notes",
+    "extension": null,
+    "generator": "site",
+    "links": {
+        "sharing": {
+            "all": null,
+            "facebook": null,
+            "google": null,
+            "twitter": null,
+            "weibo": null
+        },
+        "sidebar": {
+            "notes": "https://yangjinjie.github.io/notes/",
+            "python": "https://yangjinjie.github.io/python_notes/",
+            "java": "https://yangjinjie.github.io/java_notes/"
+        }
+    },
+    "pdf": {
+        "fontSize": 18,
+        "footerTemplate": null,
+        "headerTemplate": null,
+        "margin": {
+            "bottom": 36,
+            "left": 62,
+            "right": 62,
+            "top": 36
+        },
+        "pageNumbers": false,
+        "paperSize": "a4"
+    },
+    "plugins": [
+        "toggle-chapters",
+        "theme-comscore",
+        "splitter",
+        "sharing",
+        "search",
+        "github",
+        "editlink"
+    ],
+    "pluginsConfig": {
+        "github": {
+            "url": "https://github.com/yangjinjie/notes"
+        },
+        "editlink": {
+            "base": "https://github.com/yangjinjie/notes/blob/master",
+            "label": "编辑本页"
+        }
+    },
+    "title": "Notes",
+    "variables": {}
+}
