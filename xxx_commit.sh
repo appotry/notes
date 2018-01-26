@@ -34,5 +34,4 @@ do
     done < ${filepath_data}
 done
 echo "git push" >> $logfile
-cat $logfile | pbcopy
 bash $logfile
