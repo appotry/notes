@@ -2,7 +2,7 @@
 
 > Updated: 2017-10-22
 
-# [目录](https://yangjinjie.github.io/python_notes/SUMMARY.html)
+[离线阅读参考这个](https://yangjinjie.github.io/notes/)
 
 参考链接
 
