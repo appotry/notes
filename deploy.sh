@@ -4,15 +4,6 @@
 DEPLOY_DIR="`dirname $PWD`/deploy"
 notes_dir="$PWD"
 
-gitbook_branch(){
-    bash summary_create.sh "8"
-    git checkout -b gitbook
-    git status
-    git add .
-    git commit -m "travis: Update SUMMARY.md"
-    git push -f "https://${GH_TOKEN}@${GH_REF}" gitbook:gitbook
-}
-
 build_deploy(){
     dir=$1
     if [ "${dir}" == "notes" ];then
@@ -24,29 +15,23 @@ build_deploy(){
 
     notes_dir=${DEPLOY_DIR}/${repository_name}
 
-    git clone --depth=2 --branch=gh-pages https://github.com/yangjinjie/${repository_name}.git ${notes_dir}
-
     gitbook install 2>/dev/null
     gitbook build .
 
-    echo -e "\033[33m ----删除仓库内HTML---- \033[0m"
-    find ${notes_dir} -name "*.html"|sed 's#^#mv -fv \"#g'|sed 's#$#\" /tmp#g'|bash > /tmp/mv.log && tail /tmp/mv.log
-    echo -e "\033[33m ----准备待部署文件---- \033[0m"
-    cp -rfv _book/* ${notes_dir} | tail
+    echo -e "\033[33m ----部署文件 ${repository_name} ---- \033[0m"
+    cd _book/
+    echo $PWD
 
-    cd ${notes_dir}
-    find . -name "*.md"|sed 's#^#mv -fv \"#g'|sed 's#$#\" /tmp#g'|bash > /tmp/mv.log && tail /tmp/mv.log
-    git status|head
+    git init
+    git remote add origin git@github.com:yangjinjie/${repository_name}.git
+    git checkout -b gh-pages
+    git status|head -5
     echo "..."
-    git status|tail
+    git status|tail -5
     git add .
-    # git commit -m "Update Site: `date "+%F %H:%M:%S"`"
-    git commit -m "Update Site: `date "+%F %H:%M:%S" --date="+8 hour"`"
-    git push "https://${GH_TOKEN}@github.com/yangjinjie/${repository_name}.git" gh-pages:gh-pages
+    git commit -m "update site: `date "+%F %H:%M:%S" --date="+8 hour"`"
+    git push -f "https://${GH_TOKEN}@github.com/yangjinjie/${repository_name}.git" gh-pages:gh-pages
     cd $notes_dir
-    if [ -d "$dir" ];then
-        mv -v $dir /tmp
-    fi
 }
 
 pre_build(){
@@ -75,10 +60,6 @@ main(){
 
     for dir in $@
     do
-        if [ "$dir" = "gitbook" ];then
-            gitbook_branch
-            break
-        fi
         pre_build $dir
         build_deploy $dir
     done
