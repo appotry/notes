@@ -10,7 +10,7 @@
 
 > 域名 [https://yangjinjie.github.io](https://yangjinjie.github.io) 跳转到 [https://docs.yangjinjie.xyz](https://docs.yangjinjie.xyz)
 
-## 离线阅读
+## 离线阅读(推荐)
 
 ### 通过docker
 
@@ -101,7 +101,3 @@ notes
 * 每个目录下均创建`README.md`文件,说明该目录(同时也是使用脚本创建目录的需要)
 * 文件命名规则 `[0-9][0-9]-文件名.md` , 便于排序
 * 资源文件存放于`assets`下的对应目录下,命名规则: 名字-序号-说明,例如`jenkins-01-install.jpg`
-
-## 附
-
-- [GitBook个人地址](https://www.gitbook.com/@yjj)
