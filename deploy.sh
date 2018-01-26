@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # 工作目录为用户名
-DEPLOY_DIR="`dirname $PWD`/deploy"
 notes_dir="$PWD"
 
 build_deploy(){
@@ -13,8 +12,6 @@ build_deploy(){
         cd $dir
     fi
 
-    notes_dir=${DEPLOY_DIR}/${repository_name}
-
     gitbook install 2>/dev/null
     gitbook build .
 
@@ -25,10 +22,9 @@ build_deploy(){
     git init
     git remote add origin git@github.com:yangjinjie/${repository_name}.git
     git checkout -b gh-pages
-    git status|head -5
     echo "..."
-    git status|tail -5
     git add .
+    git status|tail -5
     git commit -m "update site: `date "+%F %H:%M:%S" --date="+8 hour"`"
     git push -f "https://${GH_TOKEN}@github.com/yangjinjie/${repository_name}.git" gh-pages:gh-pages
     cd $notes_dir
