@@ -19,11 +19,11 @@ sed 's#00README.md#README.md#g' tmp_SUMMARY.md|grep -v "SUMMARY](SUMMARY"|awk  '
 # 文件开始添加 类似 '01-' 来排序, 目录显示时不显示这部分内容(即删除'01-'这部分内容)
 # sed -ri 's#(\S+* \[)[0-9]+-(.*$)#\1\2#g' SUMMARY.md
 
-
 if [ "$1" == "8" ];then
     time=$(date "+%F %H:%M:%S"  --date="+8 hour")
 else
     time=$(date "+%F %H:%M:%S")
 fi
+
 sed -i "s#Updated: 20[0-9][0-9]-[0-9][0-9]-[0-9][0-9].*#Updated: ${time}#g" README.md
 sed -ri 's#(\S+* \[)[0-9]+-(.*$)#\1\2#g' SUMMARY.md
