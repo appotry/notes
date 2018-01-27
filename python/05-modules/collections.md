@@ -4,6 +4,8 @@ collections是python內建的一个集合模块,提供了许多有用的集合�
 
 ## namedtuple
 
+[详细参考](https://docs.python.org/3/library/collections.html#collections.namedtuple)
+
 `namedtuple`是一个函数,它用来创建一个自定义的`tuple`对象,并且规定了`tuple`元素的个数,并可以用属性而不是索引来引用`tuple`的某个元素.
 
 这样,我们用`namedtuple`可以很方便地定义一种数据类型,它具备tuple的不变形,又可以根据属性来引用.
