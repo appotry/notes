@@ -6,5 +6,7 @@
     "MD041": false,
     "MD029": false,
     "MD004": false
-  }
+  },
+  "restructuredtext.confPath": "/Users/boxfish/Documents/notes/github/notes",
+  "python.pythonPath": "/Library/Frameworks/Python.framework/Versions/3.5/bin/python3",
 }
