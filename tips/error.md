@@ -109,8 +109,8 @@ Pid	Swap	Progame
 ``` bash
 [root@server198 ~]# vim swap_program.txt
 [root@server198 ~]# cat swap_program.txt
-Pid	Swap	Progame
-8807	1972956	/data/app/java/bin/java
+Pid Swap    Progame
+8807    1972956 /data/app/java/bin/java
 8884	1117536	/data/app/java/bin/java
 8091	486644	/usr/bin/mongod
 11231	320180	/data/app/java/bin/java
@@ -120,7 +120,7 @@ Pid	Swap	Progame
 18973	99272	/data/app/java/bin/java
 23299	67280	/data/app/java/bin/java
 38729	64384	java
-#
+
 [root@server198 ~]# cat swap_program.txt|sed '1d'|awk '{print $1}'
 8807
 8884
