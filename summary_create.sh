@@ -30,7 +30,7 @@ sed -ri 's#(\S+* \[)[0-9]+-(.*$)#\1\2#g' SUMMARY.md
 
 for dir in java python
 do
-    if [ -e "${dir}/README.md"];then
+    if [ -e "${dir}/README.md" ];then
         sed -i "s#Updated: 20[0-9][0-9]-[0-9][0-9]-[0-9][0-9].*#Updated: ${time}#g" ${dir}/README.md
 
 done
