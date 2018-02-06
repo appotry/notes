@@ -139,10 +139,13 @@ git config --global core.quotepath false
 
 ```shell
 # github ysara
-Host github.com
-User xxx@qq.com
-PreferredAuthentications publickey
-IdentityFile ~/.ssh/ysara
+# 将 .git/config 下url github.com, 修改成别名 github_ysara
+# 比如 原地址是：git@github.com:username/haha.git，替换后应该是：github_ysara:username/haha.git.
+Host github_ysara
+    HostName github.com
+    User xxx@qq.com
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/ysara
 
 # github yangjinjie
 Host github.com
@@ -150,5 +153,3 @@ User xx@qq.com
 PreferredAuthentications publickey
 IdentityFile ~/.ssh/id_rsa
 ```
-
-使用ssh-agent
