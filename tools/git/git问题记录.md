@@ -6,7 +6,7 @@
     - [1.3. 刚创建的github版本库，在push代码时出错](#13-%E5%88%9A%E5%88%9B%E5%BB%BA%E7%9A%84github%E7%89%88%E6%9C%AC%E5%BA%93%EF%BC%8C%E5%9C%A8push%E4%BB%A3%E7%A0%81%E6%97%B6%E5%87%BA%E9%94%99)
     - [1.4. git merge报错，fatal: refusing to merge unrelated histories](#14-git-merge%E6%8A%A5%E9%94%99%EF%BC%8Cfatal-refusing-to-merge-unrelated-histories)
     - [1.5. git pull提示“no tracking information”](#15-git-pull%E6%8F%90%E7%A4%BA%E2%80%9Cno-tracking-information%E2%80%9D)
-    - [1.6. Access denied. fatal: Could not read from remote repository.  Please make sure you have the correct access rights and the repository exists.](#16-access-denied-fatal-could-not-read-from-remote-repository-please-make-sure-you-have-the-correct-access-rights-and-the-repository-exists)
+    - [1.6. Access denied. fatal: Could not read from remote repository.  Please make sure you have the correct access rights and the repository exists](#16-access-denied-fatal-could-not-read-from-remote-repository-please-make-sure-you-have-the-correct-access-rights-and-the-repository-exists)
     - [1.7. Mac升级系统之后,使用git的时候,报如下错误](#17-mac%E5%8D%87%E7%BA%A7%E7%B3%BB%E7%BB%9F%E4%B9%8B%E5%90%8E%E4%BD%BF%E7%94%A8git%E7%9A%84%E6%97%B6%E5%80%99%E6%8A%A5%E5%A6%82%E4%B8%8B%E9%94%99%E8%AF%AF)
     - [1.8. git status 中文显示乱码](#18-git-status-%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA%E4%B9%B1%E7%A0%81)
     - [1.9. 配置多个ssh-key](#19-%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AAssh-key)
@@ -113,7 +113,7 @@ git merge --allow-unrelated-histories test
 * 如果合并有冲突，则解决冲突，并在本地提交；
 * 没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！
 
-## 1.6. Access denied. fatal: Could not read from remote repository.  Please make sure you have the correct access rights and the repository exists.
+## 1.6. Access denied. fatal: Could not read from remote repository.  Please make sure you have the correct access rights and the repository exists
 
 个人ssh-key是在,修改资料里面添加,设置的公钥,拥有所有权限
 
