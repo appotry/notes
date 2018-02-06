@@ -19,8 +19,8 @@
     - [3.1. 获取远程分支到本地](#31-%E8%8E%B7%E5%8F%96%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E5%88%B0%E6%9C%AC%E5%9C%B0)
     - [3.2. 忽略特殊文件.gitignore](#32-%E5%BF%BD%E7%95%A5%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6gitignore)
     - [3.3. 删除错误提交](#33-%E5%88%A0%E9%99%A4%E9%94%99%E8%AF%AF%E6%8F%90%E4%BA%A4)
-    - [删除远程分支](#%E5%88%A0%E9%99%A4%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF)
-    - [3.4. 全局忽略 .DS_Store](#34-%E5%85%A8%E5%B1%80%E5%BF%BD%E7%95%A5-dsstore)
+    - [3.4. 删除远程分支](#34-%E5%88%A0%E9%99%A4%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF)
+    - [3.5. 全局忽略 .DS_Store](#35-%E5%85%A8%E5%B1%80%E5%BF%BD%E7%95%A5-dsstore)
 
 <!-- /TOC -->
 
@@ -413,7 +413,7 @@ git reset --hard <commit_id>
 git push origin HEAD --force
 ```
 
-## 删除远程分支
+## 3.4. 删除远程分支
 
 ```shell
 # 查看远程分支
@@ -425,7 +425,7 @@ git branch -r -d origin/branch-name
 git push origin :branch-name
 ```
 
-## 3.4. 全局忽略 .DS_Store
+## 3.5. 全局忽略 .DS_Store
 
 1. 创建 `~/.gitignore_global` 文件
 2. 把需要全局忽略的文件类型写到这个文件里。
