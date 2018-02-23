@@ -19,6 +19,8 @@ build_deploy(){
     cd _book/
     echo $PWD
 
+    # gitbook@3.2.3
+    # gitbook-cli@2.3.2
     # 修正 文件名带空格导致 SUMMARY 跳转有问题
     sed -i '/a href.*\.md/s#\.md#.html#g;/a href.*README\.html/s#README\.html##g' SUMMARY.html
 
@@ -34,6 +36,9 @@ build_deploy(){
 }
 
 pre_build(){
+    # gitbook@3.2.3
+    # gitbook-cli@2.3.2
+    # 当前版本, 生成html之后, book.json 不再存在
     for dir in java python
     do
         # create summary
