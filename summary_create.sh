@@ -32,5 +32,5 @@ for dir in java python
 do
     if [ -e "${dir}/README.md" ];then
         sed -i "s#Updated: 20[0-9][0-9]-[0-9][0-9]-[0-9][0-9].*#Updated: ${time}#g" ${dir}/README.md
-
+    fi
 done
