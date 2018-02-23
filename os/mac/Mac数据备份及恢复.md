@@ -3,15 +3,15 @@
 <!-- TOC -->
 
 - [1. Mac](#1-mac)
-    - [1.1. Mac备份](#11-mac备份)
-    - [1.2. Mac恢复](#12-mac恢复)
-        - [1.2.1. 命令行恢复](#121-命令行恢复)
-        - [1.2.2. iTerm2恢复](#122-iterm2恢复)
-        - [1.2.3. 鼠标放置屏幕右上角锁屏](#123-鼠标放置屏幕右上角锁屏)
-        - [1.2.4. 触摸板配置](#124-触摸板配置)
-        - [1.2.5. vscode 恢复](#125-vscode-恢复)
-        - [1.2.7. 搜狗输入法,使用QQ登录](#127-搜狗输入法使用qq登录)
-        - [1.2.8. 常用软件](#128-常用软件)
+    - [1.1. Mac备份](#11-mac%E5%A4%87%E4%BB%BD)
+    - [1.2. Mac恢复](#12-mac%E6%81%A2%E5%A4%8D)
+        - [1.2.1. 命令行恢复](#121-%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%81%A2%E5%A4%8D)
+        - [1.2.2. iTerm2恢复](#122-iterm2%E6%81%A2%E5%A4%8D)
+        - [1.2.3. 鼠标放置屏幕右上角锁屏](#123-%E9%BC%A0%E6%A0%87%E6%94%BE%E7%BD%AE%E5%B1%8F%E5%B9%95%E5%8F%B3%E4%B8%8A%E8%A7%92%E9%94%81%E5%B1%8F)
+        - [1.2.4. 触摸板配置](#124-%E8%A7%A6%E6%91%B8%E6%9D%BF%E9%85%8D%E7%BD%AE)
+        - [1.2.5. vscode 恢复](#125-vscode-%E6%81%A2%E5%A4%8D)
+        - [1.2.6. 搜狗输入法,使用QQ登录](#126-%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E4%BD%BF%E7%94%A8qq%E7%99%BB%E5%BD%95)
+        - [1.2.7. 常用软件](#127-%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6)
 
 <!-- /TOC -->
 
@@ -101,11 +101,11 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 }
 ```
 
-### 1.2.7. 搜狗输入法,使用QQ登录
+### 1.2.6. 搜狗输入法,使用QQ登录
 
 [皮肤: 书写优雅](http://oi480zo5x.bkt.clouddn.com/书写优雅.mssf)
 
-### 1.2.8. 常用软件
+### 1.2.7. 常用软件
 
 * Go2Shell
 * iTerm2
@@ -115,6 +115,7 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 * Charles | 抓包
 * iStat Menus | 状态栏工具
 * Shadowsocks
+* Typora
 
 * Bartender 3 | Mac Menu Bar Item Control
 
