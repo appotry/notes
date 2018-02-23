@@ -34,17 +34,21 @@ build_deploy(){
 }
 
 pre_build(){
-    # notes不处理, 处理其他目录
-    dir=$1
-    if [ "$dir" != "notes" ];then
+    for dir in java python
+    do
         # create summary
-        cp -f summary_create.sh ${dir}
-        cd ${dir} && bash summary_create.sh "8" && cd ..
+        cp -fv summary_create.sh ${dir}
+        cd ${dir} && bash summary_create.sh "8" && cd .. 
 
-        # book.json
-        cp -f book.json ${dir}
+        cp -fv book.json ${dir}
         # editlink, 保证子目录项目, 编辑本页可用
         sed -i "s#notes/blob/master#notes/blob/master/${dir}#g" ${dir}/book.json
+
+    done
+
+    dir=$1
+    if [ "$dir" != "notes" ];then
+        echo $dir
     else
         mv assets /tmp
         bash summary_create.sh "8"
