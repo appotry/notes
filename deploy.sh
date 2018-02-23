@@ -19,6 +19,9 @@ build_deploy(){
     cd _book/
     echo $PWD
 
+    # 修正 文件名带空格导致 SUMMARY 跳转有问题
+    sed -i '/a href.*\.md/s#\.md#.html#g;/a href.*README\.html/s#README\.html##g' SUMMARY.html
+
     git init
     git remote add origin git@github.com:yangjinjie/${repository_name}.git
     git checkout -b gh-pages
