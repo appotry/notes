@@ -5,4 +5,3 @@ Kubeadm解决TLS加密配置问题, 部署核心Kubernetes组件并确保新增�
 更多细节参考 [https://github.com/kubernetes/kubeadm](https://github.com/kubernetes/kubeadm)
 
 ## 初始化Master
-
