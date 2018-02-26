@@ -8,6 +8,7 @@
 
 - [官方文档](https://kubernetes.io/docs)
 - [feiskyer kubernetes-handbook](https://github.com/feiskyer/kubernetes-handbook)
+- [kubernetes feisky](https://kubernetes.feisky.xyz/introduction/cluster.html)
 - [kubernetes 中文文档](https://www.kubernetes.org.cn/docs)
 
 ## 设计架构
