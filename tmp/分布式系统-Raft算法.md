@@ -1,5 +1,7 @@
 # 分布式系统-Raft算法
 
+Raft 是一种为了管理复制日志的一致性算法
+
 [https://www.jianshu.com/p/4711c4c32aab](https://www.jianshu.com/p/4711c4c32aab)
 
 过去, Paxos一直是分布式协议的标准，但是Paxos难于理解，更难以实现
