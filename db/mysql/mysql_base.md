@@ -3,7 +3,7 @@
 [www.90root.com](http://www.90root.com/category/DB/)
 [www.abcdocker.com](http://www.abcdocker.com/abcdocker/category/mysql)
 
-## 1 MySQL 5.7 yum安装
+## MySQL 5.7 yum安装
 
 ```shell
 [root@ruin ~]# cat /etc/redhat-release
@@ -38,9 +38,9 @@ mysql>
 
 [MySQL 5.7官网手册](http://dev.mysql.com/doc/refman/5.7/en/linux-installation-yum-repo.html)
 
-## 2 MySQL设置root密码
+## MySQL设置root密码
 
-### 2.1 SQL命令行set 修改
+### SQL命令行set 修改
 
 ``` bash
 [root@ruin ~]# mysql -uroot -phr6Oe8_o-EA\(
@@ -54,7 +54,7 @@ mysql> set password=password('Lr1993*0614_');
 mysql> flush privileges;
 ```
 
-### 2.2 shell 命令行mysqladmin修改
+### shell 命令行mysqladmin修改
 
 ``` bash
 #当没有密码时设置新密码为123456
@@ -69,7 +69,7 @@ ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: Y
 mysql>
 ```
 
-### 2.3 SQL命令行update语句修改
+### SQL命令行update语句修改
 
 ``` bash
 [root@ruin ~]# mysql -uroot -pLr2017*0000__
@@ -89,11 +89,11 @@ mysql> flush privileges;
 
 [官方文档](http://dev.mysql.com/doc/refman/5.7/en/validate-password-plugin.html)
 
-### 2.4 忘记密码时,登录修改
+### 忘记密码时,登录修改
 
 [Linux环境下mysql的root密码忘记解决方法](http://lxsym.blog.51cto.com/1364623/477027/)
 
-#### 2.4.1 修改my.cnf重启进程跳过授权表改密码
+#### 修改my.cnf重启进程跳过授权表改密码
 
 ```shell
 [root@ruin ~]# vi /etc/my.cnf
@@ -114,7 +114,7 @@ mysql> flush privileges;
 mysql>
 ```
 
-#### 2.4.2 使用mysqld_safe跳过授权表改密码
+#### 使用mysqld_safe跳过授权表改密码
 
 ``` bash
 [root@ruin ~]# netstat -lntp|grep mysql
@@ -132,7 +132,7 @@ mysql> flush privileges;
 mysql>
 ```
 
-## 3 MySQL授权访问
+## MySQL授权访问
 
 ``` bash
 #5.7版本默认localhost连接
@@ -153,7 +153,7 @@ mysql> select host,user from mysql.user;
 
 grant 命令用于授权，详情查看help
 
-### 3.1 直接对用户授权
+### 直接对用户授权
 
 ``` bash
 mysql> help grant;
@@ -194,7 +194,7 @@ Bye
 mysql>
 ```
 
-### 3.2 先创建用户在授权
+### 先创建用户在授权
 
 ``` bash
 mysql> create user test@10.0.11.103 identified by 'Test*123_';
@@ -220,9 +220,9 @@ mysql> select host,user from mysql.user;
 4 rows in set (0.00 sec)
 ```
 
-## 4 创建库，表，用户
+## 创建库，表，用户
 
-### 4.1 创建库
+### 创建库
 
 [创建库官方文档](http://dev.mysql.com/doc/refman/5.7/en/create-database.html)
 
@@ -259,4 +259,4 @@ mysql> show create database liurui;
 1 row in set (0.00 sec)
 ```
 
-### 4.2 创建表
+### 创建表
