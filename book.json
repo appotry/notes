@@ -38,6 +38,7 @@
         "sharing",
         "github",
         "editlink",
+        "anchor-navigation-ex",
         "-lunr",
         "-search",
         "search-plus"
@@ -49,6 +50,13 @@
         "editlink": {
             "base": "https://github.com/yangjinjie/notes/blob/master",
             "label": "编辑本页"
+        },
+        "anchor-navigation-ex": {
+            "isRewritePageTitle": true,
+            "isShowTocTitleIcon": true,
+            "tocLevel1Icon": "fa fa-hand-o-right",
+            "tocLevel2Icon": "fa fa-hand-o-right",
+            "tocLevel3Icon": "fa fa-hand-o-right"
         }
     }
 }
