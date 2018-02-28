@@ -1,55 +1,12 @@
-<!-- TOC -->
+# docker的使用
 
-- [1. docker的使用](#1-docker的使用)
-    - [1.1. 启动docker](#11-启动docker)
-    - [1.2. docker镜像](#12-docker镜像)
-    - [1.3. 获取centos6镜像](#13-获取centos6镜像)
-    - [1.4. 列出已经获取到的docker镜像](#14-列出已经获取到的docker镜像)
-    - [1.5. 启动一个docker容器](#15-启动一个docker容器)
-    - [1.6. 退出docker镜像](#16-退出docker镜像)
-    - [1.7. 查看docker镜像的状态](#17-查看docker镜像的状态)
-    - [1.8. 启动刚才退出的docker镜像](#18-启动刚才退出的docker镜像)
-    - [1.9. 停止docker容器](#19-停止docker容器)
-    - [1.10. 自动重启](#110-自动重启)
-    - [1.11. 以守护进程的方式运行docker容器](#111-以守护进程的方式运行docker容器)
-    - [1.12. 进入docker容器](#112-进入docker容器)
-        - [1.12.1. 使用docker自带命令进入容器](#1121-使用docker自带命令进入容器)
-        - [1.12.2. 使用exec进入容器](#1122-使用exec进入容器)
-        - [1.12.3. 使用nsenter命令](#1123-使用nsenter命令)
-    - [1.13. 自定义docker镜像](#113-自定义docker镜像)
-        - [1.13.1. 进入容器](#1131-进入容器)
-        - [1.13.2. 提交镜像](#1132-提交镜像)
-        - [1.13.3. 使用新提交的镜像启动docker容器](#1133-使用新提交的镜像启动docker容器)
-    - [1.14. 使用 Dockerfile 来创建镜像](#114-使用-dockerfile-来创建镜像)
-        - [1.14.1. 创建dockerfile文件](#1141-创建dockerfile文件)
-        - [1.14.2. 生成镜像](#1142-生成镜像)
-        - [1.14.3. 使用生成镜像启动容器](#1143-使用生成镜像启动容器)
-    - [1.15. 删除](#115-删除)
-        - [1.15.1. 删除镜像](#1151-删除镜像)
-        - [1.15.2. 删除容器](#1152-删除容器)
-    - [1.16. 导入导出](#116-导入导出)
-        - [1.16.1. 导出镜像](#1161-导出镜像)
-        - [1.16.2. 导入镜像](#1162-导入镜像)
-        - [1.16.3. 导出容器](#1163-导出容器)
-        - [1.16.4. 导入容器到镜像](#1164-导入容器到镜像)
-    - [1.17. 数据卷](#117-数据卷)
-        - [1.17.1. 挂载本机的目录作为数据卷](#1171-挂载本机的目录作为数据卷)
-        - [1.17.2. 挂载本机文件作为数据卷](#1172-挂载本机文件作为数据卷)
-    - [1.18. 网络](#118-网络)
-        - [1.18.1. 端口映射](#1181-端口映射)
-        - [1.18.2. 容器间互联](#1182-容器间互联)
-
-<!-- /TOC -->
-
-# 1. docker的使用
-
-## 1.1. 启动docker
+## 启动docker
 
 ```shell
 /etc/init.d/docker start
 ```
 
-## 1.2. docker镜像
+## docker镜像
 
 搜索镜像
 
@@ -117,11 +74,11 @@
    This container is running with systemd in a limited context, with the cgroups filesystem mounted. There have been reports that if you’re using an Ubuntu host, you will need to add -v /tmp/$(mktemp -d):/run in addition to the cgroups mount.
 ```
 
-## 1.3. 获取centos6镜像
+## 获取centos6镜像
 
     docker pull centos:6
 
-## 1.4. 列出已经获取到的docker镜像
+## 列出已经获取到的docker镜像
 
 ```shell
 [root@localhost ~]# docker images
@@ -137,7 +94,7 @@ centos              6                   273a1eca2d3a        4 weeks ago         
 * CREATED：创建镜像的时间
 * VIRTUAL SIZE：镜像的大小
 
-## 1.5. 启动一个docker容器
+## 启动一个docker容器
 
 ```shell
 [root@localhost ~]# docker run -i -t centos:6 /bin/bash
@@ -172,13 +129,13 @@ lo        Link encap:Local Loopback
 CentOS release 6.8 (Final)
 ```
 
-## 1.6. 退出docker镜像
+## 退出docker镜像
 
 因为我们只是启动了一个bash,所以当我们退出的时候,镜像也停止了。
 
     [root@65b6cf94133f /]# exit
 
-## 1.7. 查看docker镜像的状态
+## 查看docker镜像的状态
 
 ```shell
 [root@localhost ~]# docker ps -a
@@ -187,7 +144,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 -a表示列出所有的容器，STATUS如果为Exited为退出，UP为运行。
 ```
 
-## 1.8. 启动刚才退出的docker镜像
+## 启动刚才退出的docker镜像
 
 启动时跟ID启动，也可以使用NAME启动。
 
@@ -198,11 +155,11 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 65b6cf94133f        centos:6            "/bin/bash"         4 minutes ago       Up 53 seconds                           evil_engelbart
 ```
 
-## 1.9. 停止docker容器
+## 停止docker容器
 
     [root@localhost ~]# docker stop 65b6cf94133f
 
-## 1.10. 自动重启
+## 自动重启
 
 故障处理, `--restart`参数, 支持三种逻辑实现
 
@@ -215,7 +172,7 @@ always：容器退出时总是重启
 --restart=always
 ```
 
-## 1.11. 以守护进程的方式运行docker容器
+## 以守护进程的方式运行docker容器
 
 使用-d参数
 
@@ -227,7 +184,7 @@ CONTAINER ID        IMAGE               COMMAND                CREATED          
 5f117a57a13c        centos:6            "/bin/bash -c 'while   25 seconds ago      Up 24 seconds                           docker-daemon
 ```
 
-## 1.12. 进入docker容器
+## 进入docker容器
 
 以守护进程的方式运行时，进入容器对容器进行操作。
 
@@ -240,7 +197,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 22fa39e2bb08        centos:6            "/bin/bash"         12 seconds ago      Up 11 seconds                           stoic_mayer
 ```
 
-### 1.12.1. 使用docker自带命令进入容器
+### 使用docker自带命令进入容器
 
 使用docker自带的命令进入容器,可以跟名字，或者CONTAINER ID登录
 
@@ -248,11 +205,11 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 docker attach 是Docker自带的命令，但是使用 attach 命令，开多个窗口同时，所有窗口都会同步显示操作。当某个窗口因命令阻塞时,其他窗口也无法执行操作了，退出时如果使用exit或者ctrl+c也会关闭docker容器，使用快捷键先按ctrl+p,再按ctrl+q。
 
-### 1.12.2. 使用exec进入容器
+### 使用exec进入容器
 
     docker exec -it 22fa39e2bb08 bash
 
-### 1.12.3. 使用nsenter命令
+### 使用nsenter命令
 
 查询是否安装util-linux软件包，如果没有需要安装。
 
@@ -283,11 +240,11 @@ cp nsenter /usr/local/bin
 [root@localhost ~]# nsenter --target 2759 --mount --uts --ipc --net --pid
 ```
 
-## 1.13. 自定义docker镜像
+## 自定义docker镜像
 
 使用已有的容器生成镜像
 
-### 1.13.1. 进入容器
+### 进入容器
 
     [root@localhost ~]# nsenter --target 2759 --mount --uts --ipc --net --pid
 
@@ -299,7 +256,7 @@ chkconfig httpd on
 exit
 ```
 
-### 1.13.2. 提交镜像
+### 提交镜像
 
 ```shell
 docker commit -m "centos http  server" 22fa39e2bb08  yy/httpd:v1
@@ -309,7 +266,7 @@ docker commit -m "centos http  server" 22fa39e2bb08  yy/httpd:v1
 yy/httpd:v1:指定仓库名和TAG信息
 ```
 
-### 1.13.3. 使用新提交的镜像启动docker容器
+### 使用新提交的镜像启动docker容器
 
 ```shell
 [root@localhost ~]# docker run -dit -p 80:80 yy/httpd:v1 /sbin/init
@@ -328,9 +285,9 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 tcp        0      0 :::80                       :::*                        LISTEN      4499/docker-proxy
 ```
 
-## 1.14. 使用 Dockerfile 来创建镜像
+## 使用 Dockerfile 来创建镜像
 
-### 1.14.1. 创建dockerfile文件
+### 创建dockerfile文件
 
 ```shell
 mkdir docker-file
@@ -361,13 +318,13 @@ EXPOSE:向外部开放端口
 CMD:命令来描述容器启动后运行的程序
 ```
 
-### 1.14.2. 生成镜像
+### 生成镜像
 
     [root@localhost docker-file]# docker build -t "yy/httpd:v2" .
 
 其中 -t 标记来添加 tag，指定新的镜像的用户信息。“.”是 Dockerfile 所在的路径（当前目录），也可以替换为一个具体的 Dockerfile 的路径。
 
-### 1.14.3. 使用生成镜像启动容器
+### 使用生成镜像启动容器
 
        [root@localhost docker-file]# docker run -dit -p 81:80 yy/httpd:v2
 
@@ -382,21 +339,21 @@ tcp        0      0 :::80                       :::*                        LIST
 tcp        0      0 :::81                       :::*                        LISTEN      6987/docker-proxy
 ```
 
-## 1.15. 删除
+## 删除
 
    如果强制删除使用-f参数
 
-### 1.15.1. 删除镜像
+### 删除镜像
 
     docker rmi 镜像ID
 
-### 1.15.2. 删除容器
+### 删除容器
 
     docker rm 容器id
 
-## 1.16. 导入导出
+## 导入导出
 
-### 1.16.1. 导出镜像
+### 导出镜像
 
 查看有哪些镜像
 
@@ -413,11 +370,11 @@ centos              latest              d83a55af4e75        4 weeks ago         
 
     [root@localhost ~]# docker save -o httpd.tar yy/httpd:v2
 
-### 1.16.2. 导入镜像
+### 导入镜像
 
     [root@localhost ~]# docker load < httpd.tar
 
-### 1.16.3. 导出容器
+### 导出容器
 
 查看镜像列表，选择最近一次的容器，也可使用-a选择任意容器
 
@@ -439,15 +396,15 @@ a2ef76ef4694        yy/httpd:v2    "/sbin/init"        8 hours ago         Up 8 
 
        [root@localhost ~]# docker rm a2ef76ef4694
 
-### 1.16.4. 导入容器到镜像
+### 导入容器到镜像
 
     [root@localhost ~]# docker import - yy/httpd:v3 < httpdv2.tar
 
 *注：用户既可以使用 docker load 来导入镜像存储文件到本地镜像库，也可以使用 docker import 来导入一个容器快照到本地镜像库。这两者的区别在于容器快照文件将丢弃所有的历史记录和元数据信息（即仅保存容器当时的快照状态），而镜像存储文件将保存完整记录，体积也要大。此外，从容器快照文件导入时可以重新指定标签等元数据信息。
 
-## 1.17. 数据卷
+## 数据卷
 
-### 1.17.1. 挂载本机的目录作为数据卷
+### 挂载本机的目录作为数据卷
 
 ```shell
 [root@localhost ~]# docker run -dit -h apache  -v /opt:/opt  yy/httpd:v3 /bin/bash
@@ -464,7 +421,7 @@ e4c0213e8e0b0c067296abc6f84a83ea00ea71dd287e49b827e88871ed27ad30
 good  rh
 ```
 
-### 1.17.2. 挂载本机文件作为数据卷
+### 挂载本机文件作为数据卷
 
 ```shell
 [root@localhost opt]# docker run -it --rm -h apache  -v /etc/hosts:/opt/hosts:ro  yy/httpd:v3 /bin/bash
@@ -476,9 +433,9 @@ ro:可以设置为只读
 
     VOLUME [ "/sys/fs/cgroup" ]
 
-## 1.18. 网络
+## 网络
 
-### 1.18.1. 端口映射
+### 端口映射
 
 把docker里面的端口映射成为本机端口，可以通过 -P 或 -p 参数来指定端口映射。
 
@@ -494,7 +451,7 @@ ro:可以设置为只读
 
     [root@localhost opt]# docker run  -dit -p 127.0.0.1:80:80/udp yy/httpd:v3 /sbin/init
 
-### 1.18.2. 容器间互联
+### 容器间互联
 
 创建容器时--name对容器命名。
 
