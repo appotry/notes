@@ -52,6 +52,7 @@
             "label": "编辑本页"
         },
         "anchor-navigation-ex": {
+            "showLevel": false,
             "isRewritePageTitle": true,
             "isShowTocTitleIcon": true,
             "tocLevel1Icon": "fa fa-hand-o-right",
