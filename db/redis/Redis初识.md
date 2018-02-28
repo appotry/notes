@@ -1,71 +1,15 @@
-# 1. Redis
+# Redis
 
 > 什么是Redis？
 
-```txt
 * Redis是一个开源的使用ANSI C语言编写的Key-Value 内存数据库
 * 读写性能强，支持多种数据类型
 * 把数据存储在内存中的高速缓存
 * 作者Salvatore Sanfilippo
-```
 
-## 1.1. Table of contents
+## Redis简介
 
-<!-- TOC -->
-
-- [1. Redis](#1-redis)
-    - [1.1. Table of contents](#11-table-of-contents)
-    - [1.2. Redis简介](#12-redis%E7%AE%80%E4%BB%8B)
-        - [1.2.1. 特点](#121-%E7%89%B9%E7%82%B9)
-        - [1.2.2. Redis与Memcached的对比](#122-redis%E4%B8%8Ememcached%E7%9A%84%E5%AF%B9%E6%AF%94)
-        - [1.2.3. Redis应用场景](#123-redis%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF)
-    - [1.3. 安装配置](#13-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE)
-        - [1.3.1. 安装](#131-%E5%AE%89%E8%A3%85)
-        - [1.3.2. 服务管理文件](#132-%E6%9C%8D%E5%8A%A1%E7%AE%A1%E7%90%86%E6%96%87%E4%BB%B6)
-        - [1.3.3. 一键部署](#133-%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2)
-        - [1.3.4. 配置文件](#134-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)
-        - [1.3.5. 保护模式](#135-%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F)
-        - [1.3.6. 配置文件详解](#136-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3)
-        - [1.3.7. 运行配置](#137-%E8%BF%90%E8%A1%8C%E9%85%8D%E7%BD%AE)
-        - [1.3.8. Redis数据存储](#138-redis%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8)
-        - [1.3.9. 持久化](#139-%E6%8C%81%E4%B9%85%E5%8C%96)
-        - [1.3.10. 持久化策略](#1310-%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5)
-    - [1.4. 核心实践](#14-%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5)
-        - [1.4.1. 常规操作](#141-%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C)
-        - [1.4.2. 字符串](#142-%E5%AD%97%E7%AC%A6%E4%B8%B2)
-        - [1.4.3. Hash（哈希）](#143-hash%EF%BC%88%E5%93%88%E5%B8%8C%EF%BC%89)
-        - [1.4.4. LIST(列表)](#144-list%E5%88%97%E8%A1%A8)
-        - [1.4.5. SET](#145-set)
-        - [1.4.6. SortedSet(有序集合)](#146-sortedset%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88)
-    - [1.5. Redis 高级应用](#15-redis-%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8)
-        - [1.5.1. 生产消费模型](#151-%E7%94%9F%E4%BA%A7%E6%B6%88%E8%B4%B9%E6%A8%A1%E5%9E%8B)
-        - [1.5.2. 订阅发布实例](#152-%E8%AE%A2%E9%98%85%E5%8F%91%E5%B8%83%E5%AE%9E%E4%BE%8B)
-        - [1.5.3. 事务](#153-%E4%BA%8B%E5%8A%A1)
-        - [1.5.4. 服务器命令](#154-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%91%BD%E4%BB%A4)
-        - [1.5.5. 慢日志查询](#155-%E6%85%A2%E6%97%A5%E5%BF%97%E6%9F%A5%E8%AF%A2)
-        - [1.5.6. 数据备份](#156-%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD)
-    - [1.6. redis 复制](#16-redis-%E5%A4%8D%E5%88%B6)
-        - [1.6.1. 主从配置](#161-%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE)
-        - [1.6.2. 基于keepalived的自动故障切换](#162-%E5%9F%BA%E4%BA%8Ekeepalived%E7%9A%84%E8%87%AA%E5%8A%A8%E6%95%85%E9%9A%9C%E5%88%87%E6%8D%A2)
-        - [1.6.3. Redis Sentinel](#163-redis-sentinel)
-        - [1.6.4. sentinel命令](#164-sentinel%E5%91%BD%E4%BB%A4)
-    - [1.7. Redis Cluster](#17-redis-cluster)
-        - [1.7.1. Redis集群](#171-redis%E9%9B%86%E7%BE%A4)
-        - [1.7.2. Redis 集群数据共享](#172-redis-%E9%9B%86%E7%BE%A4%E6%95%B0%E6%8D%AE%E5%85%B1%E4%BA%AB)
-        - [1.7.3. 集群的复制](#173-%E9%9B%86%E7%BE%A4%E7%9A%84%E5%A4%8D%E5%88%B6)
-        - [1.7.4. 运行机制](#174-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6)
-        - [1.7.5. 配置cluster](#175-%E9%85%8D%E7%BD%AEcluster)
-        - [1.7.6. 集群管理](#176-%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86)
-        - [1.7.7. 状态说明](#177-%E7%8A%B6%E6%80%81%E8%AF%B4%E6%98%8E)
-    - [1.8. Redis API](#18-redis-api)
-        - [1.8.1. PHP使用redis](#181-php%E4%BD%BF%E7%94%A8redis)
-        - [1.8.2. Python连接redis](#182-python%E8%BF%9E%E6%8E%A5redis)
-
-<!-- /TOC -->
-
-## 1.2. Redis简介
-
-### 1.2.1. 特点
+### 特点
 
 ```txt
 * 速度快
@@ -78,9 +22,7 @@
 * 官方不支持WINDOWS，但是有第三方版本
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.2.2. Redis与Memcached的对比
+### Redis与Memcached的对比
 
 | 项目   | Redis  | Memcached |
 | ---- | ------ | --------- |
@@ -91,7 +33,7 @@
 | 虚拟内存 | 支持     | 不支持       |
 | 性能   | 性能     | 强         |
 
-### 1.2.3. Redis应用场景
+### Redis应用场景
 
 > 数据缓存
 
@@ -109,11 +51,9 @@
 
     构建实时消息系统，聊天，群聊
 
-[Back to TOC](#11-table-of-contents)
+## 安装配置
 
-## 1.3. 安装配置
-
-### 1.3.1. 安装
+### 安装
 
 ```shell
 [root@web01 ~]# mkdir -p /data/server
@@ -191,9 +131,7 @@ OK
 not connected> exit
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.3.2. 服务管理文件
+### 服务管理文件
 
 ```shell
 脚本内容见下面
@@ -266,9 +204,7 @@ case "$1" in
 esac
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.3.3. 一键部署
+### 一键部署
 
 ```shell
 有需要请自行修改
@@ -291,9 +227,7 @@ service redis start
 service redis status
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.3.4. 配置文件
+### 配置文件
 
 > 主目录下：redis.conf
 
@@ -305,9 +239,7 @@ logfile stdout  --->  ./logs/redis.log  # 日志文件
 dbfilename dump.rdb                     # 持久化数据文件
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.3.5. 保护模式
+### 保护模式
 
 * Redis 3.2 新特性
 * 解决访问安全
@@ -317,9 +249,7 @@ dbfilename dump.rdb                     # 持久化数据文件
 * 增加requirepass
 * auth {password}
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.3.6. 配置文件详解
+### 配置文件详解
 
 ```shell
 [root@web01 redis]# grep -vE "^$|#" redis.conf
@@ -403,9 +333,7 @@ OK
 (empty list or set)
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.3.7. 运行配置
+### 运行配置
 
 ```shell
 127.0.0.1:6379> config get *
@@ -423,36 +351,30 @@ OK
 2) "debug"
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.3.8. Redis数据存储
+### Redis数据存储
 
 ![redis1-20161230](http://oi480zo5x.bkt.clouddn.com/Linux_project/redis1-20161230.jpg)
 
-### 1.3.9. 持久化
+### 持久化
 
 * RDB 持久化可以在指定的时间间隔内生成数据集的时间点快照（point-in-time snapshot）。
 * AOF 持久化记录服务器执行的所有写操作命令，并在服务器启动时，通过重新执行这些命令来还原数据集。AOF 文件中的命令全部以 Redis 协议的格式来保存，新命令会被追加到文件的末尾。 Redis 还可以在后台对 AOF 文件进行重写（rewrite），使得 AOF 文件的体积不会超出保存数据集状态所需的实际大小。
 * Redis 还可以同时使用 AOF 持久化和 RDB 持久化。 在这种情况下，当 Redis 重启时，它会优先使用AOF 文件来还原数据集，因为 AOF 文件保存的数据集通常比 RDB 文件所保存的数据集更完整。
 * 你甚至可以关闭持久化功能，让数据只在服务器运行时存在。
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.3.10. 持久化策略
+### 持久化策略
 
 > 日志文件  appendonly yes/no
 
-```
+```txt
 save 900 1       ## 900秒（15分钟）内有一个更改，存盘
 save 300 10      ## 300秒（5分钟）内有10个更改，存盘
 save 60 10000    ## 60秒内有10000个更改，即将数据写入磁盘
 ```
 
-[Back to TOC](#11-table-of-contents)
-
 > 压缩
 
-```
+```txt
 dbcompression yes
 
 指定存储至本地数据库时是否压缩数据，默认为yes，Redis采用LZF压缩，如果为了节省CPU时间，可以关闭该选项，但会导致数据库文件变的巨大
@@ -467,15 +389,13 @@ appendfsync everysec
     everysec：表示每秒同步一次（折衷，默认值）
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-## 1.4. 核心实践
+## 核心实践
 
 > 数据类型
 
 ![redis2-20161230](http://oi480zo5x.bkt.clouddn.com/Linux_project/redis2-20161230.jpg)
 
-### 1.4.1. 常规操作
+### 常规操作
 
 * KEYS * 查看KEY支持通配符
 * DEL删除给定的一个或多个key
@@ -488,9 +408,7 @@ appendfsync everysec
 * SORT 键值排序
 * TYPE返回键所存储值的类型
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.4.2. 字符串
+### 字符串
 
 ```shell
 SET name "guohz"
@@ -506,9 +424,7 @@ INCRBY DECRBY 减去指定量
 DECRBY count 20
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.4.3. Hash（哈希）
+### Hash（哈希）
 
 * Redis hash 是一个键值对集合。
 * Redis hash是一个string类型的field和value的映射表
@@ -526,9 +442,7 @@ HKEYS HVALS 获取所有字段或值
 HDEL 删除key 中的一个或多个指定域
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.4.4. LIST(列表)
+### LIST(列表)
 
 * Redis列表是简单的字符串列表。
 * 按照插入顺序排序每个
@@ -552,7 +466,7 @@ LINSERT 插入数据位于某元素之前或之后。
 LINSERT key BEFORE|AFTER pivot value
 ```
 
-```
+```shell
 操作
 127.0.0.1:6379> lpush list1 yang jin jie niu bi
 (integer) 5
@@ -643,9 +557,7 @@ OK
 7) "yang"
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.4.5. SET
+### SET
 
 * Redis的Set是string类型的无序集合。
 * 集合成员是唯一的，这就意味着集合中不能出现重复的数据。
@@ -683,9 +595,7 @@ SREM 移除集合中一个或多个元素
 2) "lidaozhang"
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.4.6. SortedSet(有序集合)
+### SortedSet(有序集合)
 
 * Redis 有序集合和集合一样也是string类型元素的集合,且不允许重复的成员。
 * 每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序。
@@ -782,11 +692,9 @@ ZREVRANGE key start stop [WITHSCORES]
 6) "11000"
 ```
 
-[Back to TOC](#11-table-of-contents)
+## Redis 高级应用
 
-## 1.5. Redis 高级应用
-
-### 1.5.1. 生产消费模型
+### 生产消费模型
 
 > 消息模式
 
@@ -805,7 +713,7 @@ Redis 客户端可以订阅任意数量的频道。
 
 ![redis3-20161230](http://oi480zo5x.bkt.clouddn.com/Linux_project/redis3-20161230.jpg)
 
-### 1.5.2. 订阅发布实例
+### 订阅发布实例
 
 SUBSCRIBE mq1 #客户端
 PUBLISH mq1 "Redis is a great caching technique"
@@ -849,9 +757,7 @@ Reading messages... (press Ctrl-C to quit)
 
 ![订阅发布实例-20161230](http://oi480zo5x.bkt.clouddn.com/Linux_project/订阅发布实例-20161230.jpg)
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.5.3. 事务
+### 事务
 
 * Redis 事务可以一次执行多个命令。
     - 事务是一个单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。
@@ -924,9 +830,7 @@ QUEUED
     6) "15000"
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.5.4. 服务器命令
+### 服务器命令
 
 * Info
 * Clinet list
@@ -974,9 +878,7 @@ OK
 
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.5.5. 慢日志查询
+### 慢日志查询
 
 * Slow log 是 Redis 用来记录查询执行时间的日志系统。
 * slow log 保存在内存里面，读写速度非常快
@@ -1004,9 +906,7 @@ OK
 
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.5.6. 数据备份
+### 数据备份
 
 * CONFIG GET dir 获取当前目录
 * Save 备份（无持久化策略时），生成时在redis当前目录中。
@@ -1028,9 +928,7 @@ OK
 
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-## 1.6. redis 复制
+## redis 复制
 
 * 从 Redis 2.8 开始，使用异步复制。
 * 一个主服务器可以有多个从服务器。
@@ -1038,7 +936,7 @@ OK
 * 复制功能不会阻塞主服务器。
 * 可以通过复制功能来让主服务器免于执行持久化操作，由从服务器去执行持久化操作即可。
 
-### 1.6.1. 主从配置
+### 主从配置
 
 ```shell
 slaveof 192.168.1.1 6379
@@ -1118,8 +1016,6 @@ tcp    LISTEN     0      511            127.0.0.1:8002                  *:*     
       3) "421"
 ```
 
-[Back to TOC](#11-table-of-contents)
-
 > 客户端登录执行slaveof，重启后失效
 
 ```shell
@@ -1159,8 +1055,6 @@ OK
 
 ```
 
-[Back to TOC](#11-table-of-contents)
-
 > 开启主从复制之后，从库自动开启read-only
 
 ```shell
@@ -1190,8 +1084,6 @@ repl_backlog_size:1048576
 repl_backlog_first_byte_offset:0
 repl_backlog_histlen:0
 ```
-
-[Back to TOC](#11-table-of-contents)
 
 > 主从手动切换
 
@@ -1232,11 +1124,9 @@ OK
 
 ```
 
-[Back to TOC](#11-table-of-contents)
+### 基于keepalived的自动故障切换
 
-### 1.6.2. 基于keepalived的自动故障切换
-
-### 1.6.3. Redis Sentinel
+### Redis Sentinel
 
 > Redis-Sentinel是Redis官方推荐的高可用性(HA)解决方案，当用Redis做Master-slave的高可用方案时，假如master宕机了，Redis本身(包括它的很多客户端)都没有实现自动进行主备切换，而Redis-sentinel本身也是一个独立运行的进程，它能监控多个master-slave集群，发现master宕机后能进行自动切换。
 
@@ -1447,9 +1337,7 @@ sentinel failover-timeout mymaster 180000
 
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.6.4. sentinel命令
+### sentinel命令
 
 * PING ：返回 PONG 。
 * SENTINEL masters ：列出所有被监视的主服务器
@@ -1505,11 +1393,9 @@ sentinel failover-timeout mymaster 180000
 
 ```
 
-[Back to TOC](#11-table-of-contents)
+## Redis Cluster
 
-## 1.7. Redis Cluster
-
-### 1.7.1. Redis集群
+### Redis集群
 
 * Redis 集群是一个可以在多个 Redis 节点之间进行数据共享的设施（installation）。
 * Redis 集群不支持那些需要同时处理多个键的 Redis 命令， 因为执行这些命令需要在多个 Redis 节点之间移动数据， 并且在高负载的情况下， 这些命令将降低 Redis 集群的性能， 并导致不可预测的行为。
@@ -1517,7 +1403,7 @@ sentinel failover-timeout mymaster 180000
 * 将数据自动切分（split）到多个节点的能力。
 * 当集群中的一部分节点失效或者无法进行通讯时， 仍然可以继续处理命令请求的能力。
 
-### 1.7.2. Redis 集群数据共享
+### Redis 集群数据共享
 
 * Redis 集群使用数据分片（sharding）而非一致性哈希（consistency hashing）来实现： 一个 Redis 集群包含 16384 个哈希槽（hash slot）， 数据库中的每个键都属于这 16384 个哈希槽的其中一个， 集群使用公式 CRC16(key) % 16384 来计算键 key 属于哪个槽， 其中 CRC16(key) 语句用于计算键 key 的 CRC16 校验和 。
 
@@ -1525,7 +1411,7 @@ sentinel failover-timeout mymaster 180000
 * 节点 B 负责处理 5501 号至 11000 号哈希槽。
 * 节点 C 负责处理 11001 号至 16384 号哈希槽。
 
-### 1.7.3. 集群的复制
+### 集群的复制
 
 * 为了使得集群在一部分节点下线或者无法与集群的大多数（majority）节点进行通讯的情况下， 仍然可以正常运作， Redis 集群对节点使用了主从复制功能： 集群中的每个节点都有 1 个至 N 个复制品（replica）， 其中一个复制品为主节点（master）， 而其余的 N-1 个复制品为从节点（slave）。
 * 在之前列举的节点 A 、B 、C 的例子中， 如果节点 B 下线了， 那么集群将无法正常运行， 因为集群找不到节点来处理 5501 号至 11000 号的哈希槽。
@@ -1536,14 +1422,14 @@ Redis Cluster
 
 ![Redis Cluster-20161230](http://oi480zo5x.bkt.clouddn.com/Linux_project/Redis%20Cluster-20161230.jpg)
 
-### 1.7.4. 运行机制
+### 运行机制
 
 * 所有的redis节点彼此互联(PING-PONG机制),内部使用二进制协议优化传输速度和带宽.
 * 节点的fail是通过集群中超过半数的master节点检测失效时才生效.
 * 客户端与redis节点直连,不需要中间proxy层.客户端不需要连接集群所有节点,连接集群中任何一个可用节点即可
 * 把所有的物理节点映射到[0-16383]slot上,cluster 负责维护node<->slot<->key
 
-### 1.7.5. 配置cluster
+### 配置cluster
 
 ```shell
 需要安装ruby支持
@@ -1606,7 +1492,7 @@ tcp    LISTEN     0      511            127.0.0.1:18005                 *:*     
 * 选项 --replicas 1 表示我们希望为集群中的每个主节点创建一个从节点。
 * 之后跟着的其他参数则是实例的地址列表， 我们希望程序使用这些地址所指示的实例来创建新集群。
 
-```
+```shell
 [root@web01 server]# cd redis
 [root@web01 redis]# src/redis-trib.rb create --replicas 1 127.0.0.1:8000 127.0.0.1:8001 127.0.0.1:8002 127.0.0.1:8003 127.0.0.1:8004 127.0.0.1:8005
 >>> Creating cluster
@@ -1670,7 +1556,7 @@ f27567b23b4a2b359384fcfdac23d4506ce1e184 127.0.0.1:8003 slave efc84ca03f218f1e6e
 
 > 集群客户端操作
 
-```
+```shell
 redis-cli -c -p 8000
 
 set foo bar
@@ -1680,9 +1566,7 @@ get foo
 ./redis-trib.rb reshard 127.0.0.1:7000
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.7.6. 集群管理
+### 集群管理
 
 ```shell
 集群状态
@@ -1701,9 +1585,7 @@ get foo
 删除master节点之前首先要使用reshard移除master的全部slot,然后再删除当前节点
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.7.7. 状态说明
+### 状态说明
 
 * 集群最近一次向节点发送 PING 命令之后， 过去了多长时间还没接到回复。
 * 节点最近一次返回 PONG 回复的时间。
@@ -1711,13 +1593,11 @@ get foo
 * 本节点的网络连接情况：例如 connected 。
 * 节点目前包含的槽：例如 127.0.0.1:7001 目前包含号码为 5960 至 10921 的哈希槽。
 
-[Back to TOC](#11-table-of-contents)
+## Redis API
 
-## 1.8. Redis API
+### PHP使用redis
 
-### 1.8.1. PHP使用redis
-
-```
+```shell
 tar zxvf 2.2.7.tar.gz
 cd phpredis-2.2.7
 /data/server/php/bin/phpize
@@ -1727,8 +1607,6 @@ echo 'extension="redis.so"' >> /data/server/php/etc/php.ini
 service php-fpm restart
 service nginx restart
 ```
-
-[Back to TOC](#11-table-of-contents)
 
 > 连接代码
 
@@ -1758,9 +1636,7 @@ service nginx restart
 ?>
 ```
 
-[Back to TOC](#11-table-of-contents)
-
-### 1.8.2. Python连接redis
+### Python连接redis
 
 ```python
 pip install redis
@@ -1772,5 +1648,3 @@ True
 >>> r.get('foo')
 'bar'
 ```
-
-[Back to TOC](#11-table-of-contents)
