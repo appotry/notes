@@ -1,42 +1,6 @@
-# 1. HTML
+# HTML
 
-<!-- TOC -->
-
-- [1. HTML](#1-html)
-    - [1.1. 总结](#11-总结)
-    - [1.2. 网页特殊符号](#12-网页特殊符号)
-- [2. 标签](#2-标签)
-    - [2.1. meta](#21-meta)
-        - [2.1.1. 页面编码](#211-页面编码)
-        - [2.1.2. 刷新和跳转](#212-刷新和跳转)
-        - [2.1.3. 关键字](#213-关键字)
-        - [2.1.4. 描述](#214-描述)
-        - [2.1.5. X-UA-Compatible](#215-x-ua-compatible)
-    - [2.2. Title](#22-title)
-    - [2.3. link](#23-link)
-    - [2.4. style](#24-style)
-    - [2.5. script](#25-script)
-    - [2.6. p](#26-p)
-    - [2.7. br](#27-br)
-    - [2.8. a](#28-a)
-    - [2.9. img](#29-img)
-        - [2.9.1. 图片跳转](#291-图片跳转)
-    - [2.10. H标签](#210-h标签)
-    - [2.11. input](#211-input)
-    - [2.12. form](#212-form)
-        - [2.12.1. 使用搜狗的搜索框](#2121-使用搜狗的搜索框)
-        - [2.12.2. 选择框](#2122-选择框)
-        - [2.12.3. checkbox](#2123-checkbox)
-        - [2.12.4. select 下拉框](#2124-select-下拉框)
-    - [2.13. textarea](#213-textarea)
-    - [2.14. 列表](#214-列表)
-    - [2.15. 表格](#215-表格)
-    - [2.16. label](#216-label)
-    - [2.17. fieldset](#217-fieldset)
-
-<!-- /TOC -->
-
-## 1.1. 总结
+## 总结
 
 1. 一套规则,浏览器认识的规则
 2. 开发者
@@ -85,7 +49,7 @@
 </html>
 ```
 
-## 1.2. 网页特殊符号
+## 网页特殊符号
 
 ```html
 &nbsp; 空格
@@ -93,21 +57,21 @@
 &lt;
 ```
 
-# 2. 标签
+# 标签
 
-## 2.1. meta
+## meta
 
 [参考链接](http://www.w3school.com.cn/tags/tag_meta.asp)
 
 提供有关页面的元信息,例如: 页面编码,刷新,跳转,针对搜索引擎和更新频度的描述和关键词
 
-### 2.1.1. 页面编码
+### 页面编码
 
 指定编码
 
     <meta http-equiv="content-type" content="text/html";charset="UTF-8">
 
-### 2.1.2. 刷新和跳转
+### 刷新和跳转
 
     <meta http-equiv="Refresh" content="30">
 
@@ -130,45 +94,47 @@
 </html>
 ```
 
-### 2.1.3. 关键字
+### 关键字
 
     <meta name="keywords" content="小色,xxx">
 
-### 2.1.4. 描述
+### 描述
 
 例如 : 作者
 
-### 2.1.5. X-UA-Compatible
+### X-UA-Compatible
 
     <meta http-equiv="X-UA-Compatible" content="IE=IE9;IE=IE8;"/>
 
-## 2.2. Title
+## Title
 
 网页头部信息
 
-## 2.3. link
+## link
 
-## 2.4. style
+## style
 
-## 2.5. script
+## script
 
-## 2.6. p
+## p
 
 表示段落,默认段落之间是有间隔的
 
-## 2.7. br
+## br
 
 换行 `<br/>`
 
 自闭合标签，后面位置 `>` 可以写上  `/`  推荐写
 
-## 2.8. a
+## a
 
 1. 锚 href="#某个标签的ID" 标签的ID不允许重复
 2. target 属性,`_black`表示在新的页面打开
 3. 菜单跳转
 
+```html
     <a href="http://www.baidu.com" target="_black">baidu</a>
+```
 
 跳转,id不能重复
 
@@ -186,7 +152,7 @@
 </body>
 ```
 
-## 2.9. img
+## img
 
 - src
 - alt
@@ -194,7 +160,7 @@
 
 默认有一个1px的边框
 
-### 2.9.1. 图片跳转
+### 图片跳转
 
 ```html
 <body>
@@ -221,7 +187,7 @@
 
 ![html-04-a](http://oi480zo5x.bkt.clouddn.com/html-04-a.jpg)
 
-## 2.10. H标签
+## H标签
 
 ```html
 H1
@@ -232,7 +198,7 @@ H5
 H6
 ```
 
-## 2.11. input
+## input
 
 - input type="text"         name属性,value="xx",内部默认值
 - input type="password"     name属性,value="xx"
@@ -263,7 +229,7 @@ placeholder示例
 <input type="text" placeholder="用户名">
 ```
 
-## 2.12. form
+## form
 
 form 表单
 
@@ -288,7 +254,7 @@ action,动作,将内容提交给后台,可以是一个url
 
 ![html-01](http://oi480zo5x.bkt.clouddn.com/html-01.jpg)
 
-### 2.12.1. 使用搜狗的搜索框
+### 使用搜狗的搜索框
 
 ```html
     <body>
@@ -299,7 +265,7 @@ action,动作,将内容提交给后台,可以是一个url
     </body>
 ```
 
-### 2.12.2. 选择框
+### 选择框
 
 ```html
         <form>
@@ -312,7 +278,7 @@ action,动作,将内容提交给后台,可以是一个url
         </form>
 ```
 
-### 2.12.3. checkbox
+### checkbox
 
 ```html
 <body>
@@ -343,7 +309,7 @@ action,动作,将内容提交给后台,可以是一个url
 </body>
 ```
 
-### 2.12.4. select 下拉框
+### select 下拉框
 
 name,内部option value,提交到后台,size,multiple
 
@@ -390,13 +356,13 @@ name,内部option value,提交到后台,size,multiple
 
 ![html-02](http://oi480zo5x.bkt.clouddn.com/html-02.jpg)
 
-## 2.13. textarea
+## textarea
 
     <textarea name="" id="" cols="30" rows="10"></textarea>
 
 多行文本,name属性
 
-## 2.14. 列表
+## 列表
 
 - ul
     - li
@@ -443,7 +409,7 @@ name,内部option value,提交到后台,size,multiple
 
 ![html-06-li](http://oi480zo5x.bkt.clouddn.com/html-06-li.jpg)
 
-## 2.15. 表格
+## 表格
 
 - table
     - thead
@@ -548,7 +514,7 @@ name,内部option value,提交到后台,size,multiple
 
 ![html-07-table](http://oi480zo5x.bkt.clouddn.com/html-07-table.jpg)
 
-## 2.16. label
+## label
 
 用于点击文件,使得关联的标签获取光标
 
@@ -561,7 +527,7 @@ name,内部option value,提交到后台,size,multiple
 
 ![html-08-label](http://oi480zo5x.bkt.clouddn.com/html-08-label.jpg)
 
-## 2.17. fieldset
+## fieldset
 
 不常用,知道就行
 
