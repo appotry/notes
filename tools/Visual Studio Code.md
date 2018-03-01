@@ -4,6 +4,7 @@
 
 - [Visual Studio Code](#visual-studio-code)
     - [Visual Studio Code Settings Sync](#visual-studio-code-settings-sync)
+    - [文件默认换行符设置](#文件默认换行符设置)
     - [图床工具](#图床工具)
     - [扩展Visual Studio Code](#扩展visual-studio-code)
         - [Yo Code - Extension Generator](#yo-code---extension-generator)
@@ -30,6 +31,17 @@
 [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
 
 [GitHub shanalikhan/code-settings-sync](https://github.com/shanalikhan/code-settings-sync)
+
+## 文件默认换行符设置
+
+在vscode设置, 文件默认换行符号
+
+```json
+  // The default end of line character. Use \n for LF and \r\n for CRLF.
+  // LF 为 "\n"
+  // Windows 使用 CRLF 作为换行符
+  "files.eol": "\n"
+```
 
 ## 图床工具
 
