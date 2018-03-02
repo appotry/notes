@@ -8,3 +8,15 @@ if($0 % 5 == 0 )print $0,"Five"; \
 if($0 % 3 == 0 && $0 % 5 == 0) print $0,"three and five"; \
 if($0 % 3 != 0 && $0 % 5 != 0) print $0,"0";}'
 ```
+
+## 输出单双引号
+
+```shell
+# 双引号
+awk '{print "\""}'
+
+# 单引号
+echo 1 | awk '{print "\047" }'
+# 或者
+awk '{print "'\''"}'
+```
