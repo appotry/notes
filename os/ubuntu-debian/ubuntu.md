@@ -11,6 +11,8 @@
     - [APT](#apt)
         - [配置文件路径](#配置文件路径)
         - [apt源配置](#apt源配置)
+            - [16.04](#1604)
+                - [网易源](#网易源)
         - [apt-get](#apt-get)
         - [搜索apt源里面的包](#搜索apt源里面的包)
     - [软件](#软件)
@@ -59,6 +61,23 @@ root@ubuntu191:/etc/apt/sources.list.d# cat zabbix.list
 
 deb      http://mirrors.aliyun.com/zabbix/zabbix/3.0/ubuntu   xenial  main
 deb-src  http://mirrors.aliyun.com/zabbix/zabbix/3.0/ubuntu   xenial  main
+```
+
+#### 16.04
+
+##### 网易源
+
+```shell
+deb http://mirrors.163.com/ubuntu/ xenial main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ xenial-backports main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ xenial main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ xenial-security main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ xenial-proposed main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ xenial-backports main restricted universe multiverse
 ```
 
 ### apt-get
