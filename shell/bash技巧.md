@@ -9,6 +9,8 @@ bash的一些技巧
     - [1.2. 创建只含小写字母的随机数](#12-创建只含小写字母的随机数)
     - [1.3. 调试](#13-调试)
     - [1.4. 删除无效软链接](#14-删除无效软链接)
+    - [1.5. 统计每个文件夹占用的inode总数](#15-统计每个文件夹占用的inode总数)
+    - [1.6. 拼接时间](#16-拼接时间)
 - [2. 第二章](#2-第二章)
     - [2.1. 创建随机密码方法](#21-创建随机密码方法)
     - [2.2. 变量子串使用技巧](#22-变量子串使用技巧)
@@ -58,6 +60,24 @@ Flags:         -c == change absolute/messy links to relative
                    -r == recurse into subdirs
                    -s == shorten lengthy links (only displayed if -c not specified)
                    -v == verbose (show all symlinks)
+```
+
+## 1.5. 统计每个文件夹占用的inode总数
+
+```shell
+find */ -exec stat -c "%n %i" {} \; | awk -F "[/ ]" '{if(! a[$1-$NF]++) l[$1]++}END{for (i in l) print i,l[i]}'
+```
+
+## 1.6. 拼接时间
+
+```shell
+for n in 20 21
+   do
+          for  m in {00..59}
+          do
+             echo "$n:$m"
+          done
+   done
 ```
 
 # 2. 第二章
