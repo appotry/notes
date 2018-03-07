@@ -13,7 +13,7 @@ python
    :glob:
    :maxdepth: 1
 
-   python/*/*
+   python/index
 
 
 Indices and tables
