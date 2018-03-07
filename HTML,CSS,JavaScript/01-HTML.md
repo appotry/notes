@@ -57,21 +57,21 @@
 &lt;
 ```
 
-# 标签
+## 标签
 
-## meta
+### meta
 
 [参考链接](http://www.w3school.com.cn/tags/tag_meta.asp)
 
 提供有关页面的元信息,例如: 页面编码,刷新,跳转,针对搜索引擎和更新频度的描述和关键词
 
-### 页面编码
+#### 页面编码
 
 指定编码
 
     <meta http-equiv="content-type" content="text/html";charset="UTF-8">
 
-### 刷新和跳转
+#### 刷新和跳转
 
     <meta http-equiv="Refresh" content="30">
 
@@ -94,39 +94,39 @@
 </html>
 ```
 
-### 关键字
+#### 关键字
 
     <meta name="keywords" content="小色,xxx">
 
-### 描述
+#### 描述
 
 例如 : 作者
 
-### X-UA-Compatible
+#### X-UA-Compatible
 
     <meta http-equiv="X-UA-Compatible" content="IE=IE9;IE=IE8;"/>
 
-## Title
+### Title
 
 网页头部信息
 
-## link
+### link
 
-## style
+### style
 
-## script
+### script
 
-## p
+### p
 
 表示段落,默认段落之间是有间隔的
 
-## br
+### br
 
 换行 `<br/>`
 
 自闭合标签，后面位置 `>` 可以写上  `/`  推荐写
 
-## a
+### a
 
 1. 锚 href="#某个标签的ID" 标签的ID不允许重复
 2. target 属性,`_black`表示在新的页面打开
@@ -152,7 +152,7 @@
 </body>
 ```
 
-## img
+### img
 
 - src
 - alt
@@ -160,7 +160,7 @@
 
 默认有一个1px的边框
 
-### 图片跳转
+#### 图片跳转
 
 ```html
 <body>
@@ -187,7 +187,7 @@
 
 ![html-04-a](http://oi480zo5x.bkt.clouddn.com/html-04-a.jpg)
 
-## H标签
+### H标签
 
 ```html
 H1
@@ -198,7 +198,7 @@ H5
 H6
 ```
 
-## input
+### input
 
 - input type="text"         name属性,value="xx",内部默认值
 - input type="password"     name属性,value="xx"
@@ -229,7 +229,7 @@ placeholder示例
 <input type="text" placeholder="用户名">
 ```
 
-## form
+### form
 
 form 表单
 
@@ -254,7 +254,7 @@ action,动作,将内容提交给后台,可以是一个url
 
 ![html-01](http://oi480zo5x.bkt.clouddn.com/html-01.jpg)
 
-### 使用搜狗的搜索框
+#### 使用搜狗的搜索框
 
 ```html
     <body>
@@ -265,7 +265,7 @@ action,动作,将内容提交给后台,可以是一个url
     </body>
 ```
 
-### 选择框
+#### 选择框
 
 ```html
         <form>
@@ -278,7 +278,7 @@ action,动作,将内容提交给后台,可以是一个url
         </form>
 ```
 
-### checkbox
+#### checkbox
 
 ```html
 <body>
@@ -309,7 +309,7 @@ action,动作,将内容提交给后台,可以是一个url
 </body>
 ```
 
-### select 下拉框
+#### select 下拉框
 
 name,内部option value,提交到后台,size,multiple
 
@@ -356,13 +356,13 @@ name,内部option value,提交到后台,size,multiple
 
 ![html-02](http://oi480zo5x.bkt.clouddn.com/html-02.jpg)
 
-## textarea
+### textarea
 
     <textarea name="" id="" cols="30" rows="10"></textarea>
 
 多行文本,name属性
 
-## 列表
+### 列表
 
 - ul
     - li
@@ -409,7 +409,7 @@ name,内部option value,提交到后台,size,multiple
 
 ![html-06-li](http://oi480zo5x.bkt.clouddn.com/html-06-li.jpg)
 
-## 表格
+### 表格
 
 - table
     - thead
@@ -514,7 +514,7 @@ name,内部option value,提交到后台,size,multiple
 
 ![html-07-table](http://oi480zo5x.bkt.clouddn.com/html-07-table.jpg)
 
-## label
+### label
 
 用于点击文件,使得关联的标签获取光标
 
@@ -527,7 +527,7 @@ name,内部option value,提交到后台,size,multiple
 
 ![html-08-label](http://oi480zo5x.bkt.clouddn.com/html-08-label.jpg)
 
-## fieldset
+### fieldset
 
 不常用,知道就行
 
