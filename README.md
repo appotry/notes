@@ -25,11 +25,6 @@ docker-compose up -d
 
 获取最新内容, 需要到上述 `notes_notes` 目录, 运行如下命令(或者重新执行上述内容)
 
-```shell
-# 比重新克隆节省时间
-git pull
-```
-
 ### 通过GitBook
 
 可以使用`GitBook`本地预览,具体步骤:
