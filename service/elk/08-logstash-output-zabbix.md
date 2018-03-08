@@ -1,49 +1,22 @@
-# 1. logstash-output-zabbix
+# logstash-output-zabbix
 
-## 1.1. Table of content
+## 安装
 
-<!-- TOC -->
-
-- [1. logstash-output-zabbix](#1-logstash-output-zabbix)
-    - [1.1. Table of content](#11-table-of-content)
-    - [1.2. 安装](#12-安装)
-        - [1.2.1. 本地安装](#121-本地安装)
-        - [1.2.2. 在线安装](#122-在线安装)
-    - [1.3. 由于网络原因,使用下面方式安装](#13-由于网络原因使用下面方式安装)
-        - [1.3.1. Gemfile](#131-gemfile)
-        - [1.3.2. 修改logstash/Gemfile.jruby-1.9.lock](#132-修改logstashgemfilejruby-19lock)
-        - [1.3.3. 新加文件(注意文件属主,属组 logstash)](#133-新加文件注意文件属主属组-logstash)
-        - [1.3.4. 检查zabbix插件是否安装成功](#134-检查zabbix插件是否安装成功)
-    - [1.4. logstash向zabbix发送数据](#14-logstash向zabbix发送数据)
-        - [1.4.1. 安装logstash-output-zabbix3](#141-安装logstash-output-zabbix3)
-        - [1.4.2. zabbix Web界面配置](#142-zabbix-web界面配置)
-        - [1.4.3. 配置filter](#143-配置filter)
-        - [1.4.4. 配置output](#144-配置output)
-        - [1.4.5. 问题记录](#145-问题记录)
-            - [1.4.5.1. [WARN ][logstash.outputs.zabbix  ] Field referenced by 1 is missing](#1451-warn-logstashoutputszabbix---field-referenced-by-1-is-missing)
-            - [1.4.5.2. [WARN ][logstash.outputs.zabbix  ] Zabbix server at 10.29.164.37 rejected all items sent. {:zabbix_host=>"ubuntu47"}](#1452-warn-logstashoutputszabbix---zabbix-server-at-102916437-rejected-all-items-sent-zabbix_hostubuntu47)
-
-<!-- /TOC -->
-
-## 1.2. 安装
-
-### 1.2.1. 本地安装
+### 本地安装
 
 [logstash-plugins](https://github.com/logstash-plugins/logstash-output-zabbix)
 
-### 1.2.2. 在线安装
+### 在线安装
 
     bin/logstash-plugin install logstash-output-zabbix
 
-## 1.3. 由于网络原因,使用下面方式安装
+## 由于网络原因,使用下面方式安装
 
 美国开通ecs,使用在线安装,对比差异,提取出以下安装方式
 
 操作之前备份logstash目录
 
-[Back to TOC](#11-table-of-content)
-
-### 1.3.1. Gemfile
+### Gemfile
 
 ```shell
     root@ubuntu47:~/test-logstash-output-zabbix/chayi# echo 'gem "logstash-output-zabbix"' >> /usr/share/logstash/Gemfile
@@ -51,7 +24,7 @@
     gem "logstash-output-zabbix"
 ```
 
-### 1.3.2. 修改logstash/Gemfile.jruby-1.9.lock
+### 修改logstash/Gemfile.jruby-1.9.lock
 
 ```shell
     /usr/share/logstash/Gemfile.jruby-1.9.lock
@@ -69,7 +42,7 @@
     718  logstash-output-zabbix
 ```
 
-### 1.3.3. 新加文件(注意文件属主,属组 logstash)
+### 新加文件(注意文件属主,属组 logstash)
 
 相关文件已经打包在项目里,文件名add-logstash-output-zabbix.tar.gz
 
@@ -94,7 +67,7 @@ vendor/bundle/jruby/1.9/specifications/logstash-output-zabbix-3.0.1.gemspec
 
 vendor/bundle/jruby/1.9/specifications/zabbix_protocol-0.1.5.gemspec
 
-### 1.3.4. 检查zabbix插件是否安装成功
+### 检查zabbix插件是否安装成功
 
 上述操作完成之后,需要重启logstash,而后通过如下命令验证
 
@@ -103,17 +76,15 @@ root@ubuntu47:/usr/share/logstash# bin/logstash-plugin list|grep zabbix
 logstash-output-zabbix
 ```
 
-## 1.4. logstash向zabbix发送数据
+## logstash向zabbix发送数据
 
-### 1.4.1. 安装logstash-output-zabbix3
+### 安装logstash-output-zabbix3
 
-[Back to TOC](#11-table-of-content)
-
-### 1.4.2. zabbix Web界面配置
+### zabbix Web界面配置
 
 ![logstash-output-zabbix-1](http://oi480zo5x.bkt.clouddn.com/logstash-output-zabbix-1.jpg)
 
-### 1.4.3. 配置filter
+### 配置filter
 
 ```shell
 root@ubuntu47:/etc/logstash/conf.d# cat filter.conf
@@ -141,9 +112,7 @@ filter {
 }
 ```
 
-[Back to TOC](#11-table-of-content)
-
-### 1.4.4. 配置output
+### 配置output
 
 ```shell
 root@ubuntu47:/etc/logstash/conf.d# cat output.conf
@@ -182,11 +151,9 @@ if [type] == "nginx-access" {
 }
 ```
 
-[Back to TOC](#11-table-of-content)
+### 问题记录
 
-### 1.4.5. 问题记录
-
-#### 1.4.5.1. [WARN ][logstash.outputs.zabbix  ] Field referenced by 1 is missing
+#### [WARN ][logstash.outputs.zabbix  ] Field referenced by 1 is missing
 
 ```shell
 将漏掉的 Field 添加到filter中
@@ -197,7 +164,7 @@ if [type] == "nginx-access" {
           }
 ```
 
-#### 1.4.5.2. [WARN ][logstash.outputs.zabbix  ] Zabbix server at 10.29.164.37 rejected all items sent. {:zabbix_host=>"ubuntu47"}
+#### [WARN ][logstash.outputs.zabbix  ] Zabbix server at 10.29.164.37 rejected all items sent. {:zabbix_host=>"ubuntu47"}
 
 ```shell
 原因: zabbix_value => "1"
@@ -205,5 +172,3 @@ if [type] == "nginx-access" {
 修改成如下配置后,解决:
     zabbix_value => "status"
 ```
-
-[Back to TOC](#11-table-of-content)
