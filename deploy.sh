@@ -66,10 +66,13 @@ rst(){
     git clone --depth=2 --branch=master https://github.com/yangjinjie/notes.git notes_rst
     echo $PWD
     cd notes_rst
+    cat .git/config
+    git checkout -b
     git checkout -b rst origin/rst
 
     git merge -m "Merge branch 'master' into rst" master
     bash gen_index.sh && git commit -a "gen index & md2rst"
+    exit
     git push
     cd ../notes
 }
