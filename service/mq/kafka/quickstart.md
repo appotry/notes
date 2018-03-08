@@ -1,30 +1,9 @@
 
-# 1. quickstart
+# quickstart
 
-<!-- TOC -->
+## 单一broker
 
-- [1. quickstart](#1-quickstart)
-    - [1.1. 单一broker](#11-单一broker)
-        - [1.1.1. 下载代码](#111-下载代码)
-        - [1.1.2. kafka使用zookeeper,首先需要启动zookeeper](#112-kafka使用zookeeper首先需要启动zookeeper)
-        - [1.1.3. 新开窗口,启动kafka](#113-新开窗口启动kafka)
-        - [1.1.4. 创建话题](#114-创建话题)
-        - [1.1.5. 查看topic](#115-查看topic)
-        - [1.1.6. 发送消息](#116-发送消息)
-        - [1.1.7. 启动一个consumer](#117-启动一个consumer)
-    - [1.2. 创建一个多broker集群](#12-创建一个多broker集群)
-        - [1.2.1. 测试容错](#121-测试容错)
-    - [1.3. 使用Kafka Connect导入/导出数据](#13-使用kafka-connect导入导出数据)
-    - [1.4. 使用Kafka Streams处理数据](#14-使用kafka-streams处理数据)
-    - [1.5. 问题记录](#15-问题记录)
-        - [1.5.1. kafka启动失败,提示内存不足](#151-kafka启动失败提示内存不足)
-        - [1.5.2. Kafka Connect启动报错](#152-kafka-connect启动报错)
-
-<!-- /TOC -->
-
-## 1.1. 单一broker
-
-### 1.1.1. 下载代码
+### 下载代码
 
 ```shell
 cd src
@@ -33,30 +12,30 @@ tar xf kafka_2.11-0.10.1.0.tgz -C /opt/
 cd /opt/kafka_2.11-0.10.1.0/
 ```
 
-### 1.1.2. kafka使用zookeeper,首先需要启动zookeeper
+### kafka使用zookeeper,首先需要启动zookeeper
 
     bin/zookeeper-server-start.sh config/zookeeper.properties
 
-### 1.1.3. 新开窗口,启动kafka
+### 新开窗口,启动kafka
 
     bin/kafka-server-start.sh config/server.properties
 
-### 1.1.4. 创建话题
+### 创建话题
 
     bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
     可以配置broker自动创建topics
 
-### 1.1.5. 查看topic
+### 查看topic
 
     bin/kafka-topics.sh --list --zookeeper localhost:2181
 
-### 1.1.6. 发送消息
+### 发送消息
 
     每一行内容会被分为一条消息
     启动producer
     bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
 
-### 1.1.7. 启动一个consumer
+### 启动一个consumer
 
 kafka有一个命令行的consumer,可以将消息显示到标准输出
 
@@ -70,7 +49,7 @@ kafka有一个命令行的consumer,可以将消息显示到标准输出
 
 ![kafka-quickstart-2017222](http://oi480zo5x.bkt.clouddn.com/kafka-quickstart-2017222.jpg)
 
-## 1.2. 创建一个多broker集群
+## 创建一个多broker集群
 
 在同一台机器创建
 
@@ -113,17 +92,16 @@ replication-factor表示该topic需要在不同的broker中保存几份
 
 ```shell
 root@ubuntu47:/opt/kafka_2.11-0.10.1.0# bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic my-replicated-topic
-Topic:my-replicated-topic	PartitionCount:1	ReplicationFactor:3	Configs:
-	Topic: my-replicated-topic	Partition: 0	Leader: 0	Replicas: 0,2,1	Isr: 0,2,1
+Topic:my-replicated-topic   PartitionCount:1    ReplicationFactor:3 Configs:
+    Topic: my-replicated-topic  Partition: 0    Leader: 0   Replicas: 0,2,1 Isr: 0,2,1
 ```
-
 
 查看之前建立的topic
 
 ```shell
 root@ubuntu47:/opt/kafka_2.11-0.10.1.0# bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic test
-Topic:test	PartitionCount:1	ReplicationFactor:1	Configs:
-	Topic: test	Partition: 0	Leader: 0	Replicas: 0	Isr: 0
+Topic:test  PartitionCount:1    ReplicationFactor:1 Configs:
+    Topic: test Partition: 0    Leader: 0   Replicas: 0 Isr: 0
 
 可以看到test topic没有副本,并且存放在server 0上
 ```
@@ -136,7 +114,7 @@ root@ubuntu47:/opt/kafka_2.11-0.10.1.0# bin/kafka-console-producer.sh --broker-l
 
 ![kafka-quickstart2-2017222](http://oi480zo5x.bkt.clouddn.com/kafka-quickstart2-2017222.jpg)
 
-### 1.2.1. 测试容错
+### 测试容错
 
 ```shell
 root@ubuntu47:/opt/kafka_2.11-0.10.1.0# ps aux |grep server.properties
@@ -146,14 +124,14 @@ kill -9 PID
 
 ```shell
 root@ubuntu47:/opt/kafka_2.11-0.10.1.0# bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic my-replicated-topic
-Topic:my-replicated-topic	PartitionCount:1	ReplicationFactor:3	Configs:
-	Topic: my-replicated-topic	Partition: 0	Leader: 2	Replicas: 0,2,1	Isr: 2,1
+Topic:my-replicated-topic   PartitionCount:1	ReplicationFactor:3	Configs:
+    Topic: my-replicated-topic	Partition: 0	Leader: 2	Replicas: 0,2,1	Isr: 2,1
 root@ubuntu47:/opt/kafka_2.11-0.10.1.0#
 ```
 
 Leader切换到node 2,node 0不在在in-sync副本里,而消息仍然可用
 
-## 1.3. 使用Kafka Connect导入/导出数据
+## 使用Kafka Connect导入/导出数据
 
 使用Kafka Connect从文件导入数据,以及导出数据到文件
 
@@ -176,7 +154,7 @@ root@ubuntu47:/opt/kafka_2.11-0.10.1.0# bin/kafka-console-consumer.sh --bootstra
 
 ![kafka-quickstart3-2017222](http://oi480zo5x.bkt.clouddn.com/kafka-quickstart3-2017222.jpg)
 
-## 1.4. 使用Kafka Streams处理数据
+## 使用Kafka Streams处理数据
 
 ```shell
 准备使用Kafka Streams处理的数据
@@ -231,9 +209,9 @@ summit	1
 
 ![kafka-quickstart4-2017222](http://oi480zo5x.bkt.clouddn.com/kafka-quickstart4-2017222.jpg)
 
-## 1.5. 问题记录
+## 问题记录
 
-### 1.5.1. kafka启动失败,提示内存不足
+### kafka启动失败,提示内存不足
 
 ```shell
 root@ubuntu47:/opt/kafka_2.11-0.10.1.0# bin/kafka-server-start.sh config/server-1.properties &
@@ -260,7 +238,7 @@ fi
 
 修改-Xmm,-Xms,视服务器内存而定
 
-### 1.5.2. Kafka Connect启动报错
+### Kafka Connect启动报错
 
 ```shell
 [2017-02-22 17:56:53,828] ERROR Failed to flush WorkerSourceTask{id=local-file-source-0}, timed out while waiting for producer to flush outstanding 1 messages (org.apache.kafka.connect.runtime.WorkerSourceTask:289)
