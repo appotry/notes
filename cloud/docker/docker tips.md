@@ -1,15 +1,5 @@
 # docker tips
 
-<!-- TOC -->
-
-- [docker tips](#docker-tips)
-    - [docker以root身份进入容器](#docker以root身份进入容器)
-    - [docker容器中文乱码, 修改容器编码](#docker容器中文乱码-修改容器编码)
-    - [修改容器时区](#修改容器时区)
-    - [容器中使用定时任务](#容器中使用定时任务)
-
-<!-- /TOC -->
-
 ## docker以root身份进入容器
 
 ```shell
