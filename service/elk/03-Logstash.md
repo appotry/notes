@@ -1,21 +1,8 @@
-<!-- TOC -->
+# logstash
 
-- [1. logstash](#1-logstash)
-    - [1.1. 配置](#11-配置)
-        - [1.1.1. logstash 内存大小配置](#111-logstash-内存大小配置)
-        - [1.1.2. logstash.yml配置](#112-logstashyml配置)
-        - [1.1.3. filter.conf](#113-filterconf)
-        - [1.1.4. input.conf](#114-inputconf)
-        - [1.1.5. output.conf](#115-outputconf)
-    - [1.2. logstash启动文件](#12-logstash启动文件)
+## 配置
 
-<!-- /TOC -->
-
-# 1. logstash
-
-## 1.1. 配置
-
-### 1.1.1. logstash 内存大小配置
+### logstash 内存大小配置
 
 root@ubuntu47:/etc/logstash# vim jvm.options
 
@@ -26,7 +13,7 @@ root@ubuntu47:/etc/logstash# vim jvm.options
 -Xmx256m
 ```
 
-### 1.1.2. logstash.yml配置
+### logstash.yml配置
 
 ```shell
 root@ubuntu47:/etc/logstash# grep -Ev "^$|#" logstash.yml
@@ -35,7 +22,7 @@ path.config: /etc/logstash/conf.d
 path.logs: /var/log/logstash
 ```
 
-### 1.1.3. filter.conf
+### filter.conf
 
 以收集Nginx日志为例,需要先配置Nginx生成的日志格式为json格式(具体设置参考Nginx文档).
 
@@ -77,7 +64,7 @@ if [type] == "nginx-access" {
 }
 ```
 
-### 1.1.4. input.conf
+### input.conf
 
 cat input.conf
 
@@ -90,7 +77,7 @@ input {
 }
 ```
 
-### 1.1.5. output.conf
+### output.conf
 
 cat output.conf
 
@@ -143,6 +130,6 @@ if [type] == "nginx-access" {
 }
 ```
 
-## 1.2. logstash启动文件
+## logstash启动文件
 
 使用logstash启动文件  进行启动即可
