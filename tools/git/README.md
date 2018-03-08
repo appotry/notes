@@ -1,30 +1,6 @@
-<!-- TOC -->
+# Git
 
-- [1. 分布式版本控制](#1-分布式版本控制)
-- [2. Git](#2-git)
-    - [2.1. 常用命令速查表](#21-常用命令速查表)
-    - [2.2. 新建代码库](#22-新建代码库)
-    - [2.3. 配置](#23-配置)
-    - [2.4. 增加/删除文件](#24-增加删除文件)
-    - [2.5. 代码提交](#25-代码提交)
-    - [2.6. 分支](#26-分支)
-    - [2.7. 标签](#27-标签)
-    - [2.8. 查看信息](#28-查看信息)
-    - [2.9. 远程同步](#29-远程同步)
-    - [2.10. 撤销](#210-撤销)
-    - [2.11. 其他](#211-其他)
-    - [2.12. 忽略特殊文件.gitignore](#212-忽略特殊文件gitignore)
-    - [2.13. 小结](#213-小结)
-- [3. 部分实例](#3-部分实例)
-    - [3.1. 获取远程分支到本地](#31-获取远程分支到本地)
-    - [3.2. 忽略特殊文件.gitignore](#32-忽略特殊文件gitignore)
-    - [3.3. 删除错误提交](#33-删除错误提交)
-    - [3.4. 删除远程分支](#34-删除远程分支)
-    - [3.5. 全局忽略 .DS_Store](#35-全局忽略-ds_store)
-
-<!-- /TOC -->
-
-# 1. 分布式版本控制
+## 分布式版本控制
 
 分布式版本控制的每个节点都是完整仓库
 
@@ -32,18 +8,18 @@
 
 svn中央仓库挂了, 无法根据本地项目重新搭建一个服务器, 因为本地没有历史版本
 
-# 2. Git
+## 名词
 
     Workspace：工作区
     Index / Stage：暂存区
     Repository：仓库区（或本地仓库）
     Remote：远程仓库
 
-## 2.1. 常用命令速查表
+## 常用命令速查表
 
 ![git-command](http://oi480zo5x.bkt.clouddn.com/git-command.png)
 
-## 2.2. 新建代码库
+## 新建代码库
 
 在当前目录新建一个Git代码库
 
@@ -57,7 +33,7 @@ svn中央仓库挂了, 无法根据本地项目重新搭建一个服务器, 因�
 
     git clone [url]
 
-## 2.3. 配置
+## 配置
 
 Git的设置文件为.gitconfig, 它可以在用户主目录下（全局配置）, 也可以在项目目录下（项目配置）。
 
@@ -74,7 +50,7 @@ Git的设置文件为.gitconfig, 它可以在用户主目录下（全局配置�
     git config [--global] user.name "[name]"
     git config [--global] user.email "[email address]"
 
-## 2.4. 增加/删除文件
+## 增加/删除文件
 
     # 添加指定文件到暂存区
     $ git add [file1] [file2] ...
@@ -89,7 +65,7 @@ Git的设置文件为.gitconfig, 它可以在用户主目录下（全局配置�
     # 改名文件, 并且将这个改名放入暂存区
     $ git mv [file-original] [file-renamed]
 
-## 2.5. 代码提交
+## 代码提交
 
     # 提交暂存区到仓库区, -m后面输入的是本次提交的说明, 可以输入任意内容, 当然最好是有意义的, 这样你就能从历史记录里方便地找到改动记录
     $ git commit -m [message]
@@ -105,7 +81,7 @@ Git的设置文件为.gitconfig, 它可以在用户主目录下（全局配置�
     # 重做上一次commit, 并包括指定文件的新变化
     $ git commit --amend [file1] [file2] ...
 
-## 2.6. 分支
+## 分支
 
 列出所有本地分支
 
@@ -160,7 +136,7 @@ Git的设置文件为.gitconfig, 它可以在用户主目录下（全局配置�
     git push origin --delete [branch-name]
     git branch -dr [remote/branch]
 
-## 2.7. 标签
+## 标签
 
 列出所有tag
 
@@ -190,7 +166,7 @@ Git的设置文件为.gitconfig, 它可以在用户主目录下（全局配置�
 
     git checkout -b [branch] [tag]
 
-## 2.8. 查看信息
+## 查看信息
 
 显示有变更的文件
 
@@ -251,7 +227,7 @@ Git的设置文件为.gitconfig, 它可以在用户主目录下（全局配置�
 
     git reflog
 
-## 2.9. 远程同步
+## 远程同步
 
     # 下载远程仓库的所有变动
     $ git fetch [remote]
@@ -277,7 +253,7 @@ Git的设置文件为.gitconfig, 它可以在用户主目录下（全局配置�
     # 推送所有分支到远程仓库
     $ git push [remote] --all
 
-## 2.10. 撤销
+## 撤销
 
     # 恢复暂存区的指定文件到工作区
     $ git checkout [file]
@@ -318,7 +294,7 @@ Git的设置文件为.gitconfig, 它可以在用户主目录下（全局配置�
 
     git revert [commit]
 
-## 2.11. 其他
+## 其他
 
 ```shell
     # 生成一个可供发布的压缩包
@@ -342,7 +318,7 @@ Git的设置文件为.gitconfig, 它可以在用户主目录下（全局配置�
     $ git commit -m "add 3 files."
 ```
 
-## 2.12. 忽略特殊文件.gitignore
+## 忽略特殊文件.gitignore
 
 [生成.gitignore文件内容](https://www.gitignore.io/)
 
@@ -380,7 +356,7 @@ Use -f if you really want to add them.
 
 Git会告诉我们, .gitignore的第3行规则忽略了该文件, 于是我们就可以知道应该修订哪个规则。
 
-## 2.13. 小结
+## 小结
 
 * 初始化一个Git仓库, 使用git init命令。
 * 添加文件到Git仓库, 分两步：
@@ -390,9 +366,9 @@ Git会告诉我们, .gitignore的第3行规则忽略了该文件, 于是我们�
 * 忽略某些文件时, 需要编写.gitignore;
 * .gitignore文件本身要放到版本库里, 并且可以对.gitignore做版本管理！
 
-# 3. 部分实例
+# 部分实例
 
-## 3.1. 获取远程分支到本地
+## 获取远程分支到本地
 
 ```shell
 git fetch   # 将远程分支信息获取到本地, 再运行
@@ -400,11 +376,11 @@ git checkout -b local-branchname origin/remote_branchname  # 将远程分支映�
 git pull    # 拉取分支
 ```
 
-## 3.2. 忽略特殊文件.gitignore
+## 忽略特殊文件.gitignore
 
 [生成.gitignore文件内容](https://www.gitignore.io/)
 
-## 3.3. 删除错误提交
+## 删除错误提交
 
 ```shell
 # 彻底回退到某个版本
@@ -413,7 +389,7 @@ git reset --hard <commit_id>
 git push origin HEAD --force
 ```
 
-## 3.4. 删除远程分支
+## 删除远程分支
 
 ```shell
 # 查看远程分支
@@ -425,7 +401,7 @@ git branch -r -d origin/branch-name
 git push origin :branch-name
 ```
 
-## 3.5. 全局忽略 .DS_Store
+## 全局忽略 .DS_Store
 
 1. 创建 `~/.gitignore_global` 文件
 2. 把需要全局忽略的文件类型写到这个文件里。
