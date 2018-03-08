@@ -1,32 +1,10 @@
-# 1. MacOS使用技巧
+# MacOS使用技巧
 
-<!-- TOC -->
-
-- [1. MacOS使用技巧](#1-macos使用技巧)
-    - [1.1. Mac_Fn键功能设置](#11-mac_fn键功能设置)
-    - [1.2. Mac 快捷键](#12-mac-快捷键)
-    - [1.3. Safari](#13-safari)
-        - [1.3.1. 快捷键](#131-快捷键)
-            - [1.3.1.1. 标签(tab)操作](#1311-标签tab操作)
-            - [1.3.1.2. 书签(bookmarks)操作](#1312-书签bookmarks操作)
-            - [1.3.1.3. 阅读列表(Read it later list)](#1313-阅读列表read-it-later-list)
-            - [1.3.1.4. 显示/隐藏](#1314-显示隐藏)
-            - [1.3.1.5. 查找](#1315-查找)
-            - [1.3.1.6. 缩放](#1316-缩放)
-            - [1.3.1.7. 查看扩展](#1317-查看扩展)
-    - [1.4. 禁用Dashboard](#14-禁用dashboard)
-        - [1.4.1. 终端执行](#141-终端执行)
-        - [1.4.2. 重新开启](#142-重新开启)
-    - [1.5. 空间释放](#15-空间释放)
-        - [1.5.1. 完全删除GarageBand](#151-完全删除garageband)
-
-<!-- /TOC -->
-
-## 1.1. Mac_Fn键功能设置
+## Mac_Fn键功能设置
 
 ![MacOS-5](http://oi480zo5x.bkt.clouddn.com/MacOS-5.png)
 
-## 1.2. Mac 快捷键
+## Mac 快捷键
 
 Control-Command-F 全屏
 
@@ -38,11 +16,11 @@ Option-Command-esc 强制退出
 
 ![MacOS-6](http://oi480zo5x.bkt.clouddn.com/MacOS-6.jpeg)
 
-## 1.3. Safari
+## Safari
 
-### 1.3.1. 快捷键
+### 快捷键
 
-#### 1.3.1.1. 标签(tab)操作
+#### 标签(tab)操作
 
 ```xxx
 shitt+comamnd+\：所有标签页，可配合左右键和单指左右滑动。对应手势操作：双指捏合、放开。
@@ -64,7 +42,7 @@ command+.：停止刷新重载
 shift+command+R：进入阅读器模式
 ```
 
-#### 1.3.1.2. 书签(bookmarks)操作
+#### 书签(bookmarks)操作
 
 ```xxx
 control+command+1: 显示书签边栏
@@ -73,7 +51,7 @@ option(alt)+command+B：管理/编辑书签页
 shift+command+N：新建书签文件夹
 ```
 
-#### 1.3.1.3. 阅读列表(Read it later list)
+#### 阅读列表(Read it later list)
 
 ```xxx
 control+command+2: 显示阅读列表边栏
@@ -83,7 +61,7 @@ option(alt)+command+↑：阅读列表上一个项目
 option(alt)+command+↓：阅读列表下一个项目
 ```
 
-#### 1.3.1.4. 显示/隐藏
+#### 显示/隐藏
 
 ```xxx
 shift+command+B：收藏栏
@@ -93,7 +71,7 @@ option(alt)+command+L：下载
 option(alt)+command+2：显示历史记录
 ```
 
-#### 1.3.1.5. 查找
+#### 查找
 
 ```xxx
 command+F：查找
@@ -101,7 +79,7 @@ command+G/enter：查找下一个
 shift+command+G/shift+enter：查找上一个
 ```
 
-#### 1.3.1.6. 缩放
+#### 缩放
 
 ```xxx
 command++：放大
@@ -110,29 +88,29 @@ command+0：恢复默认
 双指点触：智能缩放
 ```
 
-#### 1.3.1.7. 查看扩展
+#### 查看扩展
 
 ```xxx
 command+,：偏好设置->扩展
 ```
 
-## 1.4. 禁用Dashboard
+## 禁用Dashboard
 
 关闭Dashboard
 
 System Preferences -> Mission Control -> 设置Dashboard即可
 
-### 1.4.1. 终端执行
+### 终端执行
 
 defaults write com.apple.dashboard mcx-disabled -boolean YES && killall Dock
 
-### 1.4.2. 重新开启
+### 重新开启
 
 defaults write com.apple.dashboard mcx-disabled -boolean NO && killall Dock
 
-## 1.5. 空间释放
+## 空间释放
 
-### 1.5.1. 完全删除GarageBand
+### 完全删除GarageBand
 
 [参考](https://www.tekrevue.com/tip/delete-garageband/)
 
