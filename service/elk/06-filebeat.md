@@ -1,21 +1,10 @@
-<!-- TOC -->
-
-- [1. filebeat](#1-filebeat)
-    - [1.1. 安装](#11-安装)
-    - [1.2. 使用filebeat](#12-使用filebeat)
-    - [1.3. filebeat配置](#13-filebeat配置)
-    - [1.4. 参考配置](#14-参考配置)
-    - [1.5. 注释](#15-注释)
-
-<!-- /TOC -->
-
-# 1. filebeat
+# filebeat
 
 > Filebeat is a log data shipper. Installed as an agent on your servers, Filebeat monitors the log directories or specific log files, tails the files, and forwards them either to Elasticsearch or Logstash for indexing.
 
 Filebeat 用来做数据转发，作为代理安装在服务器上，Filebeat监控日志目录，或者指定日志文件，
 
-## 1.1. 安装
+## 安装
 
 [downloads](https://www.elastic.co/downloads)
 
@@ -25,7 +14,7 @@ wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.2.0-amd64.
 sudo dpkg -i filebeat-5.2.0-amd64.deb
 ```
 
-## 1.2. 使用filebeat
+## 使用filebeat
 
 ```shell
 root@ubuntu75:/etc/filebeat# /usr/bin/filebeat.sh -configtest -e .
@@ -42,7 +31,7 @@ root@ubuntu75:/etc/filebeat# /usr/bin/filebeat.sh -configtest -e .
 Config OK
 ```
 
-## 1.3. filebeat配置
+## filebeat配置
 
 ```shell
 root@ubuntu75:/etc/filebeat# cat filebeat.yml
@@ -57,7 +46,7 @@ shipper:
 logging:
 ```
 
-## 1.4. 参考配置
+## 参考配置
 
 ```yaml
 filebeat:
@@ -94,7 +83,7 @@ output.logstash:
   hosts: ["localhost:5044"]
 ```
 
-## 1.5. 注释
+## 注释
 
 ```shell
 filebeat:
