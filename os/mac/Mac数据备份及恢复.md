@@ -1,29 +1,14 @@
-# 1. Mac
+# Mac
 
-<!-- TOC -->
-
-- [1. Mac](#1-mac)
-    - [1.1. Mac备份](#11-mac备份)
-    - [1.2. Mac恢复](#12-mac恢复)
-        - [1.2.1. 命令行恢复](#121-命令行恢复)
-        - [1.2.2. iTerm2恢复](#122-iterm2恢复)
-        - [1.2.3. 鼠标放置屏幕右上角锁屏](#123-鼠标放置屏幕右上角锁屏)
-        - [1.2.4. 触摸板配置](#124-触摸板配置)
-        - [1.2.5. vscode 恢复](#125-vscode-恢复)
-        - [1.2.6. 搜狗输入法,使用QQ登录](#126-搜狗输入法使用qq登录)
-        - [1.2.7. 常用软件](#127-常用软件)
-
-<!-- /TOC -->
-
-## 1.1. Mac备份
+## Mac备份
 
 1. 私钥公钥
 2. 相关软件配置文件
     1. iTerm2
 
-## 1.2. Mac恢复
+## Mac恢复
 
-### 1.2.1. 命令行恢复
+### 命令行恢复
 
 [oh-my-zsh](http://ohmyz.sh)
 
@@ -38,19 +23,19 @@ brew install wget
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
-### 1.2.2. iTerm2恢复
+### iTerm2恢复
 
 解压配置文件到如下目录,进入到iTerm2配置,勾选配置
 
 ![ITerm2-save history to disk-2](http://oi480zo5x.bkt.clouddn.com/ITerm2-save%20history%20to%20disk-2.png)
 
-### 1.2.3. 鼠标放置屏幕右上角锁屏
+### 鼠标放置屏幕右上角锁屏
 
 ![MacOS-1](http://oi480zo5x.bkt.clouddn.com/MacOS-1.png)
 
 ![MacOS-2](http://oi480zo5x.bkt.clouddn.com/MacOS-2.png)
 
-### 1.2.4. 触摸板配置
+### 触摸板配置
 
 ![MacOS-3](http://oi480zo5x.bkt.clouddn.com/MacOS-3.png)
 
@@ -58,7 +43,7 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 
 ![MacOS-4](http://oi480zo5x.bkt.clouddn.com/MacOS-4.png)
 
-### 1.2.5. vscode 恢复
+### vscode 恢复
 
 **可以直接使用settings-sync插件同步配置**
 
@@ -101,11 +86,11 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 }
 ```
 
-### 1.2.6. 搜狗输入法,使用QQ登录
+### 搜狗输入法,使用QQ登录
 
 [皮肤: 书写优雅](http://oi480zo5x.bkt.clouddn.com/书写优雅.mssf)
 
-### 1.2.7. 常用软件
+### 常用软件
 
 * Go2Shell
 * iTerm2
