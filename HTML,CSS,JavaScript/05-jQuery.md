@@ -1,4 +1,4 @@
-# 1. jQuery
+# jQuery
 
 JavaScript库
 
@@ -6,52 +6,7 @@ JavaScript库
 
 [jQuery API 速查表](http://jquery.cuishifeng.cn/)
 
-<!-- TOC -->
-
-- [1. jQuery](#1-jquery)
-    - [1.1. 总结](#11-总结)
-    - [1.2. 查找元素](#12-查找元素)
-        - [1.2.1. id](#121-id)
-        - [1.2.2. class](#122-class)
-        - [1.2.3. 标签](#123-标签)
-        - [1.2.4. 组合](#124-组合)
-        - [1.2.5. 层级](#125-层级)
-        - [1.2.6. 基本筛选器](#126-基本筛选器)
-        - [1.2.7. 属性](#127-属性)
-    - [1.3. 筛选](#13-筛选)
-        - [1.3.1. next](#131-next)
-        - [1.3.2. prev](#132-prev)
-        - [1.3.3. children](#133-children)
-        - [1.3.4. parent](#134-parent)
-        - [1.3.5. siblings](#135-siblings)
-        - [1.3.6. find](#136-find)
-    - [1.4. 操作元素](#14-操作元素)
-        - [1.4.1. 样式操作](#141-样式操作)
-            - [1.4.1.1. addClass](#1411-addclass)
-            - [1.4.1.2. removeClass](#1412-removeclass)
-            - [1.4.1.3. toggleClass](#1413-toggleclass)
-        - [1.4.2. 属性操作](#142-属性操作)
-            - [1.4.2.1. attr](#1421-attr)
-            - [1.4.2.2. removeAttr](#1422-removeattr)
-            - [1.4.2.3. prop](#1423-prop)
-    - [1.5. 文档处理](#15-文档处理)
-        - [1.5.1. append](#151-append)
-        - [1.5.2. prepend](#152-prepend)
-        - [1.5.3. after](#153-after)
-        - [1.5.4. before](#154-before)
-        - [1.5.5. remove](#155-remove)
-        - [1.5.6. empty](#156-empty)
-        - [1.5.7. clone](#157-clone)
-    - [1.6. 技巧](#16-技巧)
-        - [1.6.1. jQuery内置循环](#161-jquery内置循环)
-        - [1.6.2. 三目运算](#162-三目运算)
-    - [1.7. 实例](#17-实例)
-        - [1.7.1. 复选框(全选,反选,取消)](#171-复选框全选反选取消)
-        - [1.7.2. xx](#172-xx)
-
-<!-- /TOC -->
-
-## 1.1. 总结
+## 总结
 
 - 调用(两种方式)
     - `jQuery.`
@@ -60,7 +15,7 @@ JavaScript库
     - jQuery对象[0]   --> DOM对象
     - DOM对象         --> $(DOM对象)
 
-## 1.2. 查找元素
+## 查找元素
 
 ```html
 <body>
@@ -75,7 +30,7 @@ JavaScript库
 </body>
 ```
 
-### 1.2.1. id
+### id
 
 ```javascript
 jQuery('#i10')
@@ -87,26 +42,26 @@ DOM对象
 $('#i10')[0]
 ```
 
-### 1.2.2. class
+### class
 
 ```javascript
 $('.c1')
 ```
 
-### 1.2.3. 标签
+### 标签
 
 ```javascript
 $('a')
 ```
 
-### 1.2.4. 组合
+### 组合
 
 ```javascript
 $('a,.c2')
 $('a,.c2,#i10')
 ```
 
-### 1.2.5. 层级
+### 层级
 
 ```javascript
 // 子子孙孙
@@ -115,7 +70,7 @@ $('#i10 a')
 $('#i10>a')
 ```
 
-### 1.2.6. 基本筛选器
+### 基本筛选器
 
 - `:first` // 获取匹配的第一个元素
 - `:last`// 获取匹配的最后一个元素
@@ -144,7 +99,7 @@ jQuery 代码:
 $('li:first');
 ```
 
-### 1.2.7. 属性
+### 属性
 
 ```javascript
 $('[name]') // 具有name属性的所有标签
@@ -171,55 +126,55 @@ $(':text')
 $(':password')
 ```
 
-## 1.3. 筛选
+## 筛选
 
-### 1.3.1. next
+### next
 
 下一个
 
     $(this).next()
 
-### 1.3.2. prev
+### prev
 
 上一个
 
     $(this).prev()
 
-### 1.3.3. children
+### children
 
     $('#i1').children()
 
-### 1.3.4. parent
+### parent
 
 父
 
     $(this).parent()
 
-### 1.3.5. siblings
+### siblings
 
 兄弟
 
     $(this).siblings()
 
-### 1.3.6. find
+### find
 
 子子孙孙中查找
 
     $(this).find()
 
-## 1.4. 操作元素
+## 操作元素
 
-### 1.4.1. 样式操作
+### 样式操作
 
-#### 1.4.1.1. addClass
+#### addClass
 
-#### 1.4.1.2. removeClass
+#### removeClass
 
-#### 1.4.1.3. toggleClass
+#### toggleClass
 
-### 1.4.2. 属性操作
+### 属性操作
 
-#### 1.4.2.1. attr
+#### attr
 
 - 传一个参数,获取属性
 
@@ -230,13 +185,13 @@ $(..).attr('n')
 $(..).attr('n','v')
 ```
 
-#### 1.4.2.2. removeAttr
+#### removeAttr
 
 ```javascript
 $(..).removeAttr('n')
 ```
 
-#### 1.4.2.3. prop
+#### prop
 
 **专门用于CheckBox,radio**
 
@@ -245,25 +200,25 @@ $(':checkbox').prop('checked');       // 获取值
 $(':checkbox').prop('checked',false); // 设置值
 ```
 
-## 1.5. 文档处理
+## 文档处理
 
-### 1.5.1. append
+### append
 
-### 1.5.2. prepend
+### prepend
 
-### 1.5.3. after
+### after
 
-### 1.5.4. before
+### before
 
-### 1.5.5. remove
+### remove
 
-### 1.5.6. empty
+### empty
 
-### 1.5.7. clone
+### clone
 
-## 1.6. 技巧
+## 技巧
 
-### 1.6.1. jQuery内置循环
+### jQuery内置循环
 
 ```javascript
 $(':checkbox').each(function (k) {
@@ -276,15 +231,15 @@ $(':checkbox').each(function (k) {
             })
 ```
 
-### 1.6.2. 三目运算
+### 三目运算
 
 ```javascript
 var v = 条件 ? 真值 : 假值
 ```
 
-## 1.7. 实例
+## 实例
 
-### 1.7.1. 复选框(全选,反选,取消)
+### 复选框(全选,反选,取消)
 
 ```html
     <div id="i1">
@@ -344,7 +299,7 @@ var v = 条件 ? 真值 : 假值
 
 
 
-### 1.7.2. xx
+### xx
 
 ```javascript
 $(this).next().removeClass('hide');
