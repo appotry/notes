@@ -6,15 +6,14 @@
 Notes
 ================
 
-python
---------
+Table of content
+-----------------
 
 .. toctree::
    :glob:
-   :maxdepth: 1
+   :maxdepth: 5
 
-   python/Mac升级python.md
-   python/README.md
+   */index
 
 Indices and tables
 ==================
