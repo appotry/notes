@@ -6,6 +6,9 @@
 Notes
 ================
 
+-  `GitHub地址 <https://github.com/yangjinjie/notes>`__
+-  `Github Pages方式访问 <https://yangjinjie.github.io/notes/>`__
+
 Table of content
 -----------------
 
