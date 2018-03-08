@@ -1,33 +1,6 @@
-# 1. Django
+# Django
 
-<!-- TOC -->
-
-- [1. Django](#1-django)
-    - [1.1. 快速开始](#11-快速开始)
-    - [1.2. Django的历史](#12-django的历史)
-    - [1.3. Django访问流程](#13-django访问流程)
-    - [1.4. WSGI规范](#14-wsgi规范)
-    - [1.5. 安装python](#15-安装python)
-    - [1.6. 安装django](#16-安装django)
-    - [1.7. 创建Django项目](#17-创建django项目)
-    - [1.8. 创建APP](#18-创建app)
-    - [1.9. 运行Django项目](#19-运行django项目)
-    - [1.10. 实例](#110-实例)
-    - [1.11. 附,使用PyCharm创建Django项目](#111-附使用pycharm创建django项目)
-- [2. 进阶(实例)](#2-进阶实例)
-    - [2.1. 配置](#21-配置)
-        - [2.1.1. 配置模板路径](#211-配置模板路径)
-        - [2.1.2. 配置静态目录](#212-配置静态目录)
-        - [2.1.3. 暂时注释CSRF](#213-暂时注释csrf)
-        - [2.1.4. 注册APP](#214-注册app)
-    - [2.2. urls](#22-urls)
-    - [2.3. templates](#23-templates)
-    - [2.4. views](#24-views)
-    - [2.5. 总结](#25-总结)
-
-<!-- /TOC -->
-
-## 1.1. 快速开始
+## 快速开始
 
 1. 安装python
 2. 安装Django
@@ -55,27 +28,27 @@
 
 ![python-django-01](http://oi480zo5x.bkt.clouddn.com/python-django-01.jpg)
 
-## 1.2. Django的历史
+## Django的历史
 
-## 1.3. Django访问流程
+## Django访问流程
 
 Django请求生命周期
 
 - URL对应关系(匹配) -> 视图函数 -> 返回用户字符串
 - URL对应关系(匹配) -> 视图函数 -> 打开一个HTML,读取内容
 
-## 1.4. WSGI规范
+## WSGI规范
 
 只要遵循这个规范,就可以用来创建socket
 
-## 1.5. 安装python
+## 安装python
 
 ```python
 ➜  python3 -V
 Python 3.5.3
 ```
 
-## 1.6. 安装django
+## 安装django
 
 我的操作系统是`Mac`,并且已经配置安装好了`pip3`和`python3`,可以直接使用`pip`来进行安装
 
@@ -102,7 +75,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 '1.10.6'
 ```
 
-## 1.7. 创建Django项目
+## 创建Django项目
 
 `django`为我们提供了一个`django-admin`的指令,以方便与我们在命令行下创建`django`项目,可以使用`django-admin --help`查看该指令的帮助信息.
 
@@ -138,7 +111,7 @@ manage.py yang
 `yang/settings.py`项目的全局配置文件,很重要
 `yang/urls.py`项目的路由配置文件,这是一个django项目的主入口文件
 
-## 1.8. 创建APP
+## 创建APP
 
 使用如下命令
 
@@ -173,9 +146,7 @@ python3 manage.py startapp cmdb # app名字
 4 directories, 14 files
 ```
 
-
-
-## 1.9. 运行Django项目
+## 运行Django项目
 
 `django`内部是有一个內建的轻量的web开发服务器,在开发期间你完全可以使用內建的服务器,避免安装`Nginx`或者`Apache`等
 
@@ -206,7 +177,7 @@ Quit the server with CONTROL-C.
 
     python manage.py runserver 0.0.0.0:8080
 
-## 1.10. 实例
+## 实例
 
 后台添加用户,前台展示用户
 
@@ -367,9 +338,9 @@ Superuser created successfully.
 
 ![python-django-05](http://oi480zo5x.bkt.clouddn.com/python-django-05.jpg)
 
-继续打开http://127.0.0.1:8000/users/就能够看到刚才添加的用户了，你可以试着再添加一个用户然后刷新页面，看看是否会显示出来你刚刚新添加的用户。
+继续打开[http://127.0.0.1:8000/users/](http://127.0.0.1:8000/users/)就能够看到刚才添加的用户了，你可以试着再添加一个用户然后刷新页面，看看是否会显示出来你刚刚新添加的用户。
 
-## 1.11. 附,使用PyCharm创建Django项目
+## 附,使用PyCharm创建Django项目
 
 新建项目,可直接选择Django,输入项目名称,模板文件夹名字,应用名字,创建即可
 
@@ -383,15 +354,15 @@ Superuser created successfully.
 
 ![python-django-10](http://oi480zo5x.bkt.clouddn.com/python-django-10.jpg)
 
-# 2. 进阶(实例)
+# 进阶(实例)
 
 使用PyCharm直接创建mysite项目
 
-## 2.1. 配置
+## 配置
 
 mysite/settings.py
 
-### 2.1.1. 配置模板路径
+### 配置模板路径
 
 ```shell
 TEMPLATES = [
@@ -412,7 +383,7 @@ TEMPLATES = [
 ]
 ```
 
-### 2.1.2. 配置静态目录
+### 配置静态目录
 
 ```shell
 # 配置静态目录
@@ -422,7 +393,7 @@ STATICFILES_DIRS = (
 )
 ```
 
-### 2.1.3. 暂时注释CSRF
+### 暂时注释CSRF
 
 ```shell
 MIDDLEWARE = [
@@ -436,7 +407,7 @@ MIDDLEWARE = [
 ]
 ```
 
-### 2.1.4. 注册APP
+### 注册APP
 
 ```shell
 INSTALLED_APPS = [
@@ -450,7 +421,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-## 2.2. urls
+## urls
 
 mysite/urls.py
 
@@ -468,7 +439,7 @@ urlpatterns = [
 
 ```
 
-## 2.3. templates
+## templates
 
 templates/home.html
 
@@ -550,7 +521,7 @@ templates/login.html
 </html>
 ```
 
-## 2.4. views
+## views
 
 cmdb/views.py
 
@@ -620,7 +591,7 @@ def home(request):
     # return render(request, 'test/home.html',{'user_list': USER_LIST})
 ```
 
-## 2.5. 总结
+## 总结
 
 - 创建Django工程
   - django-admin startproject 工程名
@@ -654,4 +625,3 @@ def home(request):
         # return render(request,"HTML模板路径")
         # return redirect('/只能填URL')
     ```
-
