@@ -1,27 +1,14 @@
 # III Building the LFS System
 
-<!-- TOC -->
-
-- [III Building the LFS System](#iii-building-the-lfs-system)
-    - [安装基本系统软件](#安装基本系统软件)
-        - [6.7. Linux-4.12.7 API Headers](#67-linux-4127-api-headers)
-            - [6.7.1. Installation of Linux API Headers](#671-installation-of-linux-api-headers)
-            - [6.7.2. Contents of Linux API Headers](#672-contents-of-linux-api-headers)
-        - [6.8. Man-pages-4.12](#68-man-pages-412)
-            - [6.8.1. Installation of Man-pages](#681-installation-of-man-pages)
-            - [6.8.2. Contents of Man-pages](#682-contents-of-man-pages)
-
-<!-- /TOC -->
-
 ## 安装基本系统软件
 
-### 6.7. Linux-4.12.7 API Headers
+### Linux-4.12.7 API Headers
 
 The Linux API Headers (in linux-4.12.7.tar.xz) expose the kernel's API for use by Glibc.
 
 进入到 `sources`目录 解压 `linux-4.12.7.tar.xz`, 进入到解压后的目录
 
-#### 6.7.1. Installation of Linux API Headers
+#### Installation of Linux API Headers
 
 The Linux kernel needs to expose an Application Programming Interface (API) for the system's C library (Glibc in LFS) to use. This is done by way of sanitizing various C header files that are shipped in the Linux kernel source tarball.
 
@@ -37,7 +24,7 @@ find dest/include \( -name .install -o -name ..install.cmd \) -delete
 cp -rv dest/include/* /usr/include
 ```
 
-#### 6.7.2. Contents of Linux API Headers
+#### Contents of Linux API Headers
 
 Installed headers:
 
@@ -66,7 +53,7 @@ Short Descriptions
 /usr/include/xen/*.h The Linux API Xen Headers
 ```
 
-### 6.8. Man-pages-4.12
+### Man-pages-4.12
 
 The Man-pages package contains over 2,200 man pages.
 
@@ -75,13 +62,13 @@ less than 0.1 SBU
 Required disk space:
 27 MB
 
-#### 6.8.1. Installation of Man-pages
+#### Installation of Man-pages
 
 Install Man-pages by running:
 
     make install
 
-#### 6.8.2. Contents of Man-pages
+#### Contents of Man-pages
 
 Installed files: various man pages
 
