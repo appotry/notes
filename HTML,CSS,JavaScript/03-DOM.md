@@ -1,24 +1,8 @@
-# 1. DOM
+# DOM
 
 文档对象模型（Document Object Model，DOM）是一种用于HTML和XML文档的编程接口。它给文档提供了一种结构化的表示方法，可以改变文档的内容和呈现方式。我们最为关心的是，DOM把网页和脚本以及其他的编程语言联系了起来。DOM属于浏览器，而不是JavaScript语言规范里的规定的核心内容。
 
-<!-- TOC -->
-
-- [1. DOM](#1-dom)
-    - [1.1. 总结](#11-总结)
-    - [1.2. 查找元素](#12-查找元素)
-        - [1.2.1. 直接查找](#121-直接查找)
-        - [1.2.2. 间接查找](#122-间接查找)
-    - [1.3. 操作](#13-操作)
-        - [1.3.1. 内容](#131-内容)
-        - [1.3.2. 属性](#132-属性)
-    - [1.4. 实例](#14-实例)
-        - [1.4.1. 模态框](#141-模态框)
-        - [1.4.2. 左侧菜单栏](#142-左侧菜单栏)
-
-<!-- /TOC -->
-
-## 1.1. 总结
+## 总结
 
 - 查找标签
     - 直接查找
@@ -46,16 +30,16 @@
         - 获取值 checkbox对象.checked
         - 设置值 checkbox对象.checked = true (或false)
 
-## 1.2. 查找元素
+## 查找元素
 
-### 1.2.1. 直接查找
+### 直接查找
 
 - `document.getElementById`           根据ID获取一个标签
 - `document.getElementsByName`        根据name属性获取标签集合
 - `document.getElementsByClassName`   根据class属性获取标签集合
 - `document.getElementsByTagName`     根据标签名获取标签集合
 
-### 1.2.2. 间接查找
+### 间接查找
 
 - parentNode          // 父节点
 - childNodes          // 所有子节点
@@ -106,9 +90,9 @@ tag.previousElementSibling
 tag.nextElementSibling
 ```
 
-## 1.3. 操作
+## 操作
 
-### 1.3.1. 内容
+### 内容
 
 - innerText 文本
 - inneHTML  HTML内容
@@ -128,15 +112,15 @@ tag.nextElementSibling
 
 ![js-04-get](http://oi480zo5x.bkt.clouddn.com/js-04-get.jpg)
 
-### 1.3.2. 属性
+### 属性
 
 - attributes                获取所有标签属性
 - setAttribute(key,value)   设置标签属性
 - getAttribute(key)         获取指定标签属性
 
-## 1.4. 实例
+## 实例
 
-### 1.4.1. 模态框
+### 模态框
 
 ```html
 <!DOCTYPE html>
@@ -289,7 +273,7 @@ tag.nextElementSibling
 </html>
 ```
 
-### 1.4.2. 左侧菜单栏
+### 左侧菜单栏
 
 ```html
 <!DOCTYPE html>
