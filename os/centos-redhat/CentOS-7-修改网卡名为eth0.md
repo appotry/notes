@@ -1,22 +1,10 @@
-<!-- TOC -->
+# CentOS7
 
-- [1. CentOS7](#1-centos7)
-    - [1.1. 使用cobbler](#11-使用cobbler)
-    - [1.2. CentOS-7 全新安装，直接修改网卡为eth0](#12-centos-7-全新安装直接修改网卡为eth0)
-    - [1.3. CentOS-7 修改网卡为eth0(已安装-修改)](#13-centos-7-修改网卡为eth0已安装-修改)
-        - [1.3.1. 编辑网卡信息](#131-编辑网卡信息)
-        - [1.3.2. 修改grub](#132-修改grub)
-        - [1.3.3. 验证是否修改成功](#133-验证是否修改成功)
-
-<!-- /TOC -->
-
-# 1. CentOS7
-
-## 1.1. 使用cobbler
+## 使用cobbler
 
     使用cobbler自动化安装，配置内核参数net.ifnames=0 biosdevname=0，安装即可
 
-## 1.2. CentOS-7 全新安装，直接修改网卡为eth0
+## CentOS-7 全新安装，直接修改网卡为eth0
 
     光盘安装的时候，在安装界面做如下操作：
     点击Tab，打开kernel启动选项后，增加net.ifnames=0 biosdevname=0，如下图所示。
@@ -25,9 +13,9 @@
 
 ![CentOS7-2](http://i.imgur.com/64i8Dg5.png)
 
-## 1.3. CentOS-7 修改网卡为eth0(已安装-修改)
+## CentOS-7 修改网卡为eth0(已安装-修改)
 
-### 1.3.1. 编辑网卡信息
+### 编辑网卡信息
 
 ```shell
     [root@centos7 ~]# cd /etc/sysconfig/network-scripts/  #进入网卡目录
@@ -49,7 +37,7 @@
     DNS1=192.168.56.2
 ```
 
-### 1.3.2. 修改grub
+### 修改grub
 
 ```shell
     [root@centos7 ~]# cat /etc/sysconfig/grub  #编辑内核信息,添加 net.ifnames=0 biosdevname=0 字段的
@@ -74,7 +62,7 @@
       Done
 ```
 
-### 1.3.3. 验证是否修改成功
+### 验证是否修改成功
 
 ```shell
     [root@centos7 ~]# reboot  #必须重启系统生效
