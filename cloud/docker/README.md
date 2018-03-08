@@ -1,11 +1,3 @@
-<!-- TOC -->
-
-- [docker](#docker)
-    - [docker 安装](#docker-安装)
-    - [linux使用代理上网](#linux使用代理上网)
-
-<!-- /TOC -->
-
 # docker
 
 Docker is the world’s leading software container platform.
