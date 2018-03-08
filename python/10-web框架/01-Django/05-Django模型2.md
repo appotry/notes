@@ -1,33 +1,6 @@
-# 1. Django模型2
+# Django模型2
 
-<!-- TOC -->
-
-- [1. Django模型2](#1-django模型2)
-    - [1.1. 创建一个新的app](#11-创建一个新的app)
-    - [1.2. 第一个模型](#12-第一个模型)
-    - [1.3. 模型安装](#13-模型安装)
-    - [1.4. 基本数据访问](#14-基本数据访问)
-    - [1.5. 让获取到的数据显示为字符串格式](#15-让获取到的数据显示为字符串格式)
-    - [1.6. 插入和更新数据](#16-插入和更新数据)
-    - [1.7. 选择对象](#17-选择对象)
-    - [1.8. 更新多个对象](#18-更新多个对象)
-    - [1.9. 删除对象](#19-删除对象)
-    - [1.10. 字段属性](#110-字段属性)
-    - [1.11. 属性所拥有的方法](#111-属性所拥有的方法)
-    - [1.12. 连表结构](#112-连表结构)
-    - [1.13. 报错信息](#113-报错信息)
-- [2. Django模型3](#2-django模型3)
-    - [2.1. 连表操作一对一](#21-连表操作一对一)
-    - [2.2. 基本操作](#22-基本操作)
-    - [2.3. 单表查询](#23-单表查询)
-    - [2.4. 查询实例](#24-查询实例)
-    - [2.5. 连表操作多对多](#25-连表操作多对多)
-    - [2.6. 批量导入bulk_create()](#26-批量导入bulk_create)
-    - [2.7. 如果抛出错误 django.core.exceptions.AppRegistryNotReady: Models aren't loaded yet.](#27-如果抛出错误-djangocoreexceptionsappregistrynotready-models-arent-loaded-yet)
-
-<!-- /TOC -->
-
-## 1.1. 创建一个新的app
+## 创建一个新的app
 
 让我们来创建一个**Django app**，一个包含模型，视图和Django代码，并且形式为独立Python包的完整Django应用。
 
@@ -57,7 +30,7 @@ darker
 1 directory, 7 files
 ```
 
-## 1.2. 第一个模型
+## 第一个模型
 
 首先创建三张表
 
@@ -93,7 +66,7 @@ class score(models.Model):
 
 每个数据模型都是`django.db.models.Model`的子类,它的父类`Model`包含了所有必要的和数据库交互的方法，并提供了一个简洁漂亮的定义数据库字段的语法,每个模型相当于单个数据库表，每个属性也是这个表中的一个字段,属性名就是字段名.
 
-## 1.3. 模型安装
+## 模型安装
 
 要通过django在数据库中创建这些表，首先我们需要在项目中**激活**这些模型，将**darker app**添加到配置文件的已安装应用列表中即可完成此步骤;
 
@@ -190,7 +163,7 @@ mysql> show tables;
 13 rows in set (0.01 sec)
 ```
 
-## 1.4. 基本数据访问
+## 基本数据访问
 
 运行 `python3 manager.py shell` 并使用Django提供的高级Python API
 
@@ -217,7 +190,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 <QuerySet [<student: student object>, <student: student object>, <student: student object>]>
 ```
 
-## 1.5. 让获取到的数据显示为字符串格式
+## 让获取到的数据显示为字符串格式
 
 只需要在上面三个表类中添加一个方法 `__str__`,如下:
 
@@ -262,7 +235,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 <QuerySet [<student: yang>, <student: yang>, <student: s2>]>
 ```
 
-## 1.6. 插入和更新数据
+## 插入和更新数据
 
 ```python
 # 插入数据
@@ -280,7 +253,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ```
 
-## 1.7. 选择对象
+## 选择对象
 
 下面的指令是从数据库中获取所有的数据
 
@@ -289,7 +262,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 <QuerySet [<student: yang>, <student: yang>, <student: s2>, <student: qaz>]>
 ```
 
-Django在选择所有数据时并没有使用 `SELECT * `,而是显式列出了所有字段, `SELECT * ` 会更慢,而且最重要的是列出所有字段遵循了Python的一个信条: `明言胜于暗示`
+Django在选择所有数据时并没有使用 `SELECT *`,而是显式列出了所有字段, `SELECT *` 会更慢,而且最重要的是列出所有字段遵循了Python的一个信条: `明言胜于暗示`
 
 数据过滤
 
@@ -389,7 +362,7 @@ class student(models.Model):
 <student: yang>
 ```
 
-## 1.8. 更新多个对象
+## 更新多个对象
 
 更改某一指定的列,我们可以调用结果集(QuerySet)对象的`update()`方法
 
@@ -404,7 +377,7 @@ class student(models.Model):
 
 `update()`方法会返回一个整型数值,表示受影响的记录条数
 
-## 1.9. 删除对象
+## 删除对象
 
 删除数据库中的对象只需要调用该对象的`delete()`方法
 
@@ -426,7 +399,7 @@ class student(models.Model):
 <QuerySet []>
 ```
 
-## 1.10. 字段属性
+## 字段属性
 
 | 属性                                 | 描述                                       |
 | ---------------------------------- | ---------------------------------------- |
@@ -455,7 +428,7 @@ class student(models.Model):
 | `models.ImageField`                | 图片                                       |
 | `models.FilePathField`             | 文件                                       |
 
-## 1.11. 属性所拥有的方法
+## 属性所拥有的方法
 
 | 方法                    | 描述                                |
 | --------------------- | --------------------------------- |
@@ -475,7 +448,7 @@ class student(models.Model):
 | `auto_created=False`  | 自动创建                              |
 | `help_text`           | 在Admin中提示帮助信息                     |
 
-## 1.12. 连表结构
+## 连表结构
 
 | 方法                            | 描述   |
 | ----------------------------- | ---- |
@@ -483,17 +456,32 @@ class student(models.Model):
 | `models.ManyToManyField(其他表)` | 多对多  |
 | `models.OneToOneField(其他表)`   | 一对一  |
 
-## 1.13. 报错信息
+## 报错信息
 
-    django.db.utils.InternalError: (1366, "Incorrect string value: '\\xE7\\x94\\xB7' for column 'gender' at row 1")
+```shell
+django.db.utils.InternalError: (1366, "Incorrect string value: '\\xE7\\x94\\xB7' for column 'gender' at row 1")
 
 原因,| yang     | CREATE DATABASE `yang` /*!40100 DEFAULT CHARACTER SET latin1 */ |
+```
 
-
-# 2. Django模型3
+# Django模型3
 
 <!-- TOC -->
 
+- [Django模型2](#django模型2)
+    - [创建一个新的app](#创建一个新的app)
+    - [第一个模型](#第一个模型)
+    - [模型安装](#模型安装)
+    - [基本数据访问](#基本数据访问)
+    - [让获取到的数据显示为字符串格式](#让获取到的数据显示为字符串格式)
+    - [插入和更新数据](#插入和更新数据)
+    - [选择对象](#选择对象)
+    - [更新多个对象](#更新多个对象)
+    - [删除对象](#删除对象)
+    - [字段属性](#字段属性)
+    - [属性所拥有的方法](#属性所拥有的方法)
+    - [连表结构](#连表结构)
+    - [报错信息](#报错信息)
 - [Django模型3](#django模型3)
     - [连表操作一对一](#连表操作一对一)
     - [基本操作](#基本操作)
@@ -505,7 +493,7 @@ class student(models.Model):
 
 <!-- /TOC -->
 
-## 2.1. 连表操作一对一
+## 连表操作一对一
 
 在 `app` 的**models.py**文件内添加一下内容用户创建一对多关系表
 
@@ -537,7 +525,7 @@ Running migrations:
   Applying darker.0002_auto_20170617_0902... OK
 ```
 
-## 2.2. 基本操作
+## 基本操作
 
 ```python
 ➜  yangxxx git:(master) ✗ python3 manage.py shell
@@ -624,7 +612,7 @@ darker.models.DoesNotExist: UserInfo matching query does not exist.
 <QuerySet [<UserInfo: UserInfo object>]>
 ```
 
-## 2.3. 单表查询
+## 单表查询
 
 查询出来的结果都是QuerySet对象
 
@@ -669,7 +657,7 @@ UserInfo object 2 2 admin 2
 UserInfo object 3 2 admin 2
 ```
 
-## 2.4. 查询实例
+## 查询实例
 
 获取用户类型是超级管理员的所有用户
 
@@ -703,7 +691,7 @@ UserInfo object 3 2 admin 2
 <QuerySet [{'userinfo__username': 'qwe', 'nid': 2, 'caption': 'admin'}, {'userinfo__username': 'yang', 'nid': 2, 'caption': 'admin'}, {'userinfo__username': None, 'nid': 1, 'caption': 'superadmin'}]>
 ```
 
-## 2.5. 连表操作多对多
+## 连表操作多对多
 
 两种创建多对多表的方式
 
@@ -806,7 +794,7 @@ Traceback (most recent call last):
 AttributeError: Cannot use add() on a ManyToManyField which specifies an intermediary model. Use darker.HostGroup's Manager instead.
 ```
 
-## 2.6. 批量导入bulk_create()
+## 批量导入bulk_create()
 
 `User.objects.create()`每保存一条就执行一次SQL
 
@@ -844,7 +832,7 @@ AttributeError: Cannot use add() on a ManyToManyField which specifies an interme
     # User.objects.bulk_create(user_object_list)
 ```
 
-## 2.7. 如果抛出错误 django.core.exceptions.AppRegistryNotReady: Models aren't loaded yet.
+## 如果抛出错误 django.core.exceptions.AppRegistryNotReady: Models aren't loaded yet.
 
 导入数据
 
