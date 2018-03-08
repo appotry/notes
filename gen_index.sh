@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# md2rst
+
+find . -type f -name "*.md"|awk -F "." '{print "pandoc -f markdown -t rst \""$0"\" -o \"." $2".rst\""}'|bash
+
+# gen index
 dir=`find . -type d |egrep -v "\.git|assets|_book|node_modules|\.vscode|^\.$"|sed 's#\./##g'|sed 's# #@#g'`
 
 for path in $dir
@@ -19,3 +24,4 @@ do
    *
 " > "${index_file}"
 done
+
