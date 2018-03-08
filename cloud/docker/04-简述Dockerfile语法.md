@@ -1,23 +1,6 @@
-# 1. Dockerfile 语法
+# Dockerfile 语法
 
 [官方文档](https://docs.docker.com/engine/reference/builder/)
-
-<!-- TOC -->
-
-- [1. Dockerfile 语法](#1-dockerfile-语法)
-    - [1.1. FROM](#11-from)
-    - [1.2. MAINTAINER(deprecated)](#12-maintainerdeprecated)
-    - [1.3. LABEL](#13-label)
-    - [1.4. RUN](#14-run)
-    - [1.5. CMD](#15-cmd)
-    - [1.6. ENTRYPOINT](#16-entrypoint)
-    - [1.7. VOLUME](#17-volume)
-    - [1.8. EXPOSE](#18-expose)
-    - [1.9. ENV](#19-env)
-    - [1.10. WORKDIR](#110-workdir)
-    - [1.11. ADD](#111-add)
-
-<!-- /TOC -->
 
 一个简单的例子：
 
@@ -26,13 +9,13 @@
 RUN echo "Hello docker!"
 ```
 
-## 1.1. FROM
+## FROM
 
 第一条指令必须为 FROM 指令,用来指定使用的镜像，#号开头的为注释。
 
     FROM centos:6
 
-## 1.2. MAINTAINER(deprecated)
+## MAINTAINER(deprecated)
 
 [MAINTAINER (deprecated)](https://docs.docker.com/engine/reference/builder/#maintainer-deprecated)
 
@@ -42,17 +25,17 @@ RUN echo "Hello docker!"
 
     MAINTAINER  yy
 
-## 1.3. LABEL
+## LABEL
 
 LABEL maintainer="SvenDowideit@home.org.au"
 
-## 1.4. RUN
+## RUN
 
 RUN 指令对镜像执行跟随的命令。
 
     RUN echo "yy" > /opt/author
 
-## 1.5. CMD
+## CMD
 
 和RUN命令相似，CMD可以用于执行特定的命令。和RUN不同的是，这些命令不是在镜像构建的过程中执行的，而是在用镜像构建容器后被调用。
 
@@ -67,7 +50,7 @@ CMD "echo" "Hello docker!"
 * CMD command param1 param2 在 /bin/sh 中执行，提供给需要交互的应用；
 * CMD [“param1″,”param2”] 提供给 ENTRYPOINT 的默认参数；
 
-## 1.6. ENTRYPOINT
+## ENTRYPOINT
 
 配置容器启动后执行的命令，并且不可被 `docker run` 提供的参数覆盖。
 
@@ -86,19 +69,19 @@ CMD "Hello docker!"
 ENTRYPOINT echo
 ```
 
-## 1.7. VOLUME
+## VOLUME
 
 VOLUME命令用于让你的容器访问宿主机上的目录。
 
     VOLUME ["/my_files"]
 
-## 1.8. EXPOSE
+## EXPOSE
 
 EXPOSE用来指定端口，使容器内的应用可以通过端口和外界交互。
 
     EXPOSE 80
 
-## 1.9. ENV
+## ENV
 
 用来设置环境变量
 
@@ -106,7 +89,7 @@ EXPOSE用来指定端口，使容器内的应用可以通过端口和外界交�
 
     ENV PATH /usr/local/postgres-$PG_MAJOR/bin:$PATH
 
-## 1.10. WORKDIR
+## WORKDIR
 
 相当于CD命令，指定之后的RUN命令的运行目录
 
@@ -118,7 +101,7 @@ EXPOSE用来指定端口，使容器内的应用可以通过端口和外界交�
 
     RUN pwd
 
-## 1.11. ADD
+## ADD
 
 将源文件拷贝到容器对应的路径
 
