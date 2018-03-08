@@ -1,43 +1,18 @@
-# 1. python版本管理
+# python版本管理
 
-<!-- TOC -->
-
-- [1. python版本管理](#1-python版本管理)
-    - [1.1. 使用virtualenv管理多个开发环境](#11-使用virtualenv管理多个开发环境)
-        - [1.1.1. 安装](#111-安装)
-        - [1.1.2. 用法](#112-用法)
-            - [1.1.2.1. 创建一个新的virtualenv](#1121-创建一个新的virtualenv)
-    - [1.2. pyevn,管理安装python多版本](#12-pyevn管理安装python多版本)
-        - [1.2.1. 安装](#121-安装)
-            - [1.2.1.1. 通用](#1211-通用)
-            - [1.2.1.2. Mac](#1212-mac)
-        - [1.2.2. 升级](#122-升级)
-        - [1.2.3. 卸载](#123-卸载)
-        - [1.2.4. 使用](#124-使用)
-    - [1.3. pyenv-virtualenv](#13-pyenv-virtualenv)
-        - [1.3.1. 安装](#131-安装)
-        - [1.3.2. 配置](#132-配置)
-        - [1.3.3. 使用](#133-使用)
-        - [1.3.4. virtualenv and venv](#134-virtualenv-and-venv)
-    - [1.4. pyenv-virtualenvwrapper](#14-pyenv-virtualenvwrapper)
-    - [1.5. 错误记录](#15-错误记录)
-        - [1.5.1. ERROR: The Python zlib extension was not compiled. Missing the zlib?](#151-error-the-python-zlib-extension-was-not-compiled-missing-the-zlib)
-
-<!-- /TOC -->
-
-## 1.1. 使用virtualenv管理多个开发环境
+## 使用virtualenv管理多个开发环境
 
 [Virtualenv](https://virtualenv.pypa.io/en/latest/)
 
-### 1.1.1. 安装
+### 安装
 
     sudo pip3 install virtualenv virtualenvwrapper
 
 [其他安装方法](https://virtualenv.pypa.io/en/latest/installation/)
 
-### 1.1.2. 用法
+### 用法
 
-#### 1.1.2.1. 创建一个新的virtualenv
+#### 创建一个新的virtualenv
 
 ```shell
 root@ubuntu-linux:~# mkvirtualenv y  # 因为已经指定了默认的Python版本，所以默认的是Python3
@@ -88,13 +63,13 @@ root@ubuntu-linux:~# workon
 root@ubuntu-linux:~#
 ```
 
-## 1.2. pyevn,管理安装python多版本
+## pyevn,管理安装python多版本
 
 [GitHub pyenv](https://github.com/pyenv/pyenv)
 
-### 1.2.1. 安装
+### Install
 
-#### 1.2.1.1. 通用
+#### 通用
 
 This tool installs `pyenv` and friends. It is inspired by [rbenv-installer](https://github.com/fesplugas/rbenv-installer).
 
@@ -118,7 +93,7 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 ```
 
-#### 1.2.1.2. Mac
+#### Mac
 
 1. Homebrew on Mac OS X
 
@@ -151,13 +126,13 @@ exec $SHELL
 pyenv install 2.7.10
 ```
 
-### 1.2.2. 升级
+### 升级
 
 ```shell
 pyenv update
 ```
 
-### 1.2.3. 卸载
+### 卸载
 
 `pyenv` is installed within `$PYENV_ROOT` (default: `~/.pyenv`). 卸载只需要移除该目录:
 
@@ -177,7 +152,7 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 ```
 
-### 1.2.4. 使用
+### 使用
 
 帮助信息
 
@@ -228,13 +203,13 @@ pyenv install 2.7.10
 ~/.pyenv/versions
 ```
 
-## 1.3. pyenv-virtualenv
+## pyenv-virtualenv
 
 [GitHub pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
 
 `pyenv-virtualenv`是一个`pyenv`插件, 在类Unix系统上管理Python `virtualenvs`和`conda`环境.
 
-### 1.3.1. 安装
+### 安装
 
 通用
 
@@ -244,7 +219,7 @@ Mac 系统
 
     brew install pyenv-virtualenv
 
-### 1.3.2. 配置
+### 配置
 
 添加`echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bash_profile`到`.bashrc`或其他类似此文件功能的文件中.
 
@@ -257,7 +232,7 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 ```
 
-### 1.3.3. 使用
+### 使用
 
 创建虚拟环境
 
@@ -309,19 +284,19 @@ pyenv-virtualenv: prompt changing will be removed from future release. configure
 
     pyenv uninstall my-virtual-env-3.6.1
 
-### 1.3.4. virtualenv and venv
+### virtualenv and venv
 
 There is a venv module available for CPython 3.3 and newer. It provides an executable module venv which is the successor of virtualenv and distributed by default.
 
 pyenv-virtualenv uses python -m venv if it is available and the virtualenv command is not available.
 
-## 1.4. pyenv-virtualenvwrapper
+## pyenv-virtualenvwrapper
 
 [GitHub pyenv-virtualenvwrapper](https://github.com/pyenv/pyenv-virtualenvwrapper)
 
-## 1.5. 错误记录
+## 错误记录
 
-### 1.5.1. ERROR: The Python zlib extension was not compiled. Missing the zlib?
+### ERROR: The Python zlib extension was not compiled. Missing the zlib?
 
 在Mac上安装了Parallels Desktop，然后安装了ubuntu16虚拟机，虚拟机中在用pyenv安装不同版本python的时候，最后失败，提示如下（部分）：
 
