@@ -1,21 +1,6 @@
-<!-- TOC -->
+# Git问题记录
 
-- [1. Git问题记录](#1-git问题记录)
-    - [1.1. Git Fatal: cannot do a partial commit during a merge](#11-git-fatal-cannot-do-a-partial-commit-during-a-merge)
-    - [1.2. git多平台换行符问题 LF will be replaced by CRLF](#12-git多平台换行符问题-lf-will-be-replaced-by-crlf)
-    - [1.3. 刚创建的github版本库，在push代码时出错](#13-刚创建的github版本库在push代码时出错)
-    - [1.4. git merge报错，fatal: refusing to merge unrelated histories](#14-git-merge报错fatal-refusing-to-merge-unrelated-histories)
-    - [1.5. git pull提示“no tracking information”](#15-git-pull提示no-tracking-information)
-    - [1.6. Access denied. fatal: Could not read from remote repository.  Please make sure you have the correct access rights and the repository exists](#16-access-denied-fatal-could-not-read-from-remote-repository--please-make-sure-you-have-the-correct-access-rights-and-the-repository-exists)
-    - [1.7. Mac升级系统之后,使用git的时候,报如下错误](#17-mac升级系统之后使用git的时候报如下错误)
-    - [1.8. git status 中文显示乱码](#18-git-status-中文显示乱码)
-    - [1.9. 配置多个ssh-key](#19-配置多个ssh-key)
-
-<!-- /TOC -->
-
-# 1. Git问题记录
-
-## 1.1. Git Fatal: cannot do a partial commit during a merge
+## Git Fatal: cannot do a partial commit during a merge
 
 在提交单个文件的时候出现这个错误.
 
@@ -37,7 +22,7 @@
 
 这样以后git pull就不再会报错.
 
-## 1.2. git多平台换行符问题 LF will be replaced by CRLF
+## git多平台换行符问题 LF will be replaced by CRLF
 
 ```shell
 warning: LF will be replaced by CRLF in readme.txt.
@@ -47,7 +32,7 @@ git config --global core.autocrlf false
 # false  表示按文件原来的样子
 ```
 
-## 1.3. 刚创建的github版本库，在push代码时出错
+## 刚创建的github版本库，在push代码时出错
 
 ```shell
 $ git push -u origin master
@@ -86,7 +71,7 @@ git branch [name]
 git push -u origin [name]
 ```
 
-## 1.4. git merge报错，fatal: refusing to merge unrelated histories
+## git merge报错，fatal: refusing to merge unrelated histories
 
 ```shell
 "git merge" used to allow merging two branches that have no common base by default, which led to a brand new history of an existing project created and then get pulled by an unsuspecting maintainer, which allowed an unnecessary parallel history merged into the existing project. The command has been taught not to allow this by default, with an escape hatch "--allow-unrelated-histories" option to be used in a rare event that merges histories of two projects that started their lives independently.
@@ -97,7 +82,7 @@ You can use --allow-unrelated-histories to force the merge to happen.
 git merge --allow-unrelated-histories test
 ```
 
-## 1.5. git pull提示“no tracking information”
+## git pull提示“no tracking information”
 
 原因: y本地分支和远程分支的链接关系没有创建，使用如下命令解决
 
@@ -114,13 +99,13 @@ git merge --allow-unrelated-histories test
 * 如果合并有冲突，则解决冲突，并在本地提交；
 * 没有冲突或者解决掉冲突后，再用git push origin branch-name推送就能成功！
 
-## 1.6. Access denied. fatal: Could not read from remote repository.  Please make sure you have the correct access rights and the repository exists
+## Access denied. fatal: Could not read from remote repository.  Please make sure you have the correct access rights and the repository exists
 
 个人ssh-key是在,修改资料里面添加,设置的公钥,拥有所有权限
 
 项目部署key是在项目设置中设置的，是用于部署用，只能clone与pull
 
-## 1.7. Mac升级系统之后,使用git的时候,报如下错误
+## Mac升级系统之后,使用git的时候,报如下错误
 
 xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
 
@@ -128,13 +113,13 @@ xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools
 
     xcode-select --install
 
-## 1.8. git status 中文显示乱码
+## git status 中文显示乱码
 
 ```shell
 git config --global core.quotepath false
 ```
 
-## 1.9. 配置多个ssh-key
+## 配置多个ssh-key
 
 直接指定
 
