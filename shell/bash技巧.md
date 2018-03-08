@@ -1,47 +1,25 @@
-# 1. bash技巧
+# bash技巧
 
 bash的一些技巧
 
-<!-- TOC -->
-
-- [1. bash技巧](#1-bash技巧)
-    - [1.1. 获取参数=后面的内容](#11-获取参数后面的内容)
-    - [1.2. 创建只含小写字母的随机数](#12-创建只含小写字母的随机数)
-    - [1.3. 调试](#13-调试)
-    - [1.4. 删除无效软链接](#14-删除无效软链接)
-    - [1.5. 统计每个文件夹占用的inode总数](#15-统计每个文件夹占用的inode总数)
-    - [1.6. 拼接时间](#16-拼接时间)
-- [2. 第二章](#2-第二章)
-    - [2.1. 创建随机密码方法](#21-创建随机密码方法)
-    - [2.2. 变量子串使用技巧](#22-变量子串使用技巧)
-        - [2.2.1. 生成随机密码](#221-生成随机密码)
-        - [2.2.2. 判断用户输入是否为数字](#222-判断用户输入是否为数字)
-    - [2.3. 计算字符串长度](#23-计算字符串长度)
-    - [2.4. 命令拼接](#24-命令拼接)
-    - [2.5. 计算1+2+3+4+5+6+7+8+9+10](#25-计算12345678910)
-    - [2.6. 打印下面语句中字符数小于6的单词](#26-打印下面语句中字符数小于6的单词)
-- [3. 使用eval实现动态变量](#3-使用eval实现动态变量)
-
-<!-- /TOC -->
-
-## 1.1. 获取参数=后面的内容
+## 获取参数=后面的内容
 
 ```shell
 [root@web01 ~]#　echo "--basedir=/applica" | sed -e 's/^[^=]*=//'
 /applica
 ```
 
-## 1.2. 创建只含小写字母的随机数
+## 创建只含小写字母的随机数
 
     openssl rand -base64 48|sed 's#[^a-z]##g'
 
-## 1.3. 调试
+## 调试
 
     set -x  调试当前窗口命令
     set +x  取消调试
     set -e  脚本中有一条命令返回值不为零就退出脚本，可使用test，当前面脚语句执行失败的时候，执行后面的语句
 
-## 1.4. 删除无效软链接
+## 删除无效软链接
 
 方法1.
 
@@ -62,13 +40,13 @@ Flags:         -c == change absolute/messy links to relative
                    -v == verbose (show all symlinks)
 ```
 
-## 1.5. 统计每个文件夹占用的inode总数
+## 统计每个文件夹占用的inode总数
 
 ```shell
 find */ -exec stat -c "%n %i" {} \; | awk -F "[/ ]" '{if(! a[$1-$NF]++) l[$1]++}END{for (i in l) print i,l[i]}'
 ```
 
-## 1.6. 拼接时间
+## 拼接时间
 
 ```shell
 for n in 20 21
@@ -80,9 +58,9 @@ for n in 20 21
    done
 ```
 
-# 2. 第二章
+# 第二章
 
-## 2.1. 创建随机密码方法
+## 创建随机密码方法
 
 1. echo $RANDOM|md5sum
 2. openssl rand -base64 48
@@ -93,9 +71,9 @@ for n in 20 21
 6. uuidgen|md5sum
     - 加密可以使用 md5sum、sha512sum等等，加密之前可以添加一个干扰码，例如：echo yjj$RANDOM|md5sum
 
-## 2.2. 变量子串使用技巧
+## 变量子串使用技巧
 
-### 2.2.1. 生成随机密码
+### 生成随机密码
 
 ```shell
 [root@db ~]# cat pass.sh
@@ -118,7 +96,7 @@ exit 0
 
 [Back to TOC](#table-of-contents)
 
-### 2.2.2. 判断用户输入是否为数字
+### 判断用户输入是否为数字
 
 ```shell
     read -p "Please enter the amount of recharge: " re
@@ -143,7 +121,7 @@ exit 0
 2
 ```
 
-## 2.3. 计算字符串长度
+## 计算字符串长度
 
 ```shell
     string="I love you!"
@@ -162,20 +140,20 @@ exit 0
     awk '{print length}' <<<$string   ## $0可以省略
 ```
 
-## 2.4. 命令拼接
+## 命令拼接
 
 ```shell
 [root@web 11]# chkconfig |awk '$1!~/crond|sshd|sysstat|network|rsyslog/{print "chkconfig",$1,"off"}'|bash
 ```
 
-## 2.5. 计算1+2+3+4+5+6+7+8+9+10
+## 计算1+2+3+4+5+6+7+8+9+10
 
 ```shell
 [root@web scripts]# seq 10|awk '{a+=$1;b=b$1"+"}END{sub("+$","",b);print b"="a}'
 1+2+3+4+5+6+7+8+9+10=55
 ```
 
-## 2.6. 打印下面语句中字符数小于6的单词
+## 打印下面语句中字符数小于6的单词
 
 ```shell
 [root@db ~]# echo Whatever is worth doing is worth doing well.
@@ -209,7 +187,7 @@ for n in Whatever is worth doing is worth doing well.
  done
 ```
 
-# 3. 使用eval实现动态变量
+# 使用eval实现动态变量
 
 用变量值作新的变量名
 
