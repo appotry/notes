@@ -1,20 +1,6 @@
+# Elastic Stack安装
 
-<!-- TOC -->
-
-- [1. Elastic Stack安装](#1-elastic-stack安装)
-    - [1.1. 本文环境](#11-本文环境)
-    - [1.2. 安装Java环境](#12-安装java环境)
-    - [1.3. 安装Elastic Stack](#13-安装elastic-stack)
-        - [1.3.1. 使用deb包安装](#131-使用deb包安装)
-        - [1.3.2. 使用仓库安装](#132-使用仓库安装)
-        - [1.3.3. Running Logstash on Docker](#133-running-logstash-on-docker)
-    - [1.4. 报错](#14-报错)
-
-<!-- /TOC -->
-
-# 1. Elastic Stack安装
-
-## 1.1. 本文环境
+## 本文环境
 
 ```shell
 root@ubuntu75:~# lsb_release -a
@@ -25,7 +11,7 @@ Release:        16.04
 Codename:       xenial
 ```
 
-## 1.2. 安装Java环境
+## 安装Java环境
 
 两种方式
 
@@ -54,11 +40,11 @@ ln -s /opt/jdk1.8.0_101/ /opt/jdk
 运行java -version命令，能查到java版本，则安装成功
 ```
 
-## 1.3. 安装Elastic Stack
+## 安装Elastic Stack
 
 > 针对Ubuntu，推荐全部使用deb包进行安装
 
-### 1.3.1. 使用deb包安装
+### 使用deb包安装
 
 ```shell
 wget -q https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.1.2.deb &
@@ -81,7 +67,7 @@ sudo dpkg -i kibana-5.1.2-amd64.deb
 
 [kibana](https://www.elastic.co/guide/en/kibana/current/deb.html)
 
-### 1.3.2. 使用仓库安装
+### 使用仓库安装
 
 ```shell
 ## 安装elasticsearch
@@ -115,11 +101,11 @@ apt-get update
 apt-get install logstash
 ```
 
-### 1.3.3. Running Logstash on Docker
+### Running Logstash on Docker
 
 [Running Logstash on Docker](https://www.elastic.co/guide/en/logstash/current/docker.html)
 
-## 1.4. 报错
+## 报错
 
 ```shell
 安装时报如下错误：
