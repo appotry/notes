@@ -17,6 +17,5 @@ env:
 
 #sudo: false
 script:
-  - pandoc --version
   - travis_wait 100 bash deploy.sh "notes"
   - travis_wait 100 bash deploy.sh "java" "python"
