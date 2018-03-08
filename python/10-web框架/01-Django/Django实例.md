@@ -1,63 +1,6 @@
-# 1. Django实例2
+# Django实例2
 
-<!-- TOC -->
-
-- [1. Django实例2](#1-django实例2)
-    - [1.1. 第一部分](#11-第一部分)
-        - [1.1.1. 配置](#111-配置)
-        - [1.1.2. urls](#112-urls)
-        - [1.1.3. templates](#113-templates)
-            - [1.1.3.1. login.html](#1131-loginhtml)
-            - [1.1.3.2. home.html](#1132-homehtml)
-        - [1.1.4. views](#114-views)
-    - [1.2. 第二部分-路由](#12-第二部分-路由)
-        - [1.2.1. templates](#121-templates)
-            - [1.2.1.1. index.html](#1211-indexhtml)
-        - [1.2.2. views](#122-views)
-        - [1.2.3. urls](#123-urls)
-        - [1.2.4. 第二版](#124-第二版)
-        - [1.2.5. 动态路由系统](#125-动态路由系统)
-    - [1.3. 第三部分-模型](#13-第三部分-模型)
-        - [1.3.1. 数据库配置](#131-数据库配置)
-            - [1.3.1.1. sqlite](#1311-sqlite)
-            - [1.3.1.2. mysql](#1312-mysql)
-        - [1.3.2. models.py](#132-modelspy)
-        - [1.3.3. 添加url,views,通过访问url进行测试](#133-添加urlviews通过访问url进行测试)
-        - [1.3.4. 基本操作](#134-基本操作)
-            - [1.3.4.1. 增](#1341-增)
-            - [1.3.4.2. 查](#1342-查)
-            - [1.3.4.3. 简单登录验证](#1343-简单登录验证)
-    - [1.4. 第四部分-主机管理](#14-第四部分-主机管理)
-        - [1.4.1. project.urls](#141-projecturls)
-        - [1.4.2. app01.urls](#142-app01urls)
-        - [1.4.3. views](#143-views)
-        - [1.4.4. templates](#144-templates)
-            - [1.4.4.1. base.html](#1441-basehtml)
-            - [1.4.4.2. user_info.html](#1442-user_infohtml)
-            - [1.4.4.3. user_detail.html](#1443-user_detailhtml)
-            - [1.4.4.4. user_edit.html](#1444-user_edithtml)
-- [2. 本实例相关知识](#2-本实例相关知识)
-    - [2.1. getlist](#21-getlist)
-    - [2.2. 上传文件](#22-上传文件)
-        - [2.2.1. form表单需要添加enctype属性](#221-form表单需要添加enctype属性)
-        - [2.2.2. request.FILES](#222-requestfiles)
-    - [2.3. FBV & CBV](#23-fbv--cbv)
-    - [2.4. Django支持FBV和CBV](#24-django支持fbv和cbv)
-        - [2.4.1. views里面也可以使用类](#241-views里面也可以使用类)
-        - [2.4.2. urls](#242-urls)
-        - [2.4.3. views](#243-views)
-        - [2.4.4. 父类View](#244-父类view)
-    - [2.5. models基本操作](#25-models基本操作)
-        - [2.5.1. 增](#251-增)
-        - [2.5.2. 查](#252-查)
-        - [2.5.3. 删](#253-删)
-        - [2.5.4. 改](#254-改)
-        - [2.5.5. first](#255-first)
-        - [2.5.6. count](#256-count)
-
-<!-- /TOC -->
-
-## 1.1. 第一部分
+## 第一部分
 
 ```shell
 ➜  PycharmProjects django-admin startproject django_project2
@@ -65,7 +8,7 @@
 ➜  django_project2 python3 manage.py startapp app01
 ```
 
-### 1.1.1. 配置
+### 配置
 
 `django_project2/settings.py`
 
@@ -102,7 +45,7 @@ STATICFILES_DIRS = (
 )
 ```
 
-### 1.1.2. urls
+### urls
 
 ```python
 from django.conf.urls import url
@@ -116,9 +59,9 @@ urlpatterns = [
 ]
 ```
 
-### 1.1.3. templates
+### templates
 
-#### 1.1.3.1. login.html
+#### login.html
 
 ```html
 <!DOCTYPE html>
@@ -151,7 +94,7 @@ urlpatterns = [
 </html>
 ```
 
-#### 1.1.3.2. home.html
+#### home.html
 
 ```html
 <!DOCTYPE html>
@@ -170,7 +113,7 @@ urlpatterns = [
 </html>
 ```
 
-### 1.1.4. views
+### views
 
 ```python
 from django.shortcuts import render
@@ -241,13 +184,13 @@ class Home(View):
         return render(request, 'home.html')
 ```
 
-## 1.2. 第二部分-路由
+## 第二部分-路由
 
 访问index,显示用户,点击用户名,显示详细用户信息
 
-### 1.2.1. templates
+### templates
 
-#### 1.2.1.1. index.html
+#### index.html
 
 ```html
 <!DOCTYPE html>
@@ -288,7 +231,7 @@ class Home(View):
 </html>
 ```
 
-### 1.2.2. views
+### views
 
 添加如下内容
 
@@ -312,14 +255,14 @@ def detail(request):
     return HttpResponse(USER_DICT[nid].items())
 ```
 
-### 1.2.3. urls
+### urls
 
 ```python
     url(r'^index/', views.index),
     url(r'^detail/', views.detail),
 ```
 
-### 1.2.4. 第二版
+### 第二版
 
 ```python
 # 对应 urls
@@ -331,7 +274,7 @@ def detail(request, nid):
     return HttpResponse(USER_DICT[nid].items())
 ```
 
-### 1.2.5. 动态路由系统
+### 动态路由系统
 
 ```python
 # url(r'^detail-(\d+)-(\d+).html', views.detail),
@@ -357,13 +300,13 @@ def detail(request, *args, **kwargs):
 
 
 
-## 1.3. 第三部分-模型
+## 第三部分-模型
 
 在第一部分已经在`settings.py`中注册过`app01`
 
-### 1.3.1. 数据库配置
+### 数据库配置
 
-#### 1.3.1.1. sqlite
+#### sqlite
 
 ```python
 # Database
@@ -377,7 +320,7 @@ DATABASES = {
 }
 ```
 
-#### 1.3.1.2. mysql
+#### mysql
 
 Django默认使用MySQLdb模块链接Mysql
 
@@ -410,7 +353,7 @@ DATABASES = {
 }
 ```
 
-### 1.3.2. models.py
+### models.py
 
 创建类
 
@@ -434,7 +377,7 @@ python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
-### 1.3.3. 添加url,views,通过访问url进行测试
+### 添加url,views,通过访问url进行测试
 
 urls
 
@@ -452,9 +395,9 @@ def orm(requeset):
     return HttpResponse('orm')
 ```
 
-### 1.3.4. 基本操作
+### 基本操作
 
-#### 1.3.4.1. 增
+#### 增
 
 ```python
 from app01 import models
@@ -493,7 +436,7 @@ def orm(requeset):
     return HttpResponse('orm')
 ```
 
-#### 1.3.4.2. 查
+#### 查
 
 ```python
 def orm(requeset):
@@ -532,7 +475,7 @@ def orm(requeset):
     return HttpResponse('orm')
 ```
 
-#### 1.3.4.3. 简单登录验证
+#### 简单登录验证
 
 ```python
 def orm(request):
@@ -567,9 +510,9 @@ def orm(request):
 </body>
 ```
 
-## 1.4. 第四部分-简单用户管理
+## 第四部分-简单用户管理
 
-### 1.4.1. project.urls
+### project.urls
 
 ```python
 from django.conf.urls import include
@@ -580,7 +523,7 @@ urlpatterns = [
 ]
 ```
 
-### 1.4.2. app01.urls
+### app01.urls
 
 文件若不存在,则创建
 
@@ -599,7 +542,7 @@ urlpatterns = [
 ]
 ```
 
-### 1.4.3. views
+### views
 
 ```python
 def user_info(request):
@@ -643,9 +586,9 @@ def user_edit(request, nid):
         return redirect('/cmdb/user_info/')
 ```
 
-### 1.4.4. templates
+### templates
 
-#### 1.4.4.1. base.html
+#### base.html
 
 ```html
 {% load staticfiles %}
@@ -676,7 +619,7 @@ def user_edit(request, nid):
 </html>
 ```
 
-#### 1.4.4.2. user_info.html
+#### user_info.html
 
 ```html
 {% extends 'base.html' %}
@@ -704,7 +647,7 @@ def user_edit(request, nid):
 {% endblock %}
 ```
 
-#### 1.4.4.3. user_detail.html
+#### user_detail.html
 
 ```html
 {% extends 'base.html' %}
@@ -723,7 +666,7 @@ def user_edit(request, nid):
 {% endblock %}
 ```
 
-#### 1.4.4.4. user_edit.html
+#### user_edit.html
 
 ```html
 {% extends 'base.html' %}
@@ -747,9 +690,9 @@ def user_edit(request, nid):
 
 
 
-# 2. 本实例相关知识
+# 本实例相关知识
 
-## 2.1. getlist
+## getlist
 
 用于CheckBox,select等多选的内容,获取到的内容为一个列表
 
@@ -757,12 +700,12 @@ def user_edit(request, nid):
 ct = request.POST.getlist("city")
 ```
 
-## 2.2. 上传文件
+## 上传文件
 
 - form表单需要做特殊设置, `enctype="multipart/form-data"`
 - 服务端接收文件并保存
 
-### 2.2.1. form表单需要添加enctype属性
+### form表单需要添加enctype属性
 
 ```html
     <!-- 上传文件需要增加enctype="multipart/form-data" 属性 -->
@@ -778,7 +721,7 @@ ct = request.POST.getlist("city")
     </form>
 ```
 
-### 2.2.2. request.FILES
+### request.FILES
 
 ```python
 def login(request):
@@ -808,17 +751,17 @@ def login(request):
         return redirect('index')
 ```
 
-## 2.3. FBV & CBV
+## FBV & CBV
 
 function base view
 
 class base view
 
-## 2.4. Django支持FBV和CBV
+## Django支持FBV和CBV
 
-### 2.4.1. views里面也可以使用类
+### views里面也可以使用类
 
-### 2.4.2. urls
+### urls
 
 ```python
 from django.conf.urls import url
@@ -832,7 +775,7 @@ urlpatterns = [
 ]
 ```
 
-### 2.4.3. views
+### views
 
 详细信息看父类View
 
@@ -855,7 +798,7 @@ class Home(View):
 
 ```
 
-### 2.4.4. 父类View
+### 父类View
 
 ```python
 class View(object):
@@ -903,9 +846,9 @@ class Home(View):
         return render(request, 'home.html')
 ```
 
-## 2.5. models基本操作
+## models基本操作
 
-### 2.5.1. 增
+### 增
 
 
 ```python
@@ -927,7 +870,7 @@ def orm(requeset):
     return HttpResponse('orm')
 ```
 
-### 2.5.2. 查
+### 查
 
 ```python
     # 查
@@ -941,25 +884,25 @@ def orm(requeset):
     result = models.UserInfo.objects.filter(username='root', password='123')
 ```
 
-### 2.5.3. 删
+### 删
 
 ```python
 models.UserInfo.objects.filter(username='root').delete()
 ```
 
-### 2.5.4. 改
+### 改
 
 ```python
 models.UserInfo.objects.filter(username='root').update(password='asd')
 ```
 
-### 2.5.5. first
+### first
 
 ```python
 obj = models.UserInfo.objects.filter(username=u, password=p).first()
 ```
 
-### 2.5.6. count
+### count
 
 统计数量
 
