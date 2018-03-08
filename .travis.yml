@@ -17,5 +17,6 @@ env:
 
 #sudo: false
 script:
+  - travis_wait 100 bash deploy.sh "rst"
   - travis_wait 100 bash deploy.sh "notes"
   - travis_wait 100 bash deploy.sh "java" "python"
