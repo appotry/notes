@@ -1,29 +1,10 @@
-# 1. GitLab
+# GitLab
 
-<!-- TOC -->
+## 环境准备
 
-- [1. GitLab](#1-gitlab)
-    - [1.1. 环境准备](#11-环境准备)
-        - [1.1.1. 硬件需求](#111-硬件需求)
-            - [1.1.1.1. 存储](#1111-存储)
-            - [1.1.1.2. CPU](#1112-cpu)
-            - [1.1.1.3. Memory](#1113-memory)
-        - [1.1.2. 系统环境](#112-系统环境)
-    - [1.2. 安装GitLab](#12-安装gitlab)
-        - [1.2.1. 使用官方一键安装包](#121-使用官方一键安装包)
-            - [1.2.1.1. 安装配置依赖项](#1211-安装配置依赖项)
-            - [1.2.1.2. 添加GitLab仓库,并安装到服务器上](#1212-添加gitlab仓库并安装到服务器上)
-            - [1.2.1.3. 启动GitLab](#1213-启动gitlab)
-            - [1.2.1.4. 使用浏览器访问GitLab](#1214-使用浏览器访问gitlab)
-        - [1.2.2. 使用docker部署GitLab](#122-使用docker部署gitlab)
+### 硬件需求
 
-<!-- /TOC -->
-
-## 1.1. 环境准备
-
-### 1.1.1. 硬件需求
-
-#### 1.1.1.1. 存储
+#### 存储
 
 存储空间的大小主要取决于你将存储的Git仓库的大小。但根据 rule of thumb(经验法则) 你应该考虑多留一些空间用来存储Git仓库的备份。
 
@@ -33,7 +14,7 @@
 
 如果你的服务器有足够大的内存和CPU处理性能，GitLab的响应速度主要受限于硬盘的寻道时间。 使用更快的硬盘(7200转)或者SSD硬盘会很大程度的提升GitLab的响应速度。
 
-#### 1.1.1.2. CPU
+#### CPU
 
 * 1 核心CPU最多支持100个用户，所有的workers和后台任务都在同一个核心工作这将导致GitLab服务响应会有点缓慢。
 * 2核心 支持500用户，这也是官方推荐的最低标准。
@@ -44,7 +25,7 @@
 * 64 核心支持40,000用户。
 * 如果想支持更多用户，可以使用 集群式架构
 
-#### 1.1.1.3. Memory
+#### Memory
 
 安装使用GitLab需要至少4GB可用内存(RAM + Swap)! 由于操作系统和其他正在运行的应用也会使用内存, 所以安装GitLab前一定要注意当前服务器至少有4GB的可用内存. 少于4GB内存会导致在reconfigure的时候出现各种诡异的问题, 而且在使用过程中也经常会出现500错误.
 
@@ -64,7 +45,7 @@
 
 注意: Sidekiq的25个workers在查看进程(top或者htop)的时候会发现它会单独显示每个worker，但是它们是共享内存分配的，这是因为Sidekiq是一个多线程的程序。 详细内容查看下面关于Unicorn workers 的介绍。
 
-### 1.1.2. 系统环境
+### 系统环境
 
 ```shell
 [root@www ~]# cat /etc/redhat-release
@@ -73,11 +54,11 @@ CentOS release 6.7 (Final)
 2.6.32-573.el6.x86_64
 ```
 
-## 1.2. 安装GitLab
+## 安装GitLab
 
-### 1.2.1. 使用官方一键安装包
+### 使用官方一键安装包
 
-#### 1.2.1.1. 安装配置依赖项
+#### 安装配置依赖项
 
 如想使用Postfix来发送邮件,在安装期间请选择'Internet Site'. 您也可以用sendmai或者 配置SMTP服务并使用SMTP发送邮件.
 
@@ -90,7 +71,7 @@ sudo chkconfig postfix on
 sudo lokkit -s http -s ssh
 ```
 
-#### 1.2.1.2. 添加GitLab仓库,并安装到服务器上
+#### 添加GitLab仓库,并安装到服务器上
 
 ```shell
 curl -sS http://packages.gitlab.cc/install/gitlab-ce/script.rpm.sh | sudo bash
@@ -104,13 +85,13 @@ curl -LJO https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el6/gitlab-ce-XXX.r
 rpm -i gitlab-ce-XXX.rpm
 ```
 
-#### 1.2.1.3. 启动GitLab
+#### 启动GitLab
 
     sudo gitlab-ctl reconfigure
 
-#### 1.2.1.4. 使用浏览器访问GitLab
+#### 使用浏览器访问GitLab
 
 首次访问GitLab,系统会让你重新设置管理员的密码,设置成功后会返回登录界面.
 默认的管理员账号是root,如果你想更改默认管理员账号,请输入上面设置的新密码登录系统后修改帐号名.
 
-### 1.2.2. 使用docker部署GitLab
+### 使用docker部署GitLab
