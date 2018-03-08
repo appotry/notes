@@ -1,40 +1,6 @@
-# 1. CSS
+# CSS
 
-<!-- TOC -->
-
-- [1. CSS](#1-css)
-    - [1.1. 总结](#11-总结)
-    - [1.2. 选择器](#12-选择器)
-        - [1.2.1. id选择器](#121-id选择器)
-        - [1.2.2. class选择器](#122-class选择器)
-        - [1.2.3. 标签选择器](#123-标签选择器)
-        - [1.2.4. 关联选择器](#124-关联选择器)
-        - [1.2.5. 层级选择器](#125-层级选择器)
-        - [1.2.6. 组合选择器](#126-组合选择器)
-        - [1.2.7. 属性选择器](#127-属性选择器)
-        - [1.2.8. 属性优先级](#128-属性优先级)
-        - [1.2.9. 从文件调用css](#129-从文件调用css)
-    - [1.3. sytle](#13-sytle)
-        - [1.3.1. 边框](#131-边框)
-        - [1.3.2. 背景](#132-背景)
-        - [1.3.3. float](#133-float)
-            - [1.3.3.1. 父亲没有被撑起来的解决办法](#1331-父亲没有被撑起来的解决办法)
-        - [1.3.4. display](#134-display)
-        - [1.3.5. padding margin(0,auto)](#135-padding-margin0auto)
-        - [1.3.6. position](#136-position)
-        - [1.3.7. opacity](#137-opacity)
-            - [1.3.7.1. 模态框示例](#1371-模态框示例)
-        - [1.3.8. z-index](#138-z-index)
-        - [1.3.9. overflow: hidden,auto](#139-overflow-hiddenauto)
-        - [1.3.10. background](#1310-background)
-        - [1.3.11. hover](#1311-hover)
-    - [1.4. 实例](#14-实例)
-        - [1.4.1. 导航栏](#141-导航栏)
-        - [1.4.2. 页面右下角添加 返回顶端 按钮](#142-页面右下角添加-返回顶端-按钮)
-
-<!-- /TOC -->
-
-## 1.1. 总结
+## 总结
 
 1. 在标签上设置style属性
     - `background-color: #2459a2;`
@@ -65,7 +31,7 @@
 
 设置id之后,会使用head里面的style设置的样式
 
-## 1.2. 选择器
+## 选择器
 
 - id选择器
 - class选择器
@@ -75,9 +41,9 @@
 - 组合选择器
 - 属性选择器
 
-### 1.2.1. id选择器
+### id选择器
 
-### 1.2.2. class选择器
+### class选择器
 
 ```html
 <head>
@@ -106,7 +72,7 @@
 
 ![css-01-选择器](http://oi480zo5x.bkt.clouddn.com/css-01-选择器.jpg)
 
-### 1.2.3. 标签选择器
+### 标签选择器
 
 ```html
 <head>
@@ -129,7 +95,7 @@
 
 ![css-02-标签选择器](http://oi480zo5x.bkt.clouddn.com/css-02-标签选择器.jpg)
 
-### 1.2.4. 关联选择器
+### 关联选择器
 
 ```html
 <head>
@@ -152,7 +118,7 @@
 </body>
 ```
 
-### 1.2.5. 层级选择器
+### 层级选择器
 
 最底层的才会应用style
 
@@ -184,7 +150,7 @@
 
 ![css-03-层级选择器](http://oi480zo5x.bkt.clouddn.com/css-03-层级选择器.jpg)
 
-### 1.2.6. 组合选择器
+### 组合选择器
 
 ```html
     <style>
@@ -195,7 +161,7 @@
     </style>
 ```
 
-### 1.2.7. 属性选择器
+### 属性选择器
 
 对选择到的标签通过属性再进行一次筛选
 
@@ -219,7 +185,7 @@
 
 ![css-04-属性选择器](http://oi480zo5x.bkt.clouddn.com/css-04-属性选择器.jpg)
 
-### 1.2.8. 属性优先级
+### 属性优先级
 
 ```html
 <!DOCTYPE html>
@@ -246,7 +212,7 @@
 
 ![css-05-属性优先级](http://oi480zo5x.bkt.clouddn.com/css-05-属性优先级.jpg)
 
-### 1.2.9. 从文件调用css
+### 从文件调用css
 
 本质就是把文件里面的css 样式拿到head里面
 
@@ -278,9 +244,9 @@
 }
 ```
 
-## 1.3. sytle
+## sytle
 
-### 1.3.1. 边框
+### 边框
 
 - border: 1px solid red; 宽度,样式,颜色
 - border-left
@@ -321,9 +287,9 @@
 </body>
 ```
 
-### 1.3.2. 背景
+### 背景
 
-### 1.3.3. float
+### float
 
 - 让标签浮起来,块级标签也可以堆叠
 - 老子管不住
@@ -341,7 +307,7 @@
 
 ![css-06-float](http://oi480zo5x.bkt.clouddn.com/css-06-float.jpg)
 
-#### 1.3.3.1. 父亲没有被撑起来的解决办法
+#### 父亲没有被撑起来的解决办法
 
 下面的示例,子孙没有将父容器撑起来
 
@@ -383,7 +349,7 @@
 </body>
 ```
 
-### 1.3.4. display
+### display
 
 - display: inline;
 - display: block;
@@ -408,7 +374,7 @@
 
 ![css-08-display](http://oi480zo5x.bkt.clouddn.com/css-08-display.jpg)
 
-### 1.3.5. padding margin(0,auto)
+### padding margin(0,auto)
 
 边距
 
@@ -438,7 +404,7 @@ margin:0 auto; 顶端跟浏览器没有间隙
 </html>
 ```
 
-### 1.3.6. position
+### position
 
 - fiexd     固定在页面的某个位置,滚轮滚动也会在该位置
 - relative + absolute
@@ -480,11 +446,11 @@ margin:0 auto; 顶端跟浏览器没有间隙
 
 ![css-10-position](http://oi480zo5x.bkt.clouddn.com/css-10-position.jpg)
 
-### 1.3.7. opacity
+### opacity
 
 透明 `0~1`
 
-#### 1.3.7.1. 模态框示例
+#### 模态框示例
 
 ```html
 <!DOCTYPE html>
@@ -519,13 +485,13 @@ margin:0 auto; 顶端跟浏览器没有间隙
 
 ![css-11-opacity](http://oi480zo5x.bkt.clouddn.com/css-11-opacity.jpg)
 
-### 1.3.8. z-index
+### z-index
 
 层级顺序,看opacity中的示例
 
 数字越大越在上层
 
-### 1.3.9. overflow: hidden,auto
+### overflow: hidden,auto
 
 - hidden 内容会被修剪，并且其余内容是不可见的。
 - auto 如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
@@ -543,9 +509,9 @@ margin:0 auto; 顶端跟浏览器没有间隙
 </body>
 ```
 
-### 1.3.10. background
+### background
 
-### 1.3.11. hover
+### hover
 
 当鼠标移动到标签上是,设置的属性才生效
 
@@ -603,9 +569,9 @@ margin:0 auto; 顶端跟浏览器没有间隙
 </html>
 ```
 
-## 1.4. 实例
+## 实例
 
-### 1.4.1. 导航栏
+### 导航栏
 
 ```html
 <!DOCTYPE html>
@@ -646,7 +612,7 @@ margin:0 auto; 顶端跟浏览器没有间隙
 </html>
 ```
 
-### 1.4.2. 页面右下角添加 返回顶端 按钮
+### 页面右下角添加 返回顶端 按钮
 
 ```html
 <!DOCTYPE html>
