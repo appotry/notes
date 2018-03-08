@@ -1,6 +1,9 @@
 language: "node_js"
 node_js:
   - "node"
+before_install:
+  - wget https://github.com/jgm/pandoc/releases/download/2.1.2/pandoc-2.1.2-1-amd64.deb
+  - sudo dpkg -i pandoc-2.1.2-1-amd64.deb
 install:
   - "npm install -g gitbook@3.2.3"
   - "npm install -g gitbook-cli@2.3.2"
@@ -14,5 +17,6 @@ env:
 
 #sudo: false
 script:
+  - pandoc --version
   - travis_wait 100 bash deploy.sh "notes"
   - travis_wait 100 bash deploy.sh "java" "python"
