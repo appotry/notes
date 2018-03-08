@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# 工作目录为用户名
+# 工作目录为 用户名/仓库名
 notes_dir="$PWD"
+echo $notes_dir
 
 build_deploy(){
     dir=$1
@@ -60,6 +61,19 @@ pre_build(){
     fi
 }
 
+rst(){
+    cd ..
+    git clone --depth=2 --branch=master https://github.com/yangjinjie/notes.git notes_rst
+    echo $PWD
+    cd notes_rst
+    git checkout -b rst origin/rst
+
+    git merge -m "Merge branch 'master' into rst" master
+    bash gen_index.sh && git commit -a "gen index & md2rst"
+    git push
+    cd ../notes
+}
+
 main(){
     date "+%F %H:%M:%S"
     git config --global user.name "yangjinjie"
@@ -68,6 +82,9 @@ main(){
 
     for dir in $@
     do
+        if [ "$dir" == "rst" ];then
+            rst
+        fi
         pre_build $dir
         build_deploy $dir
     done
