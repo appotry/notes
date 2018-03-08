@@ -1,26 +1,6 @@
-<!-- TOC -->
+# elasticsearch
 
-- [1. elasticsearch](#1-elasticsearch)
-    - [1.1. 配置文件](#11-配置文件)
-        - [1.1.1. 修改elasticsearch内存](#111-修改elasticsearch内存)
-    - [1.2. 启动](#12-启动)
-    - [1.3. elasticsearch-head](#13-elasticsearch-head)
-    - [1.4. 使用curl命令操作elasticsearch](#14-使用curl命令操作elasticsearch)
-        - [1.4.1. _cat系列](#141-_cat系列)
-        - [1.4.2. 第二：_cluster系列](#142-第二_cluster系列)
-        - [1.4.3. 第三：_nodes系列](#143-第三_nodes系列)
-        - [1.4.4. 第四：索引操作](#144-第四索引操作)
-    - [1.5. 报错信息](#15-报错信息)
-        - [1.5.1. elasticsearch-head安装报错](#151-elasticsearch-head安装报错)
-        - [1.5.2. elasticsearch启动报错](#152-elasticsearch启动报错)
-        - [1.5.3. 启动elasticsearch报错](#153-启动elasticsearch报错)
-        - [1.5.4. 启动elasticsearch报错2](#154-启动elasticsearch报错2)
-
-<!-- /TOC -->
-
-# 1. elasticsearch
-
-## 1.1. 配置文件
+## 配置文件
 
 ```shell
 cat >>/etc/elasticsearch/elasticsearch.yml<<EOF
@@ -40,7 +20,7 @@ EOF
 
 ```
 
-### 1.1.1. 修改elasticsearch内存
+### 修改elasticsearch内存
 
 ```shell
 /etc/elasticsearch/jvm.options
@@ -49,7 +29,7 @@ EOF
 -Xmx2g
 ```
 
-## 1.2. 启动
+## 启动
 
 Running Elasticsearch with SysV initedit
 
@@ -78,7 +58,7 @@ sudo systemctl start elasticsearch.service
 sudo systemctl stop elasticsearch.service
 ```
 
-## 1.3. elasticsearch-head
+## elasticsearch-head
 
 [A web front end for an Elasticsearch cluster](https://github.com/mobz/elasticsearch-head)
 
@@ -109,9 +89,9 @@ site plugins are not supported. Run elasticsearch-head as a standalone server
 ```
 
 
-## 1.4. 使用curl命令操作elasticsearch
+## 使用curl命令操作elasticsearch
 
-### 1.4.1. _cat系列
+### _cat系列
 
 ```shell
 _cat系列提供了一系列查询elasticsearch集群状态的接口。你可以通过执行
@@ -164,7 +144,7 @@ Onyxx      head             NA      s    /_plugin/head/
 Onyxx      bigdesk          NA      s    /_plugin/bigdesk/
 ```
 
-### 1.4.2. 第二：_cluster系列
+### 第二：_cluster系列
 
 ```shell
 1. 查询设置集群状态
@@ -204,7 +184,7 @@ Onyxx      bigdesk          NA      s    /_plugin/bigdesk/
     delay=10s表示延迟10秒关闭
 ```
 
-### 1.4.3. 第三：_nodes系列
+### 第三：_nodes系列
 
 ```shell
 1、查询节点的状态
@@ -218,7 +198,7 @@ Onyxx      bigdesk          NA      s    /_plugin/bigdesk/
     curl -XGET ‘http://localhost:9200/_nodes/hot_threads
 ```
 
-### 1.4.4. 第四：索引操作
+### 第四：索引操作
 
 ```shell
 1、获取索引
@@ -267,9 +247,9 @@ Onyxx      bigdesk          NA      s    /_plugin/bigdesk/
     }
 ```
 
-## 1.5. 报错信息
+## 报错信息
 
-### 1.5.1. elasticsearch-head安装报错
+### elasticsearch-head安装报错
 
 ```shell
 npm ERR! Failed at the phantomjs-prebuilt@2.1.14 install script 'node install.js'.
@@ -279,7 +259,7 @@ npm ERR! If you do, this is most likely a problem with the phantomjs-prebuilt pa
 如果报以上错误，可能是因为网络问题，可以使用淘宝NPM镜像
 ```
 
-### 1.5.2. elasticsearch启动报错
+### elasticsearch启动报错
 
 ```shell
 [2017-02-15T14:02:19,113][INFO ][o.e.n.Node               ] [node-1] starting ...
@@ -312,7 +292,7 @@ sysctl -w vm.max_map_count=655360
 ```
 
 
-### 1.5.3. 启动elasticsearch报错
+### 启动elasticsearch报错
 
 情况:Ubuntu查看日志
 
@@ -341,7 +321,7 @@ root@ubuntu66:~# ln -s /opt/jdk/bin/java /usr/bin/java
 root@ubuntu66:~# ln -s /opt/jdk/bin/javac /usr/bin/javac
 ```
 
-### 1.5.4. 启动elasticsearch报错2
+### 启动elasticsearch报错2
 
 ```shell
 Feb 15 16:28:16 iZm5e7si86xwstzpneime7Z elasticsearch[11697]: Exception in thread "main" SettingsException[Failed to load settings from /etc/elasticsearch/elasticsearch.yml]; nested: AccessDeniedException[/etc/elasticsearch/elasticsearch.yml];
