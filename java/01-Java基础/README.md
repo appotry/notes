@@ -1,21 +1,5 @@
 # Java基础
 
-<!-- TOC -->
-
-- [Java基础](#java基础)
-    - [介绍](#介绍)
-    - [Java环境安装与配置](#java环境安装与配置)
-        - [MacOS安装JDK](#macos安装jdk)
-        - [Linux](#linux)
-            - [使用tar.gz包安装](#使用targz包安装)
-            - [Ubuntu使用apt-get安装](#ubuntu使用apt-get安装)
-        - [Windows](#windows)
-    - [JDK, JRE, JVM](#jdk-jre-jvm)
-    - [开发工具](#开发工具)
-    - [笔记参考](#笔记参考)
-
-<!-- /TOC -->
-
 ## 介绍
 
 ## Java环境安装与配置
