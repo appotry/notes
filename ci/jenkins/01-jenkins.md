@@ -1,25 +1,6 @@
-<!-- TOC -->
-
-- [Jenkins](#jenkins)
-    - [安装Jenkins](#安装jenkins)
-        - [OS X](#os-x)
-        - [Docker](#docker)
-        - [Windows](#windows)
-        - [Ubuntu/Debian](#ubuntudebian)
-    - [Docker启动](#docker启动)
-    - [Setup Wizard](#setup-wizard)
-    - [使用Jenkins](#使用jenkins)
-        - [添加 Slave 节点(如有需要)](#添加-slave-节点如有需要)
-        - [搭建Node.js环境](#搭建nodejs环境)
-            - [通过Install from `nodejs.org`方式](#通过install-from-nodejsorg方式)
-            - [通过 Extract `*.zip/*.tar.gz` 方式](#通过-extract-ziptargz-方式)
-                - [安装配置 NodeJS Plugin](#安装配置-nodejs-plugin)
-                - [新建 Pipeline 项目](#新建-pipeline-项目)
-    - [常用插件](#常用插件)
-
-<!-- /TOC -->
-
 # Jenkins
+
+<extoc></extoc>
 
 ## 安装Jenkins
 
@@ -31,7 +12,6 @@
 
 1. 使用包安装
 2. 使用brew安装
-
 
 * 下载 pkg 包 [http://mirrors.jenkins.io/osx/latest](http://mirrors.jenkins.io/windows/latest)
 * 安装
@@ -135,7 +115,9 @@ docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 
 > 需要下载镜像 jenkinsci/jnlp-slave
 
+```shell
 docker run --link jenkins -d jenkinsci/jnlp-slave -url  http://jenkins:8080 ab96387cc533b8be663ccfc57fce9f0e41b11cd6b07f96941e2b51164832f610 slave01
+```
 
 启动容器后刷新 Jenkins 的节点列表， 很快 slave01 节点就变成可用的啦。
 
