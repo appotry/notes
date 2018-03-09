@@ -14,7 +14,7 @@ Table of content
 
 .. toctree::
    :glob:
-   :maxdepth: 5
+   :maxdepth: 3
 
    */index
 
