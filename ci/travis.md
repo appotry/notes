@@ -1,5 +1,7 @@
 # travis
 
+[Getting started](https://docs.travis-ci.com/user/getting-started/)
+
 ## Personal access tokens
 
 新建一个token,配置如下权限即可(token只显示一次)
