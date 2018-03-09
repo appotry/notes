@@ -6,29 +6,6 @@
 
 [Search Guard SSL](https://github.com/floragunncom/search-guard-ssl)
 
-## Table of content
-
-<!-- TOC -->
-
-- [search-guard 5](#search-guard-5)
-    - [Table of content](#table-of-content)
-    - [安装](#安装)
-- [Search Guard 插件配置](#search-guard-插件配置)
-    - [生成密钥库和信任库](#生成密钥库和信任库)
-        - [修改`gen_node_cert.sh`](#修改gen_node_certsh)
-        - [修改脚本`gen_client_node_cert.sh`,生成sgadmin keystore password,kirk keystore password](#修改脚本gen_client_node_certsh生成sgadmin-keystore-passwordkirk-keystore-password)
-    - [配置elasticsearch](#配置elasticsearch)
-        - [复制密钥库和信任库文件](#复制密钥库和信任库文件)
-        - [node-1 配置插件](#node-1-配置插件)
-            - [配置HTTPS](#配置https)
-    - [配置search guard](#配置search-guard)
-    - [配置logstash](#配置logstash)
-    - [配置kibana](#配置kibana)
-    - [配置sgadmin限制权限](#配置sgadmin限制权限)
-    - [执行sgtool](#执行sgtool)
-
-<!-- /TOC -->
-
 ## 安装
 
 安装配置Search Guard之前,需要先确定es集群能够健康的跑起来
