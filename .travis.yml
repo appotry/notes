@@ -4,6 +4,7 @@ node_js:
 before_install:
   - wget https://github.com/jgm/pandoc/releases/download/2.1.2/pandoc-2.1.2-1-amd64.deb
   - sudo dpkg -i pandoc-2.1.2-1-amd64.deb
+  - sudo mv -f pandoc-2.1.2-1-amd64.deb /tmp
 install:
   - "npm install -g gitbook@3.2.3"
   - "npm install -g gitbook-cli@2.3.2"
