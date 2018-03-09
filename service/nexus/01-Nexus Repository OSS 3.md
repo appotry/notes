@@ -1,20 +1,3 @@
-<!-- TOC -->
-
-- [Nexus Repository Manager](#nexus-repository-manager)
-- [安装和运行](#安装和运行)
-    - [使用Docker运行](#使用docker运行)
-    - [访问Nexus](#访问nexus)
-    - [目录说明](#目录说明)
-        - [安装目录](#安装目录)
-        - [数据目录](#数据目录)
-    - [修改HTTP端口](#修改http端口)
-- [使用web界面](#使用web界面)
-- [配置](#配置)
-- [问题](#问题)
-    - [启动容器的时候,异常退出](#启动容器的时候异常退出)
-
-<!-- /TOC -->
-
 # Nexus Repository Manager
 
 [Documentation Nexus Repository Manager 3.3](http://books.sonatype.com/nexus-book/reference3/index.html)
