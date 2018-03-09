@@ -1,23 +1,5 @@
 # Django相关命令
 
-<!-- TOC -->
-
-- [Django相关命令](#django相关命令)
-    - [python manage.py](#python-managepy)
-    - [django-admin project mysite](#django-admin-project-mysite)
-    - [python manage.py startapp app](#python-managepy-startapp-app)
-    - [创建数据库表,更改数据库表或字段](#创建数据库表更改数据库表或字段)
-        - [python manage.py makemigrations](#python-managepy-makemigrations)
-        - [python manage.py migrate](#python-managepy-migrate)
-    - [python manage.py runserver](#python-managepy-runserver)
-    - [python manage.py flush](#python-managepy-flush)
-    - [python manage.py createsuperuser](#python-managepy-createsuperuser)
-    - [导出,导入数据](#导出导入数据)
-    - [python manage.py shell](#python-managepy-shell)
-    - [python manage.py dbshell](#python-managepy-dbshell)
-
-<!-- /TOC -->
-
 ## python manage.py
 
 查看所有命令
