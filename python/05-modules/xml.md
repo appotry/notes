@@ -1,13 +1,5 @@
 # xml
 
-<!-- TOC -->
-
-- [xml](#xml)
-    - [xml.etree.ElementTree](#xmletreeelementtree)
-    - [xml.parsers.expat(难用)](#xmlparsersexpat难用)
-
-<!-- /TOC -->
-
 ```python
 import xml.etree.ElementTree as ET
 help(ET)
