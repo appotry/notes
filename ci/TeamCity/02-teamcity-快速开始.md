@@ -1,8 +1,9 @@
 # 快速开始
 
-[TeamCity Documentation](https://confluence.jetbrains.com/display/TCD10/TeamCity+Documentation)
+## 参考
 
-[https://confluence.jetbrains.com/display/TCD10/Configure+and+Run+Your+First+Build](https://confluence.jetbrains.com/display/TCD10/Configure+and+Run+Your+First+Build)
+- [TeamCity Documentation](https://confluence.jetbrains.com/display/TCD10/TeamCity+Documentation)
+- [https://confluence.jetbrains.com/display/TCD10/Configure+and+Run+Your+First+Build](https://confluence.jetbrains.com/display/TCD10/Configure+and+Run+Your+First+Build)
 
 ## TeamCity Web
 
@@ -46,6 +47,6 @@ TeamCity将构建历史,用户信息,构建结果等存放在数据库中,初次
 * Parameters
 * 等等
 
-# 帮助中心
+## 帮助中心
 
 [帮助中心](https://teamcity-support.jetbrains.com/hc/en-us/search?utf8=%E2%9C%93&query=&gsearch=true)
