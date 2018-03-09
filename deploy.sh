@@ -84,6 +84,7 @@ main(){
     do
         if [ "$dir" == "rst" ];then
             rst
+            continue
         fi
         pre_build $dir
         build_deploy $dir
