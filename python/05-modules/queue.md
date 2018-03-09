@@ -2,24 +2,6 @@
 
 [https://docs.python.org/3/library/queue.html](https://docs.python.org/3/library/queue.html)
 
-<!-- TOC -->
-
-- [queue](#queue)
-    - [队列方法](#队列方法)
-        - [Queue.qsize()](#queueqsize)
-        - [Queue.empty()](#queueempty)
-        - [Queue.full()](#queuefull)
-        - [Queue.put(item, block=True, timeout=None)](#queueputitem-blocktrue-timeoutnone)
-        - [Queue.put_nowait(item)](#queueput_nowaititem)
-        - [Queue.get(block=True, timeout=None)](#queuegetblocktrue-timeoutnone)
-        - [Queue.get_nowait()](#queueget_nowait)
-        - [Queue.task_done()](#queuetask_done)
-        - [Queue.join()](#queuejoin)
-    - [实例](#实例)
-    - [其他](#其他)
-
-<!-- /TOC -->
-
 **`queue`模块定义了如下类, 以及异常.**
 
 - class `queue.Queue(maxsize=0)`
