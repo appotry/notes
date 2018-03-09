@@ -1,25 +1,5 @@
 # Visual Studio Code
 
-<!-- TOC -->
-
-- [Visual Studio Code](#visual-studio-code)
-    - [Visual Studio Code Settings Sync](#visual-studio-code-settings-sync)
-    - [文件默认换行符设置](#文件默认换行符设置)
-    - [图床工具](#图床工具)
-    - [扩展Visual Studio Code](#扩展visual-studio-code)
-        - [Yo Code - Extension Generator](#yo-code---extension-generator)
-            - [依赖](#依赖)
-            - [安装](#安装)
-            - [运行 Yo Code](#运行-yo-code)
-        - [第一个扩展插件](#第一个扩展插件)
-            - [生成插件](#生成插件)
-            - [package.json](#packagejson)
-            - [生成代码](#生成代码)
-        - [打包发布](#打包发布)
-            - [打包](#打包)
-
-<!-- /TOC -->
-
 ## Visual Studio Code Settings Sync
 
 使用插件同步vscode配置
