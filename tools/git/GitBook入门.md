@@ -3,8 +3,6 @@
 - [GitBook帮助中心](https://help.gitbook.com/)
 - [Toolchain](https://toolchain.gitbook.com/)
 
-<extoc></extoc>
-
 ## 安装
 
 ### 安装 Node.js
