@@ -1,18 +1,6 @@
 # Collections
 
-1. 是针对集合进行操作的工具类
-
-<!-- TOC -->
-
-- [Collections](#collections)
-    - [Collection和Collections的区别](#collection和collections的区别)
-    - [常见的几个小方法](#常见的几个小方法)
-    - [案例](#案例)
-    - [Collection集合总结](#collection集合总结)
-    - [在集合中常见的数据结构(掌握)](#在集合中常见的数据结构掌握)
-    - [针对Collection集合我们到底使用谁](#针对collection集合我们到底使用谁)
-
-<!-- /TOC -->
+是针对集合进行操作的工具类
 
 ## Collection和Collections的区别
 
