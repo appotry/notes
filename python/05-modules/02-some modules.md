@@ -1,30 +1,5 @@
 # 一些模块
 
-<!-- TOC -->
-
-- [一些模块](#一些模块)
-    - [Celery](#celery)
-    - [docopt](#docopt)
-    - [six](#six)
-    - [Gunicorn](#gunicorn)
-    - [Pexpect](#pexpect)
-    - [subprocess](#subprocess)
-    - [tablib](#tablib)
-    - [inspect](#inspect)
-    - [click](#click)
-    - [`__future__`](#__future__)
-    - [Excel](#excel)
-        - [xlrd](#xlrd)
-        - [xlwt](#xlwt)
-        - [openpyxl](#openpyxl)
-        - [xlsxwriter](#xlsxwriter)
-    - [db](#db)
-        - [pyodbc](#pyodbc)
-    - [爬虫](#爬虫)
-        - [beautifulsoup4](#beautifulsoup4)
-
-<!-- /TOC -->
-
 ## Celery
 
 **Distributed Task Queue**
