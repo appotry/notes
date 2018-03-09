@@ -1,13 +1,5 @@
 # ssh加密私钥避免重复输入(keychain)
 
-<!-- TOC -->
-
-- [ssh加密私钥避免重复输入(keychain)](#ssh加密私钥避免重复输入keychain)
-    - [keychain](#keychain)
-        - [Mac电脑使用keychain](#mac电脑使用keychain)
-
-<!-- /TOC -->
-
 [ssh](https://wiki.archlinux.org/index.php/SSH_keys)
 
     中英文内容不太一样
