@@ -1,28 +1,3 @@
-<!-- TOC -->
-
-- [布尔类型(bool)](#布尔类型bool)
-- [集合(set)](#集合set)
-    - [集合所提供的方法](#集合所提供的方法)
-        - [add](#add)
-        - [clear](#clear)
-        - [copy浅拷贝](#copy浅拷贝)
-        - [difference,差集](#difference差集)
-        - [difference_update](#difference_update)
-        - [discard](#discard)
-        - [remove](#remove)
-        - [intersection,交集](#intersection交集)
-        - [intersection_update](#intersection_update)
-        - [isdisjoint](#isdisjoint)
-        - [issubset](#issubset)
-        - [issuperset](#issuperset)
-        - [pop](#pop)
-        - [symmetric_difference](#symmetric_difference)
-        - [symmetric_difference_update](#symmetric_difference_update)
-        - [union,并集](#union并集)
-        - [update](#update)
-
-<!-- /TOC -->
-
 # 布尔类型(bool)
 
 布尔类型其实就是数字0和1的变种而来，即 `真(True/1)` 或 `假(False/0)`，实际上就是内置的数字类型的子类而已。
