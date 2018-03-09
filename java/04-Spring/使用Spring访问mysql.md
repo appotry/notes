@@ -3,20 +3,7 @@
 - [参考地址](https://spring.io/guides/gs/accessing-data-mysql/)
 - [GitHub 项目地址](https://github.com/spring-guides/gs-accessing-data-mysql)
 
-<!-- TOC -->
-
-- [访问mysql](#访问mysql)
-    - [创建数据库](#创建数据库)
-    - [创建application.properties文件](#创建applicationproperties文件)
-    - [创建 @Entity 模型](#创建-entity-模型)
-    - [创建repository](#创建repository)
-    - [创建controller](#创建controller)
-    - [打包](#打包)
-    - [测试应用](#测试应用)
-
-<!-- /TOC -->
-
-前提
+## 前提
 
 - `JDK 1.8`或更高
 - `Gradle 2.3+` or `Maven 3.0+`
