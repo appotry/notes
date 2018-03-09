@@ -22,7 +22,7 @@ Option-Command-esc 强制退出
 
 #### 标签(tab)操作
 
-```xxx
+```shell
 shitt+comamnd+\：所有标签页，可配合左右键和单指左右滑动。对应手势操作：双指捏合、放开。
 command+T：新建标签
 command+L/option(alt)+command+F/fn＋control+F5：定位地址栏/聚焦搜索栏
@@ -44,7 +44,7 @@ shift+command+R：进入阅读器模式
 
 #### 书签(bookmarks)操作
 
-```xxx
+```shell
 control+command+1: 显示书签边栏
 command+D：添加到收藏夹（书签栏）
 option(alt)+command+B：管理/编辑书签页
@@ -53,7 +53,7 @@ shift+command+N：新建书签文件夹
 
 #### 阅读列表(Read it later list)
 
-```xxx
+```shell
 control+command+2: 显示阅读列表边栏
 shift+command+D：将当前页添加到阅读列表
 shift+点按：将链接添加到阅读列表
@@ -63,7 +63,7 @@ option(alt)+command+↓：阅读列表下一个项目
 
 #### 显示/隐藏
 
-```xxx
+```shell
 shift+command+B：收藏栏
 shift+command+T：标签页栏
 shift+command+L：侧边栏（书签／阅读）
@@ -73,7 +73,7 @@ option(alt)+command+2：显示历史记录
 
 #### 查找
 
-```xxx
+```shell
 command+F：查找
 command+G/enter：查找下一个
 shift+command+G/shift+enter：查找上一个
@@ -81,7 +81,7 @@ shift+command+G/shift+enter：查找上一个
 
 #### 缩放
 
-```xxx
+```shell
 command++：放大
 command+-：缩小
 command+0：恢复默认
@@ -90,7 +90,7 @@ command+0：恢复默认
 
 #### 查看扩展
 
-```xxx
+```shell
 command+,：偏好设置->扩展
 ```
 
