@@ -5,14 +5,7 @@
 1. zabbix-agent 加载 `zabbix_module_docker.so` 模块(配置之后,重启zabbix-agent)
 2. 导入模块,添加主机
 
-<!-- TOC -->
-
-- [Docker容器监控](#docker容器监控)
-    - [宿主机直接运行 Zabbix-agent](#宿主机直接运行-zabbix-agent)
-
-<!-- /TOC -->
-
-监控方案
+## 监控方案
 
 使用 [zabbix-docker-monitoring](https://github.com/monitoringartist/zabbix-docker-monitoring) 插件。
 
