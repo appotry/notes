@@ -19,7 +19,7 @@ alias pycharm="open -a pycharm"
 
 ## PyCharm快捷键
 
-```xxx
+```shell
 cmd+d 在下一行复制本行的内容
 opt + cmd + l 代码块对齐
 Tab / Shift + Tab 缩进、不缩进当前行
