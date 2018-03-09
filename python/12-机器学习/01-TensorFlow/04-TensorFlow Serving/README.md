@@ -2,29 +2,6 @@
 
 [GitHub](https://github.com/tensorflow/serving)
 
-<!-- TOC -->
-
-- [TensorFlow Serving](#tensorflow-serving)
-    - [介绍](#介绍)
-    - [下载安装](#下载安装)
-        - [先决条件](#先决条件)
-            - [Bazel (only if compiling source code)](#bazel-only-if-compiling-source-code)
-            - [gRPC](#grpc)
-            - [一些依赖包](#一些依赖包)
-            - [TensorFlow Serving Python API PIP package](#tensorflow-serving-python-api-pip-package)
-        - [通过apt-get安装](#通过apt-get安装)
-            - [可用二进制包](#可用二进制包)
-            - [安装ModelServer](#安装modelserver)
-        - [通过源码安装](#通过源码安装)
-            - [克隆TensorFlow Serving 仓库](#克隆tensorflow-serving-仓库)
-            - [安装依赖](#安装依赖)
-            - [构建](#构建)
-            - [Optimized build](#optimized-build)
-            - [持续构建](#持续构建)
-    - [使用docker部署TensorFlow Serving](#使用docker部署tensorflow-serving)
-
-<!-- /TOC -->
-
 ## 介绍
 
 TensorFlow Serving is an open-source software library for serving machine learning models. It deals with the inference aspect of machine learning, taking models after training and managing their lifetimes, providing clients with versioned access via a high-performance, reference-counted lookup table.
