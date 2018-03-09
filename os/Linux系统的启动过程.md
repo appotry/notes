@@ -1,18 +1,3 @@
-<!-- TOC -->
-
-- [Linux系统启动流程](#linux系统启动流程)
-    - [一．BIOS自检](#一．bios自检)
-    - [二．启动GRUB/LILO](#二．启动grublilo)
-    - [三．加载内核](#三．加载内核)
-    - [四．执行init进程](#四．执行init进程)
-    - [五．通过/etc/inittab文件进行初始化](#五．通过etcinittab文件进行初始化)
-        - [/etc/rc.d/rc.sysinit](#etcrcdrcsysinit)
-        - [/etc/rc.d/rcX.d/[KS]](#etcrcdrcxdks)
-        - [执行/etc/ec.d/rc.local](#执行etcecdrclocal)
-    - [六．执行/bin/login程序](#六．执行binlogin程序)
-
-<!-- /TOC -->
-
 # Linux系统启动流程
 
 下面是整个Linux系统的启动过程：
