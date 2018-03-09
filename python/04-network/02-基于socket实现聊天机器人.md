@@ -1,17 +1,5 @@
 # 基于socket实现聊天机器人
 
-<!-- TOC -->
-
-- [基于socket实现聊天机器人](#基于socket实现聊天机器人)
-    - [第一份](#第一份)
-        - [server](#server)
-        - [client](#client)
-    - [第二份](#第二份)
-        - [server](#server-1)
-        - [client](#client-1)
-
-<!-- /TOC -->
-
 ## 第一份
 
 ### server
