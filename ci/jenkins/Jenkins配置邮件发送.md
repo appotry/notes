@@ -10,7 +10,6 @@
 
 具体配置参数：
 
-
 ```shell
 SMTP server smtp.exmail.qq.com
 
@@ -58,5 +57,3 @@ Project Recipient List
 点击“Advanced Settins...”
 
 点击“Add Trigger”分别选择 "Success","Failure - Any", "Not Built"  3个触发器（成功，失败，都会发邮件）
-
-
