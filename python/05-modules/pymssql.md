@@ -3,20 +3,6 @@
 - [http://www.pymssql.org/en/stable/intro.html](http://www.pymssql.org/en/stable/intro.html)
 - [https://pypi.python.org/pypi/pymssql](https://pypi.python.org/pypi/pymssql)
 
-<!-- TOC -->
-
-- [pymssql](#pymssql)
-    - [先决条件](#先决条件)
-    - [安装](#安装)
-        - [mac下安装可能会出现如下报错, `__pyx_r = DBVERSION_80;`](#mac下安装可能会出现如下报错-__pyx_r--dbversion_80)
-    - [示例](#示例)
-        - [插入数据并查询](#插入数据并查询)
-        - [查询](#查询)
-        - [游标的注意事项](#游标的注意事项)
-        - [当处理一个事务的时候](#当处理一个事务的时候)
-
-<!-- /TOC -->
-
 ## 先决条件
 
 依赖 [FreeTDS](http://www.freetds.org/)
