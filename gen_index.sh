@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# delete *.rst 
+find . -type f -name "*.rst" ! -path "./index.rst" | xargs rm -f
+
 # md2rst
 find . -type f -name "*.md"|awk -F "." '{print "pandoc -f markdown -t rst \""$0"\" -o \"." $2".rst\""}'|bash
 
