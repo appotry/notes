@@ -4,18 +4,6 @@
 
 请求地址 `https://api.github.com`
 
-<!-- TOC -->
-
-- [Gists](#gists)
-    - [认证](#认证)
-    - [列出某个用户的 gists](#列出某个用户的-gists)
-    - [获取某个 gist](#获取某个-gist)
-    - [创建 gist](#创建-gist)
-    - [编辑 gist](#编辑-gist)
-    - [其他详见官方开发文档](#其他详见官方开发文档)
-
-<!-- /TOC -->
-
 ## 认证
 
 [scopes-for-oauth](https://developer.github.com/apps/building-oauth-apps/scopes-for-oauth-apps/)
