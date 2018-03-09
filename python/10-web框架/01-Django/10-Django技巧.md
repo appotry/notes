@@ -1,22 +1,5 @@
 # Django技巧
 
-<!-- TOC -->
-
-- [Django技巧](#django技巧)
-    - [判断用户是否登录](#判断用户是否登录)
-    - [自定义admin界面](#自定义admin界面)
-        - [设置templates](#设置templates)
-    - [Django admin 上传下载](#django-admin-上传下载)
-        - [Django 上传文件](#django-上传文件)
-        - [Django下载文件](#django下载文件)
-            - [html](#html)
-            - [视图函数](#视图函数)
-    - [Django自定义action](#django自定义action)
-    - [Django中的csrf](#django中的csrf)
-    - [关闭Debug之后, 静态文件的问题](#关闭debug之后-静态文件的问题)
-
-<!-- /TOC -->
-
 ## 判断用户是否登录
 
 ```python
