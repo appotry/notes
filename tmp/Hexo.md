@@ -4,29 +4,6 @@
 
 Hexo is a fast, simple and powerful blog framework. You write posts in Markdown (or other languages) and Hexo generates static files with a beautiful theme in seconds.
 
-<!-- TOC -->
-
-- [Hexo](#hexo)
-    - [先决条件](#先决条件)
-        - [Install Git](#install-git)
-        - [Install Node.js](#install-nodejs)
-    - [安装](#安装)
-    - [使用Hexo](#使用hexo)
-        - [查看帮助](#查看帮助)
-        - [快速开始](#快速开始)
-    - [Hexo配置](#hexo配置)
-        - [配置文件](#配置文件)
-        - [修改主题](#修改主题)
-            - [使用Next主题](#使用next主题)
-            - [Maupassant主题——大道至简](#maupassant主题大道至简)
-    - [Deployment](#deployment)
-        - [部署到GitHub Pages](#部署到github-pages)
-            - [安装部署插件](#安装部署插件)
-            - [修改设置](#修改设置)
-            - [部署](#部署)
-
-<!-- /TOC -->
-
 ## 先决条件
 
 依赖
