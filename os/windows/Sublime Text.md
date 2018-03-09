@@ -2,7 +2,7 @@
 
 ## 主题配置
 
-```xxx
+```shell
 Preferences.sublime-theme 文件配置  主题设置
 
 {
@@ -21,7 +21,7 @@ Preferences.sublime-theme 文件配置  主题设置
 
 ## Sublime Text 常用插件说明
 
-```xxx
+```shell
 (1)Alignment: 代码对齐插件，即"="号对齐，变量定义太多，长短不一，可一键对齐，默认快捷键Ctrl+Alt+A可能和QQ截屏功能冲突，可设置其他快捷键如：Ctrl+Shift+Alt+A
 (2)AutoFileName: 快捷输入文件名插件，自动完成文件名的输入，如图片选取，输入"/"即可看到相对于本项目文件夹的其他文件。
 (3)BracketHighlighter: 代码匹配插件，可匹配[], (), {}, “”, ”, ，高亮标记，便于查看起始和结束标记，点击对应代码即可。
@@ -50,7 +50,7 @@ Preferences.sublime-theme 文件配置  主题设置
 
 修改主题的配置文件即可。例如：使用流风清音汉化版，其默认主题为“Nil-Theme”，那么配置文件的相应路径是“Data\Packages\Nil-Theme\Nil.sublime-theme”。
 
-```xxx
+```shell
 /** Sidebar tree (bg) **/
 {
 “class”: “sidebar_tree”,
@@ -73,7 +73,7 @@ Preferences.sublime-theme 文件配置  主题设置
 
 依次点击“首选项” – “设置 – 用户”打开文件，按原有格式添加以下配置即可。提示：记得给原来的最后一行末尾添加一个半角逗号。
 
-```xxx
+```shell
 “caret_style”: “phase”,
 “caret_extra_top”: 0,
 “caret_extra_bottom”: 0,
@@ -84,7 +84,7 @@ Preferences.sublime-theme 文件配置  主题设置
 
 在主题模板规则中添加如下配置即可。
 
-```xxx
+```shell
 {
 “class”: “icon_folder”,
 “content_margin”: [0,0]
