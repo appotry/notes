@@ -1,13 +1,3 @@
-<!-- TOC -->
-
-- [Windows](#windows)
-    - [Windows 10 svchost.exe一直占用网速](#windows-10-svchostexe一直占用网速)
-    - [window 查看系统版本](#window-查看系统版本)
-    - [windows 远程链接远程windows服务器](#windows-远程链接远程windows服务器)
-    - [windows cmd 过滤字符](#windows-cmd-过滤字符)
-
-<!-- /TOC -->
-
 # Windows
 
 ## Windows 10 svchost.exe一直占用网速
