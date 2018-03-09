@@ -68,7 +68,7 @@ rst(){
     echo $PWD
     git checkout -b rst origin/rst
     git merge -m "Merge branch 'master' into rst" master
-    bash gen_index.sh && git add . && git commit -m "gen index & md2rst"
+    bash gen_index.sh && git add . && git commit -m "[Travis] gen index & md2rst"
     git push "https://${GH_TOKEN}@github.com/yangjinjie/notes.git" rst:rst
 
     exit
