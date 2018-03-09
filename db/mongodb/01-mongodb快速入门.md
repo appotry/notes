@@ -1,20 +1,5 @@
 # mongodb快速入门
 
-<!-- TOC -->
-
-- [mongodb快速入门](#mongodb快速入门)
-    - [安装](#安装)
-    - [mongo shell](#mongo-shell)
-        - [创建数据库](#创建数据库)
-        - [删除数据库](#删除数据库)
-        - [创建集合](#创建集合)
-        - [删除集合](#删除集合)
-        - [插入文档](#插入文档)
-        - [查询文档](#查询文档)
-        - [RDBMS Where子句等效于MongoDB](#rdbms-where子句等效于mongodb)
-
-<!-- /TOC -->
-
 ## 安装
 
 [mongodb install](https://docs.mongodb.com/master/administration/install-community/)
@@ -41,24 +26,13 @@ MongoDB server version: 3.4.2
 Welcome to the MongoDB shell.
 For interactive help, type "help".
 For more comprehensive documentation, see
-	http://docs.mongodb.org/
+    http://docs.mongodb.org/
 Questions? Try the support group
-	http://groups.google.com/group/mongodb-user
+    http://groups.google.com/group/mongodb-user
 Server has startup warnings:
 2017-03-06T21:35:50.232+0800 I STORAGE  [initandlisten]
-2017-03-06T21:35:50.232+0800 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
-2017-03-06T21:35:50.232+0800 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
-2017-03-06T21:35:50.288+0800 I CONTROL  [initandlisten]
-2017-03-06T21:35:50.288+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
-2017-03-06T21:35:50.288+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
-2017-03-06T21:35:50.288+0800 I CONTROL  [initandlisten]
-2017-03-06T21:35:50.288+0800 I CONTROL  [initandlisten]
-2017-03-06T21:35:50.288+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
-2017-03-06T21:35:50.288+0800 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
-2017-03-06T21:35:50.288+0800 I CONTROL  [initandlisten]
-2017-03-06T21:35:50.288+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
-2017-03-06T21:35:50.288+0800 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
-2017-03-06T21:35:50.288+0800 I CONTROL  [initandlisten]
+
+...
 
 ```
 
@@ -135,6 +109,7 @@ MongoDB的默认数据库是test。 如果没有创建任何数据库，那么�
  size | number | (可选)指定的上限集合字节的最大尺寸.如果capped是true,那么还需要指定这个字段.
  max | number | (可选)指定上限集合允许的最大文件数.
 
+```shell
     > db.createCollection("mycol", { capped : true, autoIndexId:true, size : 6142800, max : 10000 } )
     {
         "note" : "the autoIndexId option is deprecated and will be removed in a future release",
@@ -143,13 +118,16 @@ MongoDB的默认数据库是test。 如果没有创建任何数据库，那么�
     > show collections
     mycol
     mycollection
+```
 
 ### 删除集合
 
+```shell
     db.COLLECTION_NAME.drop()
 
     > db.mycollection.drop()
     true
+```
 
 ### 插入文档
 
@@ -174,10 +152,13 @@ MongoDB的默认数据库是test。 如果没有创建任何数据库，那么�
 
 要从集合查询Mongodb数据,需要使用find()方法
 
-    db.COLLECTION_NAME.find()
+```shell
+db.COLLECTION_NAME.find()
+```
 
 find() 方法将在非结构化的方式显示所有的文件。 如果显示结果是格式化的，那么可以用pretty() 方法。
 
+```shell
     > db.mycol.find()
     { "_id" : ObjectId("58be1aaaf84bcc15e691533b"), "title" : "MongoDB Overview", "description" : "MongoDB is no sql database", "likes" : 100 }
     > db.mycol.find().pretty()
@@ -188,6 +169,7 @@ find() 方法将在非结构化的方式显示所有的文件。 如果显示结
         "likes" : 100
     }
     >
+```
 
 除了find()方法,还有findOne()方法,仅返回一个文档
 
@@ -195,13 +177,36 @@ find() 方法将在非结构化的方式显示所有的文件。 如果显示结
 
 查询文档在一些条件的基础上，可以使用下面的操作
 
-操作  | 语法  | 示例  | RDBMS等效语句
-----|-----|-----|----------
-Equality  | `{<key>:<value>}`  | `db.mycol.find({"by":"yiibai tutorials"}).pretty()`  | `where by = 'yiibai tutorials'`
-Less Than  | `{<key>:{$lt:<value>}}`  | `db.mycol.find({"likes":{$lt:50}}).pretty()`  | `where likes < 50`
-Less Than Equals  | `{<key>:{$lte:<value>}}`  | `db.mycol.find({"likes":{$lte:50}}).pretty() ` | `where likes <= 50`
-Greater Than  | `{<key>:{$gt:<value>}}`  | `db.mycol.find({"likes":{$gt:50}}).pretty()`  | `where likes > 50`
-Greater Than Equals  | `{<key>:{$gte:<value>}}`  | `db.mycol.find({"likes":{$gte:50}}).pretty()`  | `where likes >= 50`
-Not Equals  | `{<key>:{$ne:<value>}}`  | `db.mycol.find({"likes":{$ne:50}}).pretty()`  | `where likes != 50`
+```shell
+操作: Equality
+    语法: {<key>:<value>}
+    示例: db.mycol.find({"by":"yiibai tutorials"}).pretty()
+    RDBMS等效语句: where by = 'yiibai tutorials'
+
+Less Than
+    {<key>:{$lt:<value>}}
+    db.mycol.find({"likes":{$lt:50}}).pretty()
+    where likes < 50
+
+Less Than Equals
+    {<key>:{$lte:<value>}}
+    db.mycol.find({"likes":{$lte:50}}).pretty()
+    where likes <= 50
+
+Greater Than
+    {<key>:{$gt:<value>}}
+    db.mycol.find({"likes":{$gt:50}}).pretty()
+    where likes > 50
+
+Greater Than Equals
+    {<key>:{$gte:<value>}}
+    db.mycol.find({"likes":{$gte:50}}).pretty()
+    where likes >= 50
+
+Not Equals
+    {<key>:{$ne:<value>}}
+    db.mycol.find({"likes":{$ne:50}}).pretty()
+    where likes != 50
+```
 
 [Mongodb](http://www.yiibai.com/mongodb/mongodb_quick_guide.html)
