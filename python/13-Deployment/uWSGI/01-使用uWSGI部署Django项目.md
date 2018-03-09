@@ -11,35 +11,6 @@ web服务器网管接口(Web Server Gateway Interface) [WSGI](http://wsgi.readth
 the web client <-> the web server <-> the socket <-> uwsgi <-> Django
 ```
 
-<!-- TOC -->
-
-- [UWSGI部署Django项目](#uwsgi部署django项目)
-    - [先决条件](#先决条件)
-        - [virtualenv](#virtualenv)
-        - [Django](#django)
-        - [域名及端口](#域名及端口)
-    - [uWSGI安装及简单配置](#uwsgi安装及简单配置)
-        - [在虚拟环境安装uWSGI](#在虚拟环境安装uwsgi)
-        - [基础测试](#基础测试)
-        - [基本测试](#基本测试)
-        - [测试Django项目](#测试django项目)
-    - [Nginx](#nginx)
-        - [安装Nginx](#安装nginx)
-        - [配置Nginx](#配置nginx)
-        - [部署静态文件](#部署静态文件)
-        - [测试Nginx](#测试nginx)
-    - [nginx, uWSGI 测试 test.py](#nginx-uwsgi-测试-testpy)
-    - [使用Unix sockets代替端口](#使用unix-sockets代替端口)
-        - [如果没有工作](#如果没有工作)
-    - [使用 uwsgi 和 nginx运行 Django 应用](#使用-uwsgi-和-nginx运行-django-应用)
-    - [配置 uWSGI 从 .ini文件运行](#配置-uwsgi-从-ini文件运行)
-    - [直接在系统上安装uWSGI](#直接在系统上安装uwsgi)
-    - [君主模式](#君主模式)
-    - [系统启动是运行uWSGI](#系统启动是运行uwsgi)
-    - [更多配置](#更多配置)
-
-<!-- /TOC -->
-
 ## 先决条件
 
 ### virtualenv
