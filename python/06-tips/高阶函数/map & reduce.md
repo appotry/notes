@@ -1,13 +1,3 @@
-<!-- TOC -->
-
-- [map/reduce](#mapreduce)
-    - [reduce](#reduce)
-    - [将传入的字符编程规范的首字母大写,其他字母小写](#将传入的字符编程规范的首字母大写其他字母小写)
-    - [请编写一个prod()函数，可以接受一个list并利用reduce()求积](#请编写一个prod函数可以接受一个list并利用reduce求积)
-    - [利用map和reduce编写一个str2float函数](#利用map和reduce编写一个str2float函数)
-
-<!-- /TOC -->
-
 # map/reduce
 
 ## reduce
