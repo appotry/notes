@@ -3,6 +3,8 @@
 - [GitBook帮助中心](https://help.gitbook.com/)
 - [Toolchain](https://toolchain.gitbook.com/)
 
+<extoc></extoc>
+
 ## 安装
 
 ### 安装 Node.js
@@ -238,6 +240,8 @@ gitbook 在编译书籍的时候会读取书籍源码顶层目录中的 book.js 
 
 ## 插件
 
+[插件详情 https://toolchain.gitbook.com/plugins/](https://toolchain.gitbook.com/plugins/)
+
 gitbook 支持许多插件，用户可以从 [NPM](https://www.npmjs.com/) 上搜索 gitbook 的插件，gitbook 文档 推荐插件的命名方式为：
 
 * gitbook-plugin-X: 插件
@@ -290,21 +294,30 @@ GitBook默认带有6个插件：
         ],
     ```
 
+### 指定插件版本
+
+`"myPlugin@0.3.1"`
+
 ### 主题插件
 
 #### ComScore
 
 ComScore 是一个彩色主题，默认的 gitbook 主题是黑白的，也就是标题和正文都是黑色的，而 ComScore 可以为各级标题添加不同的颜色，更容易区分各级标题
 
+### anchor-navigation-ex
+
+- [anchor-navigation-ex](https://www.npmjs.com/package/gitbook-plugin-anchor-navigation-ex)
+- [github地址](https://github.com/zq99299/gitbook-plugin-anchor-navigation-ex)
+
 ### 实用插件
 
-disqus, 集成用户评论系统
-multipart 插件可以将书籍分成几个部分，例如：
-    GitBook Basic
-    GitBook Advanced
-    对有非常多章节的书籍非常有用，分成两部分后，各个部分的章节都从 1 开始编号。
-toggle-chapters 使左侧的章节目录可以折叠
-Splitter 使侧边栏的宽度可以自由调节
+- disqus, 集成用户评论系统
+- multipart 插件可以将书籍分成几个部分，例如：
+    - GitBook Basic
+    - GitBook Advanced
+    - 对有非常多章节的书籍非常有用，分成两部分后，各个部分的章节都从 1 开始编号。
+- toggle-chapters 使左侧的章节目录可以折叠
+- Splitter 使侧边栏的宽度可以自由调节
 
 ### 发布
 
