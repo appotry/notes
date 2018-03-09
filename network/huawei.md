@@ -14,7 +14,7 @@
 
 示例:
 
-```xxx
+```shell
 <S5700-28C-EI_1>?
 <S5700-28C-EI_1>dis?
 
@@ -57,7 +57,7 @@ int
 <S5700-24TP-PWR-SI_1>display port vlan
 ```
 
-```xxx
+```shell
 [S5700-24TP-PWR-SI_1]dis vlan
 [S5700-24TP-PWR-SI_1]dis interface brief
 PHY: Physical
@@ -84,7 +84,7 @@ GigabitEthernet0/0/1        up    up       0.01%  0.11%          0          0
 
 ### 关闭端口
 
-```xxx
+```shell
 [S5700-24TP-PWR-SI_1]interface GigabitEthernet 0/0/1
 [S5700-24TP-PWR-SI_1-GigabitEthernet0/0/1]shutdown
 ```
@@ -94,7 +94,7 @@ GigabitEthernet0/0/1        up    up       0.01%  0.11%          0          0
 - `dis interface brief`
 - `dis  ip int brief`
 
-```xxx
+```shell
 <S5700-24TP-PWR-SI_1>dis interface brief
 PHY: Physical
 *down: administratively down
@@ -537,7 +537,7 @@ Error: The static-MAC is exist in this IP-pool.
 
 ## SNMP配置
 
-```xxx
+```shell
 snmp-agent /使能snmp服务/
 snmp-agent local-engineid 000007DB7F000001000049DD /系统自动生成，无需配置/
 snmp-agent community read public /设置读团体名:public/
