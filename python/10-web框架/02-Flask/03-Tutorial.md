@@ -4,32 +4,6 @@
 
 示例代码 [example source](https://github.com/pallets/flask/tree/master/examples/flaskr/).
 
-<!-- TOC -->
-
-- [Tutorial](#tutorial)
-    - [介绍Flaskr](#介绍flaskr)
-    - [步骤0: 创建目录](#步骤0-创建目录)
-    - [步骤1: 数据库配置](#步骤1-数据库配置)
-    - [步骤2: 应用安装代码](#步骤2-应用安装代码)
-    - [步骤3: 安装flaskr](#步骤3-安装flaskr)
-    - [步骤4: 数据库连接](#步骤4-数据库连接)
-    - [步骤5: 创建数据库](#步骤5-创建数据库)
-    - [步骤6: 视图函数](#步骤6-视图函数)
-        - [显示所有条目](#显示所有条目)
-        - [新增条目](#新增条目)
-        - [登录登出](#登录登出)
-    - [步骤7: 模板](#步骤7-模板)
-        - [layout.html](#layouthtml)
-        - [show_entries.html](#show_entrieshtml)
-        - [login.html](#loginhtml)
-    - [添加风格](#添加风格)
-    - [测试应用](#测试应用)
-        - [添加测试到flaskr](#添加测试到flaskr)
-        - [运行测试](#运行测试)
-        - [Testing + setuptools](#testing--setuptools)
-
-<!-- /TOC -->
-
 ## 介绍Flaskr
 
 我们将博客命名为Flaskr, 基本上, 它将实现这些功能:
