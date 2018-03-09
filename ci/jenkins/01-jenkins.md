@@ -1,7 +1,5 @@
 # Jenkins
 
-<extoc></extoc>
-
 ## 安装Jenkins
 
 [Installing Jenkins](https://jenkins.io/doc/book/getting-started/installing/)
