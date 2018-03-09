@@ -1,20 +1,5 @@
-<!-- TOC -->
 
-- [json](#json)
-    - [json.dumps()](#jsondumps)
-    - [json.loads()](#jsonloads)
-    - [json进阶,序列化类](#json进阶序列化类)
-    - [实例](#实例)
-        - [将字符串序列化成字典](#将字符串序列化成字典)
-        - [将一个列表类型的变量序列化成字符串类型](#将一个列表类型的变量序列化成字符串类型)
-    - [小结](#小结)
-- [pickle](#pickle)
-    - [pickle.dump()](#pickledump)
-    - [pickle.load()](#pickleload)
-
-<!-- /TOC -->
-
-**json 和 pickle**
+# json 和 pickle**
 
 用于序列化的两个模块
 
@@ -31,7 +16,7 @@ dump和load也是类似的功能，只是与文件操作结合起来了。
 
 两个模块用法相同,区别在于pickle只可用于Python,可序列化Python特有数据类型
 
-# json
+## json
 
 JSON类型 | Python类型
 -------|---------
@@ -42,7 +27,7 @@ JSON类型 | Python类型
 true/false | True/False
 null | None
 
-## json.dumps()
+### json.dumps()
 
 返回一个`str`,内容就是标准的JSON.类似的`dump()`方法可以直接把JSON写入一个`file-like Object`
 
@@ -62,7 +47,7 @@ with open('/User/xxx/result.json','w') as fp:
     json.dump(data,fp)
 ```
 
-## json.loads()
+### json.loads()
 
 要把JSON反序列化为Python对象,用`loads()`或者对应的`load()`方法,前者把JSON的字符串反序列化,后者从`file-like Object`中读取字符串并反序列化
 
@@ -74,7 +59,7 @@ with open('/User/xxx/result.json','w') as fp:
 
 由于JSON标准规定JSON编码是UTF-8，所以我们总是能正确地在Python的`str`与JSON的字符串之间转换。
 
-## json进阶,序列化类
+### json进阶,序列化类
 
 Python的`dict`对象可以直接序列化为JSON的`{}`,不过,很多时候,我们更喜欢用`class`表示对象,比如定义`Student`类,然后序列化
 
@@ -148,9 +133,9 @@ def dict2student(d):
 
 打印出的是反序列化的`Student`实例对象。
 
-## 实例
+### 实例
 
-### 将字符串序列化成字典
+#### 将字符串序列化成字典
 
 创建一个字符串变量  `dict_str`
 
@@ -172,15 +157,15 @@ def dict2student(d):
 {'k2': 'v2', 'k1': 'v1'}
 ```
 
-### 将一个列表类型的变量序列化成字符串类型
+#### 将一个列表类型的变量序列化成字符串类型
 
-## 小结
+### 小结
 
 json模块的`dumps()`和`loads()`函数是定义得非常好的接口的典范。当我们使用时，只需要传入一个必须的参数。但是，当默认的序列化或反序列机制不满足我们的要求时，我们又可以传入更多的参数来定制序列化或反序列化的规则，既做到了接口简单易用，又做到了充分的扩展性和灵活性。
 
-# pickle
+## pickle
 
-## pickle.dump()
+### pickle.dump()
 
 ```python
 >>> import pickle
@@ -195,7 +180,7 @@ with open('/User/xxxx/result.pk','w') as fp:
     pickle.dump(data,fp)
 ```
 
-## pickle.load()
+### pickle.load()
 
 ```python
 if os.path.exists(os.path.split(__file__)[0] + '/user.db'):
