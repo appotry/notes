@@ -1,46 +1,6 @@
-<!-- TOC -->
-
-- [华为S5700配置](#华为s5700配置)
-    - [tips](#tips)
-        - [帮助信息](#帮助信息)
-    - [常用命令](#常用命令)
-        - [查看Mac地址](#查看mac地址)
-        - [查看当前生效的配置信息](#查看当前生效的配置信息)
-        - [进入系统视图](#进入系统视图)
-        - [显示端口vlan信息，display可缩写为dis](#显示端口vlan信息display可缩写为dis)
-        - [进入端口进行配置](#进入端口进行配置)
-        - [过滤](#过滤)
-        - [关闭端口](#关闭端口)
-        - [查看状态(up,down)](#查看状态updown)
-        - [查看端口类型](#查看端口类型)
-            - [Acess](#acess)
-            - [trunk](#trunk)
-            - [hybrid](#hybrid)
-    - [示例](#示例)
-        - [修改时间](#修改时间)
-        - [设置NTP](#设置ntp)
-        - [静态绑定IP与Mac地址](#静态绑定ip与mac地址)
-    - [华为交换机常用命令](#华为交换机常用命令)
-        - [查看当前视图下的配置信息](#查看当前视图下的配置信息)
-    - [其他](#其他)
-        - [单交换机VLAN划分](#单交换机vlan划分)
-        - [配置交换机支持TELNET](#配置交换机支持telnet)
-        - [跨交换机VLAN的通讯](#跨交换机vlan的通讯)
-        - [路由的配置命令](#路由的配置命令)
-        - [三层交换机配置VLAN-VLAN通讯](#三层交换机配置vlan-vlan通讯)
-        - [动态路由RIP](#动态路由rip)
-        - [IP访问列表](#ip访问列表)
-        - [命令的标准访问IP列表(三层交换机):](#命令的标准访问ip列表三层交换机)
-        - [允许A机器访问B机器的FTP但不允许访问WWW，C机器没有任何限制。](#允许a机器访问b机器的ftp但不允许访问wwwc机器没有任何限制)
-        - [NAT地址转换(单一静态一对一地址转换)](#nat地址转换单一静态一对一地址转换)
-        - [NAT内部整网段地址转换](#nat内部整网段地址转换)
-    - [SNMP配置](#snmp配置)
-- [Error](#error)
-    - [Error: Please renew the default configurations](#error-please-renew-the-default-configurations)
-
-<!-- /TOC -->
-
 # 华为S5700配置
+
+<extoc></extoc>
 
 ## tips
 
@@ -479,7 +439,7 @@ Error: The static-MAC is exist in this IP-pool.
 　　firewall packet-filter 3001 inbound
 　　必须在端口E3/0下才能执行
 
-### 命令的标准访问IP列表(三层交换机):
+### 命令的标准访问IP列表(三层交换机)
 
 　　允许A组机器访问服务器内资料，不允许访问B组机器(服务器没有限制)
 　　sys
@@ -590,9 +550,9 @@ ams securityname public
 /允许向网管工作站（NMS）129.102.149.23发送Trap报文，使用的团体名为public/
 ```
 
-# Error
+## 问题记录
 
-## Error: Please renew the default configurations
+### Error: Please renew the default configurations
 
 重新配置的时候, 出现这种报错, 需要一层层删除配置, 直到恢复默认配置
 
