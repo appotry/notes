@@ -71,7 +71,7 @@ rst(){
     bash gen_index.sh && git add . && git commit -m "[Travis] gen index & md2rst"
     git push "https://${GH_TOKEN}@github.com/yangjinjie/notes.git" rst:rst
 
-    cd ../notes
+    cd $notes_dir
 }
 
 main(){
