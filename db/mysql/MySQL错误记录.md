@@ -1,18 +1,5 @@
 # MySQL错误记录
 
-<!-- TOC -->
-
-- [MySQL错误记录](#mysql错误记录)
-    - [MySQL常见错误代码及代码说明](#mysql常见错误代码及代码说明)
-    - [MySQL初始化故障排错集锦](#mysql初始化故障排错集锦)
-        - [错误示例1：warning：The host 'mysql' could not be looked up with resolve ip](#错误示例1warningthe-host-mysql-could-not-be-looked-up-with-resolve-ip)
-        - [错误示例2：error：1004 can't create file '/tmp/#sql300e_1_0.frm'(errno: 13)](#错误示例2error1004-cant-create-file-tmpsql300e_1_0frmerrno-13)
-        - [sql语句错误, 导致slave sql线程出错, 主从不一致](#sql语句错误-导致slave-sql线程出错-主从不一致)
-    - [InnoDB is limited to row-logging when transaction isolation level is READ COMMITTED or READ UNCOMMITTED](#innodb-is-limited-to-row-logging-when-transaction-isolation-level-is-read-committed-or-read-uncommitted)
-    - [使用spring连接mysql的时候, 提示依赖使用SSL连接](#使用spring连接mysql的时候-提示依赖使用ssl连接)
-
-<!-- /TOC -->
-
 ## MySQL常见错误代码及代码说明
 
 ```shell
