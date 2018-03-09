@@ -58,9 +58,19 @@ for n in 20 21
    done
 ```
 
-# 第二章
+## xargs 处理文件名带空格的方法
 
-## 创建随机密码方法
+```shell
+# 使用 -i 参数 '{}'
+xargs -i sed -i '/^<extoc>/d;2a<extoc></extoc>\n' '{}'
+
+# 示例
+find . -type f -name "*.md" ! -path "./README.md" -a ! -path "./SUMMARY.md"|xargs -i sed -i '/^<extoc>/d;2a<extoc></extoc>\n' '{}'
+```
+
+## 第二章
+
+### 创建随机密码方法
 
 1. echo $RANDOM|md5sum
 2. openssl rand -base64 48
@@ -71,9 +81,9 @@ for n in 20 21
 6. uuidgen|md5sum
     - 加密可以使用 md5sum、sha512sum等等，加密之前可以添加一个干扰码，例如：echo yjj$RANDOM|md5sum
 
-## 变量子串使用技巧
+### 变量子串使用技巧
 
-### 生成随机密码
+#### 生成随机密码
 
 ```shell
 [root@db ~]# cat pass.sh
@@ -96,7 +106,7 @@ exit 0
 
 [Back to TOC](#table-of-contents)
 
-### 判断用户输入是否为数字
+#### 判断用户输入是否为数字
 
 ```shell
     read -p "Please enter the amount of recharge: " re
@@ -121,7 +131,7 @@ exit 0
 2
 ```
 
-## 计算字符串长度
+### 计算字符串长度
 
 ```shell
     string="I love you!"
@@ -140,20 +150,20 @@ exit 0
     awk '{print length}' <<<$string   ## $0可以省略
 ```
 
-## 命令拼接
+### 命令拼接
 
 ```shell
 [root@web 11]# chkconfig |awk '$1!~/crond|sshd|sysstat|network|rsyslog/{print "chkconfig",$1,"off"}'|bash
 ```
 
-## 计算1+2+3+4+5+6+7+8+9+10
+### 计算1+2+3+4+5+6+7+8+9+10
 
 ```shell
 [root@web scripts]# seq 10|awk '{a+=$1;b=b$1"+"}END{sub("+$","",b);print b"="a}'
 1+2+3+4+5+6+7+8+9+10=55
 ```
 
-## 打印下面语句中字符数小于6的单词
+### 打印下面语句中字符数小于6的单词
 
 ```shell
 [root@db ~]# echo Whatever is worth doing is worth doing well.
@@ -187,7 +197,7 @@ for n in Whatever is worth doing is worth doing well.
  done
 ```
 
-# 使用eval实现动态变量
+## 使用eval实现动态变量
 
 用变量值作新的变量名
 
