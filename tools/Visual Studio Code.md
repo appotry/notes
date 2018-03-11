@@ -8,9 +8,9 @@
 
 其实就是借助的`GitHub Gist`, Gist可以设置为`public`和`secret`, 该插件会创建一个`secret`的gist, 所以设置里面有key之类的, 也不是很要紧
 
-[Gist](https://gist.github.com)
+[GitHub Gist](https://gist.github.com)
 
-[Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
+[Marketplace Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
 
 [GitHub shanalikhan/code-settings-sync](https://github.com/shanalikhan/code-settings-sync)
 
