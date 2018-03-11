@@ -1,6 +1,8 @@
 # Visual Studio Code
 
-## Visual Studio Code Settings Sync
+## 常用插件
+
+### Visual Studio Code Settings Sync
 
 使用插件同步vscode配置
 
@@ -12,7 +14,15 @@
 
 [GitHub shanalikhan/code-settings-sync](https://github.com/shanalikhan/code-settings-sync)
 
-## 文件默认换行符设置
+### 图床工具
+
+[vscode-qiniu-upload-image](https://github.com/yscoder/vscode-qiniu-upload-image)
+
+可以自己写一个, 或者直接使用GitHub, 仓库内的图片是可以直接通过链接来访问的.
+
+## 使用技巧
+
+### 文件默认换行符设置
 
 在vscode设置, 文件默认换行符号
 
@@ -23,11 +33,14 @@
   "files.eol": "\n"
 ```
 
-## 图床工具
+### 设置默认使用的 terminal
 
-可以自己写一个, 或者直接使用GitHub, 仓库内的图片是可以直接通过链接来访问的.
+```shell
+# windows下默认为 powershell
+# 设置示例
 
-[shanalikhan/code-settings-sync](https://github.com/shanalikhan/code-settings-sync)
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+```
 
 ## 扩展Visual Studio Code
 
