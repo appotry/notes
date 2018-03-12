@@ -38,7 +38,7 @@
         "-sharing",
         "github",
         "editlink",
-        "anchor-navigation-ex-toc@0.0.6",
+        "anchor-navigation-ex-toc@0.0.7",
         "-lunr",
         "-search",
         "search-plus"
