@@ -38,7 +38,7 @@
         "-sharing",
         "github",
         "editlink",
-        "anchor-navigation-ex-toc@0.0.4",
+        "anchor-navigation-ex-toc@0.0.6",
         "-lunr",
         "-search",
         "search-plus"
@@ -51,7 +51,7 @@
             "base": "https://github.com/yangjinjie/notes/blob/master",
             "label": "编辑本页"
         },
-        "anchor-navigation-ex": {
+        "anchor-navigation-ex-toc": {
             "showLevel": false,
             "mode": "float",
             "float": {
