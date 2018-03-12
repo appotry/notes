@@ -7,7 +7,7 @@
 - [目录](https://yangjinjie.github.io/notes/SUMMARY.html)
 - [GitHub地址](https://github.com/yangjinjie/notes)
 - [Github Pages方式访问](https://yangjinjie.github.io/notes/)
-- [Read the Docs 方式](https://notes-by-yangjinjie.readthedocs.io)
+- [Read the Docs 方式](https://notes.yangjinjie.xyz)
 
 > 域名 [https://yangjinjie.github.io](https://yangjinjie.github.io) 跳转到 [https://docs.yangjinjie.xyz](https://docs.yangjinjie.xyz)
 
