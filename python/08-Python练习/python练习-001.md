@@ -2,7 +2,7 @@
 
 [http://www.runoob.com/python/python-100-examples.html](http://www.runoob.com/python/python-100-examples.html)
 
-## 有四个数字: 1,2,3,4,能组成多少个互不相同且无重复数字的三位数?各是多少?
+## 有四个数字: 1,2,3,4,能组成多少个互不相同且无重复数字的三位数?各是多少
 
 > 分析: 列出所有可能,去掉不满足条件的
 
@@ -151,6 +151,14 @@ def fib(n):
 print(fib(10))
 ```
 
+```python
+L = [1, 1]
+for i in range(10):
+    # L.append(L[-2] + L[-1])
+    L.append(sum(L[i:]))
+print(L)
+```
+
 ## 将一个列表的数据复制到另一个列表中。
 
 > 使用列表[:]
@@ -265,4 +273,3 @@ for i in range(100,1000):
 ```python
 
 ```
-
