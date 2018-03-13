@@ -4,16 +4,18 @@
 
 [![Build Status](https://travis-ci.org/yangjinjie/notes.svg?branch=master)](https://travis-ci.org/yangjinjie/notes)
 
-- [目录](https://yangjinjie.github.io/notes/SUMMARY.html)
 - [GitHub地址](https://github.com/yangjinjie/notes)
+
+## 在线阅读
+
 - [Github Pages方式访问](https://yangjinjie.github.io/notes/)
 - [Read the Docs 方式](https://notes.yangjinjie.xyz)
 
 > 域名 [https://yangjinjie.github.io](https://yangjinjie.github.io) 跳转到 [https://docs.yangjinjie.xyz](https://docs.yangjinjie.xyz)
 
-## 离线阅读(推荐)
+## 离线阅读
 
-### 通过docker
+### 通过docker(推荐)
 
 ```shell
 git clone --depth=1 -b gh-pages https://github.com/yangjinjie/notes.git notes_notes
@@ -21,12 +23,14 @@ cd notes_notes
 # 第一次会自动pull镜像, 之后就不需要了
 docker-compose up -d
 
-# 更新内容
-在以上目录
-git reset --hard origin/gh-pages
+# 更新内容, 切换到执行上述命令之后所在目录
 git pull
+git reset --hard origin/gh-pages
+```
 
-# 另一种方式
+> 另一种方式
+
+```shell
 docker run -d --name=notes -p50600:80 zttfaith/notes:latest
 ```
 
