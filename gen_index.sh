@@ -26,4 +26,3 @@ do
    *
 " > "${index_file}"
 done
-
