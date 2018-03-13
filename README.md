@@ -22,6 +22,11 @@ cd notes_notes
 docker-compose up -d
 ```
 
+```shell
+docker-compose pull
+docker-compose up -d
+```
+
 浏览器访问 [http://localhost:50500](http://localhost:50500)
 
 获取最新内容, 需要到上述 `notes_notes` 目录, 运行如下命令(或者重新执行上述内容)
