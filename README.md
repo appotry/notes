@@ -22,7 +22,13 @@ git clone --depth=1 -b gh-pages https://github.com/yangjinjie/notes.git notes_no
 cd notes_notes
 # 第一次会自动pull镜像, 之后就不需要了
 docker-compose up -d
+```
 
+浏览器访问 [http://localhost:50500](http://localhost:50500)
+
+获取最新内容, 需要到上述 `notes_notes` 目录, 运行如下命令(或者重新执行上述内容)
+
+```shell
 # 更新内容, 切换到执行上述命令之后所在目录
 git pull
 git reset --hard origin/gh-pages
@@ -33,10 +39,6 @@ git reset --hard origin/gh-pages
 ```shell
 docker run -d --name=notes -p50600:80 zttfaith/notes:latest
 ```
-
-浏览器访问 [http://localhost:50500](http://localhost:50500)
-
-获取最新内容, 需要到上述 `notes_notes` 目录, 运行如下命令(或者重新执行上述内容)
 
 ### 通过GitBook
 
