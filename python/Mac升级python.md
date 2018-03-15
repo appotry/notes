@@ -1,4 +1,6 @@
-# Mac升级python
+# 安装Python
+
+## Mac升级python
 
 安装 `python 3.x`
 
@@ -12,3 +14,29 @@
 永久生效，请写到配置文件
 
 或者直接使用 `python3` 运行 `python3.x`
+
+## 编译安装
+
+### 安装依赖
+
+> Centos
+
+```shell
+yum install gcc -y
+yum install openssl-devel
+```
+
+### 下载Python源码包
+
+```shell
+wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz
+xz -d Python-3.6.4.tar.xz
+tar xf Python-3.6.4.tar
+```
+
+### 编译, 安装
+
+```shell
+cd Python-3.6.4
+./configure && make && make install
+```
