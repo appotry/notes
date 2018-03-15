@@ -9,8 +9,6 @@
 ```Python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 25/04/2017 11:14 AM
-# @Author  : yang
 
 count = 0
 for i in range(1,5):
@@ -29,8 +27,6 @@ print("总数量: ", count)
 ```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 25/04/2017 11:26 AM
-# @Author  : yang
 
 i = int(input("请输入利润: "))
 
@@ -51,8 +47,6 @@ print("奖金: ",r)
 ```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 25/04/2017 11:50 AM
-# @Author  : yang
 
 import math
 for i in range(1,10000):
@@ -69,8 +63,6 @@ for i in range(1,10000):
 ```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 25/04/2017 1:51 PM
-# @Author  : yang
 
 year = int(input("year: "))
 month = int(input("month: "))
@@ -97,8 +89,6 @@ print("It is the %sth day of %s/%s/%s" % (sum,year,month,day))
 ```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 25/04/2017 2:27 PM
-# @Author  : yang
 
 l = []
 for i in range(3):
@@ -117,8 +107,6 @@ print(l)
 ```Python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 25/04/2017 2:27 PM
-# @Author  : yang
 
 def fib(n):
     if n == 0 or n == 1:
@@ -134,8 +122,6 @@ print(fib(10))
 ```Python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 25/04/2017 2:27 PM
-# @Author  : yang
 
 def fib(n):
     if n == 0 :
@@ -166,8 +152,6 @@ print(L)
 ```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 25/04/2017 2:27 PM
-# @Author  : yang
 
 a = [1,2,3]
 b = a[:]
