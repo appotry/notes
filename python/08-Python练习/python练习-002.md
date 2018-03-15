@@ -5,8 +5,6 @@
 ```python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 26/04/2017 10:34 AM
-# @Author  : yang
 
 import uuid
 
@@ -23,4 +21,14 @@ if __name__ == '__main__':
     code_list = generate_code(200)
     for code in code_list:
         print(code)
+```
+
+## 闭包
+
+```python
+s = [lambda x: x + i for i in range(10)]
+print(s[0](10))
+print(s[1](10))
+print(s[2](10))
+print(s[3](10))
 ```
