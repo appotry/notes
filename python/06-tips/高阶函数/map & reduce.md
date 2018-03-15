@@ -43,3 +43,12 @@ reduce(...)
 >>> s = "1234.56700"
 reduce(lambda x,y:x*10+y,map(char2num,s.split(".")[0]))+reduce(lambda x,y:x/10 + y,map(char2num,s.split(".")[1][::-1]))/10
 ```
+
+```python
+def str2float(s):
+    digit = {'1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '0': 0, '.': '.'}
+    l = list(map(lambda c: digit[c], s))
+    n = l.index('.')
+    l.remove('.')
+    return reduce(lambda x, y: 10*x+y, l)/(10**(len(l)-n))
+```
