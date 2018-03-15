@@ -19,23 +19,143 @@
 
 ![头像](http://i.imgur.com/sg2dkuY.png?1)
 
+```python
+from PIL import Image, ImageDraw, ImageFont
 
+
+def draw_num(img):
+
+    draw = ImageDraw.Draw(img)
+    w, h = img.size
+    Font = ImageFont.truetype('BeauRivageOne.ttf', size=60)
+    draw.text((0.9* w, 0), '4', fill='red', font=Font)
+    img.save('haha.jpg', 'jpeg')
+
+
+im = Image.open('pic-0000.jpg')
+print(im.size)
+draw_num(im)
+```
 
 ## 第 0001 题
 
 **做为 Apple Store App 独立开发者，你要搞限时促销，为你的应用`生成激活码`（或者优惠券），使用 Python 如何生成 200 个激活码（或者优惠券）？**
 
-## 第 0002 题：
+```shell
+import uuid
 
-**将 0001 题生成的 200 个激活码（或者优惠券）保存到MySQL关系型数据库中。**
+
+def generate_code(count):
+    code_list = []
+    for i in range(count):
+        code = str(uuid.uuid4()).replace('-', '').upper()
+        if code not in code_list:
+            code_list.append(code)
+
+    return code_list
+
+
+if __name__ == '__main__':
+    code_list = generate_code(200)
+    print('\n'.join(code_list))
+```
+
+## 第 0002 题
+
+将 0001 题生成的 200 个激活码（或者优惠券）保存到MySQL关系型数据库中
+
+```python
+import uuid
+import pymysql
+
+
+def generate_code(count):
+    code_list = []
+    for i in range(count):
+        code = str(uuid.uuid4()).replace('-', '').upper()
+        if code not in code_list:
+            code_list.append(code)
+
+    return code_list
+
+def add_to_mysql(codes):
+    db = pymysql.connect(host='127.0.0.1', user='yang', passwd='111111', db='xxx')
+    cursor = db.cursor()
+
+    cursor.execute(r'''CREATE TABLE IF NOT EXISTS tb_code(
+                    id INT NOT NULL AUTO_INCREMENT,
+                    code VARCHAR(32) NOT NULL,
+                    PRIMARY KEY(id) )''')
+    for code in codes:
+        cursor.execute('insert into tb_code(code) values(%s)', (code))
+    cursor.connection.commit()
+    db.close()
+
+
+if __name__ == '__main__':
+    code_list = generate_code(200)
+    # print('\n'.join(code_list))
+
+    add_to_mysql(code_list)
+```
 
 ## 第 0003 题
 
 将 0001 题生成的 200 个激活码（或者优惠券）保存到 **Redis** 非关系型数据库中。
 
+```python
+import uuid
+import redis
+
+
+def generate_code(count):
+    code_list = []
+    for i in range(count):
+        code = str(uuid.uuid4()).replace('-', '').upper()
+        if code not in code_list:
+            code_list.append(code)
+
+    return code_list
+
+
+def insert_into_redis(codes):
+    r = redis.Redis(host='127.0.0.1', port=6379, decode_responses=True)
+
+    counter = 0
+    for code in codes:
+        r.set('code-%s' % counter, code)
+        counter += 1
+    print(r.get('code-0'))
+
+
+if __name__ == '__main__':
+    code_list = generate_code(200)
+    # print('\n'.join(code_list))
+
+    insert_into_redis(code_list)
+```
+
 ## 第 0004 题
 
 任一个英文的纯文本文件，统计其中的单词出现的个数。
+
+简单版
+
+```python
+import collections
+import re
+
+file_name = "The Old Man and the Sea.txt"
+
+c = collections.Counter()
+with open(file_name, 'r') as f:
+    c.update(re.findall(r'\b[a-zA-Z\']+\b', f.read()))
+    # c.update(re.findall(r'\b[a-zA-Z]+\b', f.read()))
+
+with open("WordCount.txt", 'w') as wf:
+    for word in c.most_common():
+        wf.write(word[0]+','+str(word[1])+'\n')
+```
 
 ## 第 0005 题
 
