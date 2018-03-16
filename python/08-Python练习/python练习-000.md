@@ -161,9 +161,55 @@ with open("WordCount.txt", 'w') as wf:
 
 你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。
 
+```python
+'''
+你有一个目录，装了很多照片，把它们的尺寸变成都不大于 iPhone5 分辨率的大小。
+'''
+
+import os
+from PIL import Image
+
+DIR_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pic')
+
+
+def re_size(dirPath, size_w, size_h):
+    f_list = os.listdir(dirPath)
+    print(f_list)
+    for i in f_list:
+        if os.path.splitext(i)[1] == '.jpg':
+            img = Image.open(os.path.join(dirPath, i))
+            w, h = img.size
+            if w < size_w and h < size_h:
+                continue
+            img.thumbnail((size_w, size_h))
+
+            img.save(os.path.join(dirPath, "thumbnail-%s" % i))
+
+re_size(DIR_PATH, 1100, 800)
+```
+
 ## 第 0006 题
 
 你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。
+
+```python
+'''
+你有一个目录，放了你一个月的日记，都是 txt，为了避免分词的问题，假设内容都是英文，请统计出你认为每篇日记最重要的词。
+'''
+
+import collections
+import re
+
+file_name = "The Old Man and the Sea.txt"
+
+c = collections.Counter()
+with open(file_name, 'r') as f:
+    c.update(re.findall(r'\b[a-zA-Z\']+\b', f.read()))
+    # c.update(re.findall(r'\b[a-zA-Z]+\b', f.read()))
+
+l = filter(lambda x: len(x[0]) > 2 and x[0] != 'the' and x[0] != 'her' and x[0] != 'his', c.most_common())
+print(list(l))
+```
 
 ## 第 0007 题
 
@@ -173,9 +219,63 @@ with open("WordCount.txt", 'w') as wf:
 
 一个HTML文件，找出里面的**正文**。
 
+```python
+'''
+一个HTML文件，找出里面的正文。
+'''
+
+from bs4 import BeautifulSoup
+
+
+html_doc = """
+<html><head><title>The Dormouse's story</title></head>
+<body>
+<p class="title"><b>The Dormouse's story</b></p>
+
+<p class="story">Once upon a time there were three little sisters; and their names were
+<a href="http://example.com/elsie" class="sister" id="link1">Elsie</a>,
+<a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
+<a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
+and they lived at the bottom of a well.</p>
+
+<p class="story">...</p>
+"""
+
+soup = BeautifulSoup(html_doc, "html.parser")
+print(soup.get_text())
+```
+
 ## 第 0009 题
 
 一个HTML文件，找出里面的**链接**。
+
+```python
+'''
+一个HTML文件，找出里面的链接。
+'''
+
+from bs4 import BeautifulSoup
+
+html_doc = """
+<html><head><title>The Dormouse's story</title></head>
+<body>
+<p class="title"><b>The Dormouse's story</b></p>
+
+<p class="story">Once upon a time there were three little sisters; and their names were
+<a href="http://example.com/elsie" class="sister" id="link1">Elsie</a>,
+<a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
+<a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
+and they lived at the bottom of a well.</p>
+
+<p class="story">...</p>
+"""
+
+soup = BeautifulSoup(html_doc, "html.parser")
+
+for link in soup.find_all('a'):
+    print(link.get('href'))
+
+```
 
 ## 第 0010 题
 
@@ -189,21 +289,70 @@ with open("WordCount.txt", 'w') as wf:
 
 敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。
 
-    北京
-    程序员
-    公务员
-    领导
-    牛比
-    牛逼
-    你娘
-    你妈
-    love
-    sex
-    jiangge
+```shell
+北京
+程序员
+公务员
+领导
+牛比
+牛逼
+你娘
+你妈
+love
+sex
+jiangge
+```
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = "Ysara"
+
+'''
+敏感词文本文件 filtered_words.txt，里面的内容为以下内容，当用户输入敏感词语时，则打印出 Freedom，否则打印出 Human Rights。
+
+'''
+
+import re
+from functools import reduce
+
+with open('filtered_words.txt', 'r', encoding='utf8') as f:
+    # filtered_words = list(map(lambda x: x.strip(), f.readlines()))
+    filtered_pattern = reduce(lambda x, y: x.strip()+'|'+y, f.readlines())
+
+print(filtered_pattern)
+
+while True:
+    i = input("请输入: ")
+    if re.search(filtered_pattern, i):
+        print('Freedom')
+    else:
+        print('Human Rights')
+```
 
 ## 第 0012 题
 
+敏感词文本文件 filtered_words.txt，里面的内容 和 0011题一样，当用户输入敏感词语，则用 星号 `*` 替换，例如当用户输入`「北京是个好城市」`，则变成 `「**是个好城市」`。
+
+```python
+'''
 敏感词文本文件 filtered_words.txt，里面的内容 和 0011题一样，当用户输入敏感词语，则用 星号 * 替换，例如当用户输入「北京是个好城市」，则变成「**是个好城市」。
+'''
+
+import re
+from functools import reduce
+
+with open('filtered_words.txt', 'r', encoding='utf8') as f:
+    filtered_pattern = reduce(lambda x, y: x.strip()+'|'+y, f.readlines())
+
+print(filtered_pattern)
+
+while True:
+    i = input("请输入: ")
+    c = re.sub(filtered_pattern, '**', i)
+    print(c)
+```
 
 ## 第 0013 题
 
@@ -215,11 +364,13 @@ with open("WordCount.txt", 'w') as wf:
 
 纯文本文件 student.txt为学生信息, 里面的内容（包括花括号）如下所示：
 
-    {
-    	"1":["张三",150,120,100],
-    	"2":["李四",90,99,95],
-    	"3":["王五",60,66,68]
-    }
+```shell
+{
+    "1":["张三",150,120,100],
+    "2":["李四",90,99,95],
+    "3":["王五",60,66,68]
+}
+```
 
 请将上述内容写到 student.xls 文件中，如下图所示：
 
@@ -231,26 +382,29 @@ with open("WordCount.txt", 'w') as wf:
 
 纯文本文件 city.txt为城市信息, 里面的内容（包括花括号）如下所示：
 
-    {
-        "1" : "上海",
-        "2" : "北京",
-        "3" : "成都"
-    }
+```shell
+{
+    "1" : "上海",
+    "2" : "北京",
+    "3" : "成都"
+}
+```
 
 请将上述内容写到 city.xls 文件中，如下图所示：
 
 ![city.xls](http://i.imgur.com/rOHbUzg.png)
 
-
 ## 第 0016 题
 
 纯文本文件 numbers.txt, 里面的内容（包括方括号）如下所示：
 
-    [
-    	[1, 82, 65535],
-    	[20, 90, 13],
-    	[26, 809, 1024]
-    ]
+```shell
+[
+    [1, 82, 65535],
+    [20, 90, 13],
+    [26, 809, 1024]
+]
+```
 
 请将上述内容写到 numbers.xls 文件中，如下图所示：
 
