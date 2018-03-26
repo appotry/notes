@@ -77,3 +77,30 @@ mtr -i 使用这个参数来设置ICMP返回之间的要求默认是1秒
 mtr -4 使用IPv4
 mtr -6 使用IPv6
 ```
+
+## dscl -- Directory Service command line utility
+
+[参考](https://www.jianshu.com/p/a0e61f65d539)
+
+### 实例
+
+创建用户
+
+```shell
+dscl . -create /Users/用户名
+dscl . -create /Users/用户名 UserShell /bin/bash
+dscl . -create /Users/用户名 RealName "真实用户名"
+dscl . -create /Users/用户名 UniqueID "502"
+dscl . -create /Users/用户名 PrimaryGroupID 80
+dscl . -create /Users/用户名 NFSHomeDirectory /Users/用户名
+
+dscl . -passwd /Users/用户名 "密码"
+
+dscl . -append /Groups/admin GroupMembership 用户名
+```
+
+### 删除用户
+
+```shell
+dscl . -delete /Users/用户名
+```
