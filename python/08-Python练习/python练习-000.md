@@ -360,11 +360,13 @@ while True:
 
 - [参考代码](http://www.v2ex.com/t/61686 "参考代码")
 
-## 第 0014 题
+## 第 0014 , 0015, 0016 题
 
-纯文本文件 student.txt为学生信息, 里面的内容（包括花括号）如下所示：
+### 0014
 
 ```shell
+纯文本文件 student.txt为学生信息, 里面的内容（包括花括号）如下所示：
+
 {
     "1":["张三",150,120,100],
     "2":["李四",90,99,95],
@@ -376,13 +378,10 @@ while True:
 
 ![student.xls](http://i.imgur.com/nPDlpme.jpg)
 
-- [阅读资料](http://www.cnblogs.com/skynet/archive/2013/05/06/3063245.html) 腾讯游戏开发 XML 和 Excel 内容相互转换
-
-## 第 0015 题
-
-纯文本文件 city.txt为城市信息, 里面的内容（包括花括号）如下所示：
+### 0015
 
 ```shell
+纯文本文件 city.txt为城市信息, 里面的内容（包括花括号）如下所示：
 {
     "1" : "上海",
     "2" : "北京",
@@ -390,15 +389,15 @@ while True:
 }
 ```
 
-请将上述内容写到 city.xls 文件中，如下图所示：
+请将上述内容写到 `city.xls` 文件中，如下图所示：
 
 ![city.xls](http://i.imgur.com/rOHbUzg.png)
 
-## 第 0016 题
-
-纯文本文件 numbers.txt, 里面的内容（包括方括号）如下所示：
+### 0016
 
 ```shell
+纯文本文件 numbers.txt, 里面的内容（包括方括号）如下所示：
+
 [
     [1, 82, 65535],
     [20, 90, 13],
@@ -406,9 +405,95 @@ while True:
 ]
 ```
 
-请将上述内容写到 numbers.xls 文件中，如下图所示：
-
 ![numbers.xls](http://i.imgur.com/iuz0Pbv.png)
+
+- [阅读资料](http://www.cnblogs.com/skynet/archive/2013/05/06/3063245.html) 腾讯游戏开发 XML 和 Excel 内容相互转换
+
+### 解答
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = "Ysara"
+
+
+'''
+0014
+
+纯文本文件 student.txt为学生信息, 里面的内容（包括花括号）如下所示：
+
+{
+    "1":["张三",150,120,100],
+    "2":["李四",90,99,95],
+    "3":["王五",60,66,68]
+}
+----
+0015
+
+纯文本文件 city.txt为城市信息, 里面的内容（包括花括号）如下所示：
+
+{
+    "1" : "上海",
+    "2" : "北京",
+    "3" : "成都"
+}
+----
+0016
+纯文本文件 numbers.txt, 里面的内容（包括方括号）如下所示：
+
+[
+    [1, 82, 65535],
+    [20, 90, 13],
+    [26, 809, 1024]
+]
+
+'''
+
+import json
+from collections import OrderedDict
+from openpyxl import Workbook
+
+
+with open('student.txt', 'r', encoding='utf8') as f:
+    students_info = json.load(f, object_pairs_hook=OrderedDict)
+
+wb = Workbook()
+sheet = wb.active
+
+# 0014
+sheet.title = "student"
+
+for i in students_info:
+    sheet.append([i] + students_info[i])
+
+
+# 0015
+with open('city.txt', 'r', encoding='utf8') as f:
+    city = OrderedDict(json.load(f, object_pairs_hook=OrderedDict))
+
+sheet_city = wb.create_sheet('city', index=1)
+
+for item in city.items():
+    # ('1', '上海')
+    sheet_city.append(item)
+
+
+# 0016
+with open('numbers.txt', 'r', encoding='utf8') as f:
+    numbers = json.load(f)
+
+sheet_num = wb.create_sheet('numbers', index=2)
+for num in numbers:
+    sheet_num.append(num)
+
+
+wb.save(r'student-city-num.xlsx')
+
+print(students_info)
+print(city)
+print(numbers)
+```
 
 ## 第 0017 题
 
@@ -416,39 +501,42 @@ while True:
 
 下所示：
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <root>
-    <students>
-    <!--
-    	学生信息表
-    	"id" : [名字, 数学, 语文, 英文]
-    -->
-    {
-    	"1" : ["张三", 150, 120, 100],
-    	"2" : ["李四", 90, 99, 95],
-    	"3" : ["王五", 60, 66, 68]
-    }
-    </students>
-    </root>
-
+```html
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<students>
+<!--
+    学生信息表
+    "id" : [名字, 数学, 语文, 英文]
+-->
+{
+    "1" : ["张三", 150, 120, 100],
+    "2" : ["李四", 90, 99, 95],
+    "3" : ["王五", 60, 66, 68]
+}
+</students>
+</root>
+```
 
 ## 第 0018 题
 
 将 第 0015 题中的 city.xls 文件中的内容写到 city.xml 文件中，如下所示：
 
-    <?xmlversion="1.0" encoding="UTF-8"?>
-    <root>
-    <citys>
-    <!--
-    	城市信息
-    -->
-    {
-    	"1" : "上海",
-    	"2" : "北京",
-    	"3" : "成都"
-    }
-    </citys>
-    </root>
+```html
+<?xmlversion="1.0" encoding="UTF-8"?>
+<root>
+<citys>
+<!--
+    城市信息
+-->
+{
+    "1" : "上海",
+    "2" : "北京",
+    "3" : "成都"
+}
+</citys>
+</root>
+```
 
 ## 第 0019 题
 
@@ -457,18 +545,18 @@ while True:
 所示：
 
 ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <root>
-    <numbers>
-    <!--数字信息-->
-    [
-    	[1, 82, 65535],
-    	[20, 90, 13],
-    	[26, 809, 1024]
-    ]
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<numbers>
+<!--数字信息-->
+[
+    [1, 82, 65535],
+    [20, 90, 13],
+    [26, 809, 1024]
+]
 
-    </numbers>
-    </root>
+</numbers>
+</root>
 ```
 
 ## 第 0020 题
