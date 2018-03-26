@@ -133,6 +133,28 @@ def dict2student(d):
 
 打印出的是反序列化的`Student`实例对象。
 
+### 读取json串时保持原有顺序
+
+[https://docs.python.org/3.6/library/json.html](https://docs.python.org/3.6/library/json.html)
+
+文件内容
+
+```shell
+{
+    "1":["张三",150,120,100],
+    "2":["李四",90,99,95],
+    "3":["王五",60,66,68]
+}
+```
+
+```python
+with open('student.txt', 'r', encoding='utf8') as f:
+    students_info = json.load(f, object_pairs_hook=OrderedDict)
+
+```
+
+students_info的顺序是跟文件中定义的顺序一样.
+
 ### 实例
 
 #### 将字符串序列化成字典
