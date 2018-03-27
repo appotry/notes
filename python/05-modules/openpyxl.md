@@ -34,6 +34,42 @@ FF00B050
 FFFFFF00
 ```
 
+## 写 excel
+
+[https://www.cnblogs.com/sun-haiyu/p/7096423.html](https://www.cnblogs.com/sun-haiyu/p/7096423.html)
+
+### append方法
+
+可以一次添加多行数据，从第一行空白行开始（下面都是空白行）写入。
+
+```python
+# 添加一行
+row = [1 ,2, 3, 4, 5]
+sheet.append(row)
+
+# 添加多行
+rows = [
+    ['Number', 'data1', 'data2'],
+    [2, 40, 30],
+    [3, 40, 25],
+    [4, 50, 30],
+    [5, 30, 10],
+    [6, 25, 5],
+    [7, 50, 10],
+]
+```
+
+append按行写入, 按列写入只需要将矩阵转置
+
+```python
+list(zip(*rows))
+
+# out
+[('Number', 2, 3, 4, 5, 6, 7),
+ ('data1', 40, 40, 50, 30, 25, 50),
+ ('data2', 30, 25, 30, 10, 5, 10)]
+```
+
 ## 示例
 
 ```python
