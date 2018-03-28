@@ -125,6 +125,6 @@ def old_add2_redirect(request,a,b):
 urls.py
 
 ```python
-    url(r'^new_add/(\d+)/(\d+)/$',add2,name='add2'),
-    url(r'^add/(\d+)/(\d+)/$',old_add2_redirect),
+url(r'^new_add/(\d+)/(\d+)/$',add2,name='add2'),
+url(r'^add/(\d+)/(\d+)/$',old_add2_redirect),
 ```
