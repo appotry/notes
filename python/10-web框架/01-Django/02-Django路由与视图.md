@@ -2,9 +2,11 @@
 
 路由说白了就是视图(函数)的对应关系,一个路由对应一个视图,如上面文章所提到的,当打开`/users/`路径的时候会让`users`这个函数来进行逻辑处理,把处理的结果再返回到前端
 
-那么django怎么知道从哪里找路由的配置文件路口呢,其实在`settings.py`文件中已经被定义了.
+路由的配置文件入口在 `settings.py` 文件中已经定义.
 
-    ROOT_URLCONF = 'yang.urls'
+```python
+ROOT_URLCONF = 'yang.urls'
+```
 
 ## 路由
 
@@ -44,8 +46,11 @@ url(r'^(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<day>[0-9]{2})/$', views.date),
 
 `date`视图必须接收以下参数
 
-    def date(request, year, month, day):
-访问地址为: http://127.0.0.1:8000/2017/3/14/
+```python
+def date(request, year, month, day):
+```
+
+访问地址为: [http://127.0.0.1:8000/2017/3/14/](http://127.0.0.1:8000/2017/3/14/)
 
 #### 传值
 
@@ -153,8 +158,8 @@ url(r'^cmdb/$', include('app01.urls')),
         return HttpResponse("Hello App2")
 ```
 
-1. 当访问http://127.0.0.1:8000/app1/hello/时返回内容`Hello App1`
-2. 当访问http://127.0.0.1:8000/app2/hello/时返回内容`Hello App2`
+1. 当访问 [http://127.0.0.1:8000/app1/hello/](http://127.0.0.1:8000/app1/hello/) 时返回内容 `Hello App1`
+2. 当访问 [http://127.0.0.1:8000/app2/hello/](http://127.0.0.1:8000/app2/hello/) 时返回内容 `Hello App2`
 
 ## 视图
 
@@ -174,14 +179,13 @@ http响应: **HttpResponse对象**
 HttpRequest对象属性
 
 | 属性                      | 描述            |
-| :---------------------- | :------------ |
+| ---------------------- | ------------ |
 | request.path            | 请求页面的路径,不包括域名 |
 | request.path_info       | 可用于跳转到当前页面    |
 | request.get_full_path() | 获取带参数的路径      |
 | request.method          | 页面的请求方式       |
 | request.GET             | GET请求方式的数据    |
 | request.POST            | POST请求方式的数据   |
-
 
 HttpResponse对象属性
 
