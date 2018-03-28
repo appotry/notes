@@ -37,8 +37,13 @@ git reset --hard origin/gh-pages
 > 另一种方式
 
 ```shell
-docker run -d --name=notes -p50600:80 zttfaith/notes:latest
+# 获取最新镜像
+docker pull zttfaith/notes:latest
+# 启动容器
+docker run -d --restart=always --name=notes -p50600:80 zttfaith/notes:latest
 ```
+
+浏览器访问 [http://localhost:50600](http://localhost:50600)
 
 ### 通过GitBook
 
