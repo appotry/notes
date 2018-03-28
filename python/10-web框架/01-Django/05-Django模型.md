@@ -1,6 +1,84 @@
-# Django模型2
+# Django模型
 
-## 创建一个新的app
+## MTV开发模式
+
+把数据存取逻辑、业务逻辑和表现逻辑组合在一起的概念有时被称为软件架构的`Model-View-Controller(MVC)`模式。在这个模式中，**Model**代表数据存取层，**View**代表的是系统中选择显示什么和怎么显示的部分，**Controller**指的是系统中根据用户输入并视需要访问模型，以决定使用哪个视图的那部分。
+
+Django紧紧地遵循这种`MVC`模式，可以称得上是一种`MVC`框架。
+
+以下是Django中`M、V`和`C`各自的含义：
+
+1. `M`： 数据存取部分，由**django数据库层**处理;
+2. `V`： 选择显示哪些数据要显示以及怎样显示的部分，由视图和模板处理;
+3. `C`： 根据用户输入委派视图的部分，由Django框架根据URLconf设置，对给定URL调用适当的Python函数;
+
+`C`由框架自行处理，而Django里更关注的是`模型(Model)`、`模板(Template)`和`视图(Views)`，Django也被称为`MTV`框架，在MTV开发模式中：
+
+1. `M` 代表模型(Model)，即数据存取层，该层处理与数据相关的所有事务：如何存取、如何验证有效性、包含哪些行为以及数据之间的关系等;
+2. `T` 代表模板(Template)，即表现层，该层处理与表现相关的决定：如何在页面或其他类型文档中进行显示;
+3. `V` 代表视图(View)，即业务逻辑层，该层包含存取模型及调取恰当模板的相关逻辑，你可以把它看作模型与模板之间的桥梁;
+
+## 数据库配置
+
+```shell
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'yang',
+        'USER': 'root',
+        'PASSWORD': '111111',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
+    }
+}
+```
+
+以下是一个MySQL数据库的配置属性：
+
+| 字段       | 描述        |
+| -------- | --------- |
+| ENGINE   | 使用的数据库引擎  |
+| NAME     | 数据库名称     |
+| USER     | 那个用户连接数据库 |
+| PASSWORD | 用户的密码     |
+| HOST     | 数据库服务器    |
+| PORT     | 端口        |
+
+ENGINE字段所支持的内置数据库
+
+* django.db.backends.postgresql
+* django.db.backends.mysql
+* django.db.backends.sqlite3
+* django.db.backends.oracle
+
+无论你选择使用那个数据库都必须安装此数据库的驱动，即python操作数据库的介质，在这里你需要注意的是python3.x并不支持使用MySQLdb模块，但是你可以通过pymysql来替代mysqldb，首先你需要安装pymysql模块：
+
+    pip3 install pymysql
+
+然后在项目的`__init__.py`文件加入以下两行配置：
+
+```shell
+import pymysql
+pymysql.install_as_MySQLdb()
+```
+
+当数据库配置完成之后，我们可以使用python manage.py shell进入项目测试，输入下面这些指令来测试你的数据库配置：
+
+```shell
+➜  yangxxx git:(master) ✗ python3 manage.py shell
+Python 3.5.3 (v3.5.3:1880cb95a742, Jan 16 2017, 08:49:46)
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from django.db import connection
+>>> cursor = connection.cursor()
+```
+
+没有报错,则说明数据库配置正确.
+
+## 实战
+
+### 创建一个新的app
 
 让我们来创建一个**Django app**，一个包含模型，视图和Django代码，并且形式为独立Python包的完整Django应用。
 
@@ -30,7 +108,7 @@ darker
 1 directory, 7 files
 ```
 
-## 第一个模型
+### 第一个模型
 
 首先创建三张表
 
@@ -66,7 +144,7 @@ class score(models.Model):
 
 每个数据模型都是`django.db.models.Model`的子类,它的父类`Model`包含了所有必要的和数据库交互的方法，并提供了一个简洁漂亮的定义数据库字段的语法,每个模型相当于单个数据库表，每个属性也是这个表中的一个字段,属性名就是字段名.
 
-## 模型安装
+### 模型安装
 
 要通过django在数据库中创建这些表，首先我们需要在项目中**激活**这些模型，将**darker app**添加到配置文件的已安装应用列表中即可完成此步骤;
 
@@ -163,7 +241,7 @@ mysql> show tables;
 13 rows in set (0.01 sec)
 ```
 
-## 基本数据访问
+### 基本数据访问
 
 运行 `python3 manager.py shell` 并使用Django提供的高级Python API
 
@@ -190,7 +268,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 <QuerySet [<student: student object>, <student: student object>, <student: student object>]>
 ```
 
-## 让获取到的数据显示为字符串格式
+### 让获取到的数据显示为字符串格式
 
 只需要在上面三个表类中添加一个方法 `__str__`,如下:
 
@@ -235,7 +313,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 <QuerySet [<student: yang>, <student: yang>, <student: s2>]>
 ```
 
-## 插入和更新数据
+### 插入和更新数据
 
 ```python
 # 插入数据
@@ -253,7 +331,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ```
 
-## 选择对象
+### 选择对象
 
 下面的指令是从数据库中获取所有的数据
 
@@ -362,7 +440,7 @@ class student(models.Model):
 <student: yang>
 ```
 
-## 更新多个对象
+### 更新多个对象
 
 更改某一指定的列,我们可以调用结果集(QuerySet)对象的`update()`方法
 
@@ -377,7 +455,7 @@ class student(models.Model):
 
 `update()`方法会返回一个整型数值,表示受影响的记录条数
 
-## 删除对象
+### 删除对象
 
 删除数据库中的对象只需要调用该对象的`delete()`方法
 
@@ -399,7 +477,7 @@ class student(models.Model):
 <QuerySet []>
 ```
 
-## 字段属性
+### 字段属性
 
 | 属性                                 | 描述                                       |
 | ---------------------------------- | ---------------------------------------- |
@@ -428,7 +506,7 @@ class student(models.Model):
 | `models.ImageField`                | 图片                                       |
 | `models.FilePathField`             | 文件                                       |
 
-## 属性所拥有的方法
+### 属性所拥有的方法
 
 | 方法                    | 描述                                |
 | --------------------- | --------------------------------- |
@@ -448,7 +526,7 @@ class student(models.Model):
 | `auto_created=False`  | 自动创建                              |
 | `help_text`           | 在Admin中提示帮助信息                     |
 
-## 连表结构
+### 连表结构
 
 | 方法                            | 描述   |
 | ----------------------------- | ---- |
@@ -456,7 +534,7 @@ class student(models.Model):
 | `models.ManyToManyField(其他表)` | 多对多  |
 | `models.OneToOneField(其他表)`   | 一对一  |
 
-## 报错信息
+### 报错信息
 
 ```shell
 django.db.utils.InternalError: (1366, "Incorrect string value: '\\xE7\\x94\\xB7' for column 'gender' at row 1")
@@ -464,10 +542,9 @@ django.db.utils.InternalError: (1366, "Incorrect string value: '\\xE7\\x94\\xB7'
 原因,| yang     | CREATE DATABASE `yang` /*!40100 DEFAULT CHARACTER SET latin1 */ |
 ```
 
-# Django模型3
+## 实战3
 
-
-## 连表操作一对一
+### 连表操作一对一
 
 在 `app` 的**models.py**文件内添加一下内容用户创建一对多关系表
 
@@ -499,7 +576,7 @@ Running migrations:
   Applying darker.0002_auto_20170617_0902... OK
 ```
 
-## 基本操作
+### 基本操作
 
 ```python
 ➜  yangxxx git:(master) ✗ python3 manage.py shell
@@ -586,7 +663,7 @@ darker.models.DoesNotExist: UserInfo matching query does not exist.
 <QuerySet [<UserInfo: UserInfo object>]>
 ```
 
-## 单表查询
+### 单表查询
 
 查询出来的结果都是QuerySet对象
 
@@ -631,7 +708,7 @@ UserInfo object 2 2 admin 2
 UserInfo object 3 2 admin 2
 ```
 
-## 查询实例
+### 查询实例
 
 获取用户类型是超级管理员的所有用户
 
@@ -665,7 +742,7 @@ UserInfo object 3 2 admin 2
 <QuerySet [{'userinfo__username': 'qwe', 'nid': 2, 'caption': 'admin'}, {'userinfo__username': 'yang', 'nid': 2, 'caption': 'admin'}, {'userinfo__username': None, 'nid': 1, 'caption': 'superadmin'}]>
 ```
 
-## 连表操作多对多
+### 连表操作多对多
 
 两种创建多对多表的方式
 
@@ -768,7 +845,7 @@ Traceback (most recent call last):
 AttributeError: Cannot use add() on a ManyToManyField which specifies an intermediary model. Use darker.HostGroup's Manager instead.
 ```
 
-## 批量导入bulk_create()
+### 批量导入bulk_create()
 
 `User.objects.create()`每保存一条就执行一次SQL
 
@@ -804,14 +881,4 @@ AttributeError: Cannot use add() on a ManyToManyField which specifies an interme
     #print(user_list)
 
     # User.objects.bulk_create(user_object_list)
-```
-
-## 如果抛出错误 django.core.exceptions.AppRegistryNotReady: Models aren't loaded yet.
-
-导入数据
-
-```python
-import django
-if django.VERSION >= (1, 7):#自动判断版本
-    django.setup()
 ```
