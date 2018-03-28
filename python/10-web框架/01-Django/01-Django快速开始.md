@@ -362,15 +362,15 @@ Superuser created successfully.
 
 ![python-django-10](http://oi480zo5x.bkt.clouddn.com/python-django-10.jpg)
 
-# 进阶(实例)
+## 进阶(实例)
 
 使用PyCharm直接创建mysite项目
 
-## 配置
+### 配置
 
 mysite/settings.py
 
-### 配置模板路径
+#### 配置模板路径
 
 ```shell
 TEMPLATES = [
@@ -391,7 +391,7 @@ TEMPLATES = [
 ]
 ```
 
-### 配置静态目录
+#### 配置静态目录
 
 ```shell
 # 配置静态目录
@@ -401,7 +401,7 @@ STATICFILES_DIRS = (
 )
 ```
 
-### 暂时注释CSRF
+#### 暂时注释CSRF
 
 ```shell
 MIDDLEWARE = [
@@ -415,7 +415,7 @@ MIDDLEWARE = [
 ]
 ```
 
-### 注册APP
+#### 注册APP
 
 ```shell
 INSTALLED_APPS = [
@@ -429,7 +429,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-## urls
+### urls
 
 mysite/urls.py
 
@@ -447,7 +447,7 @@ urlpatterns = [
 
 ```
 
-## templates
+### templates
 
 templates/home.html
 
@@ -529,7 +529,7 @@ templates/login.html
 </html>
 ```
 
-## views
+### views
 
 cmdb/views.py
 
