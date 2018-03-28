@@ -62,7 +62,7 @@ pip3 install djangorestframework
 django-admin startproject resttest
 cd resttest
 
-# 创建相关表结构等
+# 同步数据库
 python3 manage.py makemigrations
 python3 manage.py migrate
 ```
