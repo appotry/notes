@@ -22,9 +22,11 @@
 
 运行
 
-    python manage.py runserver 0.0.0.0:8000
+```shell
+python manage.py runserver 0.0.0.0:8000
+```
 
-访问127.0.0.1:8000
+访问 [127.0.0.1:8000](127.0.0.1:8000)
 
 ![python-django-01](http://oi480zo5x.bkt.clouddn.com/python-django-01.jpg)
 
@@ -43,29 +45,31 @@ Django请求生命周期
 
 ## 安装python
 
-```python
+```shell
 ➜  python3 -V
 Python 3.5.3
 ```
 
 ## 安装django
 
-我的操作系统是`Mac`,并且已经配置安装好了`pip3`和`python3`,可以直接使用`pip`来进行安装
+使用 `pip` 进行安装
 
-```python
+```shell
 # 默认安装最近稳定版本
 pip3 install django
 ```
 
 指定安装`django`版本
 
-    pip install django==1.9
+```shell
+pip install django==1.9
+```
 
 进入`python`解释器,导入`django`模块来进行校验是否正确安装
 
 在导入的时候没有报错就表示已经安装成功,否则需要重新安装
 
-```python
+```shell
 ➜  ~ python3
 Python 3.5.3 (v3.5.3:1880cb95a742, Jan 16 2017, 08:49:46)
 [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
@@ -77,7 +81,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ## 创建Django项目
 
-`django`为我们提供了一个`django-admin`的指令,以方便与我们在命令行下创建`django`项目,可以使用`django-admin --help`查看该指令的帮助信息.
+`django` 为我们提供了一个 `django-admin` 命令,方便我们通过命令行创建 `django` 项目,使用 `django-admin --help` 查看该命令的帮助信息.
 
 常用参数:
 
@@ -86,7 +90,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 | startproject   | 创建一个完整的项目            |
 | startapp       | 创建一个app              |
 | runserver      | 运行django为我们提供的http服务 |
-| shell          | 进入待django环境的shell    |
+| shell          | 进入带django环境的shell    |
 | makemigrations | 生成数据库命令              |
 | migrate        | 执行生成好的数据库命令          |
 
@@ -95,11 +99,11 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```python
 ➜  ~ django-admin startproject yang
 ➜  ~ cd yang
-➜  yang ls
+➜  ls
 manage.py yang
 ```
 
-`manage.py`文件是一种命令行工具,允许你以多种方式与该`Django`项目进行交互,输入`python mange.py help`可以看到他为我们提供了哪些指令,比如如下是常用的
+`manage.py`文件是一个命令行工具,允许你以多种方式与该`Django`项目进行交互,输入 `python mange.py help` 可以看到它为我们提供的指令,比如如下是常用的
 
 | 指令              | 描述                 |
 | --------------- | ------------------ |
@@ -108,8 +112,8 @@ manage.py yang
 
 `django-admin —help` 查看帮助
 
-`yang/settings.py`项目的全局配置文件,很重要
-`yang/urls.py`项目的路由配置文件,这是一个django项目的主入口文件
+- 项目全局配置文件: `yang/settings.py`
+- 路由配置文件: `yang/urls.py`
 
 ## 创建APP
 
@@ -121,8 +125,8 @@ python3 manage.py startapp cmdb # app名字
 ```
 
 ```shell
-➜  yang python3 manage.py startapp cmdb
-➜  yang tree
+➜ python3 manage.py startapp cmdb
+➜ tree
 .
 ├── cmdb                # 刚创建的app
 │   ├── __init__.py
@@ -150,8 +154,8 @@ python3 manage.py startapp cmdb # app名字
 
 `django`内部是有一个內建的轻量的web开发服务器,在开发期间你完全可以使用內建的服务器,避免安装`Nginx`或者`Apache`等
 
-```python
-➜  yang python3 manage.py runserver
+```shell
+➜ python3 manage.py runserver
 Performing system checks...
 
 System check identified no issues (0 silenced).
@@ -167,15 +171,17 @@ Quit the server with CONTROL-C.
 
 ![python-django-01](http://oi480zo5x.bkt.clouddn.com/python-django-01.jpg)
 
-更改这个`Development Server`的主机地址或端口
+默认监听本地 `8000` 端口, 修改监听端口:
 
-默认情况下,`runserver`命令在`8000`端口启动开发服务器,且监听本地连接,要想更改端口,可将端口作为命令参数传入:
+```shell
+python manage.py runserver 8080
+```
 
-    python manage.py runserver 8080
+指定 `IP` 地址,修改监听地址.
 
-通过指定一个`IP`地址,你可以告诉服务器-允许非本地连接访问.指定监听网络地址.
-
-    python manage.py runserver 0.0.0.0:8080
+```shell
+python manage.py runserver 0.0.0.0:8080
+```
 
 ## 实例
 
@@ -183,7 +189,9 @@ Quit the server with CONTROL-C.
 
 继续上面创建好的项目`yang`之上创建一个`app`:`users`
 
-    python3 manage.py startapp users
+```shell
+python3 manage.py startapp users
+```
 
 除此之外,需要把`app`注册到我们的项目中,可以在`yang/setting.py`中找到`INSTALLED_APPS`字典,把刚创建的app名字添加进去
 
