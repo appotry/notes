@@ -235,11 +235,12 @@ Error: The IP address's status is error.
 下面是释放全局地址池名称为mypool的192.168.20.230这个IP的示例
 reset ip pool name mypool 192.168.20.230
 
-比如:
+示例:
 reset ip pool name 192.168.20.0 192.168.20.230
 
-如果报如下错误, 则是因为已经给这个mac地址分配过IP了, 将该IP重置即可
+如果报如下错误, 则是因为已经给这个mac地址分配过IP了, 先关闭设备WiFi, 再进行绑定即可
 Error: The static-MAC is exist in this IP-pool.
+
 ```
 
 ## 华为交换机常用命令
