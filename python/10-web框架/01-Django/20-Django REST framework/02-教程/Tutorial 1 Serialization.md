@@ -223,7 +223,7 @@ class SnippetSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'code', 'linenos', 'language', 'style')
 ```
 
-序列一个非常棒的属性就是, 你可以通过打印序列实例的结构(representation)查看它的所有字段. 输入 `python manage.py shell` 打开Django shell, 尝试如下代码:
+序列一个非常好的属性就是, 你可以通过打印序列实例的结构(representation)查看它的所有字段. 输入 `python manage.py shell` 打开Django shell, 尝试如下代码:
 
 ```python
 from snippets.serializers import SnippetSerializer
@@ -239,3 +239,185 @@ print(repr(serializer))
 #     style = ChoiceField(choices=[('abap', 'abap'), ('algol', 'algol'),...
 
 ```
+
+记住, `ModelSerializer` 类并没有做任何有魔力的事情, 他们只是一个创建 `serializer`类的快捷方式.
+
+- 一个自动确认字段的集合
+- 简单默认实现的 `create()` 和 `update()` 方法.
+
+## 用我们的序列化写常规的Django视图
+
+让我们看看, 如何使用我们的序列化类来实现一些API视图. 我们不使用 `REST` 框架的其他特性, 只是写一些常规的Django视图
+
+编辑 `snippets/views.py`:
+
+```python
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+from snippets.models import Snippet
+from snippets.serializers import SnippetSerializer
+```
+
+我们的根API视图将支持列出所有存在的 `snippets`, 或者创建一个新的 `snippet`
+
+```python
+@csrf_exempt
+def snippet_list(request):
+    """
+    List all code snippets, or create a new snippet.
+    """
+    if request.method == 'GET':
+        snippets = Snippet.objects.all()
+        serializer = SnippetSerializer(snippets, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = SnippetSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
+```
+
+注意, 应为我们希望我们可以从没有 `csrf token` 的客户端 `POST` 数据到该视图, 我们需要标记该视图为 `csrf_exempt`. 通常你不想这样做, `REST`框架视图使用比这个更明智的方式, 不过那不是我们现在的目的.
+
+我们还需要一个视图对应单个 `snippet`, 同时我们使用这个视图, 恢复, 更新, 删除 `snippet`.
+
+```python
+@csrf_exempt
+def snippet_detail(request, pk):
+    """
+    Retrieve, update or delete a code snippet.
+    """
+    try:
+        snippet = Snippet.objects.get(pk=pk)
+    except Snippet.DoesNotExist:
+        return HttpResponse(status=404)
+
+    if request.method == 'GET':
+        serializer = SnippetSerializer(snippet)
+        return JsonResponse(serializer.data)
+
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = SnippetSerializer(snippet, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data)
+        return JsonResponse(serializer.errors, status=400)
+
+    elif request.method == 'DELETE':
+        snippet.delete()
+        return HttpResponse(status=204)
+```
+
+最后, 我们需要使用路由将这些视图对应起来, 创建 `snippets/urls.py` 文件
+
+```python
+from django.conf.urls import url
+from snippets import views
+
+urlpatterns = [
+    url(r'^snippets/$', views.snippet_list),
+    url(r'^snippets/(?P<pk>[0-9]+)/$', views.snippet_detail),
+]
+```
+
+同时需要配置 `tutorial/urls.py`, 添加我们的 `snippet` 应用的 `URLs`.
+
+```python
+from django.conf.urls import url, include
+
+urlpatterns = [
+    url(r'^', include('snippets.urls')),
+]
+```
+
+值得注意的事, 有一些边界情况我们没有进行处理, 如果我们发送不正确的 `json` 数据, 或者使用一个我们的视图没有处理的方法来请求, 我们会得到500的错误, "Server Error".
+
+## 测试我们的API
+
+退出当前命令行.
+
+```shell
+quit()
+```
+
+启动Django开发服务器
+
+```python
+python manage.py runserver
+
+Performing system checks...
+
+System check identified no issues (0 silenced).
+...
+Django version 1.11.11, using settings 'tutorial.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+```
+
+我们可以打开另一个终端进行测试, 我们可以使用 `curl`, 或者 `httpie`. `Httpie` 是一个使用Python编写的对用户友好的http客户端. 让我们安装它.
+
+```shell
+pip install httpie
+```
+
+我们可以获取 `snippets` 列表
+
+```shell
+http http://127.0.0.1:8000/snippets/
+
+HTTP/1.0 200 OK
+...
+
+[
+    {
+        "code": "foo = \"bar\"\n",
+        "id": 1,
+        "language": "python",
+        "linenos": false,
+        "style": "friendly",
+        "title": ""
+    },
+    {
+        "code": "print \"hello, world\"\n",
+        "id": 2,
+        "language": "python",
+        "linenos": false,
+        "style": "friendly",
+        "title": ""
+    },
+]
+```
+
+我们可以指定 `id` 获取响应 `snippet`
+
+```shell
+http http://127.0.0.1:8000/snippets/2/
+
+HTTP/1.0 200 OK
+...
+
+{
+    "code": "print \"hello, world\"\n",
+    "id": 2,
+    "language": "python",
+    "linenos": false,
+    "style": "friendly",
+    "title": ""
+}
+```
+
+相似地, 使用浏览器访问也可以获得相同的 `json` 数据.
+
+## Where are we now
+
+We're doing okay so far, we've got a serialization API that feels pretty similar to Django's Forms API, and some regular Django views.
+
+Our API views don't do anything particularly special at the moment, beyond serving json responses, and there are some error handling edge cases we'd still like to clean up, but it's a functioning Web API.
+
+We'll see how we can start to improve things in part 2 of the tutorial.
