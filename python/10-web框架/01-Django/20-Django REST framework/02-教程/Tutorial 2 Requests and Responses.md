@@ -212,14 +212,14 @@ http --json POST http://127.0.0.1:8000/snippets/ code="print 456"
 
 使用浏览器打开 [http://127.0.0.1:8000/snippets/](http://127.0.0.1:8000/snippets/).
 
-## Browsability
+## 可视化
 
-Because the API chooses the content type of the response based on the client request, it will, by default, return an HTML-formatted representation of the resource when that resource is requested by a web browser. This allows for the API to return a fully web-browsable HTML representation.
+由于 `API` 响应类型是根据客户端的请求进行选择的, 因此, 当使用 `web` 浏览器请求的时候, 默认会使用 `HTML` 格式来表示资源. 这允许 `API` 返回一个完整的浏览器可视的 `HTML` 表示.
 
-Having a web-browsable API is a huge usability win, and makes developing and using your API much easier. It also dramatically lowers the barrier-to-entry for other developers wanting to inspect and work with your API.
+拥有一个浏览器可视化的 `API` 是非常有用的. 这会使得开发和使用 `API` 变的极为简单. 这也让其他开发者更容易查看和使用你的 `API`.
 
-See the [browsable api](http://www.django-rest-framework.org/topics/browsable-api/) topic for more information about the browsable API feature and how to customize it.
+查看 [browsable api](http://www.django-rest-framework.org/topics/browsable-api/) 主题获取更更多关于 `browsable API` 的信息, 比如 特性, 定制.
 
 ## What's next
 
-In tutorial part 3, we'll start using class-based views, and see how generic views reduce the amount of code we need to write.
+在教程的第3部分, 我们将开始使用基于类的视图(CBV), 并介绍如何使用通用的视图来减少代码量.
