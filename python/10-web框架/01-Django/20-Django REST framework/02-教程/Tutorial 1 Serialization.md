@@ -416,8 +416,8 @@ HTTP/1.0 200 OK
 
 ## Where are we now
 
-We're doing okay so far, we've got a serialization API that feels pretty similar to Django's Forms API, and some regular Django views.
+到目前为止, 我们做得很好, 我们编写的序列化 `API` 和 `Django's Forms API` 比较相似, 同时编写了一些常规的Django视图.
 
-Our API views don't do anything particularly special at the moment, beyond serving json responses, and there are some error handling edge cases we'd still like to clean up, but it's a functioning Web API.
+我们的 `API` 没有做什么特殊的事情, 除了作出json响应外, 还有一些边缘事件没有处理, 但至少是一个还有点功能的 `Web API`.
 
-We'll see how we can start to improve things in part 2 of the tutorial.
+在教程的第2部分, 我们将介绍如何对我们的 `API` 进行改进.
