@@ -255,8 +255,8 @@ http -a admin:password123 POST http://127.0.0.1:8000/snippets/ code="print 789"
 }
 ```
 
-## Summary
+## 概要
 
-We've now got a fairly fine-grained set of permissions on our Web API, and end points for users of the system and for the code snippets that they have created.
+我们的 `API` 已经具有一个相当精细的权限集合, 同时为系统用户和他们创建的 `snippets` 提供了端点.
 
-In part 5 of the tutorial we'll look at how we can tie everything together by creating an HTML endpoint for our highlighted snippets, and improve the cohesion of our API by using hyperlinking for the relationships within the system.
+在教程的第5部分, 我们将介绍如何为高亮的 `snippets` 创建一个HTML端点, 将所有内容联系起来. 同时为系统中的关系使用超链接提高我们 `API` 的凝聚力.
