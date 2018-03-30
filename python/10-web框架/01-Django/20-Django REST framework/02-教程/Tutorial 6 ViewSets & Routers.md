@@ -1,14 +1,16 @@
 # Tutorial 6: ViewSets & Routers
 
-`REST` 框架包含一个处理 `ViewSets` 的抽象, 它可以让开发者将精力集中在构建API的状态和交互上, 同时帮助开发者, 基于共同约定, 自动处理 URL 构建.
+`REST` 框架包含一个 `ViewSets` 的抽象, 它可以让开发者将精力集中在构建API的状态和交互上, 同时帮助开发者, 基于共同约定, 自动处理 URL 构建.
 
 `ViewSet` 类几乎和 `View` 类一样, 除了它提供的 `read` 或者 `update` 操作, 而不是像 `get` 或 `put` 一样的方法.
 
-一个 `ViewSet` 类在它被实例化成一个视图集合的最后时刻, 通过一个处理复杂 URL 配置的 `Router` 类绑定一个方法集合, 且只绑定一个.
+一个 `ViewSet` 类在它被实例化成一个视图集合的最后时刻, 通过一个处理复杂 URL 配置的 `Router` 类绑定, 且只绑定一个方法集合.
 
 ## 使用 ViewSets 重构
 
 首先使用单个 `UserViewSet` 视图重构 `UserList` 和 `UserDetail` 视图.
+
+文件 `snippets/views.py`
 
 ```python
 from rest_framework import viewsets
