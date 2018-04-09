@@ -70,16 +70,28 @@ find . -type f -name "*.md" ! -path "./README.md" -a ! -path "./SUMMARY.md"|xarg
 
 ## 第二章
 
+### 判断技巧
+
+```shell
+[ -d /abc ] || mkdir -p /abc
+```
+
 ### 创建随机密码方法
 
-1. echo $RANDOM|md5sum
-2. openssl rand -base64 48
-3. expect mkpasswd
-    - mkpasswd -l 10
-4. date +%N|sha512sum
-5. head /dev/urandom|md5sum
-6. uuidgen|md5sum
-    - 加密可以使用 md5sum、sha512sum等等，加密之前可以添加一个干扰码，例如：echo yjj$RANDOM|md5sum
+1. `echo $RANDOM|md5sum`
+2. `openssl rand -base64 48`
+3. `expect mkpasswd`
+    - `mkpasswd -l 10`
+4. `date +%N|sha512sum`
+5. `head /dev/urandom|md5sum`
+6. `uuidgen|md5sum`
+    - 加密可以使用 `md5sum`、`sha512sum`等等，加密之前可以添加一个干扰码，例如：`echo yjj$RANDOM|md5sum`
+
+### 创建10个随机字母
+
+```shell
+echo $RANDOM|sha512sum|sed 's#[0-9]##g'|cut -c1-10
+```
 
 ### 变量子串使用技巧
 
@@ -116,16 +128,19 @@ exit 0
         continue
     fi
 
-删除数字进行判断，判断是否为空
+# 删除数字进行判断，判断是否为空
 
----
+# ---
 
-方法1：将数字以外的字符替换成空，如果跟本身相同，说明用户输入为数字
+# 方法1：将数字以外的字符替换成空，如果跟本身相同，说明用户输入为数字
+
 [root@yjj ~]# [ "`echo 1231|sed -r 's#[^0-9]##g'`" = "1231" ]&&echo 0||echo 1
 0
 [root@yjj ~]# [ "`echo 123a|sed -r 's#[^0-9]##g'`" = "123a" ]&&echo 0||echo 1
 1
-方法2：使用expr，如果命令返回结果非零，则表示用户输入的不是数字
+
+# 方法2：使用expr，如果命令返回结果非零，则表示用户输入的不是数字
+
 [root@yjj ~]# expr 1 + a &>/dev/null
 [root@yjj ~]# echo $?
 2
@@ -211,4 +226,18 @@ for n in Whatever is worth doing is worth doing well.
 ➜  ~ a=`eval echo '$refer_504_'"$time"`
 ➜  ~ echo $a
 123
+```
+
+## 乘法口诀表
+
+```shell
+awk 'BEGIN{for(i=1;i<=9;i++){for(j=1;j<=i;j++){printf j"*"i"="i*j"\t"}printf "\n"}}'
+
+echo -ne "\033[47;30m`awk 'BEGIN{for(i=1;i<=9;i++){for(j=1;j<=i;j++){printf j"*"i"="i*j"\t"}printf "\n"}}'`\033[0m\n"
+
+seq 9 | sed 'H;g' | awk -v RS='' '{for(i=1;i<=NF;i++)printf("\033[47;30m%dx%d=%d%s", i, NR, i*NR, i==NR?"\033[0m\n":"\t")}'
+
+echo -e "\e[44;37;5m `awk 'BEGIN{for(i=1;i<10;i++) {for(k=1;k<=i;k++) {printf "%d%s%d%s%;}printf "\n"}}'` \e[0m "
+
+for i in {1..9}; do for j in `seq 1 $i`; do echo -ne "\033[47;30m${j}*${i}=$((j*i))\033[0m \t"; done; echo; done
 ```
