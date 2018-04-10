@@ -73,3 +73,52 @@ https://itunes.apple.com/app/the-unarchiver/id425424353?mt=12&amp;ls=1)
 同时按启动键，空格键左边的option，command键还有p和r，
 听到开机声音响四声后再松开。一定要同时按！
 然后可能就可以用了。
+
+## 破解密码
+
+1. 开机瞬间按住`command + R`
+2. 出现苹果logo进度条后, 会进入恢复界面
+3. 恢复界面工具栏选择 `实用工具 -> 终端`
+4. 终端界面输入 `resetpassword`
+5. 弹出重置密码界面, 选择登录用户, 下一步
+6. 设置开机密码, 重启电脑
+
+重启后, 如果Mac提示输入钥匙串密码, 可以到`实用工具->钥匙串(点击左上角锁锁住, 再点开, 再点锁住, 会提示重设钥匙串密码)`
+
+设置好新钥匙串密码后, 可以在顶部菜单选择解锁所有程序的钥匙串, 不解锁的话, 以后进入程序都会提示输入密码.
+
+## Mac安装jdk
+
+### 下载
+
+[下载页面](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+
+![MacOS-jdk-02](http://oi480zo5x.bkt.clouddn.com/MacOS-jdk-02.jpg)
+
+![MacOS-jdk](http://oi480zo5x.bkt.clouddn.com/MacOS-jdk.jpg)
+
+### 配置环境变量(如需要)
+
+编辑 `.bash_profile`文件,如果没有,则创建
+
+```shell
+# jdk安装目录
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home
+PATH=$JAVA_HOME/bin:$PATH:.
+CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
+export JAVA_HOME
+export PATH
+export CLASSPATH
+```
+
+生效
+
+```shell
+source .bash_profile
+```
+
+查看版本
+
+```shell
+java -version
+```
