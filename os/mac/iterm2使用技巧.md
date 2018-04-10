@@ -120,13 +120,13 @@ iTerm2 也可以使用历史记录，按 `cmd + Shift + h` 弹出历史记录窗
     Window > Restore Window Arrangement
         可以在Preferences > General > Open saved window arrangement.设置自动恢复快照
 
-# 一些实用功能
+## 一些实用功能
 
-## shell integration
+### shell integration
 
 [documentation-shell-integration](https://iterm2.com/documentation-shell-integration.html)
 
-## Utilities Package
+### Utilities Package
 
 You will also have these commands:
 
@@ -138,6 +138,6 @@ Displays the image inline.
 
 Downloads the specified file, saving it in your Downloads folder.
 
-## Broadcast Input(对多会话同时操作)
+### Broadcast Input(对多会话同时操作)
 
 ![ITerm2-Broadcast Input](http://oi480zo5x.bkt.clouddn.com/ITerm2-Broadcast%20Input.png)
