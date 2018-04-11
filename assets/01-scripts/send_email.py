@@ -26,13 +26,13 @@ class MyEmail(object):
         self.mail_sender = mail_sender
         self.password = pwd
 
-        self.to_list = [] if to_list is None else self.to_list = to_list
-        self.cc_list = [] if cc_list is None else self.cc_list = cc_list
-        self.bcc_list = [] if bcc_list is None else self.bcc_list = bcc_list
-        self.file_path = [] if file_path is None else self.file_path = file_path
+        self.to_list = to_list if to_list else []
+        self.cc_list = cc_list if cc_list else []
+        self.bcc_list = bcc_list if bcc_list else []
+        self.file_path = file_path if file_path else []
 
         self.subject = subject
-        self.filename = os.path.basename(self.file_path)
+        # self.filename = os.path.basename(self.file_path)
         self.content = content
 
         self.msg = self.generate_mail()
@@ -63,10 +63,11 @@ class MyEmail(object):
         # 附件
         if isinstance(self.file_path, list):
             for file in self.file_path:
+                filename = os.path.basename(file)
                 att = MIMEText(open(file, 'rb').read(), 'base64', 'utf-8')
                 att["Content-Type"] = 'application/octet-stream'
                 # print(self.filename)
-                att.add_header('Content-Disposition', 'attachment', filename=('gbk', '', self.filename))
+                att.add_header('Content-Disposition', 'attachment', filename=('gbk', '', filename))
                 msg.attach(att)
 
         return msg
