@@ -117,3 +117,88 @@ def current_datetime(request):
 使用`locals()`时要注意是它将包括所有的局部变量，它们可能比你想让模板访问的要多。在前例中，`locals()`还包含了`request`。对此如何取舍取决你的应用程序。
 
 ## 模板方法
+
+### 内置方法，类似于python的内置函数
+
+```shell
+{{ k1|lower }}  # 将所有字母都变为小写
+{{ k1|first|upper }}  # 将首字母变为大写
+{{ k1|truncatewords:"30" }}  # 取变量k1的前30个字符
+{{ item.createTime|date:"Y-m-d H:i:s" }}    # 将时间转为对应格式显示
+```
+
+### 自定义方法
+
+在内置的方法满足不了我们的需求的时候，就需要自己定义属于自己的方法了，自定义方法分别分为 `filter` 和 `simple_tag`
+
+#### 区别
+
+```shell
+① 传参：
+    filter默认最多只支持2个参数：可以用{{ k1|f1:"s1, s2, s3" }}这种形式将参数传递个函数，由函数去split拆分
+    simple_tag支持多个参数：{% f1 s1 s2 s3 s4 %}  有多少就写多少
+
+② 模板语言if条件：
+    filter：
+        {% if k1|f1 %}   # 函数的结果作为if语句的条件
+            <h1>True</h1>
+        {% else %}
+            <h1>False</h1>
+    simple_tag:  不支持模板语言if条件
+```
+
+#### 自定义方法使用流程
+
+a、在app中创建templatetags目录,目录名必须为templatetags
+b、在目录templatetags中创建一个.py文件，例如 s1.py
+c、html模板顶部通过{% load s1 %}导入py文件
+d、settings.py中注册app
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from django import template
+
+register = template.Library()   # 这一句必须这样写
+
+
+@register.filter
+def f1(value):
+    return value + "666"
+
+
+@register.filter
+def f2(value, arg):
+    return value + "666" + arg
+
+
+@register.simple_tag
+def f3(value, s1, s2, s3, s4):
+    return value + "666" + s1 + s2 + s3 + s4
+```
+
+```html
+{% load s1 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <h1>{{ title }}</h1>
+
+    {#  使用filter方式调用自定义方法  #}
+    <!-- 将k1当做参数传递给f1函数进行处理    处理方式 f1(k1) -->
+    <p>{{ k1|f1 }}</p>
+    <!-- 将k1当做参数传递给f2函数进行处理,接受2个参数  处理方式 f2(k1, "xxx") -->
+    <p>{{ k1|f2:"xxx" }}</p>
+
+    {#  使用simple_tag方式调用自定义方法  #}
+    <!-- 将k1当做参数传递给f3函数进行处理,接收多个参数  处理方式 f3(k1, "s1", "s2", "s3", "s4") -->
+    <p>{% f3 k1 "s1" "s2" "s3" "s4" %}</p>
+</body>
+</html>
+```
