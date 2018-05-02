@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# delete *.rst 
+# delete *.rst
 find . -type f -name "*.rst" ! -path "./index.rst" | xargs rm -f
 
 # md2rst
