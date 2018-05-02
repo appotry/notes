@@ -2,6 +2,12 @@
 
 ELK Stack的新名字
 
+elastic公司提供的一套完整的日志收集、展示解决方案
+
+- ElasticSearch
+- Logstash
+- Kibana
+
 ## Elasticsearch
 
 Elasticsearch是个开源分布式搜索引擎，它的特点有：分布式，零配置，自动发现，索引自动分片，索引副本机制，restful风格接口，多数据源，自动搜索负载等。
