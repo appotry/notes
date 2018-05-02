@@ -44,7 +44,7 @@ pre_build(){
     do
         # create summary
         cp -fv summary_create.sh ${dir}
-        cd ${dir} && bash summary_create.sh "8" && cd .. 
+        cd ${dir} && bash summary_create.sh "8" && cd ..
 
         cp -fv book.json ${dir}
         # editlink, 保证子目录项目, 编辑本页可用
