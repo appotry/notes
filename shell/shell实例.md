@@ -81,3 +81,60 @@ if [ "$internal" -lt "0" ]; then
 awk -vinternal=$internal 'BEGIN{d=int(internal/60/60/24);h=int((internal-24*60*60*d)/3600);print "There is : "d" days "h" hours."}'
 
 ```
+
+## 三剑客
+
+abcd("abcd123"), shanghai,12345; abcd("eee123");111111;22222;
+我想取出：abcd123 eee123
+
+```shell
+grep -oP '(?<=abcd\(")[^"]+'
+grep -Po '(?<=")\w+(?=")'
+
+[root@centos ~]# echo 'abcd("abcd123"), shanghai,12345; abcd("eee123");111111;22222;'|grep -oP '(?<=abcd\(")[^"]+'
+abcd123
+eee123
+
+[root@centos ~]# echo 'abcd("abcd123"), shanghai,12345; abcd("eee123");111111;22222;'|grep -Po '(?<=")\w+(?=")'
+abcd123
+eee123
+
+[root@centos ~]# echo 'abcd("abcd123"), shanghai,12345; abcd("eee123");111111;22222;'|awk '{for(i=1;i<=NF;i++){split($i,xxoo,"\"");print xxoo[2]}}'
+abcd123
+
+eee123
+
+[root@centos ~]# echo 'abcd("abcd123"), shanghai,12345; abcd("eee123");111111;22222;'|grep -Po '"\K\w+?(?=")'
+abcd123
+eee123
+```
+
+### 题2
+
+文件内容（序列码 开始时间 结束时间）如下：
+
+```shell
+11111 1 9
+11111 10 19
+22222 25 35
+22222 30 40
+22222 50 60
+33333 30 40
+33333 50 60
+11111 20 30
+11111 29 35
+33333 70 80
+44444 1 5
+55555 3 4
+```
+
+要求：如果第一列重复并且时间有交叉就输出第一次出现的行，否则不输出。输出为：
+
+```shell
+22222 25 35
+11111 1 9
+```
+
+```shell
+awk '!a[$1]++{f[$1]=1;s[$1]=$0;b[$1][$2]=$3;next}f[$1]==0{next}{for(i in b[$1]){if($3<i||$2>b[$1][i]){b[$1][$2]=$3}else{f[$1]=0;print s[$1]}}}' 1
+```
