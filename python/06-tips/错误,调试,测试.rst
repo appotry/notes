@@ -1,0 +1,118 @@
+错误,调试和测试
+===============
+
+错误记录
+--------
+
+Working with Matplotlib on OSX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+在mac上装一个tensorflow做一些小的实验。用virtualenv的方式避免了很多麻烦。
+
+但是在运行的时候发现报错：
+
+.. code:: python
+
+    RuntimeError: Python is not installed as a framework. The Mac OS X backend will not be able to function correctly if Python is not installed as a framework. See the Python documentation for more information on installing Python as a framework on Mac OS X. Please either reinstall Python as a framework, or try one of the other backends. If you are using (Ana)Conda please install python.app and replace the use of 'python' with 'pythonw'. See 'Working with Matplotlib on OSX' in the Matplotlib FAQ for more information.
+
+解决方法
+
+.. code:: shell
+
+    vim ~/.matplotlib/matplotlibrc
+
+    然后输入以下内容
+
+    backend: TkAgg
+
+调试
+----
+
+logging才是最终武器
+
+使用print()
+~~~~~~~~~~~
+
+把有问题的变量打印出来
+
+用\ ``print()``\ 最大的坏处就是回头还得删掉
+
+断言
+~~~~
+
+用\ ``print()``\ 来辅助查看的地方,都可以使用断言(assert)来替代
+
+.. code:: python
+
+    def foo(s):
+        n = int(s)
+        assert n != 0, 'n is zero'
+        return 10/n
+
+    def main(arg):
+        foo(arg)
+
+    main('0')
+
+``assert``\ 的意思是,\ ``n != 0``
+应该是\ ``True``,否则,根据程序运行的逻辑,后面的代码肯定会出错.
+
+如果断言失败,\ ``assert``\ 语句本身就会抛出\ ``AssertionError``
+
+.. code:: python
+
+    Traceback (most recent call last):
+    ...
+        assert n != 0, 'n is zero'
+    AssertionError: n is zero
+
+不过程序中如果充斥着\ ``assert``,和\ ``print()``\ 相比也好不到哪去.不过,启动Python解释器时可以使用\ ``-O``\ 参数来关闭\ ``assert``
+
+关闭后,你可以把所有的\ ``assert``\ 语句当做\ ``pass``\ 来看
+
+logging
+~~~~~~~
+
+和\ ``assert``\ 比,\ ``logging``\ 不会抛出错误,而且会输出到文件
+
+.. code:: python
+
+    import logging
+
+    logging.basicConfig(level=logging.INFO)
+
+    s = '0'
+    n = int(s)
+    logging.info('n = %d' %n)
+    print(10 / n)
+
+输出
+
+.. code:: python
+
+    INFO:root:n = 0
+    Traceback (most recent call last):
+      File "err.py", line 8, in <module>
+        print(10 / n)
+    ZeroDivisionError: division by zero
+
+这就是logging的好处，它允许你指定记录信息的级别，有debug，info，warning，error等几个级别，当我们指定level=INFO时，logging.debug就不起作用了。同理，指定level=WARNING后，debug和info就不起作用了。这样一来，你可以放心地输出不同级别的信息，也不用删除，最后统一控制输出哪个级别的信息。
+
+logging的另一个好处是通过简单的配置，一条语句可以同时输出到不同的地方，比如console和文件。
+
+pdb
+~~~
+
+启动Python的调试器pdb，让程序以单步方式运行，可以随时查看运行状态。
+
+::
+
+    python3 -m pdb err.py
+
+pdb.set_trace()
+
+这个方法也是用pdb，但是不需要单步执行，我们只需要import
+pdb，然后，在可能出错的地方放一个pdb.set_trace()，就可以设置一个断点
+
+IDE
+~~~

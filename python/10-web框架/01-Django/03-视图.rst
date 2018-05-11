@@ -1,0 +1,261 @@
+Django
+======
+
+快速开始
+--------
+
+创建项目
+~~~~~~~~
+
+.. code:: shell
+
+    ➜  django_xxx git:(master) ✗ django-admin startproject mysite
+    ➜  django_xxx git:(master) ✗ cd mysite
+    ➜  mysite git:(master) ✗ tree
+    .
+    ├── manage.py
+    └── mysite
+        ├── __init__.py
+        ├── settings.py
+        ├── urls.py
+        └── wsgi.py
+
+    1 directory, 5 files
+
+创建app
+~~~~~~~
+
+新建app,名称为learn,会自动生成一个learn目录
+
+.. code:: shell
+
+    ➜  mysite git:(master) ✗ python3 manage.py startapp learn
+    ➜  mysite git:(master) ✗ tree
+    .
+    ├── learn
+    │   ├── __init__.py
+    │   ├── admin.py
+    │   ├── apps.py    # Django 1.9.x 以上会在Django 1.8基础上多出此文件
+    │   ├── migrations # Django 1.8.x 以上会生成此目录
+    │   │   └── __init__.py
+    │   ├── models.py
+    │   ├── tests.py
+    │   └── views.py
+    ├── manage.py
+    └── mysite
+        ├── __init__.py
+        ├── __pycache__
+        │   ├── __init__.cpython-35.pyc
+        │   └── settings.cpython-35.pyc
+        ├── settings.py
+        ├── urls.py
+        └── wsgi.py
+
+    4 directories, 14 files
+
+将新定义的app添加到settings.py中的INSTALL_APPS中
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: shell
+
+    ➜  mysite git:(master) ✗ ls
+    learn     manage.py mysite
+    ➜  mysite git:(master) ✗ vim mysite/settings.py
+
+    # 修改内容如下
+
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'learn',
+    ]
+
+定义视图函数
+~~~~~~~~~~~~
+
+.. code:: shell
+
+    ➜  mysite git:(master) ✗ vim learn/views.py
+
+    from django.shortcuts import render
+
+    # Create your views here.
+    from django.http import HttpResponse
+
+    def index(request):
+        return HttpResponse('Hello World')
+
+定义视图函数相关的url
+~~~~~~~~~~~~~~~~~~~~~
+
+即规定 访问什么网址对应什么内容
+
+Django 1.8.x以后,官方要求以如下方式导入,再使用
+
+.. code:: shell
+
+    from learn.views import index   # 导入
+
+    urlpatterns = [
+        url(r'^admin/', admin.site.urls),
+        url(r'^$', index),   # 使用index
+    ]
+
+运行
+~~~~
+
+::
+
+    python manage.py runserver
+
+打开 ``http://127.0.0.1:8000/`` 即可看到效果,页面会显示 ``Hello World``
+
+如需修改监听IP,及端口
+
+::
+
+    python manage.py runserver 0.0.0.0:8000
+
+视图及url进阶
+-------------
+
+通过url传值,做加减法
+
+/add?a=4&b=5
+~~~~~~~~~~~~
+
+url 通过 ``/add?a=4&b=5``\ 方式传值
+
+.. code:: shell
+
+    ➜  mysite git:(master) ✗ ls
+    db.sqlite3 learn      manage.py  mysite
+    ➜  mysite git:(master) ✗ python3 manage.py startapp calc
+
+    ➜  mysite git:(master) ✗ tree calc
+    calc
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
+
+    1 directory, 7 files
+
+将 ``calc`` 这个app加入到 ``mysite/settings.py``
+
+.. code:: shell
+
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        ...
+        'calc',
+    ]
+
+修改 ``calc/views.py``
+
+::
+
+    ➜  mysite git:(master) ✗ vim calc/views.py
+
+.. code:: shell
+
+    from django.shortcuts import render
+
+    # Create your views here.
+    from django.http import HttpResponse
+
+    def add(request):
+        a = request.GET['a']
+        b = request.GET['b']
+        c = int(a) + int(b)
+        return HttpResponse(str(c))
+
+**request.GET 类似于一个字典，更好的办法是用 request.GET.get(‘a’, 0)
+当没有传递 a 的时候默认 a 为 0**
+
+修改 mysite/urls.py
+
+::
+
+    ➜  mysite git:(master) ✗ vim mysite/urls.py
+
+.. code:: shell
+
+    from django.conf.urls import url
+    from django.contrib import admin
+    from learn.views import index
+    from calc.views import add
+
+    urlpatterns = [
+        url(r'^admin/', admin.site.urls),
+        url(r'^$', index),
+        url(r'^add/$',add,name='add'),
+    ]
+
+运行
+
+::
+
+    ➜  mysite git:(master) ✗ python3 manage.py runserver
+
+访问
+
+``http://127.0.0.1:8000/add/?a=4&b=5``
+
+会显示 ``a + b`` 的结果
+
+试试 ``http://127.0.0.1:8000/add/?a=157&b=5``
+
+/add/3/4/
+~~~~~~~~~
+
+url 通过 ``/add/3/4/`` 传值
+
+修改 ``calc/views.py``
+
+::
+
+    vim calc/views.py
+
+.. code:: shell
+
+    def add2(request,a,b):
+        c = int(a) + int(b)
+        return HttpResponse(str(c))
+
+修改 ``mysite/urls.py``
+
+::
+
+    url(r'^add/(\d+)/(\d+)/$',add2,name='add2'),
+
+访问 ``http://127.0.0.1:8000/add/100/200/``
+
+新地址自动跳转到旧地址的一种方式:
+
+.. code:: python
+
+    from django.http import HttpResponseRedirect
+    # from django.core.urlresolvers import reverse  # django 1.4.x - django 1.10.x
+    from django.urls import reverse
+
+    def old_add2_redirect(request,a,b):
+        return HttpResponseRedirect(reverse('add2',args=(a,b)))
+
+urls.py
+
+.. code:: python
+
+    url(r'^new_add/(\d+)/(\d+)/$',add2,name='add2'),
+    url(r'^add/(\d+)/(\d+)/$',old_add2_redirect),

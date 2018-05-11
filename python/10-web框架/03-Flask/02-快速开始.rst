@@ -1,0 +1,720 @@
+快速开始
+========
+
+最小Flask应用
+-------------
+
+``hello.py``,不能使用\ ``flask.py``\ 做文件名,会与模块冲突
+
+.. code:: python
+
+    # 导入Flask
+    from flask import Flask
+    # app实例是我们的WSGI应用
+    app = Flask(__name__)
+
+    # 使用route()装饰器告诉Flask,什么url将触发函数
+    @app.route('/')
+    def hello_world():
+        return 'hello world'
+
+运行\ ``hello.py``
+
+使用 **flask** 命令或者 ``python -m flask run``.
+
+运行之前需要声明\ ``FLASK_APP``
+环境变量,如果使用Windows,则要使用\ ``set``\ 代替\ ``export``
+
+命令行执行
+
+.. code:: shell
+
+    $ export FLASK_APP=hello.py
+    $ flask run
+     * Serving Flask app "hello"
+     * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+
+或者 **python -m flask**:
+
+.. code:: shell
+
+    $ export FLASK_APP=hello.py
+    $ python -m flask run
+     * Serving Flask app "hello"
+     * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+
+使用上述命令会启动一个简单的内置\ ``web server``,该Server仅用于测试.
+
+**生产环境部署**\ 可以参考 `Deployment
+Options <http://flask.pocoo.org/docs/0.12/deploying/#deployment>`__.
+
+访问 http://127.0.0.1:5000/
+
+默认,flask启动在调试模式下,如果需要监听所有IP,使用如下命令
+
+.. code:: shell
+
+    flask run --host=0.0.0.0
+
+Have another debugger in mind? See `Working with
+Debuggers <http://flask.pocoo.org/docs/0.12/errorhandling/#working-with-debuggers>`__.
+
+路由
+----
+
+``route()``\ 装饰器用于绑定函数到URL
+
+示例
+
+.. code:: python
+
+    @app.route('/')
+    def index():
+        return 'Index Page'
+
+    @app.route('/hello')
+    def hello():
+        return 'Hello, World'
+
+同时可以将URL的一部分设置成动态以及附加多个规则在一个函数上
+
+可变规则
+~~~~~~~~
+
+我们可以使用一些特殊标记,将变量添加到URL里面.
+比如使用\ ``<变量名>``,这种格式,将会作为关键字参数传递给函数.还可以使用一个转换器\ ``<转换器:变量名>``
+
+.. code:: python
+
+    @app.route('/user/<username>')
+    def show_user_profile(username):
+        # show the user profile for that user
+        return 'User %s' % username
+
+    @app.route('/post/<int:post_id>')
+    def show_post(post_id):
+        # show the post with the given id, the id is an integer
+        return 'Post %d' % post_id
+
+支持的转换器
+
++--------+------------------------------------------------+
+| string | accepts any text without a slash (the default) |
++========+================================================+
+| int    | accepts integers                               |
++--------+------------------------------------------------+
+| float  | like ``int`` but for floating point values     |
++--------+------------------------------------------------+
+| path   | like the default but also accepts slashes      |
++--------+------------------------------------------------+
+| any    | matches one of the items provided              |
++--------+------------------------------------------------+
+| uuid   | accepts UUID strings                           |
++--------+------------------------------------------------+
+
+唯一URLs/重定向
+~~~~~~~~~~~~~~~
+
+Flask
+URL规则基于Werkzeug的路由模块.这个模块背后的理念来自Apache以及早期的HTTP服务.
+
+.. code:: python
+
+    @app.route('/projects/')
+    def projects():
+        return 'The project page'
+
+    @app.route('/about')
+    def about():
+        return 'The about page'
+
+上面两个示例看起来很相似,区别在于结尾的\ ``/``.第一种情况,是末尾带有斜杠的规范化URL.它类似文件系统中的一个文件夹,如果不带\ ``/``\ 访问,Flask将自动跳转到尾端带斜线的规范化的URL.
+
+第二种情况,url定义尾端不带\ ``/``,像类Unix系统上的文件的路径名,如果带\ ``/``\ 访问,将会返回\ ``404``\ 错误
+
+这种行为,是相对url也能继续工作,符合Apache和其他服务器的工作模式。同时,url将保持独特,这有助于搜索引擎避免两次索引相同的页面。
+
+URL构建
+~~~~~~~
+
+``url_for()``
+
+接受一个函数名作为第一个参数
+
+.. code:: python
+
+    >>> from flask import Flask, url_for
+    >>> app = Flask(__name__)
+    >>> @app.route('/')
+    ... def index(): pass
+    ...
+    >>> @app.route('/login')
+    ... def login(): pass
+    ...
+    >>> @app.route('/user/<username>')
+    ... def profile(username): pass
+    ...
+    >>> with app.test_request_context():
+    ...  print url_for('index')
+    ...  print url_for('login')
+    ...  print url_for('login', next='/')
+    ...  print url_for('profile', username='John Doe')
+    ...
+    /
+    /login
+    /login?next=/
+    /user/John%20Doe
+
+HTTP方法
+~~~~~~~~
+
+默认情况下,路由仅应答\ ``GET``\ 请求,可以通过装饰器\ ``route() 中的methods``\ 参数来改变.
+
+.. code:: python
+
+    from flask import request
+
+    @app.route('/login', methods=['GET', 'POST'])
+    def login():
+        if request.method == 'POST':
+            do_the_login()
+        else:
+            show_the_login_form()
+
+当\ ``GET``\ 请求存在的时候,\ ``HEAD``\ 会被自动添加,并按照 `HTTP
+RFC <http://www.ietf.org/rfc/rfc2068.txt>`__
+的要求来处理,我们并不需要自己处理.
+
+HTTP方法简单介绍
+
+``GET``
+
+::
+
+    请求指定页面信息,并返回实体主体
+
+``HEAD``
+
+​ 仅获取报头,而不关注页面内容
+
+``POST``
+
+​
+想指定资源提交数据进行处理请求(比如提交表单或上传文件).数据被包含在请求体中,POST请求可能会导致新的资源的建立,或已有资源的修改
+
+``PUT``
+
+::
+
+    从客服端向服务器传送的数据取代指定的文档的内容
+
+``DELETE``
+
+::
+
+    请求服务器删除指定的页面
+
+``CONNECT``
+
+::
+
+    HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。
+
+``OPTIONS``
+
+::
+
+    允许客户端查看服务器的性能。
+
+``TRACE``
+
+::
+
+    回显服务器收到的请求，主要用于测试或诊断。
+
+静态文件
+--------
+
+动态web应用同时也需要静态文件.
+
+生成静态文件的URLs,使用
+
+.. code:: python
+
+    url_for('static', filename='style.css')
+
+文件被存放在磁盘上 ``static/style.css``.
+
+模板
+----
+
+Flask 会自动帮我们配置 `Jinja2 <http://jinja.pocoo.org/>`__ template
+引擎.
+
+使用\ ``render_template()``\ 方法呈现一个模板,我们只需要提供模板名字,以及我们需要呈现的变量的名称作为关键字参数传递给模板引擎.
+
+.. code:: python
+
+    from flask import render_template
+
+    @app.route('/hello/')
+    @app.route('/hello/<name>')
+    def hello(name=None):
+        return render_template('hello.html', name=name)
+
+Flask将在模板目录查找对应模板.
+
+**1**: 一个\ ``py``\ 文件
+
+.. code:: shell
+
+    /application.py
+    /templates
+        /hello.html
+
+**2**: 一个包
+
+.. code:: shell
+
+    /application
+        /__init__.py
+        /templates
+            /hello.html
+
+Jinja2模板文档 `Jinja2 Template
+Documentation <http://jinja.pocoo.org/docs/templates>`__
+
+模板示例
+
+.. code:: html
+
+    <!doctype html>
+    <title>Hello from Flask</title>
+    {% if name %}
+      <h1>Hello {{ name }}!</h1>
+    {% else %}
+      <h1>Hello, World!</h1>
+    {% endif %}
+
+在模板内还可以访问
+```request`` <http://flask.pocoo.org/docs/0.12/api/#flask.request>`__,
+```session`` <http://flask.pocoo.org/docs/0.12/api/#flask.session>`__ ,
+```g`` <http://flask.pocoo.org/docs/0.12/api/#flask.g>`__
+[`1] <http://flask.pocoo.org/docs/0.12/quickstart/#id5>`__ 对象以及
+```get_flashed_messages()`` <http://flask.pocoo.org/docs/0.12/api/#flask.get_flashed_messages>`__
+方法.
+
+访问请求数据
+------------
+
+web应用与客户端发送的数据进行交互是至关重要的.在\ ``Flask``\ 中,这些信息由全局对象\ ``request``\ 提供.如果你有一些使用python的经验,你会好奇,为什么这个对象是全局的,
+为什么\ ``Flask``\ 还能保证线程安全, 答案是\ ``环境作用域``
+
+局部环境
+~~~~~~~~
+
+如果你想理解其工作机制,以及如何利用环境变量实现自动化测试,阅读这节,否则跳过它.
+
+``Flask``\ 中某些对象是全局的, 但不是通常的那种.
+这些对象实际上是特定环境的局部对象的代理. 虽然很拗口,但是其实很好理解.
+
+想象一下处理线程的上下文. 一个请求到来,
+web服务器生成一个新线程(或者其他东西, 只要这个底层对象可以胜任并发系统,
+而不仅仅是线程). 当\ ``Flask``\ 开始内部请求处理时, 它认定当前线程活动,
+并绑定当前应用和WSGI环境到此线程. 它的实现方法很巧妙,
+能保证一个应用程序调用另一个应用程序时不会出现问题.
+
+这对你意味着什么?
+基本上你可以完全忽略这种情况,除非你要做类似单元测试的事情.你会发现一段依赖请求对象的代码会因为没有请求对象而无法正常运行.
+解决方案是, 自行创建一个请求对象, 并且把它绑定到环境中.
+单元测试的最简单的解决方案是使用
+```test_request_context()`` <http://flask.pocoo.org/docs/0.12/api/#flask.Flask.test_request_context>`__
+进行环境管理. 结合\ ``with``\ 声明,绑定一个测试请求, 这样才可以与之交互.
+例如:
+
+.. code:: python
+
+    from flask import request
+
+    with app.test_request_context('/hello', method='POST'):
+        # now you can do something with the request until the
+        # end of the with block, such as basic assertions:
+        assert request.path == '/hello'
+        assert request.method == 'POST'
+
+另一种可能是, 传递整个WSGI环境给
+```request_context()`` <http://flask.pocoo.org/docs/0.12/api/#flask.Flask.request_context>`__\ 方法:
+
+.. code:: python
+
+    from flask import request
+
+    with app.request_context(environ):
+        assert request.method == 'POST'
+
+请求对象
+~~~~~~~~
+
+宽泛介绍一些常用操作,
+详情参见\ ``API``,\ ```request`` <http://flask.pocoo.org/docs/0.12/api/#flask.request>`__
+
+先导入模块
+
+.. code:: python
+
+    from flask import request
+
+当前请求方法可以通过\ ``method``\ 属性来获取.
+访问表单数据(\ **PUT**\ 或\ **POST**\ 请求提交的数据)可以使用\ **``form``**\ 属性.
+下面是使用前面两个属性的完整实例:
+
+.. code:: python
+
+    @app.route('/login', methods=['POST', 'GET'])
+    def login():
+        error = None
+        if request.method == 'POST':
+            if valid_login(request.form['username'],
+                           request.form['password']):
+                return log_the_user_in(request.form['username'])
+            else:
+                error = 'Invalid username/password'
+        # the code below is executed if the request method
+        # was GET or the credentials were invalid
+        return render_template('login.html', error=error)
+
+当访问的\ ``form``\ 属性\ ``key``\ 不存在的时候会发生什么?
+这种情况会抛出\ ``KeyError``\ 异常.
+你可以像捕捉标准\ ``KeyError``\ 一样捕捉它. 如果你不这么做,
+会显示一个HTTP 400错误页面. 所以, 大多情况下不需要处理这个问题.
+
+访问URL中提交的参数(\ ``?key=value``)可以使用\ ``args``\ 属性.
+
+.. code:: python
+
+    searchword = request.args.get('key', '')
+
+我们建议使用\ ``get``\ 来访问\ ``URL``\ 参数或捕捉\ ``KeyError``,
+因为用户可能会修改URL, 同时向他们呈现一个400错误是不友好的.
+
+获取请求对象完整的方法和属性可以查阅
+```request`` <http://flask.pocoo.org/docs/0.12/api/#flask.request>`__\ 文档.
+
+文件上传
+~~~~~~~~
+
+用\ ``Flask``\ 上传文件很简单,
+只需要在\ ``form``\ 表单中设置\ ``enctype="multipart/form-data"`` 属性,
+没有该属性,浏览器不会传输文件.
+
+上传的文件存储在内存或者本地文件系统的一个临时位置.
+你可以使用请求对象中的\ ``files``\ 属性访问它们.
+每个上传的文件都会存储在这个字典里面,
+它表现为一个标准的Python\ ``file``\ 对象,
+但它还有一个\ ``save()``\ 方法,
+这个方法允许你将文件存储在服务器文件系统上. 下面是一个🌰:
+
+.. code:: python
+
+    from flask import request
+
+    @app.route('/upload', methods=['GET', 'POST'])
+    def upload_file():
+        if request.method == 'POST':
+            f = request.files['the_file']
+            f.save('/var/www/uploads/uploaded_file.txt')
+        ...
+
+如果你想知道上传的文件,在客户端上的名字, 可以使用\ ``filename``\ 属性,
+但是这个值可以伪造, 所以不要完全信任这个值.
+如果你要以客户端提供的文件名将文件存放在服务器上,
+那么请把它传递给Werkzeug提供的\ ```secure_filename()`` <http://werkzeug.pocoo.org/docs/utils/#werkzeug.utils.secure_filename>`__\ 方法
+
+.. code:: python
+
+    from flask import request
+    from werkzeug.utils import secure_filename
+
+    @app.route('/upload', methods=['GET', 'POST'])
+    def upload_file():
+        if request.method == 'POST':
+            f = request.files['the_file']
+            f.save('/var/www/uploads/' + secure_filename(f.filename))
+        ...
+
+其他一些比较好的🌰, `Uploading
+Files <http://flask.pocoo.org/docs/0.12/patterns/fileuploads/#uploading-files>`__\ 模式
+
+Cookies
+~~~~~~~
+
+你可以使用\ `**``cookies``** <http://flask.pocoo.org/docs/0.12/api/#flask.Request.cookies>`__\ 属性访问Cookies,
+使用响应对象的\ `**``set_cookie``** <http://flask.pocoo.org/docs/0.12/api/#flask.Response.set_cookie>`__\ 方法设置Cookies.
+请求对象的
+```cookies`` <http://flask.pocoo.org/docs/0.12/api/#flask.Request.cookies>`__
+属性是一个内容由客户端提供的包含整个Cookies的字典,
+如果你想要使用\ ``sessions``,
+不要直接使用Cookies,使用\ `Sessions <http://flask.pocoo.org/docs/0.12/quickstart/#sessions>`__,
+在Flask中已经处理了一些Cookies安全细节.
+
+读取Cookies
+
+.. code:: python
+
+    from flask import request
+
+    @app.route('/')
+    def index():
+        username = request.cookies.get('username')
+        # use cookies.get(key) instead of cookies[key] to not get a
+        # KeyError if the cookie is missing.
+
+存储cookies
+
+.. code:: python
+
+    from flask import make_response
+
+    @app.route('/')
+    def index():
+        resp = make_response(render_template(...))
+        resp.set_cookie('username', 'the username')
+        return resp
+
+注意, Cookies是设置在响应对象上的, 由于视图函数通常只返回字符串,
+之后由\ ``Flask``\ 转换为相应对象.
+如果你要显示地转换,可以使用\ ```make_response()`` <http://flask.pocoo.org/docs/0.12/api/#flask.make_response>`__\ 函数,
+然后再进行修改.
+
+有时候你想在响应对象不存在的时候设置cookie, 可以使用 `Deferred Request
+Callbacks <http://flask.pocoo.org/docs/0.12/patterns/deferredcallbacks/#deferred-callbacks>`__
+模式.
+
+也可以阅读文档 `About
+Responses <http://flask.pocoo.org/docs/0.12/quickstart/#about-responses>`__.
+
+重定向和错误
+------------
+
+你可以使用
+```redirect()`` <http://flask.pocoo.org/docs/0.12/api/#flask.redirect>`__
+函数将用户定向到其他位置; 终止用户请求,返回错误代码使用
+```abort()`` <http://flask.pocoo.org/docs/0.12/api/#flask.abort>`__
+函数:
+
+.. code:: python
+
+    from flask import abort, redirect, url_for
+
+    @app.route('/')
+    def index():
+        return redirect(url_for('login'))
+
+    @app.route('/login')
+    def login():
+        abort(401)
+        this_is_never_executed()
+
+这是一个没有意义的🌰, 用户访问主页,
+将重定向到一个不能访问的页面(401意味着禁止访问),
+但是它展示了重定向是如何工作的.
+
+默认情况下, 错误代码会显示一个黑白的错误页面, 如果你想定制错误页面,
+你可以使用
+```errorhandler()`` <http://flask.pocoo.org/docs/0.12/api/#flask.Flask.errorhandler>`__
+装饰器:
+
+.. code:: python
+
+    from flask import render_template
+
+    @app.errorhandler(404)
+    def page_not_found(error):
+        return render_template('page_not_found.html'), 404
+
+注意, 404在调用
+```render_template()`` <http://flask.pocoo.org/docs/0.12/api/#flask.render_template>`__
+之后, 这告诉Flask, 该页面的代码是404(页面不存在). 默认页面代码为200,
+表示一切ok.
+
+更多细节查看 `Error
+handlers <http://flask.pocoo.org/docs/0.12/errorhandling/#error-handlers>`__
+.
+
+关于响应
+--------
+
+视图函数的返回值会被自动转换为一个响应对象. 如果返回值是一个字符串,
+它将被转换为字符串为响应主体, ``200 ok``\ 状态码,
+``MIME``\ 类型为\ ``text/html``\ 的响应对象. Flask
+将返回值转换为响应对象的逻辑如下:
+
+1. 如果返回的是一个合法的响应对象, 会直接从视图返回.
+2. 如果返回值为字符串, 会使用字符串数据以及默认参数创建响应对象
+3. 如果返回值是一个元组, 元组可以提供额外的信息,
+   但是元组必须是\ ``(response, status, headers)``\ 或\ ``(response, headers)``\ 的形式,
+   且至少包含一个元素. ``status``\ 的值会覆盖状态码,
+   ``headers``\ 可以是一个列表或者字典, 作为额外的表头值.
+4. 如果上述条件都不满足, Flask会假设返回值是一个合法的WSGI应用程序,
+   并转换成一个响应对象.
+
+如果你想在视图函数里面操纵响应对象,
+可以使用\ ```make_response()`` <http://flask.pocoo.org/docs/0.12/api/#flask.make_response>`__
+函数.
+
+假设你有这样一个视图函数
+
+.. code:: python
+
+    @app.errorhandler(404)
+    def not_found(error):
+        return render_template('error.html'), 404
+
+你只需要把返回值表达式传给
+```make_response()`` <http://flask.pocoo.org/docs/0.12/api/#flask.make_response>`__
+,获取响应对象, 并修改,然后返回它:
+
+.. code:: python
+
+    @app.errorhandler(404)
+    def not_found(error):
+        resp = make_response(render_template('error.html'), 404)
+        resp.headers['X-Something'] = 'A value'
+        return resp
+
+Sessions
+--------
+
+除了请求对象, 还有一个\ ``session``\ 对象.
+它允许你在不同请求间存储用户特定信息. 它是在Cookies的基础上实现的,
+并且对Cookies进行密钥签名. 这意味着用户可以查看cookie的内容,
+但是不能修改它, 除非用户知道签名的密钥.
+
+要使用\ ``sessions`` 需要一个设置一个密钥, 下面介绍密钥是如何工作的:
+
+.. code:: python
+
+    from flask import Flask, session, redirect, url_for, escape, request
+
+    app = Flask(__name__)
+
+    @app.route('/')
+    def index():
+        if 'username' in session:
+            return 'Logged in as %s' % escape(session['username'])
+        return 'You are not logged in'
+
+    @app.route('/login', methods=['GET', 'POST'])
+    def login():
+        if request.method == 'POST':
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+        return '''
+            <form method="post">
+                <p><input type=text name=username>
+                <p><input type=submit value=Login>
+            </form>
+        '''
+
+    @app.route('/logout')
+    def logout():
+        # remove the username from the session if it's there
+        session.pop('username', None)
+        return redirect(url_for('index'))
+
+    # set the secret key.  keep this really secret:
+    app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+
+这里提到的
+```escape()`` <http://flask.pocoo.org/docs/0.12/api/#flask.escape>`__
+可以在模板引擎外做转义(如同本例).
+
+    如何生成密钥
+
+.. code:: python
+
+    >>> import os
+    >>> os.urandom(24)
+    '\xfd{H\xe5<\x95\xf9\xe3\x96.5\xd1\x01O<!\xd5\xa2\xa0\x9fR"\xa1\xa8'
+
+    Just take that thing and copy/paste it into your code and you're done.
+
+使用基于cookie的sessions需要注意:
+Flask会将你放进会话对象的值序列化至Cookies.
+如果你发现某些值在请求之间没有持久存在, 但是确实启用了Cookies,
+也没有得到明确的错误信息. 此时, 检查响应页面中Cookies的大小,
+与web浏览器所支持的大小进行对比.
+
+除了默认基于客户端的sessions, 如果你想在服务端处理sessions,
+Flask也有扩展插件支持.
+
+消息闪现
+--------
+
+反馈, 是良好的应用和用户界面的重要组成部分. 如果用户没有得到足够的反馈,
+他们可能会开始厌恶这个应用. Flask提供一个简单的闪现系统,
+将反馈传递给用户. 闪现系统通常会在请求结束时记录信息,
+在下一个(仅在下一个)请求中访问记录的信息. 展现这些内容需要结合模板实现.
+
+使用 ```flash()`` <http://flask.pocoo.org/docs/0.12/api/#flask.flash>`__
+方法闪现一条消息, 要操作消息本身可以使用
+```get_flashed_messages()`` <http://flask.pocoo.org/docs/0.12/api/#flask.get_flashed_messages>`__
+函数, 在模板中也可以使用.
+
+完整的示例查看 `Message
+Flashing <http://flask.pocoo.org/docs/0.12/patterns/flashing/#message-flashing-pattern>`__
+.
+
+日志
+----
+
+0.3 新功能
+
+有时候你会处在这样一种情形, 你处理的数据本应该是正确的, 但实际上却不是.
+比如, 你需要客户端代码向服务端发送一些请求, 但请求是畸形的.
+这可能是用户篡改了数据, 或者客户端代码问题.
+大多数情况下返回\ ``400 Bad Request``\ 即可, 但是有时, 不能这样做,
+并且需要代码继续运行.
+
+你可能还希望记录发生了什么. 此时, ``loggers``\ 就派上用场了, 从Flask 0.3
+开始, Flask就预置了日志系统.
+
+下面是一些记录日志的例子:
+
+.. code:: python
+
+    app.logger.debug('A value for debugging')
+    app.logger.warning('A warning occurred (%d apples)', 42)
+    app.logger.error('An error occurred')
+
+附带的\ ``logger``\ 是一个标准日志 ``logger`` , 更多信息查阅 `logging
+documentation <https://docs.python.org/library/logging.html>`__ .
+
+`Application
+Errors <http://flask.pocoo.org/docs/0.12/errorhandling/#application-errors>`__.
+
+WSGI中间件
+----------
+
+如果你想给你的应用添加WSGI中间件, 你可以封装内部WSGI应用. 比如,
+你想使用Werkzeug包中的某个中间件来解决lighttpd中的bugs, 你可以这样做
+
+.. code:: python
+
+    from werkzeug.contrib.fixers import LighttpdCGIRootFix
+    app.wsgi_app = LighttpdCGIRootFix(app.wsgi_app)
+
+使用 Flask Extensions
+---------------------
+
+扩展插件可以帮你完成常见的任务. 比如, Flask-SQLAlchemy 提供 SQLAlchemy
+支持, 它可以让你更简单的使用Flask.
+
+更多关于Flask 扩展插件的信息, 查阅 `Flask
+Extensions <http://flask.pocoo.org/docs/0.12/extensions/#extensions>`__.
+
+部署到 Web Server
+-----------------
+
+Ready to deploy your new Flask app? Go to `Deployment
+Options <http://flask.pocoo.org/docs/0.12/deploying/#deployment>`__.

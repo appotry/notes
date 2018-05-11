@@ -1,0 +1,9 @@
+microservice
+==============================
+
+.. toctree::
+   :glob:
+
+   */index
+   *
+

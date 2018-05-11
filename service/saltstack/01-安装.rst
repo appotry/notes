@@ -1,0 +1,6 @@
+安装
+====
+
+https://docs.saltstack.com/en/latest/topics/installation/index.html#quick-install
+
+懒得翻译
