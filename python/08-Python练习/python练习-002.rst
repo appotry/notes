@@ -35,3 +35,34 @@ Python练习
     print(s[1](10))
     print(s[2](10))
     print(s[3](10))
+
+.. code:: python
+
+    def create_multipliers():
+        multipliers = []
+
+        for i in range(5):
+            # 两种情况,结果与期望完全不一样
+            # def multiplier(x):
+            def multiplier(x, i=i):
+                return i * x
+            multipliers.append(multiplier)
+
+        return multipliers
+    for mu in create_multipliers():
+        print(mu(2))
+
+解决 两种方法
+
+.. code:: python
+
+    def create_multipliers():
+        return [lambda x, i=i : i * x for i in range(5)]
+
+.. code:: python
+
+    from functools import partial
+    from operator import mul
+
+    def create_multipliers():
+        return [partial(mul, i) for i in range(5)]
