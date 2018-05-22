@@ -7,7 +7,7 @@ find . -type f -name "*.rst" ! -path "./index.rst" | xargs rm -f
 find . -type f -name "*.md"|awk -F "." '{print "pandoc -f markdown -t rst \""$0"\" -o \"." $2".rst\""}'|bash
 
 # gen index
-dir=`find . -type d |egrep -v "\.git|assets|_book|node_modules|\.vscode|^\.$"|sed 's#\./##g'|sed 's# #@#g'`
+dir=`find . -type d |egrep -v "\.git|assets|_build|_book|node_modules|\.vscode|^\.$"|sed 's#\./##g'|sed 's# #@#g'`
 
 for path in $dir
 do
