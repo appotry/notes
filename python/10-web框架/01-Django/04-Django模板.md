@@ -179,6 +179,7 @@ def f3(value, s1, s2, s3, s4):
 ```
 
 ```html
+{% raw %}
 {% load s1 %}
 <!DOCTYPE html>
 <html lang="en">
@@ -201,4 +202,5 @@ def f3(value, s1, s2, s3, s4):
     <p>{% f3 k1 "s1" "s2" "s3" "s4" %}</p>
 </body>
 </html>
+{% endraw %}
 ```
