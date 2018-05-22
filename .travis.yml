@@ -1,0 +1,24 @@
+language: "node_js"
+node_js:
+  - "node"
+before_install:
+  - wget https://github.com/jgm/pandoc/releases/download/2.1.2/pandoc-2.1.2-1-amd64.deb
+  - sudo dpkg -i pandoc-2.1.2-1-amd64.deb
+  - sudo mv -f pandoc-2.1.2-1-amd64.deb /tmp
+  - find . -type f -name "*.md" ! -path "./README.md" -a ! -path "./SUMMARY.md"|xargs -i sed -ri '/^<extoc>/d;0,/^## /s/(^## .*)/## Table of contents\n\n<extoc><\/extoc>\n\n\1/' '{}'
+install:
+  - "npm install -g gitbook@3.2.3"
+  - "npm install -g gitbook-cli@2.3.2"
+branches:
+  only:
+    - master
+env:
+  global:
+    - GH_REF: github.com/yangjinjie/notes.git
+    - secure: "5sF528PGoNCr7mywY/owaVY80k423baFecfD0DkXOHanJ/Gu/Ur2GjJWUX5mcporPAJ0EHgs4i9fQa9lvRnQkNGhQOzdtfsvWajIlsmb1trIfe0i4dwkVIbIYb8fTTbU92Gnq5ukLOg5jWRiZzRTcXP3k7MwYlnwSmH/134hLpdfp6gz0mmUMwNh25dT/+a50280+k/gqyJ/2MZx1D6Qvkm1nCB6IIaAJDceDlksMsG/oDjhtT7d/QeCtYfyB8Omlj6ShLxzNNvmBTO3VmubEOG0noK6ljcXE7FL4rn5Tm0huK+067iEhOCu78fyzc8ZcOoPhTD8pL58170hu97HoV5jwo3hDLeEcG9s3sRjTGYCwP7PBgM2bzpX/z1HNzcZNMFDHjNEmywwswajRP7aQp1Sh2C/8eaVISP4BR0So7ah7bhhxWeCJVGcLritZHfX/leahbF/CGAcNlJi1ISdIp7cY/Ph+sffIZVRZf+xMmOvclCvaZhP5Lc9fWQjGb/T1xz3dOyI0WNrmJe1YoZKFKb/pOI0SKyTIMmhImQtmV7Mc5M4sWDCd8BWlr2+/IRDI6T6KMnx1L6yq/4ggGyCuTcWeNYneql4cR5RVEWD5+pxU1N3BBiVSO23DmPicSFRY7zrJJVFxHM+qsMsdQ2C++U1jlo9wVW0pseM7jvNeTQ="
+
+#sudo: false
+script:
+  - travis_wait 100 bash deploy.sh "rst"
+  - travis_wait 100 bash deploy.sh "notes"
+  - travis_wait 100 bash deploy.sh "java" "python"
