@@ -121,10 +121,12 @@ def current_datetime(request):
 ### 内置方法，类似于python的内置函数
 
 ```shell
+{% raw %}
 {{ k1|lower }}  # 将所有字母都变为小写
 {{ k1|first|upper }}  # 将首字母变为大写
 {{ k1|truncatewords:"30" }}  # 取变量k1的前30个字符
 {{ item.createTime|date:"Y-m-d H:i:s" }}    # 将时间转为对应格式显示
+{% endraw %}
 ```
 
 ### 自定义方法
@@ -179,6 +181,7 @@ def f3(value, s1, s2, s3, s4):
 ```
 
 ```html
+{% raw %}
 {% load s1 %}
 <!DOCTYPE html>
 <html lang="en">
@@ -201,4 +204,5 @@ def f3(value, s1, s2, s3, s4):
     <p>{% f3 k1 "s1" "s2" "s3" "s4" %}</p>
 </body>
 </html>
+{% endraw %}
 ```
