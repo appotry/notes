@@ -197,10 +197,8 @@ views
 
 访问index,显示用户,点击用户名,显示详细用户信息
 
-.. _templates-1:
-
-templates
-~~~~~~~~~
+html templates
+~~~~~~~~~~~~~~
 
 index.html
 ^^^^^^^^^^
@@ -244,10 +242,8 @@ index.html
     </body>
     </html>
 
-.. _views-1:
-
-views
-~~~~~
+视图(views)
+~~~~~~~~~~~
 
 添加如下内容
 
@@ -271,10 +267,8 @@ views
         nid = request.GET.get('nid')
         return HttpResponse(USER_DICT[nid].items())
 
-.. _urls-1:
-
-urls
-~~~~
+路由(urls)
+~~~~~~~~~~
 
 .. code:: python
 
@@ -577,10 +571,8 @@ app01.urls
         url(r'^useredit-(?P<nid>\d+)/', views.user_edit),
     ]
 
-.. _views-2:
-
-views
-~~~~~
+view
+~~~~
 
 .. code:: python
 
@@ -624,7 +616,7 @@ views
             models.UserInfo.objects.filter(id=nid).update(username=u, password=p)
             return redirect('/cmdb/user_info/')
 
-.. _templates-2:
+.. _templates-1:
 
 templates
 ~~~~~~~~~
@@ -812,7 +804,7 @@ Django支持FBV和CBV
 views里面也可以使用类
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. _urls-2:
+.. _urls-1:
 
 urls
 ~~~~
@@ -829,7 +821,7 @@ urls
         url(r'^home/', views.Home.as_view()),
     ]
 
-.. _views-3:
+.. _views-1:
 
 views
 ~~~~~
