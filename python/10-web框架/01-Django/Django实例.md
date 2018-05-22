@@ -188,7 +188,7 @@ class Home(View):
 
 访问index,显示用户,点击用户名,显示详细用户信息
 
-### templates
+### html templates
 
 #### index.html
 
@@ -231,7 +231,7 @@ class Home(View):
 </html>
 ```
 
-### views
+### 视图(views)
 
 添加如下内容
 
@@ -255,7 +255,7 @@ def detail(request):
     return HttpResponse(USER_DICT[nid].items())
 ```
 
-### urls
+### 路由(urls)
 
 ```python
     url(r'^index/', views.index),
@@ -297,8 +297,6 @@ def detail(request, *args, **kwargs):
     print(kwargs)
     return HttpResponse("  ")
 ```
-
-
 
 ## 第三部分-模型
 
@@ -518,7 +516,7 @@ def orm(request):
 from django.conf.urls import include
 
 urlpatterns = [
-	# 添加如下语句,使用路由分发
+    # 添加如下语句,使用路由分发
     url(r'^cmdb/', include('app01.urls')),
 ]
 ```
@@ -542,7 +540,7 @@ urlpatterns = [
 ]
 ```
 
-### views
+### view
 
 ```python
 def user_info(request):
@@ -688,8 +686,6 @@ def user_edit(request, nid):
 {% endblock %}
 ```
 
-
-
 # 本实例相关知识
 
 ## getlist
@@ -808,7 +804,7 @@ class View(object):
     """
 
     http_method_names = ['get', 'post', 'put', 'patch', 'delete', 'head', 'options', 'trace']
-	# 编写对应方法,对应的请求则会触发对应的方法
+    # 编写对应方法,对应的请求则会触发对应的方法
     # Django会先拿到请求,执行dispatch方法,通过getattr方法获取对应方法
     # 再执行对应方法
     def dispatch(self, request, *args, **kwargs):
@@ -849,7 +845,6 @@ class Home(View):
 ## models基本操作
 
 ### 增
-
 
 ```python
 from app01 import models
