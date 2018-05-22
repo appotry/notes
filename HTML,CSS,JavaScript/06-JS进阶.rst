@@ -1,0 +1,9 @@
+JS
+==
+
+-  `ECMAScript 6 入门 <http://es6.ruanyifeng.com/#README>`__
+-  `GitHub es6tutorial <https://github.com/ruanyf/es6tutorial>`__
+
+`require <http://www.ruanyifeng.com/blog/2015/05/require.html>`__
+
+javascript module.exports

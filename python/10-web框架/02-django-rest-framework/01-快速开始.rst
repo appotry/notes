@@ -1,0 +1,185 @@
+快速开始
+========
+
+创建一个简单的API, 支持管理员用户查看, 编辑用户和组.
+
+项目设置
+--------
+
+.. code:: shell
+
+    # 创建项目目录
+    mkdir tutorial
+    cd tutorial
+
+    # 创建虚拟环境
+    Create a virtualenv to isolate our package dependencies locally
+    virtualenv env
+    # Windows上使用 `env\Scripts\activate`
+    source env/bin/activate
+
+    # 安装 Django 和 Django REST framework
+    pip install django
+    pip install djangorestframework
+
+    # 创建 tutorial 项目, 和 quickstart 应用
+    django-admin.py startproject tutorial .  # 注意字符 '.'
+    cd tutorial
+    django-admin.py startapp quickstart
+    cd ..
+
+同步数据库
+
+.. code:: shell
+
+    python manage.py migrate
+
+创建 ``admin`` 用户, 密码为 ``password123``.
+
+.. code:: shell
+
+    python manage.py createsuperuser --email admin@example.com --username admin
+
+准备工作完毕, coding…
+
+序列化
+------
+
+首先定义一些序列化类, 创建一个新模块
+``tutorial/quickstart/serializers.py``
+
+.. code:: python
+
+    from django.contrib.auth.models import User, Group
+    from rest_framework import serializers
+
+
+    class UserSerializer(serializers.HyperlinkedModelSerializer):
+        class Meta:
+            model = User
+            fields = ('url', 'username', 'email', 'groups')
+
+
+    class GroupSerializer(serializers.HyperlinkedModelSerializer):
+        class Meta:
+            model = Group
+            fields = ('url', 'name')
+
+本例中, 我们使用超链接关系 ``HyperlinkedModelSerializer``.
+你还尅使用主键和其他各种关系, 但超链接是好的 ``RESTful`` 设计
+
+视图
+----
+
+打开 ``tutorial/quickstart/views.py``.
+
+.. code:: python
+
+    from django.contrib.auth.models import User, Group
+    from rest_framework import viewsets
+    from tutorial.quickstart.serializers import UserSerializer, GroupSerializer
+
+
+    class UserViewSet(viewsets.ModelViewSet):
+        """
+        API endpoint that allows users to be viewed or edited.
+        """
+        queryset = User.objects.all().order_by('-date_joined')
+        serializer_class = UserSerializer
+
+
+    class GroupSerializer(viewsets.ModelViewSet):
+        """
+        API endpoint that allows groups to be viewed or edited.
+        """
+        queryset = Group.objects.all()
+        serializer_class = GroupSerializer
+
+我们将共同的行为写在 ``ViewSets`` 类中, 而不是重复写多个视图
+
+在我们需要的时候, 可以很容易的区分每个视图, 但使用viewsets可以很好地,
+简洁地组织视图
+
+URLs
+----
+
+``tutorial/urls.py``
+
+.. code:: python
+
+    from django.conf.urls import url, include
+    from rest_framework import routers
+    from tutorial.quickstart import views
+
+    router = routers.DefaultRouter()
+    router.register(r'users', views.UserViewSet)
+    router.register(r'groups', views.GroupViewSet)
+
+
+    # Wire up our API using automatic URL routing.
+    # Additionally, we include login URLs for the browsable API.
+    urlpatterns = [
+        url(r'^', include(router.urls)),
+        url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    ]
+
+我们使用 ``viewsets`` 代替 ``views``, 所以我们可以使用 ``router``
+类便捷的注册 ``view`` 为我们的 ``API`` 自动生成 URL配置.
+
+Again, if we need more control over the API URLs we can simply drop down
+to using regular class-based views, and writing the URL conf explicitly.
+
+Finally, we’re including default login and logout views for use with the
+browsable API. That’s optional, but useful if your API requires
+authentication and you want to use the browsable API.
+
+settings
+--------
+
+添加 ``'rest_framework'`` 到 ``INSTALLED_APPS`` 中. 配置模块
+``tutorial/settings.py``
+
+.. code:: python
+
+    INSTALLED_APPS = (
+        ...
+        'rest_framework',
+    )
+
+测试 API
+--------
+
+测试 API, 从命令行启动服务器.
+
+.. code:: python
+
+    python manage.py runserver
+
+使用 ``curl`` 进行测试
+
+.. code:: shell
+
+    ➜  ~ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://127.0.0.1:8000/users/
+    [
+        {
+            "url": "http://127.0.0.1:8000/users/2/",
+            "username": "tom",
+            "email": "tom@example.com",
+            "groups": []
+        },
+        {
+            "url": "http://127.0.0.1:8000/users/1/",
+            "username": "admin",
+            "email": "admin@example.com",
+            "groups": []
+        }
+    ]
+
+直接通过浏览器访问 http://127.0.0.1:8000/users/
+
+.. figure:: http://oi480zo5x.bkt.clouddn.com/django-rest-framework.jpg
+   :alt: django-rest-framework
+
+   django-rest-framework
+
+右上角登录可以进行编辑

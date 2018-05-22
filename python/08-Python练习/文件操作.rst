@@ -1,0 +1,15 @@
+一个文本有100行内容, 现分10行, 写到10个文件
+===========================================
+
+生成一个100行内容的的文件, 做文件拆分, 写到10个文件, 每个文件10行
+
+.. code:: python
+
+    #!/usr/bin/env python3
+    # _*_ coding: utf-8 _*_
+
+    for n in range(0,100,10):
+        with open('file') as reader, open(str(n // 10)+".txt", 'w') as writer:
+            for index, line in enumerate(reader):
+                if index >=n and index < n+10:
+                    writer.write(line)

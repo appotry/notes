@@ -1,0 +1,9 @@
+编译参数
+========
+
+php
+---
+
+.. code:: shell
+
+    ./configure --prefix=/usr/local/qqwebsrv/php7 --with-pear=/usr/local/qqwebsrv/php7/PEAR --with-config-file-scan-dir=/usr/local/qqwebsrv/php7/lib/conf.d --enable-libxml --enable-session --with-pcre-regex --enable-xml --enable-simplexml --enable-filter --disable-debug --enable-inline-optimization --disable-rpath --disable-static --enable-shared --with-pic --with-gnu-ld --enable-re2c-cgoto --enable-hash --with-mhash --enable-fpm --with-pdo-mysql --enable-sockets --with-curl --with-zlib --enable-bcmath --enable-ftp --with-gd --enable-exif --with-bz2 --enable-calendar --enable-sysvmsg --enable-sysvsem --enable-sysvshm --enable-shmop --enable-soap --with-readline --enable-zip --with-xsl --with-mhash --with-gettext --with-gmp --enable-mbstring --with-mcrypt --enable-calendar --with-openssl --enable-pcntl --with-xmlrpc --enable-wddx --enable-dba
