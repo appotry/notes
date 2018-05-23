@@ -59,16 +59,6 @@ Zabbix报警Lack of free swap space
 
 报警显示swap不够，是因为重新部署了几个java程序，然后立马把程序放在其他机器，报警几天还是持续有，因为太多程序，所以机器尽量不重启，然后需要分析那些程序占用swap，然后重启程序即可，报警详细截图如下
 
-.. figure:: ./swap.png
-   :alt: Alt text
-
-   Alt text
-
-.. figure:: ./198server.png
-   :alt: Alt text
-
-   Alt text
-
 以下是脚本是分析占用swap最多的程序的前十个程序
 
 .. code:: bash
