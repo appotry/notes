@@ -48,7 +48,8 @@ Gitbook有几个主要的文件
 README.md
 ~~~~~~~~~
 
-这个文件相当于一本Gitbook的简介，最上层(和\ ``SUMMARY.md``\ 文件同级)的\ ``README.md``\ 文件最终会被用于生成本书的\ ``Introduction``\ 。
+这个文件相当于一本Gitbook的简介，最上层(和 ``SUMMARY.md`` 文件同级)的 ``README.md`` 文件
+最终会被用于生成本书的 ``Introduction`` 。
 
 SUMMARY.MD
 ~~~~~~~~~~
