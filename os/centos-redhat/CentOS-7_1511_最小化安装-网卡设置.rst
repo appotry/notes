@@ -6,7 +6,7 @@ CentOS 7 1511
 
 .. code:: shell
 
-        [root@localhost ~]# cat /etc/sysconfig/network-scripts/ifcfg-eno16777736 
+        [root@localhost ~]# cat /etc/sysconfig/network-scripts/ifcfg-eno16777736
         TYPE=Ethernet
         BOOTPROTO=none
         DEFROUTE=yes
