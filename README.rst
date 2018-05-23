@@ -10,7 +10,7 @@ Notes
 
 ..
 
-    原GitHub可继续访问, 笔记不再更新, 地址
+    原GitHub Pages可继续访问, 但不再更新, 地址
     https://yangjinjie.github.io\ 或 https://docs.yangjinjie.xyz
 
 离线阅读
