@@ -22,10 +22,10 @@ do
     # echo $path
     sub_dir_count=`echo "$path"| sed 's#@#\\ #g'|awk '{print "find " $0 " -type d |wc -l"}'|bash`
     if [ $sub_dir_count -eq 1 ];then
-        echo $path
-        content="   *"
+        # echo $path
+        content="    *"
     else
-        content="   */index\n   *"
+        content="    */index\n    *"
     fi
 
     title=`basename "$path"|sed "s#^[0-9].*-##g"|sed 's#@# #g'`
@@ -35,10 +35,9 @@ do
     if [ -e "$index_file" ];then
         sed -i '/.. toctree::/,$ d' "$index_file"
         echo -e ".. toctree::
-   :glob:
+    :glob:
 
-$content
-" >> "${index_file}"
+$content" >> "${index_file}"
         continue
     fi
     # echo $index_file
@@ -46,10 +45,9 @@ $content
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-$content
-" > "${index_file}"
+$content" > "${index_file}"
 done
 
 
