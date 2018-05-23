@@ -17,22 +17,38 @@ dir=`find . -type d |egrep -v "\.git|assets|_summary|_static|_build|_book|node_m
 for path in $dir
 do
     # echo $path
+    # real_path=
+    # sub_dir_count=`find `echo $path| sed 's#@#\\ #g'` -type d |wc -l`
+    # echo $path
+    sub_dir_count=`echo "$path"| sed 's#@#\\ #g'|awk '{print "find " $0 " -type d |wc -l"}'|bash`
+    if [ $sub_dir_count -eq 1 ];then
+        echo $path
+        content="   *"
+    else
+        content="   */index\n   *"
+    fi
+
     title=`basename "$path"|sed "s#^[0-9].*-##g"|sed 's#@# #g'`
     # echo $title
     index_file=`echo "${path}/index.rst" | sed 's#@#\\ #g'`
     # echo $index_file
     if [ -e "$index_file" ];then
+        sed -i '/.. toctree::/,$ d' "$index_file"
+        echo -e ".. toctree::
+   :glob:
+
+$content
+" >> "${index_file}"
         continue
     fi
-  # echo $index_file
-  echo -e "$title
+    # echo $index_file
+    echo -e "$title
 ==============================
 
 .. toctree::
    :glob:
 
-   */index
-   *
+$content
 " > "${index_file}"
 done
 
