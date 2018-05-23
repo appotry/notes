@@ -17,9 +17,8 @@ dir=`find . -type d |egrep -v "\.git|assets|_summary|_static|_build|_book|node_m
 for path in $dir
 do
     # echo $path
-    # real_path=
-    # sub_dir_count=`find `echo $path| sed 's#@#\\ #g'` -type d |wc -l`
-    # echo $path
+    # 目录带空格有问题, 如下方式没有解决
+    # 统计子目录个数, 没有子目录的时候, toctree 不加入 */index
     sub_dir_count=`echo "$path"| sed 's#@#\\ #g'|awk '{print "find " $0 " -type d |wc -l"}'|bash`
     if [ $sub_dir_count -eq 1 ];then
         # echo $path
