@@ -6,6 +6,9 @@ find . -type f -name "*.rst" ! -path "./index.rst" | xargs rm -f
 # md2rst
 find . -type f -name "*.md"|awk -F "." '{print "pandoc -f markdown -t rst \""$0"\" -o \"." $2".rst\""}'|bash
 
+# delete md
+# find . -type f -name "*.md" |awk '{print "rm \""$0"\""}'|bash
+
 # gen index
 dir=`find . -type d |egrep -v "\.git|assets|_build|_book|node_modules|\.vscode|^\.$"|sed 's#\./##g'|sed 's# #@#g'`
 
