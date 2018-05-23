@@ -6,12 +6,16 @@ Notes
     使用\ ``Sphinx``\ 生成静态文件.
 
 -  `GitHub地址 <https://github.com/yangjinjie/notes>`__
--  `最新文档 <https://notes.yangjinjie.xyz>`__
 
-..
+在线阅读
+------------
 
-    原GitHub Pages可继续访问, 但不再更新, 地址
-    https://yangjinjie.github.io\ 或 https://docs.yangjinjie.xyz
+`最新文档 <https://notes.yangjinjie.xyz>`__
+
+.. attention::
+
+    原GitHub Pages(使用GitBook生成)可继续访问, 但不再更新, 地址
+    https://yangjinjie.github.io 或 https://docs.yangjinjie.xyz
 
 离线阅读
 --------
@@ -21,6 +25,7 @@ Notes
 
 .. code:: shell
 
+    # 前提, 安装Sphinx
     git clone --depth=1 https://github.com/yangjinjie/notes.git notes_notes
     cd notes_notes
     make html
