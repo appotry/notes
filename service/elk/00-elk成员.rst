@@ -1,7 +1,7 @@
 Elastic Stack
-=============
+====================
 
-ELK Stack的新名字
+ELK Stack, 新名字 Elastic Stack
 
 elastic公司提供的一套完整的日志收集、展示解决方案
 
