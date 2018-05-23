@@ -4,5 +4,4 @@ elk
 .. toctree::
     :glob:
 
-    */index
     *
