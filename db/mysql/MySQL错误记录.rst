@@ -100,7 +100,8 @@ sql语句错误, 导致slave sql线程出错, 主从不一致
 
 主库可以配置某些语句不记录到binlog
 
-InnoDB is limited to row-logging when transaction isolation level is READ COMMITTED or READ UNCOMMITTED
+InnoDB is limited to row-logging when transaction
+isolation level is READ COMMITTED or READ UNCOMMITTED
 -------------------------------------------------------------------------------------------------------
 
 执行语句的时候报如下错误
@@ -113,7 +114,8 @@ InnoDB is limited to row-logging when transaction isolation level is READ COMMIT
 
 原因是\ ``transaction_isolation``\ 使用的\ ``READ-COMMITTED``
 
-innodb的事务隔离级别是\ ``READ COMMITTED``\ 或者\ ``READ UNCOMMITTED``\ 模式时，\ ``BINLOG_FORMAT``\ 不可以使用\ ``STATEMENT``\ 模式
+innodb的事务隔离级别是\ ``READ COMMITTED``\ 或者\ ``READ UNCOMMITTED``\ 模式时，
+\ ``BINLOG_FORMAT``\ 不可以使用\ ``STATEMENT``\ 模式
 
 ``binlog_format``\ 使用\ ``mixed``
 
