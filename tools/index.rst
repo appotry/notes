@@ -2,8 +2,7 @@ tools
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    */index
+    *

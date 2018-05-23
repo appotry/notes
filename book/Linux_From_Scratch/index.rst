@@ -2,8 +2,6 @@ Linux From Scratch
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

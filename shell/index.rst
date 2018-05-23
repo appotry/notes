@@ -2,8 +2,7 @@ shell
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    */index
+    *

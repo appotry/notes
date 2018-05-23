@@ -2,8 +2,6 @@ TensorFlow Serving
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

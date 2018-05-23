@@ -2,8 +2,7 @@ elk
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    */index
+    *

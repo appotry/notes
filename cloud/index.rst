@@ -2,8 +2,7 @@ cloud
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    */index
+    *

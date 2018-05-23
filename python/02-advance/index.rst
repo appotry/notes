@@ -2,8 +2,6 @@ advance
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

@@ -2,8 +2,7 @@ Deployment
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    */index
+    *

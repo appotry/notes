@@ -2,8 +2,6 @@ ZooKeeper
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

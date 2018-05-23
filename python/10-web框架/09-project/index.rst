@@ -2,8 +2,6 @@ project
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

@@ -2,8 +2,6 @@ TeamCity
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

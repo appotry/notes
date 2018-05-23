@@ -2,8 +2,6 @@ SQL Server
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

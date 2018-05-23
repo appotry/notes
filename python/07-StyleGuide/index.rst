@@ -2,8 +2,6 @@ StyleGuide
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

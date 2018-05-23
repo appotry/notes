@@ -2,8 +2,6 @@ Docker Compose
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

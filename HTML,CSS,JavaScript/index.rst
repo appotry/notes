@@ -2,8 +2,6 @@ HTML,CSS,JavaScript
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

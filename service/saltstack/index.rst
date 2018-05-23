@@ -2,8 +2,6 @@ saltstack
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

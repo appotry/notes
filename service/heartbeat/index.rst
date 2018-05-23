@@ -2,8 +2,6 @@ heartbeat
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

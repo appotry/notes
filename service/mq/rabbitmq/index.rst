@@ -2,8 +2,6 @@ rabbitmq
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

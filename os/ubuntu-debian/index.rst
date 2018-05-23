@@ -2,8 +2,6 @@ ubuntu-debian
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

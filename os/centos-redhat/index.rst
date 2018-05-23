@@ -2,8 +2,6 @@ centos-redhat
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

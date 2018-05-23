@@ -2,8 +2,7 @@ TensorFlow
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    */index
+    *

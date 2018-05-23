@@ -2,8 +2,7 @@ example-pki-scripts
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    */index
+    *

@@ -2,8 +2,6 @@ jenkins
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

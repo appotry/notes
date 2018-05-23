@@ -2,8 +2,6 @@ mongodb
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

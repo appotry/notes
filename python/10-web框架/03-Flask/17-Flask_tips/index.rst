@@ -2,8 +2,6 @@ Flask tips
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

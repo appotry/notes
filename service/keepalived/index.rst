@@ -2,8 +2,6 @@ keepalived
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

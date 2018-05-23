@@ -2,8 +2,6 @@ Beautiful Soup
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

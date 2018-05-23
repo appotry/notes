@@ -2,8 +2,6 @@ haproxy
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *

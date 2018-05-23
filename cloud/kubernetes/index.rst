@@ -2,8 +2,6 @@ kubernetes
 ==============================
 
 .. toctree::
-   :glob:
+    :glob:
 
-   */index
-   *
-
+    *
