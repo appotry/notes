@@ -26,7 +26,7 @@ Zabbix 是 C/S 架构，服务端最好能配置在一台独立的宿主机上�
 
 服务端 docker-compose 文件：
 
-.. code:: yml
+.. code:: yaml
 
     version:'2'
       services:
