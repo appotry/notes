@@ -42,14 +42,15 @@ grep
    -  它断言自身出现的位置的后面能匹配表达式exp。
    -  括号中可以不用固定长度
 
-比如grep -Po
-‘:raw-latex:`\b`:raw-latex:`\w`+(?=ing:raw-latex:`\b`)’，匹配以ing结尾的单词的前面部分(除了ing以外的部分)，如查找
-I’m singing while you’re dancing.
+::
 
--  ``(?<=exp)``\ 也叫零宽度正回顾后发断言，
+    比如grep -Po `\b\w+(?=ing\b)'，匹配以ing结尾的单词的前面部分(除了ing以外的部分)，如查找
+    I'm singing while you’re dancing.
+
+-  ``(?<=exp)`` 也叫零宽度正回顾后发断言
 
    -  它断言自身出现的位置的前面能匹配表达式exp。
-   -  比如(?<=:raw-latex:`\bre`):raw-latex:`\w`+:raw-latex:`\b会匹配以re开头的单词的后半部分`(除了re以外的部分)，
+   -  比如``(?<=\bre)\w\b``会匹配以re开头的单词的后半部分(除了re以外的部分)，
    -  例如在查找reading a book时，它匹配ading。
    -  括号中必须固定长度
 
