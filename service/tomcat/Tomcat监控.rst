@@ -9,7 +9,7 @@ tomcat监控
 JMX在Zabbix中的运行流程
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: txt
+.. code::
 
     1. Zabbix-Server找Zabbix-Java-Gateway获取Java数据
     2. Zabbix-Java-Gateway找Java程序(zabbix-agent)获取数据
@@ -20,7 +20,7 @@ JMX在Zabbix中的运行流程
 配置JMX监控的步骤
 ~~~~~~~~~~~~~~~~~
 
-.. code:: txt
+.. code::
 
     1. 安装Zabbix-Java-Gateway。
     2. 配置zabbix_java_gateway.conf参数。
