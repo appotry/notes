@@ -231,8 +231,8 @@ delattr(object,name)
     AttributeError: type object 'cls' has no attribute 'echo'
     >>>
 
-dict(**kwarg)
-~~~~~~~~~~~~~
+dict ``(**kwarg)``
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     创建一个数据类型为字典
 
@@ -688,7 +688,9 @@ pow(x,y[,z])
 print()
 ~~~~~~~
 
-print(*objects,sep=‘’,end=‘:raw-latex:`\n`’,file=sys.stdout,flush=False)
+::
+
+    print(*objects,sep='',end=`\n`,file=sys.stdout,flush=False)
 
     打印输出
 
@@ -859,10 +861,10 @@ type(object)
 vars(\ `object <#object>`__)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    查看一个对象里面有多少个变量
+查看一个对象里面有多少个变量
 
-zip(*iterables)
-~~~~~~~~~~~~~~~
+zip(\*iterables)
+~~~~~~~~~~~~~~~~~~~~~
 
     将两个元素相同的序列转换为字典
 
