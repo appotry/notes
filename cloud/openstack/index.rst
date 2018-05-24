@@ -4,4 +4,4 @@ openstack
 .. toctree::
     :glob:
 
-    *
+
