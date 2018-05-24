@@ -5,8 +5,9 @@ Ext JS
 -  `中文站 <http://extjs.org.cn/>`__
 -  http://www.cnblogs.com/mlzs/p/5802376.html
 
-项目管理 创建项目：指定SDK，指定仅生成Classic项目 sencha -sdk
-~/ext-6.2.0/ generate app classic BeApp ./BeApp
+项目管理 创建项目：指定SDK，指定仅生成Classic项目
+
+sencha -sdk ~/ext-6.2.0/ generate app classic BeApp ./BeApp
 
 项目结构
 
