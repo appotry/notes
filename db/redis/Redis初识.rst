@@ -14,7 +14,7 @@ Redis简介
 特点
 ~~~~
 
-.. code:: txt
+.. code::
 
     * 速度快
     * 支持多种数据结构(string、list、hash、set、storted set)
@@ -422,7 +422,7 @@ Redis数据存储
 
     日志文件 appendonly yes/no
 
-.. code:: txt
+.. code::
 
     save 900 1       ## 900秒（15分钟）内有一个更改，存盘
     save 300 10      ## 300秒（5分钟）内有10个更改，存盘
@@ -432,7 +432,7 @@ Redis数据存储
 
     压缩
 
-.. code:: txt
+.. code::
 
     dbcompression yes
 
@@ -1236,7 +1236,7 @@ Redis Sentinel
 
     功能
 
-.. code:: txt
+.. code::
 
     监控（Monitoring）： Sentinel 会不断地检查你的主服务器和从服务器是否运作正常。
     提醒（Notification）： 当被监控的某个 Redis 服务器出现问题时， Sentinel 可以通过 API 向管理员或者其他应用程序发送通知。
