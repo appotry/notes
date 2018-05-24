@@ -20,11 +20,21 @@ do
     # 目录带空格有问题, 如下方式没有解决
     # 统计子目录个数, 没有子目录的时候, toctree 不加入 */index
     sub_dir_count=`echo "$path"| sed 's#@#\\ #g'|awk '{print "find " $0 " -type d |wc -l"}'|bash`
+    sub_file_count=`echo "$path"| sed 's#@#\\ #g'|awk '{print "find " $0 " -maxdepth 1 -type f |wc -l"}'|bash`
     if [ $sub_dir_count -eq 1 ];then
         # echo $path
-        content="    *"
+        # echo $sub_file_count
+        if [ $sub_file_count -eq 1 ];then
+            content=""
+        else
+            content="    *"
+        fi 
     else
-        content="    */index\n    *"
+        if [ $sub_file_count -eq 1 ];then
+            content="    */index"
+        else
+            content="    */index\n    *"
+        fi 
     fi
 
     title=`basename "$path"|sed "s#^[0-9].*-##g"|sed 's#@# #g'`
