@@ -4,4 +4,4 @@ keepalived
 .. toctree::
     :glob:
 
-    *
+
