@@ -28,13 +28,13 @@ do
             content=""
         else
             content="    *"
-        fi 
+        fi
     else
         if [ $sub_file_count -eq 1 ];then
             content="    */index"
         else
             content="    */index\n    *"
-        fi 
+        fi
     fi
 
     title=`basename "$path"|sed "s#^[0-9].*-##g"|sed 's#@# #g'`
@@ -61,7 +61,7 @@ done
 
 
 # summary(){
-    
+
 # index_dir="./_summary"
 # first_dir=`tree -Nd -L 1 -i |grep -v "^[_0-9\.]"`
 
