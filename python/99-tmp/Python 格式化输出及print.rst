@@ -19,7 +19,7 @@ Python 2.x print
 print原型
 ---------
 
-end 默认为’:raw-latex:`\n`’
+end 默认为 ``\n``
 
 .. code:: python
 
