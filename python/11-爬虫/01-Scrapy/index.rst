@@ -12,4 +12,4 @@ https://doc.scrapy.org/en/latest/
 .. toctree::
     :glob:
 
-    *
+
