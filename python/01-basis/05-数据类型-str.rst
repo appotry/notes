@@ -177,7 +177,7 @@ decode(self,encoding=None,errors=None):
     False
     >>>
 
-把字符串中的tab符号(‘:raw-latex:`\t`’)转为空格,tab符号(‘:raw-latex:`\t`’)默认的空格数是8
+把字符串中的tab符号(``\t``)转为空格,tab符号(``\t``)默认的空格数是8
 
     expandtabs(self,tabsize=None)
 
