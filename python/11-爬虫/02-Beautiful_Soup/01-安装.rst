@@ -7,7 +7,7 @@
 使用easy_install 或pip
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: shell
+:: shell
 
     # easy_install
     easy_install beautifulsoup4
