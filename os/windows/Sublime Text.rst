@@ -55,7 +55,7 @@ Package”进行插件安装。
 如何修改侧边栏背景颜色？
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-修改主题的配置文件即可。例如：使用流风清音汉化版，其默认主题为“Nil-Theme”，那么配置文件的相应路径是“Data:raw-latex:`\Packages`:raw-latex:`\Nil`-Theme:raw-latex:`\Nil`.sublime-theme”。
+修改主题的配置文件即可。例如：使用流风清音汉化版，其默认主题为“Nil-Theme”，那么配置文件的相应路径是“Data\Packages\Nil-Theme\Nil.sublime-theme”。
 
 .. code:: shell
 
