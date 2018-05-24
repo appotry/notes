@@ -12,4 +12,3 @@ book
     :glob:
 
     */index
-    *
