@@ -5,4 +5,3 @@ mq
     :glob:
 
     */index
-    *
