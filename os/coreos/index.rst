@@ -4,4 +4,4 @@ coreos
 .. toctree::
     :glob:
 
-    *
+
