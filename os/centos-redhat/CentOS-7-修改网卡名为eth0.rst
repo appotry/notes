@@ -104,7 +104,7 @@ CentOS-7 修改网卡为eth0(已安装-修改)
 
 .. code:: shell
 
-    vim /etc/udev/rules.d/70-persistent-ipoib.rules 
+    vim /etc/udev/rules.d/70-persistent-ipoib.rules
     # ACTION=="add", SUBSYSTEM=="net", DRIVERS=="?*", ATTR{type}=="32", ATTR{address}=="?*00:02:c9:03:00:35:73:f2", NAME="eth0"
     #修改只需要修改最后面的NAME名称的设备名称和你配置名称一致即可，前面的#号去掉，即可，上面这种方法，同样适用于，所有的克隆的虚拟主机，需要注意，克隆的主机前面的这个MAC地址不能一样需要修改
     最后，修改网卡的配置完成了
