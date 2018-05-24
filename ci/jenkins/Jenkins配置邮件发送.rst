@@ -34,7 +34,7 @@ Jenkins配置邮件发送
 
     Default Content
 
-.. code:: txt
+.. code::
 
       (本邮件是程序自动下发的，请勿回复！)
       项目名称：$PROJECT_NAME
