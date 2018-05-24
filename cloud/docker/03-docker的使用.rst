@@ -352,7 +352,7 @@ docker attach 是Docker自带的命令，但是使用 attach
 
 说明
 
-.. code:: txt
+.. code::
 
     FROM:指令告诉 Docker 使用哪个镜像作为基础
     MAINTAINER:维护者的信息
