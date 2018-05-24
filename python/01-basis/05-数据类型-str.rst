@@ -146,12 +146,8 @@ count
 
 decode(self,encoding=None,errors=None):
 
-.. code:: python
-
 编码,针对Unicode
 ----------------
-
-.. code:: python
 
 判断字符串是否是以指定后缀结尾,如果以指定后缀结尾返回TRUE,否则返回False
 
@@ -184,7 +180,5 @@ decode(self,encoding=None,errors=None):
 把字符串中的tab符号(‘:raw-latex:`\t`’)转为空格,tab符号(‘:raw-latex:`\t`’)默认的空格数是8
 
     expandtabs(self,tabsize=None)
-
-.. code:: python
 
 检测字符串中是否包含字符串str,如果指定beg(开始)和end(结束)范围,则检查是否包含在指定范围内,如果包含子字符串返回开始的索引值,否则返回-1
