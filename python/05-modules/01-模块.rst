@@ -351,8 +351,7 @@ subprocess.Popen(…)
 -  cwd：用于设置子进程的当前目录
 -  env：用于指定子进程的环境变量。如果env =
    None，子进程的环境变量将从父进程中继承。
--  universal_newlines：不同系统的换行符不同，True -> 同意使用
-   :raw-latex:`\n`
+-  universal_newlines：不同系统的换行符不同，True -> 同意使用 ``\n``
 -  startupinfo与createionflags只在windows下有效
 -  将被传递给底层的CreateProcess()函数，用于设置子进程的一些属性，如：主窗口的外观，进程的优先级等等
 
