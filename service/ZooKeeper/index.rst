@@ -8,4 +8,4 @@ ZooKeeper
 .. toctree::
     :glob:
 
-    *
+
