@@ -212,7 +212,7 @@ package的目录结构
 现在，正确的类名和路径将会是如下样子：
 
 -  类名 -> vehicle.Car
--  路径名 -> vehicle:raw-latex:`\Car`.java (在 windows 系统中)
+-  路径名 -> vehicle\Car.java (在 windows 系统中)
 
 通常，一个公司使用它互联网域名的颠倒形式来作为它的包名.例如：互联网域名是
 runoob.com，所有的包名都以 com.runoob
@@ -253,8 +253,7 @@ runoob.com，所有的包名都以 com.runoob
     .\com\runoob\test\Runoob.class
     .\com\runoob\test\Google.class
 
-你可以像下面这样来导入所有*\*
-:raw-latex:`\com`:raw-latex:`\runoob`:raw-latex:`\test` **中定义的类、接口等：
+你可以像下面这样来导入所有\com\runoob\test中定义的类、接口等：
 
 .. code:: shell
 
