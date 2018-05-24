@@ -87,7 +87,7 @@ jinja模板
 加载模板
 ~~~~~~~~
 
-.. code:: jinja2
+.. code:: html
 
     <!DOCTYPE html>
     <html lang="en">
