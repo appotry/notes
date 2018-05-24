@@ -3,7 +3,7 @@ perl1line
 
 http://www.catonmat.net/download/perl1line.txt
 
-.. code:: txt
+.. code::
 
     Useful One-Line Scripts for Perl                    Dec 03 2013 | version 1.10
     --------------------------------                    -----------   ------------
