@@ -4,4 +4,4 @@ kvm
 .. toctree::
     :glob:
 
-    *
+
