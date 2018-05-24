@@ -247,7 +247,8 @@ https://hexo.io/docs/deployment.html
 使用 qrsbox 完整同步
 ~~~~~~~~~~~~~~~~~~~~
 
-删除该目录下日志文件
-C::raw-latex:`\Users`:raw-latex:`\Administrator`.qrsbox
+删除该目录下日志文件::
+
+    C:\Users\Administrator\qrsbox
 
 可以通过everything搜索 qrsbox查找该目录
