@@ -38,9 +38,6 @@ Notes
 项目简介
 --------
 
-可以使用搜索功能, Python相关内容,
-需要进入侧边工具栏 ``Python`` 下搜索…
-
 所有内容可在 ``GitHub notes`` 仓库中搜索
 
 .. code:: shell
