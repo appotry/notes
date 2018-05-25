@@ -1,9 +1,9 @@
 Notes
 =====
 
-    由于\ ``GitBook``\ 生成\ ``html``\ 太慢, 放弃使用\ ``GitBook``,
-    文档使用\ ``reStructuredText``\ 编写,
-    使用\ ``Sphinx``\ 生成静态文件.
+由于``GitBook``生成``html``太慢, 放弃使用``GitBook``,
+文档使用``reStructuredText``编写,
+使用``Sphinx``生成静态文件.
 
 -  `GitHub地址 <https://github.com/yangjinjie/notes>`__
 
@@ -31,15 +31,17 @@ Notes
     make html
     # 访问生成的html即可
 
-:doc:`GitBook入门 </tools/git/GitBook入门>`
+* :doc:`Sphinx教程 </tools/01-Sphinx>`
+* :doc:`reStructuredText教程 </tools/02-reStructuredText>`
+* :doc:`GitBook入门 </tools/git/GitBook入门>`
 
 项目简介
 --------
 
 可以使用搜索功能, Python相关内容,
-需要进入侧边工具栏\ ``Python``\ 下搜索…
+需要进入侧边工具栏``Python``下搜索…
 
-所有内容可在\ ``GitHub notes``\ 仓库中搜索
+所有内容可在``GitHub notes``仓库中搜索
 
 .. code:: shell
 
