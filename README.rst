@@ -31,7 +31,7 @@ Notes
     make html
     # 访问生成的html即可
 
-`GitBook相关教程 <tools/git/GitBook.md>`__
+:doc:`GitBook入门 </tools/git/GitBook入门>`
 
 项目简介
 --------
