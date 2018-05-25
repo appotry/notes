@@ -6,7 +6,7 @@
 
     ``./stdio.h:1010:1: error: 'gets' undeclared here (not in a function)``
 
-.. code:: shel
+.. code:: shell
 
     解决方法如下:
 

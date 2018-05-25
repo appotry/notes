@@ -11,7 +11,7 @@ Ubuntu使用zsh
 安装完后，需要将\ ``zsh``\ 替换为你的默认\ ``shell``,
 输入下面命令修改默认终端
 
-.. code:: sehll
+.. code:: shell
 
     chsh -s /bin/zsh
 

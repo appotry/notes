@@ -159,7 +159,7 @@ mongodb常用命令
 慢查询分析：
 ------------
 
-.. code:: sxhell
+.. code:: shell
 
     db.setProfilingLevel()
 

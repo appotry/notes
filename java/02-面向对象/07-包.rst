@@ -164,7 +164,7 @@ Boss 类。Boss 类引用 Employee 类的时候可以不用使用 payroll
 
     payroll.Employee
 
-用 **import** 关键字引入，使用通配符 “*"
+用 **import** 关键字引入，使用通配符 “\*"
 
 ::
 

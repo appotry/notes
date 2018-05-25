@@ -241,7 +241,7 @@ NodeJS所有版本: http://npm.taobao.org/mirrors/node/
 
 代码内容(如果不安装GitBook,可以删除后面两个状态)
 
-.. code:: node
+.. code::
 
     node ('master') {
        stage '安装 Node'
