@@ -1,7 +1,7 @@
-microservice
+consul
 ==============================
 
 .. toctree::
     :glob:
 
-    */index
+    *
