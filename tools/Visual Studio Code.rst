@@ -9,9 +9,9 @@ Visual Studio Code Settings Sync
 
 使用插件同步vscode配置
 
-其实就是借助的\ ``GitHub Gist``,
-Gist可以设置为\ ``public``\ 和\ ``secret``,
-该插件会创建一个\ ``secret``\ 的gist, 所以设置里面有key之类的,
+其实就是借助的 ``GitHub Gist``,
+Gist可以设置为 ``public`` 和 ``secret``,
+该插件会创建一个 ``secret`` 的gist, 所以设置里面有key之类的,
 也不是很要紧
 
 `GitHub Gist <https://gist.github.com>`__
@@ -53,7 +53,7 @@ shanalikhan/code-settings-sync <https://github.com/shanalikhan/code-settings-syn
     # windows下默认为 powershell
     # 设置示例
 
-        "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
 
 扩展Visual Studio Code
 ----------------------
@@ -221,20 +221,20 @@ package.json
 
 这个特殊文件描述了
 
--  一个命令面板的入口, 标签为\ ``"Hello World"``,
-   它会调用\ ``"extension.sayHello"``
--  当\ ``"extension.sayHello"``\ 被调用的时候, 会请求加载活动事件
--  该事件是使用JavaScript编写的\ ``"./out/src/extension.js"``\ 文件
+-  一个命令面板的入口, 标签为 ``"Hello World"``,
+   它会调用 ``"extension.sayHello"``
+-  当 ``"extension.sayHello"`` 被调用的时候, 会请求加载活动事件
+-  该事件是使用JavaScript编写的 ``"./out/src/extension.js"`` 文件
 
 ..
 
     注意: VS Code不会在启动的时候就加载扩展代码. 扩展插件必须描述,
-    通过\ ``activationEvents``\ 性能, 在某些条件下被激活(加载).
+    通过 ``activationEvents`` 性能, 在某些条件下被激活(加载).
 
 生成代码
 ^^^^^^^^
 
-生成的扩展插件代码在\ ``extension.ts``\ (或 ``extension.js``,
+生成的扩展插件代码在 ``extension.ts`` (或 ``extension.js``,
 JavaScript扩展插件)里面
 
 .. code:: javascript
@@ -264,22 +264,22 @@ JavaScript扩展插件)里面
         context.subscriptions.push(disposable);
     }
 
--  每个插件都需要有一个\ ``activate()``\ 函数, VS
-   Code将在\ ``package.json``\ 里面描述的\ ``activationEvents``\ 发生的时候,
+-  每个插件都需要有一个 ``activate()`` 函数, VS
+   Code将在 ``package.json`` 里面描述的 ``activationEvents`` 发生的时候,
    调用一次.
--  如果插件使用OS资源, 可以定义一个\ ``deactivate()``\ 函数, 当VS
+-  如果插件使用OS资源, 可以定义一个 ``deactivate()`` 函数, 当VS
    Code关闭的时候, 会调用该函数, 执行清扫工作.
--  这个插件导入了\ ``vscode`` API, 并注册了一个命令,
-   调用命令\ ``"extension.sayHello"``,
-   显示一条\ ``"Hello World"``\ 的信息.
+-  这个插件导入了 ``vscode`` API, 并注册了一个命令,
+   调用命令 ``"extension.sayHello"``,
+   显示一条 ``"Hello World"`` 的信息.
 
 ..
 
     注意:
-    ``package.json``\ 里面的\ ``contributes``\ 会在命令面板增加一个入口,
-    在\ ``.ts/.js``\ 里面实现该命令\ ``"extension.sayHello"`` 注意:
-    对于\ ``TypeScript``\ 插件, VS
-    Code会在每一次执行的时候加载生成的\ ``out/src/extension.js``\ 文件.
+    ``package.json`` 里面的 ``contributes`` 会在命令面板增加一个入口,
+    在 ``.ts/.js`` 里面实现该命令 ``"extension.sayHello"`` 注意:
+    对于 ``TypeScript`` 插件, VS
+    Code会在每一次执行的时候加载生成的 ``out/src/extension.js`` 文件.
 
 打包发布
 ~~~~~~~~
