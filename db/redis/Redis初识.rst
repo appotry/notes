@@ -1742,7 +1742,7 @@ Redis Cluster
     变成某实例的从
         redis 127.0.0.1:8006> cluster replicate 3c3a0c74aae0b56170ccb03a76b60cfe7dc1912e
     删除一个节点
-        redis-trib del-node ip:port '<node-id>' 
+        redis-trib del-node ip:port '<node-id>'
     删除master节点之前首先要使用reshard移除master的全部slot,然后再删除当前节点
 
 状态说明
