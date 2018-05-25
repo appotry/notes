@@ -4,7 +4,9 @@ tomcat
 tomcat监控
 ----------
 
-在Zabbix中，JMX监控数据的获取由专门的代理程序来实现,即\ ``Zabbix-Java-Gateway``\ 来负责数据的采集，\ ``Zabbix-Java-Gateway``\ 和\ ``JMX``\ 的\ ``Java``\ 程序之间通信获取数据
+在Zabbix中，JMX监控数据的获取由专门的代理程序来实现,
+即 ``Zabbix-Java-Gateway`` 来负责数据的采集， ``Zabbix-Java-Gateway``
+和 ``JMX`` 的 ``Java`` 程序之间通信获取数据
 
 JMX在Zabbix中的运行流程
 ~~~~~~~~~~~~~~~~~~~~~~~
