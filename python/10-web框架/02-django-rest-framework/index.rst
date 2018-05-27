@@ -1,4 +1,4 @@
-framework
+Django REST framework
 ==============================
 
 .. toctree::
