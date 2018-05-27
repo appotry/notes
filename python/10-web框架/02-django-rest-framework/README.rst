@@ -1,5 +1,5 @@
-Django REST framework
-=====================
+Django REST framework初探
+===============================
 
 当前版本 ``version 3``
 
