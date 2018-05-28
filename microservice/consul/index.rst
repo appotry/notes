@@ -4,4 +4,4 @@ consul
 .. toctree::
     :glob:
 
-    *
+
