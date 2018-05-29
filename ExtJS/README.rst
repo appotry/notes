@@ -19,7 +19,12 @@ sencha -sdk ~/ext-6.2.0/ generate app classic BeApp ./BeApp
 
 以上文件不需要进行代码版本管理，可以通过install + build命令重建。
 
-sencha app install –framework=~/ext-6.2.0/ sencha app build
+.... code-block:: shell
+
+    sencha app install –framework=~/ext-6.2.0/
+    sencha app build
+    sencha app upgrade ~/ext-6.2.0
+
 
 项目编辑 添加模块： sencha generate model User id:int,name,email
 
