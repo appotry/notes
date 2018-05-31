@@ -1,4 +1,4 @@
-oriented
+object oriented
 ==============================
 
 .. toctree::
