@@ -330,7 +330,7 @@ serializer definition explicit.
                 return JsonResponse(serializer.data, status=201)
             return JsonResponse(serializer.errors, status=400)
 
-注意, 应为我们希望我们可以从没有 ``csrf token`` 的客户端 ``POST``
+注意, 因为我们希望我们可以从没有 ``csrf token`` 的客户端 ``POST``
 数据到该视图, 我们需要标记该视图为 ``csrf_exempt``. 通常你不想这样做,
 ``REST``\ 框架视图使用比这个更明智的方式, 不过那不是我们现在的目的.
 
