@@ -253,7 +253,7 @@ serializer definition explicit.
 我们的 ``SnippetSerializer`` 类复制了包含 ``Snippet``
 模型在内的很多信息. 如果能够简化我们的代码, 那是极好的.
 
-和Django提供的 ``Form`` 类和 ``ModelFrom`` 类相同, ``REST`` 框架包含了
+和Django提供的 ``Form`` 类和 ``ModelForm`` 类相同, ``REST`` 框架包含了
 ``Serializer`` 类和 ``ModelSerializer`` 类.
 
 让我们使用 ``ModelSerializer`` 重构我们的Serializer, 再次打开
