@@ -62,10 +62,10 @@ CentOS-7 修改网卡为eth0(已安装-修改)
         GRUB_DEFAULT=saved
         GRUB_DISABLE_SUBMENU=true
         GRUB_TERMINAL_OUTPUT="console"
-        GRUB_CMDLINE_LINUX="crashkernel=auto rhgb **net.ifnames=0 biosdevname=0** quiet"
+        GRUB_CMDLINE_LINUX="crashkernel=auto rhgb net.ifnames=0 biosdevname=0 quiet"
         GRUB_DISABLE_RECOVERY="true"
 
-        [root@centos7 ~]# **grub2-mkconfig -o /boot/grub2/grub.cfg  #生成启动菜单**
+        [root@centos7 ~]# grub2-mkconfig -o /boot/grub2/grub.cfg  #生成启动菜单
           Generating
         grub configuration file ...
           Found
