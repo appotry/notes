@@ -1,0 +1,52 @@
+简单使用
+====================
+
+supervisor更改某项目配置后，需要重新启动才有效
+
+在linux服务器上部署了node项目，使用supervisor进行管理，supervisor是个好工具，具体介绍见这里about supervisor
+
+梗概了该项目对的某些配置后，重新启动项目，发现问题仍在，通过日志内容才知道原来新的配置没有被应用。 
+要使更新的配置得以应用，需要重新启动supervisor服务。具体操作如下： 
+参考文章
+
+二、更新新的配置到supervisord
+
+.. code-block:: shell
+
+    supervisorctl update
+
+三、重新启动配置中的所有程序
+
+.. code-block:: shell
+
+    supervisorctl reload
+
+四、启动某个进程(program_name=你配置中写的程序名称)
+
+.. code-block:: shell
+
+    supervisorctl start program_name
+
+五、查看正在守候的进程
+
+.. code-block:: shell
+
+    supervisorctl
+
+六、停止某一进程 (program_name=你配置中写的程序名称)
+
+.. code-block:: shell
+
+    supervisorctl stop program_name
+
+七、重启某一进程 (program_name=你配置中写的程序名称)
+
+.. code-block:: shell
+
+    supervisorctl restart program_name
+
+八、停止全部进程
+
+.. code-block:: shell
+
+    supervisorctl stop all
