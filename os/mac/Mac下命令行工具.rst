@@ -1,6 +1,13 @@
 Mac下命令行工具
 ===============
 
+gnu-sed
+---------------
+
+.. code-block:: shell
+
+    brew install gnu-sed --with-default-names
+
 终端查看Mac系统版本
 -------------------
 
