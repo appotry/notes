@@ -1,0 +1,24 @@
+问题记录
+===============
+
+free data blocks which is less than...
+---------------------------------------------
+
+报错信息::
+
+    devmapper: Thin Pool has 82984 free data blocks which is less than minimum required 163840 free data blocks. Create more free space in thin pool or use dm.min_free_space option to change behavior
+
+解决
+
+Cleanup exited processes::
+
+    docker rm $(docker ps -q -f status=exited)
+    
+Cleanup dangling volumes:
+
+    docker volume rm $(docker volume ls -qf dangling=true)
+
+ 
+Cleanup dangling images::
+
+    docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
