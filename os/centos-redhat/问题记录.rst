@@ -1,6 +1,18 @@
 问题记录
 ========
 
+centos7使用Python3一直报UnicodeEncodeError
+-------------------------------------------------------
+
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 34-42: ordinal not in range(128)
+
+解决方法::
+
+    修改文件/etc/locale.conf,增加如下配置项:
+    LC_ALL="en_US.UTF-8"
+    LC_CTYPE="en_US.UTF-8"
+    LC_ALL和LC_CTYPE具体的值视情况，可以配置为zh_CN.UTF-8,或者 locale -a 命令返回的字符集
+
 在centos7下安装libiconv-1.14.tar.gz时遇到如下错误：
 ---------------------------------------------------
 
