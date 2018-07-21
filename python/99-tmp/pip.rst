@@ -15,15 +15,10 @@ pip
 
     wget https://bootstrap.pypa.io/get-pip.py
 
-运行命令
-
-::
-
+    # 获取
     python get-pip.py
     python3 get-pip.py # 没有python命令,有其他版本的话使用该版本运行
-
-.. code:: shell
-
+    # 使用相应的python可以安装相应2，3的pip
     root@ubuntu-linux:~/src# pip -V
     pip 9.0.1 from /usr/local/lib/python3.5/dist-packages (python 3.5)
 
@@ -68,6 +63,8 @@ Windows:
 .. code:: shell
 
     pip install django==1.9
+    # 升级为指定版本
+    pip install -U urllib3==1.22
 
 查看安装的文件
 
@@ -119,7 +116,6 @@ MacOS OSError: [Errno 1] Operation not permitted
 .. code:: shell
 
     pip install --upgrade pip
-
     sudo pip install numpy --upgrade --ignore-installed
     sudo pip install scipy --upgrade --ignore-installed
     sudo pip install scikit-learn --upgrade --ignore-installed
