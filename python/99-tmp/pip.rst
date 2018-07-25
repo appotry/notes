@@ -119,3 +119,17 @@ MacOS OSError: [Errno 1] Operation not permitted
     sudo pip install numpy --upgrade --ignore-installed
     sudo pip install scipy --upgrade --ignore-installed
     sudo pip install scikit-learn --upgrade --ignore-installed
+
+配置阿里云pip源
+--------------------
+
+配置文件位置::
+
+    全局的位于 /etc/pip.conf
+    用户级别的位于 $HOME/.pip/pip.conf
+    每个 virtualenv 也可以有自己的配置文件 $VIRTUAL_ENV/pip.conf
+    配置文件内容：
+
+    [global]
+    trusted-host=mirrors.aliyun.com
+    index-url=http://mirrors.aliyun.com/pypi/simple
