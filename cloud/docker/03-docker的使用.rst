@@ -149,6 +149,8 @@ centos7的systemd问题官方文档
 
 因为我们只是启动了一个bash,所以当我们退出的时候,镜像也停止了。
 
+如果想容器不退出，可以使用 ``Ctrl+P+Q进行``, 使用bash run的容器也可以不退出
+
 ::
 
     [root@65b6cf94133f /]# exit
@@ -515,6 +517,10 @@ ro:可以设置为只读
 
 网络
 ----
+
+网络模式
+
+https://www.cnblogs.com/gispathfinder/p/5871043.html
 
 端口映射
 ~~~~~~~~

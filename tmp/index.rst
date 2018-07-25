@@ -6,4 +6,5 @@ tmp
 .. toctree::
     :glob:
 
+    */index
     *

@@ -5,4 +5,3 @@ go
     :glob:
 
     */index
-    *
