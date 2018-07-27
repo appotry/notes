@@ -77,3 +77,10 @@ docker常用命令
 ::
 
     docker commit -m "centos6_http_server" d09969389b95 yjj/httpd:v1
+
+执行命令
+-------------
+
+::
+
+    docker exec 容器id sh -c "echo  haha"
