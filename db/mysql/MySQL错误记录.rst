@@ -148,3 +148,41 @@ useSSL=true and provide truststore for server certificate verification.
 .. code:: shell
 
     spring.datasource.url=jdbc:mysql://localhost:3306/db_example?verifyServerCertificate=false&useSSL=false&requireSSL=false
+
+解决mysql使用GTID主从复制错误问题
+-----------------------------------------------
+
+主从网络中断,或主服务器重启,或从服务器重启,从会根据配置文件中的时间,默认1分钟,去自动重连主服务器,直到网络和服务均可正常连接,连接正常后可自动继续同步之前文件,不需要任何人工干预.
+
+当主从因为人为原因出现不同步的时候,可以用下面命令进行同步::
+
+    LOAD DATA FROM MASTER;
+    LOAD TABLE TBLNAME FROM MASTER;
+
+注意,上面命令会对主数据库进行锁操作,如果数据库极大,建议在停机的时候进行,或者用短锁备份查看 show master status; 后,拷贝数据库的方式进行.
+
+当 BIN-LOG 里面出现 SQL 级别错误导致主从不能同步的时候,可以用下面方法掠过该错误语句行,继续同步::
+
+    stop slave;
+    set global sql_slave_skip_counter=1;
+    start slave;
+
+执行当 ``set global sql_slave_skip_counter=1;`` 是可能会出现以下错误::
+
+    ERROR 1858 (HY000): sql_slave_skip_counter can not be set when the server is running with GTID_MODE = ON. 
+    Instead, for each transaction that you want to skip, generate an empty transaction with the same GTID as the transaction
+
+解决::
+
+    show slave status\G
+    # 记录 Executed_Gtid_Set
+
+    reset master;
+    stop slave;
+    reset slave;
+    # 使用上面的 Executed_Gtid_Set + 1，根据具体情况调整
+    set global gtid_purged='2a378de7-bf79-11e7-b8c1-7cd30ac474ca:1-7899,47f27a52-bf79-11e7-b8c2-7cd30ae01298:1-153820893';
+    CHANGE MASTER TO MASTER_HOST='host', MASTER_PORT=3306, MASTER_USER='user', MASTER_PASSWORD='password', MASTER_AUTO_POSITION=1, MASTER_DELAY = 3600;
+    START SLAVE;
+
+    show slave status\G
