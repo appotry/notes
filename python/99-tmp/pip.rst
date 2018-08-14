@@ -133,3 +133,18 @@ MacOS OSError: [Errno 1] Operation not permitted
     [global]
     trusted-host=mirrors.aliyun.com
     index-url=http://mirrors.aliyun.com/pypi/simple
+
+执行pip的时候，指定源:
+
+.. code-block:: shell
+
+    # pip版本太旧可能不支持 --trusted-host
+    pip install --upgrade pip -i http://mirrors.aliyun.com/pypi/simple  --trusted-host mirrors.aliyun.com
+
+
+cannot install ''numpy'.It is a distutils installed project and thus we cannot
+--------------------------------------------------------------------------------------------------------------------------
+
+强行安装高版本::
+
+    pip install numpy --ignore-installed numpy
