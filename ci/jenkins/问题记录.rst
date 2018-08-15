@@ -1,0 +1,21 @@
+问题记录
+============================
+
+ERROR: Timeout after 10 minutes
+------------------------------------------
+
+错误内容::
+
+    > git fetch --tags --progress git@192.168.15.120:dev/FUQIN-BANK.git +refs/heads/*:refs/remotes/origin/*
+    ERROR: Timeout after 10 minutes
+    ERROR: Error cloning remote repo 'origin'
+    hudson.plugins.git.GitException: Command "git fetch --tags --progress git@192.168.15.120:dev/FUQIN-BANK.git +refs/heads/*:refs/remotes/origin/*" returned status code 143:
+
+解决办法::
+
+    # 1.方法一 
+    Source Code Management -> Git -> Additional Behaviours -> Add ->
+    Timeout(in minutes) for clone and fetch operations 添加一个时间
+    # 2. 方法二
+    # 切换到jenkins用户，进入到相应的workspace，执行
+    git config remote.origin.url git@gitlab.com:laiye-shanghai-tech/nike-backend.git
