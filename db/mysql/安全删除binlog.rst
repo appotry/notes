@@ -14,6 +14,11 @@
 
     # vim /etc/my.cnf  //修改expire_logs_days,x是自动删除的天数，一般将x设置为短点，如10
     expire_logs_days = x  //二进制日志自动删除的天数。默认值为0,表示“没有自动删除”
+    三种情况下会做 flush logs 操作
+    1. 重启
+    2. BINLOG文件大小达到参数max_binlog_size限制，max_binlog_size默认为1G
+    3. 手工执行命令。
+
     此方法需要重启mysql，附录有关于expire_logs_days的英文说明
 
     当然也可以不重启mysql,开启mysql主从，直接在mysql里设置expire_logs_days,临时
@@ -49,3 +54,4 @@
     | mysql-bin.000678 |    558332 |
     +------------------+-----------+
     1 row in set (0.02 sec)
+
