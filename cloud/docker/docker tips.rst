@@ -1,6 +1,22 @@
 docker tips
 ===========
 
+修改仓库为阿里云镜像仓库
+-----------------------------
+
+.. code-block:: shell
+
+
+    1.阿里云docker仓库 https://dev.aliyun.com/search.html
+    2.注册账号，点击自己的管理中心
+    3.然后进入镜像库可以看到自己专有的镜像地址
+    4.使用命令 vi /etc/docker/daemon.json 添加如下
+    {
+        "registry-mirrors": ["https://xxxxx.mirror.aliyuncs.com"]
+    }
+    5.systemctl daemon-reload
+    6.systemctl restart docker
+
 docker以root身份进入容器
 ------------------------
 
