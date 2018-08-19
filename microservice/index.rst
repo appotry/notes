@@ -1,7 +1,0 @@
-microservice
-==============================
-
-.. toctree::
-    :glob:
-
-    */index
