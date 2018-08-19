@@ -14,7 +14,7 @@ python
 
 https://github.com/google/protobuf/tree/master/python
 
-获取\ ``protobuf-python``
+获取 ``protobuf-python``
 
 .. code:: shell
 
