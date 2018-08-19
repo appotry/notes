@@ -20,7 +20,7 @@
 
 网上搜索一两个小时无果，于是请教总监，说了句应该是win mtu值导致的
 
-.. code:: bash
+.. code:: shell
 
     Microsoft Windows [版本 10.0.14393]
     (c) 2016 Microsoft Corporation。保留所有权利。
