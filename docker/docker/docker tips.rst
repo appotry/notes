@@ -6,7 +6,6 @@ docker tips
 
 .. code-block:: shell
 
-
     1.阿里云docker仓库 https://dev.aliyun.com/search.html
     2.注册账号，点击自己的管理中心
     3.然后进入镜像库可以看到自己专有的镜像地址
@@ -40,7 +39,7 @@ docker容器中文乱码, 修改容器编码
 修改容器时区
 ------------
 
-比如, 修改为\ ``Asia/Shanghai``
+比如, 修改为 ``Asia/Shanghai``
 
 ``/usr/share/zoneinfo/Asia/Shanghai`` 文件不存在则需要安装 ``tzdata``
 
