@@ -1,0 +1,13 @@
+MySQL主从相关
+==================
+
+主从复制忽略指定表
+---------------------
+
+.. code-block:: shell
+
+    # 忽略一张表
+    replicate-ignore-table = db.table1
+    # 忽略多张表
+    replicate-ignore-table = db.table2
+    replicate-ignore-table = db.table3
