@@ -66,3 +66,20 @@ vim /etc/vimrc
     set termencoding=utf-8
     set fileformats=unix
     set encoding=prc
+
+关闭自动补全
+-------------------
+
+.. code:: shell
+
+    解决方法如下：
+
+    :set noautoindent 
+    :set nosmartindent
+
+关闭自动注释
+-------------------
+
+.. code:: shell
+
+    :set comments=
