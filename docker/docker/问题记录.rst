@@ -22,3 +22,15 @@ Cleanup dangling volumes:
 Cleanup dangling images::
 
     docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+
+msg="[graphdriver] prior storage driver overlay2 failed: driver not supported
+--------------------------------------------------------------------------------------------------
+
+可能是因为docker版本变化，导致出现该问题
+
+可以尝试
+
+.... code-block:: shell
+
+    mv /var/lib/docker /var/lib/docker.old 
+    再启动
