@@ -1,0 +1,85 @@
+问题记录
+============
+
+`Troubleshooting kubeadm <https://kubernetes.io/docs/setup/independent/troubleshooting-kubeadm/>`_ 
+
+运行minikube时报错
+-----------------------------
+
+.. code-block:: shell
+
+    zsh: exec format error: minikube
+
+安装的包有问题，重新下载
+
+
+crictl包丢失
+-----------------------------
+
+.. code-block:: shell
+
+    VERSION="v1.11.1"
+    wget https://github.com/kubernetes-incubator/cri-tools/releases/download/$VERSION/crictl-$VERSION-linux-amd64.tar.gz
+    sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
+    rm -f crictl-$VERSION-linux-amd64.tar.gz
+
+nodePort无法开放80端口，提示不在30000-32767范围内
+----------------------------------------------------------
+
+修改/etc/kubernetes/manifests/kube-apiserver.yaml(有些版本也可能是json)文件，修改其中的 
+`` - --service-node-port-range=80-32767 `` 将range从30000-32767修改为80-32767。如果没有这句话，则按照格式添加一句。
+
+查看服务错误日志
+-----------------------------
+
+.. code-block:: shell
+
+    journalctl -u -f
+
+1 node(s) had taints that the pod didn't tolerate.
+----------------------------------------------------------
+
+有时候一个pod创建之后一直是pending，没有日志，也没有pull镜像，describe的时候发现里面有一句话： 1 node(s) had taints that the pod didn't tolerate.
+
+直译意思是节点有了污点无法容忍，执行 ``kubectl get no -o yaml | grep taint -A 5`` 之后发现该节点是不可调度的。这是因为kubernetes出于安全考虑默认情况下无法在master节点上部署pod，于是用下面方法解决：
+
+.. code-block:: shell
+
+    kubectl taint nodes --all node-role.kubernetes.io/master-
+
+kubectl命令报错
+----------------------------------------------------------
+
+.. code-block:: shell
+
+    Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "kubernetes")
+
+这个错误的原因是执行 kubeadm init 之后没有关注到控制台的输出，其中有一段话：
+
+To start using your cluster, you need to run the following as a regular user:
+
+.. code-block:: shell
+
+    mkdir -p $HOME/.kube
+    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+意思是需要首先执行上面三行脚本之后才可以继续使用集群
+
+.. code-block:: shell
+
+    Unable to update cni config: No networks found in /etc/cni/net
+
+错误如下:
+
+.. code-block:: shell
+
+    Unable to update cni config: No networks found in /etc/cni/net
+    Container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message
+
+解决方法是安装flannel：
+
+.. code-block:: shell
+
+    sysctl net.bridge.bridge-nf-call-iptables=1
+    kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.10.0/Documentation/kube-flannel.yml
