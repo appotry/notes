@@ -1,20 +1,91 @@
 docker
 ======
 
-安装
-----
+自动安装
+------------
 
-`docker安装教程 <http://mirrors.aliyun.com/help/docker-engine>`__
+.. code-block:: shell
 
-`docs-docker <https://docs.docker.com/>`__
+    # 阿里云镜像
+    curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+
+手动安装
+-----------
 
 系统要求
+~~~~~~~~~~~~~~
 
 -  Ubuntu 14.04、16.04
 -  Debian 7.7、8.0
 -  CentOS 7.X
 -  Fedora 20、21、22
 -  OracleLinux 6、7
+
+Ubuntu
+~~~~~~~~~~~~
+
+.... code-block:: shell
+
+    sudo apt-get remove docker docker-engine docker.io
+
+    sudo apt-get update
+
+    sudo apt-get install \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        software-properties-common
+        
+    sudo add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+    
+    sudo apt-get update
+
+    sudo apt-get install docker-ce
+
+CentOS
+~~~~~~~~~~~~~~~~~~~
+
+.... code-block:: shell
+
+    #!/bin/bash
+    sudo yum remove -y docker \
+                    docker-client \
+                    docker-client-latest \
+                    docker-common \
+                    docker-latest \
+                    docker-latest-logrotate \
+                    docker-logrotate \
+                    docker-selinux \
+                    docker-engine-selinux \
+                    docker-engine
+
+    sudo yum install -y yum-utils \
+    device-mapper-persistent-data \
+    lvm2 epel-release
+
+    sudo yum-config-manager \
+        --add-repo \
+        https://download.docker.com/linux/centos/docker-ce.repo
+
+    sudo yum install -y docker-ce docker-compose
+
+    sudo mkdir -p /etc/docker
+    sudo tee /etc/docker/daemon.json <<-'EOF'
+    {
+    "storage-driver": "overlay",
+    "registry-mirrors": ["https://haha.mirror.aliyuncs.com"]
+    }
+    EOF
+    sudo usermod -G docker $1 
+    sudo systemctl daemon-reload
+    sudo systemctl restart docker
+    sudo systemctl enable docker
+
+安装后操作
+~~~~~~~~~~
 
 If you would like to use Docker as a non-root user, you should now
 consider adding your user to the “docker” group with something like:
