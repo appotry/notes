@@ -19,3 +19,8 @@ ERROR: Timeout after 10 minutes
     # 2. 方法二
     # 切换到jenkins用户，进入到相应的workspace，执行
     git config remote.origin.url git@gitlab.com:laiye-shanghai-tech/nike-backend.git
+
+    # 3
+    # 调整启动参数
+    文件/etc/sysconfig/jenkins
+    JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Dorg.jenkinsci.plugins.gitclient.Git.timeOut=120 "
