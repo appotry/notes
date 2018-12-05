@@ -77,6 +77,9 @@ vim /etc/vimrc
     :set noautoindent 
     :set nosmartindent
 
+    :set noai
+    :set nosi
+
 关闭自动注释
 -------------------
 
