@@ -24,3 +24,14 @@ ERROR: Timeout after 10 minutes
     # 调整启动参数
     文件/etc/sysconfig/jenkins
     JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Dorg.jenkinsci.plugins.gitclient.Git.timeOut=120 "
+
+DNS日志刷爆磁盘
+-----------------------
+
+    # 方法一，
+    Manage Jenkins -> System Log -> Log Levels (on the left)
+    Name: javax.jmdns
+    Level: off
+
+    # 方法二，调整参数，重启
+    JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Dhudson.DNSMultiCast.disabled=true "
