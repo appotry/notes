@@ -1,0 +1,172 @@
+初试
+=========
+
+istioctl命令安装
+----------------------
+
+.. code-block:: shell
+    # 安装最新发行版, 自动解压到当前目录
+    curl -L https://git.io/getLatestIstio | sh -
+
+
+使用helm安装istio
+-------------------------
+
+.. code-block:: shell
+
+    wget https://github.com/istio/istio/releases/download/1.0.4/istio-1.0.4-linux.tar.gz
+    tar xf istio-1.0.4-linux.tar.gz
+    cd istio-1.0.4
+    helm install install/kubernetes/helm/istio --name istio --namespace istio-system
+    
+    # 默认使用 LoadBalance 类型, 修改成 NodePort
+    --set gateways.istio-ingressgateway.type=NodePort
+
+    helm install install/kubernetes/helm/istio \
+    --name istio --namespace istio-system \
+    --set security.enabled=true --set grafana.enabled=true \
+    --set grafana.service.type=NodePort  \
+    --set gateways.istio-ingressgateway.type=NodePort \
+    --set prometheus.service.nodePort.enabled=true
+
+
+helm install install/kubernetes/helm/istio \
+  --name istio \
+  --namespace istio-system \
+  --set gateways.istio-ingressgateway.type=NodePort \
+  --set tracing.enabled=true \
+  --set servicegraph.enabled=true \
+  --set prometheus.enabled=true \
+  --set tracing.jaeger.enabled=true \
+  --set grafana.enabled=true \
+  --set grafana.service.type=NodePort  \
+  --set global.configValidation=false \
+  --set global.nodePort=true
+  --set global.proxy.includeIPRanges="10.0.0.1/8" 
+
+安装之后可以编辑service来暴露nodePort进行外部访问
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: shell
+
+    kubectl edit svc grafana -n istio-system
+
+    # Please edit the object below. Lines beginning with a '#' will be ignored,
+    # and an empty file will abort the edit. If an error occurs while saving this file will be
+    # reopened with the relevant failures.
+    #
+    apiVersion: v1
+    kind: Service
+    metadata:
+    creationTimestamp: 2018-12-13T06:48:25Z
+    labels:
+        app: istio-grafana
+        chart: grafana-1.0.4
+        heritage: Tiller
+        release: istio
+    name: grafana
+    namespace: istio-system
+    resourceVersion: "3465612"
+    selfLink: /api/v1/namespaces/istio-system/services/grafana
+    uid: 1708be01-fea3-11e8-ab8c-00163e032837
+    spec:
+    clusterIP: 10.107.201.94
+    externalTrafficPolicy: Cluster
+    ports:
+    - name: http
+        nodePort: 32000
+        port: 3000
+        protocol: TCP
+        targetPort: 3000
+    selector:
+        app: grafana
+    sessionAffinity: None
+    type: NodePort
+    status:
+    loadBalancer: {}
+
+获取访问url
+~~~~~~~~~~~~~~~
+
+.. code-block:: shell
+    # 查看 istio-ingressgateway 端口
+    kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports}'
+    
+    export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
+    export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
+    export INGRESS_HOST=$(kubectl get po -l istio=ingressgateway -n istio-system -o 'jsonpath={.items[0].status.hostIP}')
+    export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
+
+安装应用
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: shell
+    kubectl apply -f <(istioctl kube-inject -f samples/bookinfo/platform/kube/bookinfo.yaml)
+    kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+
+查看状态
+
+.. code-block:: shell
+
+    [root@test-kube istio-1.0.4]# kubectl get pods
+    NAME                              READY     STATUS    RESTARTS   AGE
+    details-v1-6ddcfb55b6-455qh       2/2       Running   0          26s
+    productpage-v1-6c455f5b4d-bwrbg   2/2       Running   0          26s
+    ratings-v1-5c77b56cb6-prbr6       2/2       Running   0          26s
+    reviews-v1-c87bd4d99-tn8lt        2/2       Running   0          26s
+    reviews-v2-664949cdc8-zhkc8       2/2       Running   0          26s
+    reviews-v3-66598c44d9-8fnww       2/2       Running   0          26s
+    [root@test-kube istio-1.0.4]# kubectl describe pods  productpage-v1-6c455f5b4d-bwrbg | grep Image:
+        Image:         docker.io/istio/proxy_init:1.0.4
+        Image:          istio/examples-bookinfo-productpage-v1:1.8.0
+        Image:         docker.io/istio/proxyv2:1.0.4
+
+    [root@test-kube istio-1.0.4]# kubectl get svc
+    NAME           TYPE           CLUSTER-IP      EXTERNAL-IP                                      PORT(S)               AGE
+    details        ClusterIP      10.96.192.219   <none>                                           9080/TCP              1m
+    httpbin        ClusterIP      10.100.255.45   <none>                                           8000/TCP              16d
+    kubernetes     ClusterIP      10.96.0.1       <none>                                           443/TCP               29d
+    mysql-test     ExternalName   <none>          rm-2zea03sdl3t63bohh826.mysql.rds.aliyuncs.com   3306/TCP              14d
+    nlpinfra-rpc   ClusterIP      10.97.6.84      <none>                                           50055/TCP,15090/TCP   14d
+    productpage    ClusterIP      10.105.113.57   <none>                                           9080/TCP              1m
+    ratings        ClusterIP      10.97.31.4      <none>                                           9080/TCP              1m
+    reviews        ClusterIP      10.111.64.80    <none>                                           9080/TCP              1m
+
+删除服务和istio
+-------------------------
+
+.. code-block:: shell
+
+    # 删除服务和istio
+    bash samples/bookinfo/platform/kube/cleanup.sh
+    helm del --purge istio
+    kubectl delete -f install/kubernetes/helm/istio/templates/crds.yaml
+
+直接调用外部服务
+---------------------
+
+.. code-block:: shell
+
+    # 使用之前的启动命令，增加如下参数，IP范围取决于部署时的设定，将内容传递给 | kubectl apply -f -
+    # 之后运行的pod会生效该配置
+    # --set global.proxy.includeIPRanges="10.0.0.1/8" \
+    # -x templates/sidecar-injector-configmap.yaml
+
+    helm template install/kubernetes/helm/istio  \
+    --name istio \
+    --namespace istio-system \
+    --set gateways.istio-ingressgateway.type=NodePort \
+    --set tracing.enabled=true \
+    --set servicegraph.enabled=true \
+    --set prometheus.enabled=true \
+    --set tracing.jaeger.enabled=true \
+    --set grafana.enabled=true \
+    --set grafana.service.type=NodePort  \
+    --set global.configValidation=false \
+    --set global.nodePort=true \
+    --set global.proxy.includeIPRanges="10.0.0.1/8" \
+    -x templates/sidecar-injector-configmap.yaml
+
+
+    [root@test-kube istio-1.0.4]# helm template install/kubernetes/helm/istio    --name istio   --namespace istio-system   --set gateways.istio-ingressgateway.type=NodePort   --set tracing.enabled=true   --set servicegraph.enabled=true   --set prometheus.enabled=true   --set tracing.jaeger.enabled=true   --set grafana.enabled=true   --set grafana.service.type=NodePort    --set global.configValidation=false   --set global.nodePort=true --set global.proxy.includeIPRanges="10.0.0.1/8" -x templates/sidecar-injector-configmap.yaml | kubectl apply -f -
+
